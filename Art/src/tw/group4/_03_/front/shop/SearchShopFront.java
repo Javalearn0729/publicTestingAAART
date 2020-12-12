@@ -20,7 +20,7 @@ import tw.group4.util.Hibernate;
 public class SearchShopFront {
 
 	@Autowired
-	private CreativeShopService css;
+	public CreativeShopService css;
 
 	@Hibernate
 	@RequestMapping(path = "/03/front/shop/searchShopByShopNameAndMemberId.ctrl", method = RequestMethod.POST)

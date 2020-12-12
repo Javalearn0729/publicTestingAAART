@@ -14,7 +14,7 @@ import tw.group4.util.Hibernate;
 public class DeleteShopFront {
 
 	@Autowired
-	private CreativeShopService css;
+	public CreativeShopService css;
 
 	@Hibernate
 	@RequestMapping(path = "/03/front/shop/deleteShop.ctrl", method = RequestMethod.POST)

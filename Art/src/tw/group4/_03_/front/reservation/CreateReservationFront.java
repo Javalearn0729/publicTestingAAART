@@ -22,10 +22,10 @@ import tw.group4.util.Hibernate;
 public class CreateReservationFront {
 
 	@Autowired
-	private RestaurantService rs;
+	public RestaurantService rs;
 	
 	@Autowired
-	private ShopReservationService srs;
+	public ShopReservationService srs;
 	
 	@RequestMapping(path = "/03/front/reservation/chooseNumberAndDate", method = RequestMethod.GET)
 	public String chooseNumberAndDate(Model m) {

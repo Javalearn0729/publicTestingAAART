@@ -19,7 +19,7 @@ import tw.group4.util.Hibernate;
 public class RedirectReservationControllerFront {
 
 	@Autowired
-	private ShopReservationService srs;
+	public ShopReservationService srs;
 	
 	@Hibernate
 	@RequestMapping(path = "/03/front/reservation/myReservation.ctrl", method = RequestMethod.GET)

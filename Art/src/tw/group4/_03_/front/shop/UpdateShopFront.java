@@ -18,11 +18,11 @@ import tw.group4.util.Hibernate;
 public class UpdateShopFront {
 
 	@Autowired
-	private CreativeShopService css;
+	public CreativeShopService css;
 	
 	@Hibernate
 	@RequestMapping(path = "/03/front/shop/updateShopByShopId.ctrl", method = RequestMethod.POST)
-	private String updateShopByShopId(@RequestParam(name = "shopId") String shopId, Model m) {
+	public String updateShopByShopId(@RequestParam(name = "shopId") String shopId, Model m) {
 		
 		try {
 			int id = Integer.parseInt(shopId);
@@ -46,7 +46,7 @@ public class UpdateShopFront {
 	
 	@Hibernate
 	@RequestMapping(path = "/03/front/shop/updateShop.ctrl", method = RequestMethod.POST)
-	private String updateShop( 
+	public String updateShop( 
 			@RequestParam(name="shopId") String shopId,
 			@RequestParam(name="shopName") String shopName, 
 			@RequestParam(name="memberId") String memberId, 

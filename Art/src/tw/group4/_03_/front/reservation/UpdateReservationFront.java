@@ -19,14 +19,14 @@ import tw.group4.util.Hibernate;
 public class UpdateReservationFront {
 
 	@Autowired
-	private RestaurantService rs;
+	public RestaurantService rs;
 	
 	@Autowired
-	private ShopReservationService srs;
+	public ShopReservationService srs;
 	
 	@Hibernate
 	@RequestMapping(path = "/03/front/reservation/updateReservationByNo.ctrl", method = RequestMethod.POST)
-	private String updateReservationByNo(@RequestParam(name = "reservationNo") String reservationNo, Model m) {
+	public String updateReservationByNo(@RequestParam(name = "reservationNo") String reservationNo, Model m) {
 		
 		try {
 			int no = Integer.parseInt(reservationNo);
@@ -129,7 +129,7 @@ public class UpdateReservationFront {
 	
 	@Hibernate
 	@RequestMapping(path = "/03/front/reservation/updateReservation.ctrl", method = RequestMethod.POST)
-	private String updateReservation( 
+	public String updateReservation( 
 			@RequestParam(name = "reservationNo") String reservationNo,
 			@RequestParam(name = "memberId") String memberId, 
 			@RequestParam(name = "memberName") String memberName,
@@ -173,7 +173,7 @@ public class UpdateReservationFront {
 	}
 
 //	@RequestMapping(path = "/03/csm/reservation/updateReservationByMemberName.ctrl", method = RequestMethod.POST)
-//	private String updateReservationByMemberName(@RequestParam(name = "memberName") String memberName, Model m) {
+//	public String updateReservationByMemberName(@RequestParam(name = "memberName") String memberName, Model m) {
 //
 //		try {
 //			List<ShopReservationBean> reservationList = srs.selectByMemberName(memberName);

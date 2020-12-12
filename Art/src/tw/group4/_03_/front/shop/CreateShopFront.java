@@ -16,7 +16,7 @@ import tw.group4.util.Hibernate;
 public class CreateShopFront {
 
 	@Autowired
-	private CreativeShopService css;
+	public CreativeShopService css;
 	
 	@Hibernate
 	@RequestMapping(path = "/03/front/shop/createShop.ctrl", method = RequestMethod.POST)

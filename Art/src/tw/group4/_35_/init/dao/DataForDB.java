@@ -300,8 +300,8 @@ public class DataForDB {
 //				System.out.println(item);
 //			}
 			
-//			for (int i=13; i<strArr.length; i+=13) { //Win
-			for (int i=12; i<strArr.length; i+=12) { //Mac
+			for (int i=13; i<strArr.length; i+=13) { //Win
+//			for (int i=12; i<strArr.length; i+=12) { //Mac
 				Position pt = new Position();
 				if(strArr[i+8].equals("門牌比對失敗或格式有誤")) {
 					pt.setNo(Integer.valueOf(strArr[i]));

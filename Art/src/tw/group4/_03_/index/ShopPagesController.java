@@ -19,7 +19,7 @@ import tw.group4.util.Hibernate;
 public class ShopPagesController {
 
 	@Autowired
-	private CreativeShopService css;
+	public CreativeShopService css;
 
 	@RequestMapping(path = "/03/index/shop/template", method = RequestMethod.GET)
 	public String redirectToShopTemplate(HttpSession session) {

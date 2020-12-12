@@ -24,8 +24,6 @@
     border-radius: 5px;
     font-size: larger;
 }
-
-
 </style>
 
 </head>
