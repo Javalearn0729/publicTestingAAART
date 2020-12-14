@@ -21,7 +21,7 @@
 	<div class=content>
 		<form method="post"
 			action="<c:url value = "/03/cms/restaurant/updateRestaurant.ctrl"/>">
-			<div align='center' style='font-size: x-large; font-weight: bold;'>${year}年&nbsp;${restaurantList.month}月訂位時間表</div>
+			<div align='center' style='font-size: x-large; font-weight: bold;'>${year}年&nbsp;${month}月訂位時間表</div>
 			<br>
 			<div align='center' style='font-size: x-large; font-weight: bold;'>
 				<input type="submit" class='btn btn-outline-info' name="submit"
@@ -50,7 +50,7 @@
 							<td><c:choose>
 									<c:when test="${restaurantList.open == 1}">
 										<div style="width: 150px">
-											<select name="open">
+											<select name="open" class="custom-select">
 												<option value="1" selected>營業日</option>
 												<option value="0">店休日</option>
 											</select>
@@ -58,7 +58,7 @@
 									</c:when>
 									<c:otherwise>
 										<div style="width: 150px">
-											<select name="open">
+											<select name="open" class="custom-select">
 												<option value="1">營業日</option>
 												<option value="0" selected>店休日</option>
 											</select>
@@ -66,7 +66,7 @@
 									</c:otherwise>
 								</c:choose></td>
 							<td><div style="width: 125px">
-									<select name="maximum">
+									<select name="maximum" class="custom-select">
 										<option value="${restaurantList.maximum}" selected>${restaurantList.maximum}位</option>
 										<option value="1">1位</option>
 										<option value="2">2位</option>
@@ -124,195 +124,195 @@
 									<c:when test="${restaurantList.h09 == '-1'}">
 										<label>09:00</label>
 										<select name="oh09" class="custom-select" style="width: 120px">
-											<option value="1">營業時段</option>
-											<option value="0" selected>非營業時段</option>
+											<option value="1">營業</option>
+											<option value="0" selected>店休</option>
 										</select>
 									</c:when>
 									<c:otherwise>
 										<label>09:00</label>
 										<select name="oh09" class="custom-select" style="width: 120px">
-											<option value="1" selected>營業時段</option>
-											<option value="0">非營業時段</option>
+											<option value="1" selected>營業</option>
+											<option value="0">店休</option>
 										</select>
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h10 != '-1'}">
 										<label>10:00</label>
 										<select name="oh10" class="custom-select" style="width: 120px">
-											<option value="1" selected>營業時段</option>
-											<option value="0">非營業時段</option>
+											<option value="1" selected>營業</option>
+											<option value="0">店休</option>
 										</select>
 									</c:when>
 									<c:otherwise>
 										<label>10:00</label>
 										<select name="oh10" class="custom-select" style="width: 120px">
-											<option value="1">營業時段</option>
-											<option value="0" selected>非營業時段</option>
+											<option value="1">營業</option>
+											<option value="0" selected>店休</option>
 										</select>
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h11 != -1}">
 										<label>11:00</label>
 										<select name="oh11" class="custom-select" style="width: 120px">
-											<option value="1" selected>營業時段</option>
-											<option value="0">非營業時段</option>
+											<option value="1" selected>營業</option>
+											<option value="0">店休</option>
 										</select>
 									</c:when>
 									<c:otherwise>
 										<label>11:00</label>
 										<select name="oh11" class="custom-select" style="width: 120px">
-											<option value="1">營業時段</option>
-											<option value="0" selected>非營業時段</option>
+											<option value="1">營業</option>
+											<option value="0" selected>店休</option>
 										</select>
 									</c:otherwise>
 								</c:choose> <br> <c:choose>
 									<c:when test="${restaurantList.h12 != -1}">
 										<label>12:00</label>
 										<select name="oh12" class="custom-select" style="width: 120px">
-											<option value="1" selected>營業時段</option>
-											<option value="0">非營業時段</option>
+											<option value="1" selected>營業</option>
+											<option value="0">店休</option>
 										</select>
 									</c:when>
 									<c:otherwise>
 										<label>12:00</label>
 										<select name="oh12" class="custom-select" style="width: 120px">
-											<option value="1">營業時段</option>
-											<option value="0" selected>非營業時段</option>
+											<option value="1">營業</option>
+											<option value="0" selected>店休</option>
 										</select>
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h13 != -1}">
 										<label>13:00</label>
 										<select name="oh13" class="custom-select" style="width: 120px">
-											<option value="1" selected>營業時段</option>
-											<option value="0">非營業時段</option>
+											<option value="1" selected>營業</option>
+											<option value="0">店休</option>
 										</select>
 									</c:when>
 									<c:otherwise>
 										<label>13:00</label>
 										<select name="oh13" class="custom-select" style="width: 120px">
-											<option value="1">營業時段</option>
-											<option value="0" selected>非營業時段</option>
+											<option value="1">營業</option>
+											<option value="0" selected>店休</option>
 										</select>
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h14 != -1}">
 										<label>14:00</label>
 										<select name="oh14" class="custom-select" style="width: 120px">
-											<option value="1" selected>營業時段</option>
-											<option value="0">非營業時段</option>
+											<option value="1" selected>營業</option>
+											<option value="0">店休</option>
 										</select>
 									</c:when>
 									<c:otherwise>
 										<label>14:00</label>
 										<select name="oh14" class="custom-select" style="width: 120px">
-											<option value="1">營業時段</option>
-											<option value="0" selected>非營業時段</option>
+											<option value="1">營業</option>
+											<option value="0" selected>店休</option>
 										</select>
 									</c:otherwise>
 								</c:choose> <br> <c:choose>
 									<c:when test="${restaurantList.h15 != -1}">
 										<label>15:00</label>
 										<select name="oh15" class="custom-select" style="width: 120px">
-											<option value="1" selected>營業時段</option>
-											<option value="0">非營業時段</option>
+											<option value="1" selected>營業</option>
+											<option value="0">店休</option>
 										</select>
 									</c:when>
 									<c:otherwise>
 										<label>15:00</label>
 										<select name="oh15" class="custom-select" style="width: 120px">
-											<option value="1">營業時段</option>
-											<option value="0" selected>非營業時段</option>
+											<option value="1">營業</option>
+											<option value="0" selected>店休</option>
 										</select>
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h16 != -1}">
 										<label>16:00</label>
 										<select name="oh16" class="custom-select" style="width: 120px">
-											<option value="1" selected>營業時段</option>
-											<option value="0">非營業時段</option>
+											<option value="1" selected>營業</option>
+											<option value="0">店休</option>
 										</select>
 									</c:when>
 									<c:otherwise>
 										<label>16:00</label>
 										<select name="oh16" class="custom-select" style="width: 120px">
-											<option value="1">營業時段</option>
-											<option value="0" selected>非營業時段</option>
+											<option value="1">營業</option>
+											<option value="0" selected>店休</option>
 										</select>
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h17 != -1}">
 										<label>17:00</label>
 										<select name="oh17" class="custom-select" style="width: 120px">
-											<option value="1" selected>營業時段</option>
-											<option value="0">非營業時段</option>
+											<option value="1" selected>營業</option>
+											<option value="0">店休</option>
 										</select>
 									</c:when>
 									<c:otherwise>
 										<label>17:00</label>
 										<select name="oh17" class="custom-select" style="width: 120px">
-											<option value="1">營業時段</option>
-											<option value="0" selected>非營業時段</option>
+											<option value="1">營業</option>
+											<option value="0" selected>店休</option>
 										</select>
 									</c:otherwise>
 								</c:choose> <br> <c:choose>
 									<c:when test="${restaurantList.h18 != -1}">
 										<label>18:00</label>
 										<select name="oh18" class="custom-select" style="width: 120px">
-											<option value="1" selected>營業時段</option>
-											<option value="0">非營業時段</option>
+											<option value="1" selected>營業</option>
+											<option value="0">店休</option>
 										</select>
 									</c:when>
 									<c:otherwise>
 										<label>18:00</label>
 										<select name="oh18" class="custom-select" style="width: 120px">
-											<option value="1">營業時段</option>
-											<option value="0" selected>非營業時段</option>
+											<option value="1">營業</option>
+											<option value="0" selected>店休</option>
 										</select>
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h19 != -1}">
 										<label>19:00</label>
 										<select name="oh19" class="custom-select" style="width: 120px">
-											<option value="1" selected>營業時段</option>
-											<option value="0">非營業時段</option>
+											<option value="1" selected>營業</option>
+											<option value="0">店休</option>
 										</select>
 									</c:when>
 									<c:otherwise>
 										<label>19:00</label>
 										<select name="oh19" class="custom-select" style="width: 120px">
-											<option value="1">營業時段</option>
-											<option value="0" selected>非營業時段</option>
+											<option value="1">營業</option>
+											<option value="0" selected>店休</option>
 										</select>
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h20 != -1}">
 										<label>20:00</label>
 										<select name="oh20" class="custom-select" style="width: 120px">
-											<option value="1" selected>營業時段</option>
-											<option value="0">非營業時段</option>
+											<option value="1" selected>營業</option>
+											<option value="0">店休</option>
 										</select>
 									</c:when>
 									<c:otherwise>
 										<label>20:00</label>
 										<select name="oh20" class="custom-select" style="width: 120px">
-											<option value="1">營業時段</option>
-											<option value="0" selected>非營業時段</option>
+											<option value="1">營業</option>
+											<option value="0" selected>店休</option>
 										</select>
 									</c:otherwise>
 								</c:choose> <br> <c:choose>
 									<c:when test="${restaurantList.h21 != -1}">
 										<label>21:00</label>
 										<select name="oh21" class="custom-select" style="width: 120px">
-											<option value="1" selected>營業時段</option>
-											<option value="0">非營業時段</option>
+											<option value="1" selected>營業</option>
+											<option value="0">店休</option>
 										</select>
 									</c:when>
 									<c:otherwise>
 										<label>21:00</label>
 										<select name="oh21" class="custom-select" style="width: 120px">
-											<option value="1">營業時段</option>
-											<option value="0" selected>非營業時段</option>
+											<option value="1">營業</option>
+											<option value="0" selected>店休</option>
 										</select>
 									</c:otherwise>
 								</c:choose></td>

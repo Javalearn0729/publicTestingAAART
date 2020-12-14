@@ -1,4 +1,4 @@
-package tw.group4._03_.front.reservation;
+package tw.group4._03_.cms.reservation.control;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import tw.group4._03_.cms.reservation.model.ShopReservationService;
 import tw.group4.util.Hibernate;
 
 @Controller
-public class SearchReservationFront {
+public class SearchReservation {
 
 	@Autowired
 	public ShopReservationService srs;

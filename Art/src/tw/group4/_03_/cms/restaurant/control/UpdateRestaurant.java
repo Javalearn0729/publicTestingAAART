@@ -25,8 +25,7 @@ public class UpdateRestaurant {
 	
 	@Hibernate
 	@RequestMapping(path = "/03/cms/restaurant/updateRestaurantConfirm.ctrl", method = RequestMethod.POST)
-	public String updateRestaurantConfirm(@RequestParam(name = "year") String year,
-			@RequestParam(name = "month") String month, HttpServletRequest request, Model m) {
+	public String updateRestaurantConfirm(HttpServletRequest request, Model m) {
 		try {
 			List<RestaurantBean> restaurantList = new ArrayList<RestaurantBean>();
 
@@ -37,9 +36,10 @@ public class UpdateRestaurant {
 				RestaurantBean restaurantBean = rs.selectByNo(intNo);
 				restaurantList.add(restaurantBean);
 			}
+			
 			m.addAttribute("restaurantList", restaurantList);
-			m.addAttribute("year", year);
-			m.addAttribute("month", month);
+			m.addAttribute("year", restaurantList.get(0).getYear());
+			m.addAttribute("month", restaurantList.get(0).getMonth());
 
 		} catch (Exception e) {
 			e.printStackTrace();

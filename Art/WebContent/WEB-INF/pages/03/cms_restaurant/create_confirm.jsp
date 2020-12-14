@@ -132,31 +132,31 @@
 							</select> <br> <label>15:00</label> <select name="h15"
 								class="custom-select" style="width: 120px">
 									<option value="1" selected>營業</option>
-									<option value="0">非營業</option>
+									<option value="0">店休</option>
 							</select> <label>16:00</label> <select name="h16" class="custom-select"
 								style="width: 120px">
 									<option value="1" selected>營業</option>
-									<option value="0">非營業</option>
+									<option value="0">店休</option>
 							</select> <label>17:00</label> <select name="h17" class="custom-select"
 								style="width: 120px">
 									<option value="1" selected>營業</option>
-									<option value="0">非營業</option>
+									<option value="0">店休</option>
 							</select> <br> <label>18:00</label> <select name="h18"
 								class="custom-select" style="width: 120px">
 									<option value="1" selected>營業</option>
-									<option value="0">非營業</option>
+									<option value="0">店休</option>
 							</select> <label>19:00</label> <select name="h19" class="custom-select"
 								style="width: 120px">
 									<option value="1" selected>營業</option>
-									<option value="0">非營業</option>
+									<option value="0">店休</option>
 							</select> <label>20:00</label> <select name="h20" class="custom-select"
 								style="width: 120px">
 									<option value="1" selected>營業</option>
-									<option value="0">非營業</option>
+									<option value="0">店休</option>
 							</select> <br> <label>21:00</label> <select name="h21"
 								class="custom-select" style="width: 120px">
 									<option value="1" selected>營業</option>
-									<option value="0">非營業</option>
+									<option value="0">店休</option>
 							</select></td>
 						</tr>
 					</c:forEach>

@@ -22,6 +22,11 @@ public class RedirectReservationControllerFront {
 	public ShopReservationService srs;
 	
 	@Hibernate
+	@RequestMapping(path = "/03/front/reservation/onlineBooking.ctrl", method = RequestMethod.GET)
+	public String onlineBooking(HttpSession session, Model m) {
+		return "03/front_reservation/online_booking";
+	}
+	@Hibernate
 	@RequestMapping(path = "/03/front/reservation/myReservation.ctrl", method = RequestMethod.GET)
 	public String redirectToMyReservation(HttpSession session, Model m) {
 

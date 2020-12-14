@@ -11,16 +11,11 @@
 /* p, div { */
 
 /* } */
-.rs-symbol-color::after {
-	content: "*";
-	margin-left: 3px;
-	font-weight: 700;
-	color: rgb(203, 27, 69);
-}
 </style>
 
 </head>
 <body>
+
 	<!-- start banner Area -->
 	<section class="banner-area relative" id="home">
 		<div class="overlay overlay-bg"></div>
@@ -32,7 +27,7 @@
 						<a href="index.html">首頁 </a> <span class="lnr lnr-arrow-right"></span>
 						<a
 							href="<c:url value='/03/front/reservation/chooseNumberAndDate' />">
-							食堂訂位</a>
+							得藝食堂</a>
 					</p>
 				</div>
 			</div>
@@ -42,29 +37,28 @@
 	<div class="container">
 		<br>
 		<div class=title>
-			<h2 align="center" style="margin-top: 20px;">得藝食堂線上訂位</h2>
-			<h2 align="center" style="margin-top: 20px;">輪播廣告</h2>
+			<h3 align="center" style="margin-top: 20px;">得藝食堂</h3>
+		</div>
+		<p>加上輪播圖片</p>
+		<div class=title align="center">
+			<!-- <form method="post" -->
+			<%-- action="<c:url value="/03/front/reservation/chooseNumberAndDate"/>"> --%>
+			<div class="submitButton" align="center" style="font-size: larger">
+				<a href="<c:url value="/03/front/reservation/chooseNumberAndDate"/>"
+					class="genric-btn primary-border circle arrow">線上預約 <span
+					class="lnr lnr-arrow-right"></span></a>
+				<!-- <input type="submit" name="submit" value="線上預約"> -->
+			</div>
+			<!-- </form> -->
 		</div>
 		<br>
-		<c:if test="${reservationCreateMsg != null}">
-			<div class=title>
-				<h3 align="center" style="margin-top: 20px; margin-bottom: 10px">${reservationCreateMsg}</h3>
-				<h4 align="center" style="margin-top: 20px;">
-					如您想預先付款、修改或刪除訂位<br>可從會員專區的食堂訂位紀錄進行操作
-				</h4>
-			</div>
-			<br>
-			<div class="submitButton" align="center" style="font-size: larger">
-				<form method="get" action="<c:url value = "/03/front/reservation/myReservation.ctrl"/>">
-					<input type="submit" name="submit" value="查看訂位紀錄">
-				</form>
-			</div>
-		</c:if>
-		<c:if test="${reservationErrorMsg != null}">
-			<div class=title>
-				<h3 align="center" style="margin-top: 20px;">系統錯誤，請重試</h3>
-			</div>
-		</c:if>
+		<div class=content>
+			<p>火鍋店注意事項</p>
+		</div>
 	</div>
 </body>
 <!-- ====================================================== -->
+<script>
+	
+</script>
+</html>

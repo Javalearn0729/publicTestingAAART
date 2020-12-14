@@ -117,10 +117,6 @@
 						content += "<button name='updateButton' type='submit' class='btn btn-outline-info'>修改"
 								+ month
 								+ "月訂位時間表</button>"
-								+ "<div style='display: none'>"
-								+ "<Input type='hidden' name='year' value=" + year +">"
-								+ "<Input type='hidden' name='month' value=" + month +">"
-								+ "</div>"
 								+ "</form></div></td>";
 
 						// 排版用的td
