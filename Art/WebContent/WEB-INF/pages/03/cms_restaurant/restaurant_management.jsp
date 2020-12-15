@@ -5,7 +5,7 @@
 <div>
 	<br>
 	<div class=title>
-		<h2 align="center" style="margin-top: 20px;">得藝食堂 管理系統</h2>
+		<h1 align="center" style="margin-top: 20px;">得藝食堂 管理系統</h1>
 	</div>
 	<br>
 	<div class="container">
@@ -15,23 +15,26 @@
 				<table id="03A" class="display table table-hover table-blue">
 					<thead>
 						<tr class="head">
-							<th scope="col" colspan="5" style="font-size: larger;"><div
-									align="center">
-									<h4>訂位時間管理</h4>
-								</div></th>
+							<th scope="col" colspan="5" class="table-warning"><div
+									align="center"
+									style="font-size: x-large; font-weight: bold; color: #808080;">營業時間管理</div></th>
 						</tr>
 					</thead>
 					<tfoot></tfoot>
 					<tbody>
-						<tr>
-							<td style="font-size: larger">請選擇年份:</td>
-							<td><select id="year" name="year" class="custom-select"
-								required="required">
+						<tr class='table-info'>
+							<td style="font-size: larger; line-height: 60px;"><div
+									style="vertical-align: middle; color: #0B1013;">&nbsp;請選擇年份</div></td>
+							<td style="line-height: 60px; color: #0B1013;"><select
+								id="year" name="year" class="custom-select"
+								style="color: #0B1013;" required="required">
 									<option selected value="2020">2020年</option>
 									<option value="2021">2021年</option>
 							</select></td>
-							<td style="font-size: larger">請選擇月份:</td>
-							<td><select id="month" name="month" class="custom-select"
+							<td style="font-size: larger; line-height: 60px;"><div
+									style="vertical-align: middle; color: #0B1013;">&nbsp;請選擇月份</div></td>
+							<td style="line-height: 60px;"><select id="month"
+								name="month" class="custom-select" style="color: #0B1013;"
 								required="required">
 									<option value="01">1月</option>
 									<option value="02">2月</option>
@@ -46,8 +49,8 @@
 									<option value="11">11月</option>
 									<option selected value="12">12月</option>
 							</select></td>
-							<td><input id="btn" class='btn btn-outline-info'
-								type="button" value="查詢"></td>
+							<td style="line-height: 60px; vertical-align: middle;">&nbsp;&nbsp;&nbsp;<input
+								id="btn" class='btn btn-info' type="button" value="查詢"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -56,6 +59,7 @@
 	</div>
 	<br>
 	<div class=content id="result"></div>
+	<br>
 </div>
 <!-- ====================================================== -->
 <script>
@@ -67,10 +71,52 @@
 		var btn = document.getElementById("btn"); //按鈕的事件處理函數
 
 		btn.onclick = function() {
-			//先清空之前查詢的資料
 
 			var year = document.getElementById("year").value;
 			var month = document.getElementById("month").value;
+
+			// 生成頁面顯示的月份資料
+			if (month == 01) {
+				var newMonth = "1";
+
+			} else if (month == 02) {
+				var newMonth = "2";
+
+			} else if (month == 03) {
+				var newMonth = "3";
+
+			} else if (month == 04) {
+				var newMonth = "4";
+
+			} else if (month == 05) {
+				var newMonth = "5";
+
+			} else if (month == 06) {
+				var newMonth = "6";
+
+			} else if (month == 07) {
+				var newMonth = "7";
+
+			} else if (month == 08) {
+				var newMonth = "8";
+
+			} else if (month == 09) {
+				var newMonth = "9";
+
+			} else if (month == 10) {
+				var newMonth = "10";
+
+			} else if (month == 11) {
+				var newMonth = "11";
+
+			} else if (month == 12) {
+				var newMonth = "12";
+
+			} else {
+				var newMonth = "1";
+			}
+
+			// 送出Request
 			var xhr = new XMLHttpRequest();
 
 			xhr
@@ -95,9 +141,9 @@
 					// 假如有預約資料
 					if (restaurantList.length > 0) {
 
-						// 插入該月訂位時間表已存在
+						// 插入該月營業時間表已存在
 						var content = "<div class='submitButton' align='center' style='font-size: larger; font-weight:bold;'>"
-								+ month + "月訂位時間表已存在</div><br>";
+								+ newMonth + "月營業時間表已存在</div><br>";
 
 						// 插入詳情(X)、更新與刪除的按鈕表單
 						content += "<div class='submitButton' align='left' style='font-size: larger;'>";
@@ -107,7 +153,7 @@
 
 						// 排版用的td
 						content += "<td>&emsp;</td>";
-						
+
 						// 插入更新的 From 表單
 						content += "<td><div><form method='post' action='<c:url value='/03/cms/restaurant/updateRestaurantConfirm.ctrl'/>'> ";
 						// 預約編號的迴圈
@@ -115,8 +161,9 @@
 							content += "<div style='display: none'><Input type='hidden' name='restaurantNo' value=" + restaurantList[i].restaurantNo +"></div>";
 						}
 						content += "<button name='updateButton' type='submit' class='btn btn-outline-info'>修改"
-								+ month
-								+ "月訂位時間表</button>"
+								+ newMonth
+								+ "月營業時間表</button>"
+								+ "<div style='display: none'><Input type='hidden' name='newMonth' value=" + newMonth +"></div>"
 								+ "</form></div></td>";
 
 						// 排版用的td
@@ -129,141 +176,145 @@
 							content += "<div style='display: none'><Input type='hidden' name='restaurantNo' value=" + restaurantList[i].restaurantNo +"></div>";
 						}
 						content += "<button name='deleteButton' type='submit' class='btn btn-outline-info'>刪除"
-								+ month
-								+ "月訂位時間表</button>"
+								+ newMonth
+								+ "月營業時間表</button>"
+								+ "<div style='display: none'><Input type='hidden' name='year' value=" + year +"></div>"
+								+ "<div style='display: none'><Input type='hidden' name='newMonth' value=" + newMonth +"></div>"
 								+ "</form></div></td></tr></table>"
 								+ "</div><br>";
 
 						// 插入查詢結果 table
-						content += "<table id='03B' class='display table table-bordered table-hover table-blue'>";
-						content += "<thead><tr><th class='table-warning'>日期</th><th class='table-success'>當日是否營業</th>";
-						content += "<th class='table-danger'>線上訂位人數上限</th><th class='table-info'>可訂位時段</th></tr></thead><tbody>";
+						content += "<table id='03B' class='display table table-bordered table-striped table-blue'>";
+						content += "<thead class='table-hover'><tr style='color: #0B1013;'><th class='table-warning'>日期</th><th class='table-success'>當日是否營業</th>";
+						content += "<th class='table-danger'>線上訂位人數上限</th><th class='table-info'>可訂位時段</th></tr></thead><tbody style='color: #0B1013; font-size:larger;'>";
 
 						// 迴圈印出預約資料
 						for (var i = 0; i < restaurantList.length; i++) {
 							if (restaurantList[i].open == 0) {
-								var openMsg = "店休日"
+								var openMsg = "店休日";
+								var people = "無法訂位 (店休日)";
 							} else {
 								var openMsg = "營業日";
+								var people = restaurantList[i].maximum + "位";
 							}
 
 							content += "<tr><td>" + month + "/"
 									+ restaurantList[i].day + "</td>" + "<td>"
-									+ openMsg + "</td>" + "<td>"
-									+ restaurantList[i].maximum + "人</td><td>";
+									+ openMsg + "</td>" + "<td>" + people
+									+ "</td><td>";
 
 							if (restaurantList[i].h09 == -1) {
-								content += "<input type='checkbox' >"
-										+ "<label>09:00</label>&nbsp;&nbsp;";
+								content += "<label>09:00</label>&nbsp;"
+										+ "&#x2716;&emsp;";
 							} else {
-								content += "<input type='checkbox' checked>"
-										+ "<label>09:00</label>&nbsp;&nbsp;";
+								content += "<label>09:00</label>&nbsp;"
+										+ "&#x2714;&emsp;";
 							}
 							if (restaurantList[i].h10 == -1) {
-								content += "<input type='checkbox' >"
-										+ "<label>10:00</label>&nbsp;&nbsp;";
+								content += "<label>10:00</label>&nbsp;"
+										+ "&#x2716;&emsp;";
 							} else {
-								content += "<input type='checkbox' checked>"
-										+ "<label>10:00</label>&nbsp;&nbsp;";
+								content += "<label>10:00</label>&nbsp;"
+										+ "&#x2714;&emsp;";
 							}
 							if (restaurantList[i].h11 == -1) {
-								content += "<input type='checkbox' >"
-										+ "<label>11:00</label>&nbsp;&nbsp;";
+								content += "<label>11:00</label>&nbsp;"
+										+ "&#x2716;&emsp;";
 							} else {
-								content += "<input type='checkbox' checked>"
-										+ "<label>11:00</label>&nbsp;&nbsp;";
+								content += "<label>11:00</label>&nbsp;"
+										+ "&#x2714;&emsp;";
 							}
 							if (restaurantList[i].h12 == -1) {
-								content += "<input type='checkbox' >"
-										+ "<label>12:00</label>&nbsp;&nbsp;";
+								content += "<label>12:00</label>&nbsp;"
+										+ "&#x2716;<br>";
 							} else {
-								content += "<input type='checkbox' checked>"
-										+ "<label>12:00</label>&nbsp;&nbsp;";
+								content += "<label>12:00</label>&nbsp;"
+										+ "&#x2714;<br>";
 							}
 							if (restaurantList[i].h13 == -1) {
-								content += "<input type='checkbox' >"
-										+ "<label>13:00</label>&nbsp;&nbsp;";
+								content += "<label>13:00</label>&nbsp;"
+										+ "&#x2716;&emsp;";
 							} else {
-								content += "<input type='checkbox' checked>"
-										+ "<label>13:00</label>&nbsp;&nbsp;";
+								content += "<label>13:00</label>&nbsp;"
+										+ "&#x2714;&emsp;";
 							}
 							if (restaurantList[i].h14 == -1) {
-								content += "<input type='checkbox' >"
-										+ "<label>14:00</label><br>";
+								content += "<label>14:00</label>&nbsp;"
+										+ "&#x2716;&emsp;";
 							} else {
-								content += "<input type='checkbox' checked>"
-										+ "<label>14:00</label><br>";
+								content += "<label>14:00</label>&nbsp;"
+										+ "&#x2714;&emsp;";
 							}
 							if (restaurantList[i].h15 == -1) {
-								content += "<input type='checkbox' >"
-										+ "<label>15:00</label>&nbsp;&nbsp;";
+								content += "<label>15:00</label>&nbsp;"
+										+ "&#x2716;&emsp;";
 							} else {
-								content += "<input type='checkbox' checked>"
-										+ "<label>15:00</label>&nbsp;&nbsp;";
+								content += "<label>15:00</label>&nbsp;"
+										+ "&#x2714;&emsp;";
 							}
 							if (restaurantList[i].h16 == -1) {
-								content += "<input type='checkbox' >"
-										+ "<label>16:00</label>&nbsp;&nbsp;";
+								content += "<label>16:00</label>&nbsp;"
+										+ "&#x2716;<br>";
 							} else {
-								content += "<input type='checkbox' checked>"
-										+ "<label>16:00</label>&nbsp;&nbsp;";
+								content += "<label>16:00</label>&nbsp;"
+										+ "&#x2714;<br>";
 							}
 							if (restaurantList[i].h17 == -1) {
-								content += "<input type='checkbox' >"
-										+ "<label>17:00</label>&nbsp;&nbsp;";
+								content += "<label>17:00</label>&nbsp;"
+										+ "&#x2716;&emsp;";
 							} else {
-								content += "<input type='checkbox' checked>"
-										+ "<label>17:00</label>&nbsp;&nbsp;";
+								content += "<label>17:00</label>&nbsp;"
+										+ "&#x2714;&emsp;";
 							}
 							if (restaurantList[i].h18 == -1) {
-								content += "<input type='checkbox' >"
-										+ "<label>18:00</label>&nbsp;&nbsp;";
+								content += "<label>18:00</label>&nbsp;"
+										+ "&#x2716;&emsp;";
 							} else {
-								content += "<input type='checkbox' checked>"
-										+ "<label>18:00</label>&nbsp;&nbsp;";
+								content += "<label>18:00</label>&nbsp;"
+										+ "&#x2714;&emsp;";
 							}
 							if (restaurantList[i].h19 == -1) {
-								content += "<input type='checkbox' >"
-										+ "<label>19:00</label>&nbsp;&nbsp;";
+								content += "<label>19:00</label>&nbsp;"
+										+ "&#x2716;&emsp;";
 							} else {
-								content += "<input type='checkbox' checked>"
-										+ "<label>19:00</label>&nbsp;&nbsp;";
+								content += "<label>19:00</label>&nbsp;"
+										+ "&#x2714;&emsp;";
 							}
 							if (restaurantList[i].h20 == -1) {
-								content += "<input type='checkbox' >"
-										+ "<label>20:00</label>&nbsp;&nbsp;";
+								content += "<label>20:00</label>&nbsp;"
+										+ "&#x2716;<br>";
 							} else {
-								content += "<input type='checkbox' checked>"
-										+ "<label>20:00</label>&nbsp;&nbsp;";
+								content += "<label>20:00</label>&nbsp;"
+										+ "&#x2714;<br>";
 							}
 							if (restaurantList[i].h21 == -1) {
-								content += "<input type='checkbox' >"
-										+ "<label>21:00</label>";
+								content += "<label>21:00</label>&nbsp;"
+										+ "&#x2716;";
 							} else {
-								content += "<input type='checkbox' checked>"
-										+ "<label>21:00</label>";
+								content += "<label>21:00</label>&nbsp;"
+										+ "&#x2714;";
 							}
 
 						}
 						content += "</td></tr></tbody></table><br>";
-
+						
 						var result = document.getElementById("result");
 						result.innerHTML = content;
 					} else {
-						// 假如沒有該月訂位時間表
+						// 假如沒有該月營業時間表
 						// 新增的 From
 
 						var content = "<div class='submitButton' align='center' style='font-size: larger; font-weight:bold;'>查無"
-								+ month + "月訂位時間表</div><br>"
+								+ newMonth + "月營業時間表</div><br>"
 						content += "<div><form method='post' action='<c:url value='/03/cms/restaurant/createRestaurantConfirm.ctrl'/>' > "
 								+ "<div class='submitButton' align='center' style='font-size: larger'> "
 								+ "<div style='display: none'>"
 								+ "<Input type='hidden' name='year' value=" + year +">"
 								+ "<Input type='hidden' name='month' value=" + month +">"
 								+ "</div>"
-								+ "<button type='submit' class='btn btn-outline-info'>新增"
-								+ month
-								+ "月訂位時間表</button>"
+								+ "<button type='submit' class='btn btn-outline-info'>建立"
+								+ newMonth
+								+ "月營業時間表</button>"
 								+ "</div></form></div><br><br>";
 						var result = document.getElementById("result");
 						result.innerHTML = content;

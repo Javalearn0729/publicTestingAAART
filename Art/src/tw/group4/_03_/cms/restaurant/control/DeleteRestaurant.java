@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import tw.group4._03_.cms.restaurant.model.RestaurantService;
 import tw.group4.util.Hibernate;
 
@@ -18,7 +20,8 @@ public class DeleteRestaurant {
 	
 	@Hibernate
 	@RequestMapping(path = "/03/cms/restaurant/deleteRestaurant.ctrl", method = RequestMethod.POST)
-	public String deleteRestaurant(HttpServletRequest request, Model m) {
+	public String deleteRestaurant(@RequestParam(name = "year") String year,
+			@RequestParam(name = "newMonth") String newMonth, HttpServletRequest request, Model m) {
 
 		try {
 			String[] restaurantNo = request.getParameterValues("restaurantNo");
@@ -27,13 +30,13 @@ public class DeleteRestaurant {
 				int intNo = Integer.parseInt(no);
 				rs.delete(intNo);
 			}
-
-			String restaurantDeleteMsg = "該月行事曆已刪除成功";
+			
+			String restaurantDeleteMsg = year + "年 " + newMonth + "月營業時間表刪除成功";
 			m.addAttribute("restaurantDeleteMsg", restaurantDeleteMsg);
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			String restaurantDeleteMsg = "系統出錯，請重試";
+			String restaurantDeleteMsg = year + "年 " + newMonth + "月營業時間表刪除失敗，請重試";
 			m.addAttribute("restaurantDeleteMsg", restaurantDeleteMsg); // 回傳錯誤訊息
 		}
 		return "03/cms_restaurant/delete_return";

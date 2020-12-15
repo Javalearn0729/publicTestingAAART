@@ -5,31 +5,30 @@
 <div class="content">
 	<br>
 	<div class=title>
-		<h3 align="center" style="margin-top: 20px;">得藝食堂 管理系統</h3>
+		<h1 align="center" style="margin-top: 20px; ">得藝食堂 管理系統</h1>
 	</div>
-	<br>
 	<div class="back" align="right">
 		<form
 			action="<c:url value='/03/cms/restaurant/restaurantManagement'/> "
 			method="get">
-			<div class="submitButton">
-				<input type="submit" class='btn btn-outline-info' name="submit" value="返回 訂位時間首頁">
+			<div class="submitButton" >
+				<input type="submit" class='btn btn-outline-info' name="submit" value="返回 營業時間管理首頁">
 			</div>
 		</form>
 	</div>
 	<div>
 		<form method="post"
 			action="<c:url value = "/03/cms/restaurant/createRestaurant.ctrl"/>">
-			<div align='center' style='font-size: x-large; font-weight:bold;'>${year}年&nbsp;${month}月訂位時間表</div>
+			<div align='center' style='font-size: x-large; font-weight:bold;'>${year}年&nbsp;${newMonth}月營業時間表</div>
 			<br>
 			<div align='center' style='font-size: x-large; font-weight:bold;'>
-				<input type="submit" class='btn btn-outline-info' name="submit" value="建立${month}月訂位時間表" >
+				<input type="submit" class='btn btn-outline-info' name="submit" value="建立${newMonth}月營業時間表" >
 			</div>
 			<br>
-			<table id="03A" style="margin-bottom: 0px"
-				class="display table table-bordered table-hover table-blue">
-				<thead>
-					<tr>
+			<table id="03A" style="margin-bottom: 0px" 
+				class="display table table-bordered table-striped table-blue">
+				<thead class="table-hover">
+					<tr style="color: #0B1013;">
 						<th style="display: none">日</th>
 						<th class='table-warning'>日期</th>
 						<th class='table-success'>當日是否營業</th>
@@ -37,21 +36,21 @@
 						<th class='table-info'>可訂位時段</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody style="color: #0B1013; font-size:larger;">
 					<c:forEach items="${dayList}" var="dayList" varStatus="vs">
 						<tr>
 							<td style="display: none"><input type="hidden">${dayList}</td>
-							<td><input type="hidden" name="day" value="${dayList}">${month}/${dayList}</td>
+							<td><input type="hidden" name="day" value="${dayList}">${newMonth}/${dayList}</td>
 							<td>
 								<div style="width: 150px">
-									<select name="open" class="custom-select">
+									<select name="open" class="custom-select" style="color: #0B1013; ">
 										<option value="1" selected>營業日</option>
 										<option value="0">店休日</option>
 									</select>
 								</div>
 							</td>
 							<td><div style="width: 125px">
-									<select name="maximum" class="custom-select">
+									<select name="maximum" class="custom-select" style="color: #0B1013;">
 										<option value="1" selected>1位</option>
 										<option value="2">2位</option>
 										<option value="3">3位</option>
@@ -66,7 +65,7 @@
 										<option value="12">12位</option>
 										<option value="13">13位</option>
 										<option value="14">14位</option>
-										<option value="15">15位</option>
+										<option value="15" selected>15位</option>
 										<option value="16">16位</option>
 										<option value="17">17位</option>
 										<option value="18">18位</option>
@@ -76,7 +75,7 @@
 										<option value="22">22位</option>
 										<option value="23">23位</option>
 										<option value="24">24位</option>
-										<option value="25" selected>25位</option>
+										<option value="25">25位</option>
 										<option value="26">26位</option>
 										<option value="27">27位</option>
 										<option value="28">28位</option>
@@ -106,57 +105,57 @@
 								</div></td>
 							<td><label>09:00</label> 
 							<select name="h09" class="custom-select" style="width: 120px">
-									<option value="1" selected>營業</option>
-									<option value="0">店休</option>
+									<option value="1" selected>&#x2714;</option>
+									<option value="0">&#x2716;</option>
 							</select> 
 							<label>10:00</label> <select name="h10" class="custom-select"
 								style="width: 120px">
-									<option value="1" selected>營業</option>
-									<option value="0">店休</option>
+									<option value="1" selected>&#x2714;</option>
+									<option value="0">&#x2716;</option>
 							</select> <label>11:00</label> <select name="h11" class="custom-select"
 								style="width: 120px">
-									<option value="1" selected>營業</option>
-									<option value="0">店休</option>
+									<option value="1" selected>&#x2714;</option>
+									<option value="0">&#x2716;</option>
 							</select> <br> <label>12:00</label> <select name="h12"
 								class="custom-select" style="width: 120px">
-									<option value="1" selected>營業</option>
-									<option value="0">店休</option>
+									<option value="1" selected>&#x2714;</option>
+									<option value="0">&#x2716;</option>
 							</select> <label>13:00</label> <select name="h13" class="custom-select"
 								style="width: 120px">
-									<option value="1" selected>營業</option>
-									<option value="0">店休</option>
+									<option value="1" selected>&#x2714;</option>
+									<option value="0">&#x2716;</option>
 							</select> <label>14:00</label> <select name="h14" class="custom-select"
 								style="width: 120px">
-									<option value="1" selected>營業</option>
-									<option value="0">店休</option>
+									<option value="1" selected>&#x2714;</option>
+									<option value="0">&#x2716;</option>
 							</select> <br> <label>15:00</label> <select name="h15"
 								class="custom-select" style="width: 120px">
-									<option value="1" selected>營業</option>
-									<option value="0">店休</option>
+									<option value="1" selected>&#x2714;</option>
+									<option value="0">&#x2716;</option>
 							</select> <label>16:00</label> <select name="h16" class="custom-select"
 								style="width: 120px">
-									<option value="1" selected>營業</option>
-									<option value="0">店休</option>
+									<option value="1" selected>&#x2714;</option>
+									<option value="0">&#x2716;</option>
 							</select> <label>17:00</label> <select name="h17" class="custom-select"
 								style="width: 120px">
-									<option value="1" selected>營業</option>
-									<option value="0">店休</option>
+									<option value="1" selected>&#x2714;</option>
+									<option value="0">&#x2716;</option>
 							</select> <br> <label>18:00</label> <select name="h18"
 								class="custom-select" style="width: 120px">
-									<option value="1" selected>營業</option>
-									<option value="0">店休</option>
+									<option value="1" selected>&#x2714;</option>
+									<option value="0">&#x2716;</option>
 							</select> <label>19:00</label> <select name="h19" class="custom-select"
 								style="width: 120px">
-									<option value="1" selected>營業</option>
-									<option value="0">店休</option>
+									<option value="1" selected>&#x2714;</option>
+									<option value="0">&#x2716;</option>
 							</select> <label>20:00</label> <select name="h20" class="custom-select"
 								style="width: 120px">
-									<option value="1" selected>營業</option>
-									<option value="0">店休</option>
+									<option value="1" selected>&#x2714;</option>
+									<option value="0">&#x2716;</option>
 							</select> <br> <label>21:00</label> <select name="h21"
 								class="custom-select" style="width: 120px">
-									<option value="1" selected>營業</option>
-									<option value="0">店休</option>
+									<option value="1" selected>&#x2714;</option>
+									<option value="0">&#x2716;</option>
 							</select></td>
 						</tr>
 					</c:forEach>
@@ -167,11 +166,12 @@
 			</div>
 			<div style="display: none">
 				<input type="hidden" name="month" value="${month}">
+				<input type="hidden" name="newMonth" value="${newMonth}">
 			</div>
 			<!-- ====================================================== -->
 			<br>
 			<div align='center' style='font-size: x-large; font-weight:bold;'>
-				<input type="submit" class='btn btn-outline-info' name="submit" value="建立${month}月訂位時間表" >
+				<input type="submit" class='btn btn-outline-info' name="submit" value="建立${newMonth}月營業時間表" >
 			</div>
 			<br>
 		</form>

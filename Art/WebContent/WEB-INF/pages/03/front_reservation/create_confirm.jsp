@@ -29,7 +29,6 @@
 }
 </style>
 
-</style>
 
 </head>
 <body>

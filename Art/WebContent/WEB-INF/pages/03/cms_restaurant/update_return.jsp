@@ -5,15 +5,15 @@
 <div class="container">
 	<br>
 	<div class=title>
-		<h3 align="center" style="margin-top: 20px;">得藝食堂 管理系統</h3>
+		<h1 align="center" style="margin-top: 20px;">得藝食堂 管理系統</h1>
 	</div>
-	<br>
 	<div class="back" align="right">
 		<form
 			action="<c:url value='/03/cms/restaurant/restaurantManagement'/> "
 			method="get">
 			<div class="submitButton">
-				<input type="submit" class="" name="submit" value="返回 營業時間管理首頁">
+				<input type="submit" class='btn btn-outline-info' name="submit"
+					value="返回 營業時間管理首頁">
 			</div>
 		</form>
 	</div>
