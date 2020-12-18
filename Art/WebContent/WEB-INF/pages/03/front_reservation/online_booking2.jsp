@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>my reservation</title>
 <style>
-
 .rs-symbol-color::after {
 	content: "*";
 	margin-left: 3px;
@@ -30,9 +29,9 @@
 }
 </style>
 
-
 </head>
 <body>
+
 	<!-- start banner Area -->
 	<section class="banner-area relative" id="home">
 		<div class="overlay overlay-bg"></div>
@@ -44,7 +43,7 @@
 						<a href="index.html">首頁 </a> <span class="lnr lnr-arrow-right"></span>
 						<a
 							href="<c:url value='/03/front/reservation/chooseNumberAndDate' />">
-							得藝食堂線上訂位</a>
+							得藝食堂</a>
 					</p>
 				</div>
 			</div>
@@ -55,66 +54,28 @@
 		<br>
 		<div class=title>
 			<h2 align="center" style="margin-top: 20px;">得藝食堂線上訂位</h2>
-			<h2 align="center" style="margin-top: 20px; margin-bottom: 20px">輪播廣告</h2>
-		</div>
-		<div class=title>
-			<h3 align="center" style="margin-top: 20px; margin-bottom: 20px">請填寫聯絡資訊</h3>
-		</div>
-		<div class="row">
-			<div class="col-lg-3 col-md-4 mt-sm-30">
-				<div align="center">
-					<div class=title>
-						<h3 align="center" style="margin-bottom: 15px">用餐人數與時間</h3>
-					</div>
-					<table class="display table table-hover table-blue">
-						<thead>
-							<tr class="head">
-								<th scope="col">
-									<div class="custom-button" style="background-color: #FAD689">用餐人數</div>
-								</th>
-							</tr>
-							<tr>
-								<th scope="col" style="font-size: larger;">
-									<div class="custom-button"
-										style="background-color: #FFFFFF; font-weight: normal;">
-										${amount}&nbsp;位</div>
-								</th>
-							</tr>
-							<tr>
-								<!-- #================= -->
-								<th scope="col">
-									<div class="custom-button" style="background-color: #A5DEE4">用餐日期</div>
-								</th>
-							</tr>
-							<tr>
-								<th scope="col" style="font-size: larger;">
-									<div class="custom-button"
-										style="background-color: #FFFFFF; font-weight: normal;">
-										${dateTime}</div>
-								</th>
-							</tr>
-							<tr>
-								<!-- #================= -->
-								<th scope="col">
-									<div class="custom-button" style="background-color: #F596AA">用餐時段</div>
-								</th>
-								<!-- #================= -->
-							</tr>
-							<tr>
-								<th scope="col" style="font-size: larger;">
-									<div class="custom-button"
-										style="background-color: #FFFFFF; font-weight: normal;">
-										${time}</div>
-								</th>
-							</tr>
-						</thead>
-						<tbody></tbody>
-						<tfoot></tfoot>
-					</table>
-				</div>
+			<br><br>
+			<div class="submitButton" align="center" style="font-size: 20px;">
+				<a href="<c:url value="/03/front/reservation/chooseNumberAndDate"/>"
+					class="genric-btn primary-border circle arrow"><span
+					style="font-size: large; font-weight: bold;">立即預約</span> <span
+					class="lnr lnr-arrow-right"></span></a>
 			</div>
+			
+			
+			
+		</div>
+		<br> <br>
+		<div class="row">
 			<div class="col-lg-8 col-md-8">
-				<div class="container" style="width: 700px; font-size: larger;">
+				<div style="width: 700px; font-size: larger; background: #F5F1E3;">
+				<div style="background: #F5F1E3;">
+				<p style="font-size: larger; font-weight: bold;">得藝食堂為AAART平台旗下經營，以精緻、高品質為品牌經營宗旨的新日式火鍋專賣店，以提供您高品質的味蕾享受</p>
+				<p style="font-size: larger; font-weight: bold;">本店食材特選日本頂級和牛、美國安格斯牛肉、澳洲羊小排與國產桂丁雞肉</p>
+				<p style="font-size: larger; font-weight: bold;">產地直送新鮮野菜，依產季替換的十多種新鮮蔬菜及菇類，每日定時配送</p>
+				<p style="font-size: larger; font-weight: bold;">湯底為獨家的柴魚昆布高湯，是以北海道日高昆布與鹿兒島產柴魚熬煮而成，高湯色澤清澄，味道甘甜爽口而不膩</p>
+				<p style="font-size: larger; font-weight: bold;">甜品方面提供哈根達斯冰淇淋、GODIVA比利時巧克力、瑞士蓮巧克力與新鮮有機的產地直送水果</p>
+				</div>
 					<form method="post"
 						action="<c:url value = "/03/front/reservation/createReservation.ctrl"/>">
 						<table id="03A" class="display table table-hover table-blue">
@@ -123,8 +84,7 @@
 							<tfoot></tfoot>
 							<tbody>
 								<tr>
-									<td class='table-warning'><div class="rs-symbol-color"
-											style="font-size: larger; font-weight: bold;">訂位人姓名</div></td>
+									<td><div style="font-size: larger; font-weight: bold;">得藝食堂為AAART平台旗下經營，以精緻、高品質為品牌經營宗旨的新日式火鍋專賣店，以提供您高品質的味蕾享受</div></td>
 								</tr>
 								<tr>
 									<td><input type="text" name="customerName"
@@ -215,54 +175,72 @@
 					<div align="center" style="font-size: larger">${reservationCreateMsg}</div>
 				</div>
 			</div>
-		</div>
-		<!-- 圖片輪播區塊 -->
-		<br> <br> <br>
-		<div class=title>
-			<h2 align="center" style="margin-top: 20px;">嚴選食材、特製甜點</h2>
-		</div>
-		<br>
-		<!-- Start exibition Area -->
-		<div align="center">
-			<section class="exibition-area section-gap"
-				style="background-color: #FFFFFF; padding-top: 30px; padding-bottom: 30px;"
-				id="exhibitions">
-				<div class="container">
-					<div class="row">
-						<div class="active-exibition-carusel">
-							<div class="single-exibition item">
-								<img class="wrapper-restaurant"
-									src="<c:url value='/images/03/shabu01.jpg'/>" alt="">
-							</div>
-							<div class="single-exibition item">
-								<img class="wrapper-restaurant"
-									src="<c:url value='/images/03/shabu02.jpg'/>" alt="">
-							</div>
-							<div class="single-exibition item">
-								<img class="wrapper-restaurant"
-									src="<c:url value='/images/03/fruit01.jpg'/>" alt="">
-							</div>
-							<div class="single-exibition item">
-								<img class="wrapper-restaurant"
-									src="<c:url value='/images/03/fruit02.jpg'/>" alt="">
-							</div>
-							<div class="single-exibition item">
-								<img class="wrapper-restaurant"
-									src="<c:url value='/images/03/juice01.jpg'/>" alt="">
-							</div>
-							<div class="single-exibition item">
-								<img class="wrapper-restaurant"
-									src="<c:url value='/images/03/dessert01.jpg'/>" alt="">
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-		</div>
-		<!-- End exibition Area -->
-		<!-- 輪播結束 -->
 
+			<div class="col-lg-3 col-md-4 mt-sm-30">
+				<div align="center" style="width: 320px;">
+
+					<div class=title>
+						<h3 align="center" style="margin-bottom: 15px">用餐人數與時間</h3>
+					</div>
+					<table class="display table table-hover table-blue">
+						<thead>
+							<tr class="head">
+								<th scope="col">
+									<div class="custom-button" style="background-color: #FAD689">得藝食堂為AAART平台旗下經營，以精緻、高品質為品牌經營宗旨的新日式火鍋專賣店，以提供您高品質的味蕾享受。</div>
+								</th>
+							</tr>
+							<tr>
+								<th scope="col" style="font-size: larger;">
+									<div class="custom-button"
+										style="background-color: #FFFFFF; font-weight: normal;">
+										${amount}&nbsp;位</div>
+								</th>
+							</tr>
+							<tr>
+								<!-- #================= -->
+								<th scope="col">
+									<div class="custom-button" style="background-color: #A5DEE4">用餐日期</div>
+								</th>
+							</tr>
+							<tr>
+								<th scope="col" style="font-size: larger;">
+									<div class="custom-button"
+										style="background-color: #FFFFFF; font-weight: normal;">
+										${dateTime}</div>
+								</th>
+							</tr>
+							<tr>
+								<!-- #================= -->
+								<th scope="col">
+									<div class="custom-button" style="background-color: #F596AA">用餐時段</div>
+								</th>
+								<!-- #================= -->
+							</tr>
+							<tr>
+								<th scope="col" style="font-size: larger;">
+									<div class="custom-button"
+										style="background-color: #FFFFFF; font-weight: normal;">
+										${time}</div>
+								</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+						<tfoot></tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<div class=content>
+			<p>火鍋店注意事項</p>
+		</div>
 	</div>
-	<!-- ====================================================== -->
 </body>
+<!-- ====================================================== -->
+<script>
+	
+</script>
 </html>

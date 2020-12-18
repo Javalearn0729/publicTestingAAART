@@ -198,7 +198,7 @@
 								var people = restaurantList[i].maximum + "位";
 							}
 
-							content += "<tr><td>" + month + "/"
+							content += "<tr><td>" + newMonth + "/"
 									+ restaurantList[i].day + "</td>" + "<td>"
 									+ openMsg + "</td>" + "<td>" + people
 									+ "</td><td>";

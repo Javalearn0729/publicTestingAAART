@@ -32,7 +32,7 @@
 						<a href="index.html">首頁 </a> <span class="lnr lnr-arrow-right"></span>
 						<a
 							href="<c:url value='/03/front/reservation/chooseNumberAndDate' />">
-							食堂訂位</a>
+							得藝食堂線上訂位</a>
 					</p>
 				</div>
 			</div>
@@ -48,15 +48,17 @@
 		<br>
 		<c:if test="${reservationCreateMsg != null}">
 			<div class=title>
-				<h3 align="center" style="margin-top: 20px; margin-bottom: 10px">${reservationCreateMsg}</h3>
-				<h4 align="center" style="margin-top: 20px;">
-					如您想預先付款、修改或刪除訂位<br>可從會員專區的食堂訂位紀錄進行操作
-				</h4>
+				<h2 align="center" style="margin-top: 20px; margin-bottom: 30px">訂位完成</h2>
+				<h3 align="center" style="margin-top: 20px;">
+					如您想預先付款、修改或刪除訂位，可從會員專區的食堂訂位紀錄進行操作</h3>
 			</div>
 			<br>
+			<br>
 			<div class="submitButton" align="center" style="font-size: larger">
-				<form method="get" action="<c:url value = "/03/front/reservation/myReservation.ctrl"/>">
-					<input type="submit" name="submit" value="查看訂位紀錄">
+				<form method="get"
+					action="<c:url value = "/03/front/reservation/myReservation.ctrl"/>">
+					<input class="genric-btn primary radius" type="submit"
+						name="submit" value="查看食堂訂位紀錄">
 				</form>
 			</div>
 		</c:if>
@@ -65,6 +67,53 @@
 				<h3 align="center" style="margin-top: 20px;">系統錯誤，請重試</h3>
 			</div>
 		</c:if>
+
+		<!-- 圖片輪播區塊 -->
+		<br> <br> <br>
+		<div class=title>
+			<h2 align="center" style="margin-top: 20px;">嚴選食材、特製甜點</h2>
+		</div>
+		<br>
+		<!-- Start exibition Area -->
+		<div align="center">
+			<section class="exibition-area section-gap"
+				style="background-color: #FFFFFF; padding-top: 30px; padding-bottom: 30px;"
+				id="exhibitions">
+				<div class="container">
+					<div class="row">
+						<div class="active-exibition-carusel">
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/shabu01.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/shabu02.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/fruit01.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/fruit02.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/juice01.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/dessert01.jpg'/>" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- End exibition Area -->
+		<!-- 輪播結束 -->
+
 	</div>
 </body>
 <!-- ====================================================== -->

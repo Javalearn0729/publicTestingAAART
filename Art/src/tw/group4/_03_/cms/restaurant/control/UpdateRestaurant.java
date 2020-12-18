@@ -56,10 +56,6 @@ public class UpdateRestaurant {
 	public String updateRestaurant(@RequestParam(name = "newMonth") String newMonth, HttpServletRequest request, Model m) {
 
 		String[] restaurantNo = request.getParameterValues("restaurantNo");
-		String[] dateTime = request.getParameterValues("dateTime");
-		String[] year = request.getParameterValues("year");
-		String[] month = request.getParameterValues("month");
-		String[] day = request.getParameterValues("day");
 
 		String[] oh09 = request.getParameterValues("oh09");
 		String[] oh10 = request.getParameterValues("oh10");
@@ -80,6 +76,10 @@ public class UpdateRestaurant {
 		String[] open = request.getParameterValues("open");
 
 		try {
+			// 得到年份
+			RestaurantBean rb = rs.selectByNo(Integer.parseInt(restaurantNo[0]));
+			int year = rb.getYear();					
+					
 			for (int i = 0; i < restaurantNo.length; i++) {
 
 				int h09;
@@ -175,18 +175,24 @@ public class UpdateRestaurant {
 				} else {
 					h21 = -1;
 				}
-
-				rs.update(Integer.parseInt(restaurantNo[i]), dateTime[i], Integer.parseInt(year[i]),
-						Integer.parseInt(month[i]), Integer.parseInt(day[i]), h09, h10, h11, h12, h13, h14, h15, h16,
+				
+				// 獲取該月某天的營業時間表;
+				RestaurantBean restaurant = rs.selectByNo(Integer.parseInt(restaurantNo[i]));
+				
+				rs.update(Integer.parseInt(restaurantNo[i]), restaurant.getDateTime(), restaurant.getYear(),
+						restaurant.getMonth(), restaurant.getDay(), h09, h10, h11, h12, h13, h14, h15, h16,
 						h17, h18, h19, h20, h21, Integer.parseInt(maximum[i]), Integer.parseInt(open[i]));
+				
+				System.out.println(restaurant.getMonth()+"月"+ restaurant.getDay()+"日");
 			}
-			String restaurantUpdateMsg = year[0] + "年 " + newMonth + "月營業時間表修改成功";
+			
+			String restaurantUpdateMsg = year + "年 " + newMonth + "月營業時間表修改成功";
 			m.addAttribute("restaurantUpdateMsg", restaurantUpdateMsg);
 
 		} catch (Exception e) {
 			e.printStackTrace();
-
-			String restaurantUpdateMsg = year[0] + "年 " + newMonth + "月營業時間表修改失敗";
+			
+			String restaurantUpdateMsg = newMonth + "月營業時間表修改失敗";
 			m.addAttribute("restaurantUpdateMsg", restaurantUpdateMsg); // 回傳錯誤訊息
 		}
 		return "03/cms_restaurant/update_return";

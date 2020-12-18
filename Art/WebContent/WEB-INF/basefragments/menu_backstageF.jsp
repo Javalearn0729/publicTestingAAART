@@ -132,27 +132,25 @@
 				<div class="collapse-divider"></div>
 				<h6 class="collapse-header">營業相關設定:</h6>
 				<a class="collapse-item"
-					href="<c:url value='/03/cms/restaurant/restaurantManagement'/>">訂位時間管理</a>
+					href="<c:url value='/03/cms/restaurant/restaurantManagement'/>">營業時間管理</a>
 				<div class="collapse-divider"></div>
-				<h6 class="collapse-header">顧客訂位服務:</h6>
+				<h6 class="collapse-header">訂位服務管理:</h6>
 				<a class="collapse-item"
-					href="<c:url value='/03/cms/restaurant/createRestaurantConfirm.ctrl'/>">新增食堂訂位</a>
-				<a class="collapse-item"
-					href="<c:url value='/03/cms/restaurant/createRestaurantConfirm.ctrl'/>">食堂訂位管理</a>
+					href="<c:url value='/03/cms/reservation/reservationIndex.ctrl'/>">食堂訂位管理</a>
 			</div>
 		</div></li>
 
-	<!-- 合作商店管理 -->
+	<!-- 藝文商店服務 -->
 	<li class="nav-item"><a class="nav-link collapsed" href="#"
 		data-toggle="collapse" data-target="#collapsePages31"
 		aria-expanded="true" aria-controls="collapsePages"> <i
-			class="fas fa-store"></i> <span>合作商店服務</span>
+			class="fas fa-store"></i> <span>藝文商店服務</span>
 	</a>
 		<div id="collapsePages31" class="collapse"
 			aria-labelledby="headingPages" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<div class="collapse-divider"></div>
-				<h6 class="collapse-header">藝文商店管理:</h6>
+				<h6 class="collapse-header">商店管理:</h6>
 				<a class="collapse-item"
 					href="<c:url value='/03/cms/shop/createConfirm.ctrl'/>">上架藝文商店</a>
 				<a class="collapse-item"

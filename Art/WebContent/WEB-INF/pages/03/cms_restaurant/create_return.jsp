@@ -18,8 +18,11 @@
 		</form>
 	</div>
 	<br>
+	<c:if test="${restaurantCreateMsg != null}">
 	<div class=content>
-		<div align="center" style="font-size: larger">${restaurantCreateMsg}</div>
+		<div align="center"><h4>${restaurantCreateMsg}</h4></div>
 	</div>
+	</c:if>
+	<br><br>
 </div>
 <!-- ====================================================== -->

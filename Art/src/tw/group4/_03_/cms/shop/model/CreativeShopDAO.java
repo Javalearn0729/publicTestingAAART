@@ -169,7 +169,7 @@ public class CreativeShopDAO {
 	
 	public List<CreativeShopBean> select16OrderByShopId() {
 		Session session = sessionFacory.getCurrentSession();
-		Query<CreativeShopBean> query = session.createQuery("From CreativeShopBean order by shopId ASC",
+		Query<CreativeShopBean> query = session.createQuery("From CreativeShopBean order by shopId DESC",
 				CreativeShopBean.class);
 		List<CreativeShopBean> list = query.setMaxResults(16).list();
 		return list;

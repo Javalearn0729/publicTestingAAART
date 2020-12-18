@@ -318,14 +318,6 @@
 							<td style="display: none"><input type="hidden"
 								name="restaurantNo" value="${restaurantList.restaurantNo}">
 							</td>
-							<td style="display: none"><input type="hidden" name="year"
-								value="${restaurantList.year}"></td>
-							<td style="display: none"><input type="hidden" name="month"
-								value="${restaurantList.month}"></td>
-							<td style="display: none"><input type="hidden"
-								name="dateTime"
-								value="${restaurantList.year}-${restaurantList.month}-${restaurantList.day}">
-							</td>
 						</tr>
 					</c:forEach>
 				</tbody>

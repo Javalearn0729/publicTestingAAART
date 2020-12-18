@@ -72,9 +72,9 @@ public class UpdateShop {
 		try {
 
 			int intShopId = Integer.parseInt(shopId);
-			int intMemberId = Integer.parseInt(memberId);
+			int intMemberId = 1;
 			int intClicks = CustomizedTypeConversion.customizedParseInt(clicks);
-			int intReservation = Integer.parseInt(reservation);
+			int intReservation = 0;
 
 			// 執行更新
 			css.update(intShopId, shopName, intMemberId, image, intro, 
@@ -86,8 +86,6 @@ public class UpdateShop {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			String acShopsUpdateMsg = "商店資料更新失敗";
-			m.addAttribute("acShopsUpdateMsg", acShopsUpdateMsg); // 回傳錯誤訊息
 		}
 		return "03/cms_shop/update_return";
 	}

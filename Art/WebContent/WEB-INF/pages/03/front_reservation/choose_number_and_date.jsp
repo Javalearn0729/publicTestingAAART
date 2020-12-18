@@ -11,6 +11,24 @@
 /* p, div { */
 
 /* } */
+.fa-palette {
+	color: #1b9aaa;
+}
+
+.fa-store-alt {
+	color: #1b9aaa;
+}
+
+.fa-map-marked-alt {
+	color: #1b9aaa;
+}
+
+.wrapper-restaurant {
+	width: 330px;
+	height: 200px;
+	overflow: hidden;
+	margin: 0 auto;
+}
 </style>
 
 </head>
@@ -27,7 +45,7 @@
 						<a href="index.html">首頁 </a> <span class="lnr lnr-arrow-right"></span>
 						<a
 							href="<c:url value='/03/front/reservation/chooseNumberAndDate' />">
-							食堂訂位</a>
+							得藝食堂線上訂位</a>
 					</p>
 				</div>
 			</div>
@@ -39,7 +57,7 @@
 		<div class=title>
 			<h2 align="center" style="margin-top: 20px;">得藝食堂線上訂位</h2>
 		</div>
-		<p>加上輪播圖片</p>
+		<br>
 		<div class=title>
 			<h3 align="center" style="margin-top: 20px;">請選擇用餐人數與日期</h3>
 		</div>
@@ -51,14 +69,14 @@
 					<thead>
 						<tr class="head">
 							<th scope="col" colspan="4"
-								style="font-size: larger; background-color: #FAD689">用餐人數</th>
+								style="font-size: larger; color: #0B1013; background-color: #FAD689">用餐人數</th>
 							<th scope="col" colspan="1"
-								style="font-size: larger; background-color: #A5DEE4">用餐日期</th>
+								style="font-size: larger; color: #0B1013; background-color: #A5DEE4">用餐日期</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td style="font-size: larger">請選擇大人人數:</td>
+							<td style="font-size: 22px; color: #0B1013;">請選擇大人人數:</td>
 							<td><div class="row d-flex justify-content-center">
 									<div class="default-select">
 										<select id="adultsNum" name="adultsNum" required="required">
@@ -70,7 +88,7 @@
 										</select>
 									</div>
 								</div></td>
-							<td style="font-size: larger">請選擇小孩人數:</td>
+							<td style="font-size: 22px; color: #0B1013;">請選擇小孩人數:</td>
 							<td>
 								<div class="row d-flex justify-content-center">
 									<div class="default-select">
@@ -99,6 +117,53 @@
 				<br>
 			</form>
 		</div>
+		
+		<!-- 圖片輪播區塊 -->
+		<br> <br> <br>
+		<div class=title>
+			<h2 align="center" style="margin-top: 20px;">嚴選食材、特製甜點</h2>
+		</div>
+		<br>
+		<!-- Start exibition Area -->
+		<div align="center">
+			<section class="exibition-area section-gap"
+				style="background-color: #FFFFFF; padding-top: 30px; padding-bottom: 30px;"
+				id="exhibitions">
+				<div class="container">
+					<div class="row">
+						<div class="active-exibition-carusel">
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/shabu01.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/shabu02.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/fruit01.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/fruit02.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/juice01.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/dessert01.jpg'/>" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- End exibition Area -->
+		<!-- 輪播結束 -->
+		
 	</div>
 </body>
 <!-- ====================================================== -->

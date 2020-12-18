@@ -63,7 +63,7 @@ public class CreateReservationFront {
 				m.addAttribute("restaurant", restaurant);
 				
 				// 處理預約回傳值 
-				// 生成表示剩餘座位數的訊息字串(1. 訂位已額滿  2. 非營業時段  3. 剩餘剩餘剩餘座位不足)
+				// 生成表示剩餘座位數的訊息字串(1. 訂位已額滿  2. 非營業時段  3. 剩餘剩餘剩餘座位數不足)
 				// 已額滿 = H00Full
 				// 不可訂位 = H00Close
 				// 正常訂位 = H00
@@ -72,9 +72,9 @@ public class CreateReservationFront {
 				if (restaurant.getH09() == 0) {
 					m.addAttribute("H09Full", "訂位已額滿");
 				} else if (restaurant.getH09() == -1) {
-					m.addAttribute("H09Close", "非營業時段");
+					m.addAttribute("H09Close", "不可預訂時段");
 				} else if (restaurant.getH09() != 0 && restaurant.getH09() != -1 && amount > restaurant.getH09()) {
-					m.addAttribute("H09Over", "剩餘剩餘座位不足");
+					m.addAttribute("H09Over", "剩餘座位不足");
 				} else {
 					m.addAttribute("H09", restaurant.getH09());
 				}
@@ -83,7 +83,7 @@ public class CreateReservationFront {
 				if (restaurant.getH10() == 0) {
 					m.addAttribute("H10Full", "已額滿");
 				} else if (restaurant.getH10() == -1) {
-					m.addAttribute("H10Close", "不可預約");
+					m.addAttribute("H10Close", "不可預訂時段");
 				} else if (restaurant.getH10() != 0 && restaurant.getH10() != -1 && amount > restaurant.getH10()) {
 					m.addAttribute("H10Over", "剩餘座位不足");
 				} else {
@@ -94,7 +94,7 @@ public class CreateReservationFront {
 				if (restaurant.getH11() == 0) {
 					m.addAttribute("H11Full", "已額滿");
 				} else if (restaurant.getH11() == -1) {
-					m.addAttribute("H11Close", "不可預約");
+					m.addAttribute("H11Close", "不可預訂時段");
 				} else if (restaurant.getH11() != 0 && restaurant.getH11() != -1 && amount > restaurant.getH11()) {
 					m.addAttribute("H11Over", "剩餘座位不足");
 				} else {
@@ -105,7 +105,7 @@ public class CreateReservationFront {
 				if (restaurant.getH12() == 0) {
 					m.addAttribute("H12Full", "已額滿");
 				} else if (restaurant.getH12() == -1) {
-					m.addAttribute("H12Close", "不可預約");
+					m.addAttribute("H12Close", "不可預訂時段");
 				} else if (restaurant.getH12() != 0 && restaurant.getH12() != -1 && amount > restaurant.getH12()) {
 					m.addAttribute("H12Over", "剩餘座位不足");
 				} else {
@@ -116,7 +116,7 @@ public class CreateReservationFront {
 				if (restaurant.getH13() == 0) {
 					m.addAttribute("H13Full", "已額滿");
 				} else if (restaurant.getH13() == -1) {
-					m.addAttribute("H13Close", "不可預約");
+					m.addAttribute("H13Close", "不可預訂時段");
 				} else if (restaurant.getH13() != 0 && restaurant.getH13() != -1 && amount > restaurant.getH13()) {
 					m.addAttribute("H13Over", "剩餘座位不足");
 				} else {
@@ -127,7 +127,7 @@ public class CreateReservationFront {
 				if (restaurant.getH14() == 0) {
 					m.addAttribute("H14Full", "已額滿");
 				} else if (restaurant.getH14() == -1) {
-					m.addAttribute("H14Close", "不可預約");
+					m.addAttribute("H14Close", "不可預訂時段");
 				} else if (restaurant.getH14() != 0 && restaurant.getH14() != -1 && amount > restaurant.getH14()) {
 					m.addAttribute("H14Over", "剩餘座位不足");
 				} else {
@@ -138,7 +138,7 @@ public class CreateReservationFront {
 				if (restaurant.getH15() == 0) {
 					m.addAttribute("H15Full", "已額滿");
 				} else if (restaurant.getH15() == -1) {
-					m.addAttribute("H15Close", "不可預約");
+					m.addAttribute("H15Close", "不可預訂時段");
 				} else if (restaurant.getH15() != 0 && restaurant.getH15() != -1 && amount > restaurant.getH15()) {
 					m.addAttribute("H15Over", "剩餘座位不足");
 				} else {
@@ -149,7 +149,7 @@ public class CreateReservationFront {
 				if (restaurant.getH16() == 0) {
 					m.addAttribute("H16Full", "已額滿");
 				} else if (restaurant.getH16() == -1) {
-					m.addAttribute("H16Close", "不可預約");
+					m.addAttribute("H16Close", "不可預訂時段");
 				} else if (restaurant.getH16() != 0 && restaurant.getH16() != -1 && amount > restaurant.getH16()) {
 					m.addAttribute("H16Over", "剩餘座位不足");
 				} else {
@@ -160,7 +160,7 @@ public class CreateReservationFront {
 				if (restaurant.getH17() == 0) {
 					m.addAttribute("H17Full", "已額滿");
 				} else if (restaurant.getH17() == -1) {
-					m.addAttribute("H17Close", "不可預約");
+					m.addAttribute("H17Close", "不可預訂時段");
 				} else if (restaurant.getH17() != 0 && restaurant.getH17() != -1 && amount > restaurant.getH17()) {
 					m.addAttribute("H17Over", "剩餘座位不足");
 				} else {
@@ -171,7 +171,7 @@ public class CreateReservationFront {
 				if (restaurant.getH18() == 0) {
 					m.addAttribute("H18Full", "已額滿");
 				} else if (restaurant.getH18() == -1) {
-					m.addAttribute("H18Close", "不可預約");
+					m.addAttribute("H18Close", "不可預訂時段");
 				} else if (restaurant.getH18() != 0 && restaurant.getH18() != -1 && amount > restaurant.getH18()) {
 					m.addAttribute("H18Over", "剩餘座位不足");
 				} else {
@@ -182,7 +182,7 @@ public class CreateReservationFront {
 				if (restaurant.getH19() == 0) {
 					m.addAttribute("H19Full", "已額滿");
 				} else if (restaurant.getH19() == -1) {
-					m.addAttribute("H19Close", "不可預約");
+					m.addAttribute("H19Close", "不可預訂時段");
 				} else if (restaurant.getH19() != 0 && restaurant.getH19() != -1 && amount > restaurant.getH19()) {
 					m.addAttribute("H19Over", "剩餘座位不足");
 				} else {
@@ -193,7 +193,7 @@ public class CreateReservationFront {
 				if (restaurant.getH20() == 0) {
 					m.addAttribute("H20Full", "已額滿");
 				} else if (restaurant.getH20() == -1) {
-					m.addAttribute("H20Close", "不可預約");
+					m.addAttribute("H20Close", "不可預訂時段");
 				} else if (restaurant.getH20() != 0 && restaurant.getH20() != -1 && amount > restaurant.getH20()) {
 					m.addAttribute("H20Over", "剩餘座位不足");
 				} else {
@@ -204,16 +204,21 @@ public class CreateReservationFront {
 				if (restaurant.getH21() == 0) {
 					m.addAttribute("H21Full", "已額滿");
 				} else if (restaurant.getH21() == -1) {
-					m.addAttribute("H21Close", "不可預約");
+					m.addAttribute("H21Close", "不可預訂時段");
 				} else if (restaurant.getH21() != 0 && restaurant.getH21() != -1 && amount > restaurant.getH21()) {
 					m.addAttribute("H21Over", "剩餘座位不足");
 				} else {
 					m.addAttribute("H21", restaurant.getH21());
 				}
 
+				if (restaurant.getOpen() == 0) {
+					String reservationErrorMsg = "很抱歉，當天為非營業時段";
+					m.addAttribute("reservationErrorMsg", reservationErrorMsg); // 回傳非營業日訊息
+				}
+				
 			} else {
-				String reservationCreateMsg = "很抱歉，當天暫無開放預約";
-				m.addAttribute("reservationCreateMsg", reservationCreateMsg); // 回傳錯誤訊息
+				String reservationErrorMsg = "很抱歉，當天暫不開放預約";
+				m.addAttribute("reservationErrorMsg", reservationErrorMsg); // 回傳錯誤訊息
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -307,6 +312,11 @@ public class CreateReservationFront {
 			
 			if(time.equals("09:00")) {
 				int num = restaurant.getH09() - (Integer.parseInt(amount));
+				
+				// debug
+				System.out.println(restaurant.getH09());
+				System.out.println(Integer.parseInt(amount));
+				System.out.println(num);
 				
 				rs.update(restaurant.getRestaurantNo(), restaurant.getDateTime(), restaurant.getYear(), 
 						restaurant.getMonth(), restaurant.getDay(), num, 
@@ -427,7 +437,7 @@ public class CreateReservationFront {
 						restaurant.getH16(), restaurant.getH17(), restaurant.getH18(), 
 						restaurant.getH19(), num, restaurant.getH21(), 
 						restaurant.getMaximum(), restaurant.getOpen());
-			}else {
+			}else if (time.equals("21:00")) {
 				int num = restaurant.getH21() - (Integer.parseInt(amount));
 				
 				rs.update(restaurant.getRestaurantNo(), restaurant.getDateTime(), restaurant.getYear(), 
@@ -436,6 +446,16 @@ public class CreateReservationFront {
 						restaurant.getH13(), restaurant.getH14(), restaurant.getH15(), 
 						restaurant.getH16(), restaurant.getH17(), restaurant.getH18(), 
 						restaurant.getH19(), restaurant.getH20(), num, 
+						restaurant.getMaximum(), restaurant.getOpen());
+			} else {
+				int num = restaurant.getH12() - (Integer.parseInt(amount));
+				
+				rs.update(restaurant.getRestaurantNo(), restaurant.getDateTime(), restaurant.getYear(), 
+						restaurant.getMonth(), restaurant.getDay(), restaurant.getH09(), 
+						restaurant.getH10(), restaurant.getH11(), num, 
+						restaurant.getH13(), restaurant.getH14(), restaurant.getH15(), 
+						restaurant.getH16(), restaurant.getH17(), restaurant.getH18(), 
+						restaurant.getH19(), restaurant.getH20(), restaurant.getH21(),
 						restaurant.getMaximum(), restaurant.getOpen());
 			}
 			

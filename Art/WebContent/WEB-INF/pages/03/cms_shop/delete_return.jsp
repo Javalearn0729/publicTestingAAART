@@ -5,36 +5,24 @@
 <div class="container">
 	<br>
 	<div class=title>
-		<h3 align="center" style="margin-top: 20px;">刪除藝文商店</h3>
+		<h1 align="center" style="margin-top: 20px;">藝文商店 管理系統</h1>
 	</div>
-	<br>
 	<div class="back" align="right">
-		<form action="<c:url value='/03/cms/shop/index.ctrl'/> " method="post">
+		<form action="<c:url value='/03/cms/shop/index.ctrl'/> " method="get">
 			<div class="submitButton">
-				<input type="submit" class="" name="submit" value="返回 藝文商店管理">
+				<input type="submit" class='btn btn-outline-info' name="submit"
+					value="返回 藝文商店管理首頁">
 			</div>
 		</form>
 	</div>
 	<br>
-	<div class=content>
-		<table id="03"
-			class="display table table-bordered table-hover table-blue">
-			<thead></thead>
-			<tbody>
-				<tr>
-					<td>
-						<div align="center" style="font-size:larger" >${acShopsDeleteMsg}</div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+	<c:if test="${acShopsDeleteMsg != null}">
+		<div class=content>
+			<div align="center">
+				<h4>藝文商店資料已刪除</h4>
+			</div>
+		</div>
+	</c:if>
+	<br>
+	<br>
 </div>
-
-<!-- ====================================================== -->
-
-<script>
-	$(document).ready(function() {
-		$('#03').DataTable({});
-	});
-</script>

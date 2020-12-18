@@ -17,6 +17,32 @@
 	-webkit-box-orient: vertical;
 	white-space: normal;
 }
+
+.p1 {
+	white-space: pre-wrap;
+	font-size: 21px;
+	font-weight: bold;
+}
+
+.p2 {
+	white-space: pre-wrap;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.a1 {
+	padding: 20px 20px 20px 20px;
+	background: #f9f9ff;
+	border-left: 2px solid #1b9aaa;
+}
+
+.rs-symbol-color::after {
+	content: "*";
+	margin-left: 3px;
+	font-weight: 800;
+	color: rgb(203, 64, 66);
+	margin-left: 3px;
+}
 </style>
 
 </head>
@@ -30,9 +56,8 @@
 				<div class="about-content col-lg-12">
 					<h1 class="text-white">AAART Shop</h1>
 					<p class="text-white link-nav">
-						<a href="index.html">Home </a> <span class="lnr lnr-arrow-right"></span>
-						<a href="<c:url value='/03/index/shop/index.ctrl' />">
-							Creative Shop</a>
+						<a href="index.html">首頁 </a> <span class="lnr lnr-arrow-right"></span>
+						<a href="<c:url value='/03/index/shop/index.ctrl' />">藝文商店</a>
 					</p>
 				</div>
 			</div>
@@ -40,81 +65,132 @@
 	</section>
 	<!-- End banner Area -->
 
+	<!-- Start blog-posts Area -->
 	<div class="container">
-		<br>
-		<div class=title>
-			<h3 align="center" style="margin-top: 20px;">藝文商店詳細資訊</h3>
+		<br> <br>
+		<div class="content">
+			<div class="mb-10" align="center">
+				<h2>藝文商店</h2>
+			</div>
 		</div>
-		<br>
-		<!-- 		<div class="back" align="right"> -->
-		<!-- 		</div> -->
-		<br>
-		<div class=content>
-			<table id="03"
-				class="display table table-bordered table-hover table-blue">
-				<thead></thead>
-				<tfoot></tfoot>
-				<tbody>
-					<tr>
-						<td>商店名稱</td>
-						<td>${shop.shopName}</td>
-					</tr>
-					<tr>
-						<td>代表圖示 (icon)</td>
-						<td>${shop.image}</td>
-					</tr>
-					<tr>
-						<td>簡介</td>
-						<td>${shop.intro}</td>
-					</tr>
+		<br> <br>
+		<div class="row">
 
-					<!-- ====================================================== -->
+			<!-- left block -->
+			<div class="col-lg-8 post-list blog-post-list">
+				<div class="single-post">
+					<h1 style="color: #1B9AAA; padding-left: 20px;">${shop.shopName}</h1>
+					<div class="content-wrap" style="padding: 20px 20px 20px 20px;">
 
-					<tr>
-						<td>縣市名</td>
-						<td>${shop.cityName}</td>
-					</tr>
-					<tr>
-						<td>地址</td>
-						<td>${shop.address}</td>
-					</tr>
-					<tr>
-						<td>營業時間</td>
-						<td>${shop.openTime}</td>
-					</tr>
-					<tr>
-						<td>連絡電話</td>
-						<td>${shop.phone}</td>
-					</tr>
-					<tr>
-						<td>傳真號碼</td>
-						<td>${shop.fax}</td>
-					</tr>
+						<img src="${shop.image}" alt="" style="padding-bottom: 30px;">
+						<p class="p1">${shop.intro}</p>
 
-					<!-- ====================================================== -->
+					</div>
+					<div class="bottom-meta">
+						<div class="user-details row align-items-center">
+							<div class="comment-wrap col-lg-6 col-sm-6"
+								style="font-size: 18px;">
+								<ul>
+									<li><a href="#"><span class="lnr lnr-heart"></span>
+											&nbsp;${shop.clicks}&nbsp;likes</a></li>
+								</ul>
+							</div>
+							<div class="social-wrap col-lg-6" style="font-size: 22px;">
+								<ul>
+									<li><a href="${shop.facebook}"><i class="fa"><img
+												src="<c:url value='/images/03/Facebook.png'/>"></i></a></li>
+									<li>&nbsp;</li>
+									<li><a href="${shop.website}"><i class="fa"><img
+												src="<c:url value='/images/03/WebPage.png'/>"></i></a></li>
+									<li>&nbsp;</li>
+									<li>&nbsp;</li>
+								</ul>
 
-					<tr>
-						<td>電子郵件</td>
-						<td>${shop.email}</td>
-					</tr>
-					<tr>
-						<td>Facebook連結網址</td>
-						<td>${shop.facebook}</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>商店網站連結網址</td>
-						<td>${shop.website}</td>
-					</tr>
-					<tr>
-						<td><span class="lnr lnr-heart"></span> 熱門度</td>
-						<td>${shop.clicks}</td>
-					</tr>
-					<!-- ====================================================== -->
-				</tbody>
-			</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- right block -->
+			<div class="col-lg-4 sidebar">
+
+				<div class="single-widget search-widget">
+					<form class="example" method="post"
+						action="<c:url value = "/03/index/shop/searchShopByName.ctrl"/>"
+						style="margin: auto; max-width: 300px">
+						<input type="text" name="shopName" placeholder="請輸入藝文商店名稱">
+						<button type="submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</form>
+				</div>
+
+				<!-- 營業資訊 -->
+				<h3 style="color: #1B9AAA; padding-bottom: 10px;" align="center">營業資訊</h3>
+				<div class="single-widget protfolio-widget"
+					style="padding: 20px 10px 10px 25px;">
+					<div align="left">
+						<span class="p1" style="color: #1B9AAA; padding-bottom: 20px">營業時間</span><br>
+						<p class="p2">${shop.openTime}</p>
+
+						<span class="p1" style="color: #1B9AAA; padding-bottom: 20px">地址</span><br>
+						<p class="p2">${shop.address}</p>
+
+						<span class="p1" style="color: #1B9AAA; padding-bottom: 20px">連絡電話</span><br>
+						<p class="p2">${shop.phone}</p>
+
+						<c:if test="${shop.fax != null}">
+							<span class="p1" style="color: #1B9AAA; padding-bottom: 20px">傳真號碼</span>
+							<br>
+							<p class="p2">${shop.fax}</p>
+						</c:if>
+
+						<c:if test="${shop.email != null}">
+							<span class="p1" style="color: #1B9AAA; padding-bottom: 20px">電子郵件</span>
+							<br>
+							<p class="p2">${shop.email}</p>
+						</c:if>
+						<span> <a href="${shop.facebook}"><i class="fa"><img
+									src="<c:url value='/images/03/Facebook.png'/>"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+							href="${shop.website}"><i class="fa"><img
+									src="<c:url value='/images/03/WebPage.png'/>"></i></a></span>
+
+
+
+					</div>
+				</div>
+
+				<!-- 插入google 地圖 -->
+				<h3 style="color: #1B9AAA; padding-bottom: 10px;" align="center">地圖</h3>
+				<div class="single-widget protfolio-widget"
+					style="padding: 10px 10px 10px 10px;">
+					<iframe width="100%" height="320px" frameborder="0"
+						src="https://www.google.com/maps?q=${shop.address}&output=embed">
+					</iframe>
+					<%-- 					<iframe width="100%" height="250" frameborder="0" src="https://www.google.com/maps?q=${site}&output=embed"></iframe> --%>
+
+				</div>
+
+				<!-- 商店網站-->
+				<c:if test="${shop.website != null}">
+					<h3 style="color: #1B9AAA; padding-bottom: 10px;" align="center">商店網站</h3>
+					<div class="single-widget protfolio-widget"
+						style="padding: 10px 10px 10px 10px;">
+						<iframe width="100%" height="320px" frameborder="0"
+							src="${shop.website}"> </iframe>
+					</div>
+				</c:if>
+
+
+			</div>
 		</div>
 	</div>
+	<!-- End blog-posts Area -->
+
+
+
+
 </body>
 <!-- ====================================================== -->
 <script>

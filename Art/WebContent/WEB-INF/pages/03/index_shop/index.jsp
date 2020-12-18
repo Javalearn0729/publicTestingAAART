@@ -42,18 +42,19 @@
 					<h1 class="text-white">AAART Shop</h1>
 					<p class="text-white link-nav">
 						<a href="index.html">首頁 </a> <span class="lnr lnr-arrow-right"></span>
-						<a href="<c:url value='/03/index/shop/index.ctrl' />">合作藝文商店</a>
+						<a href="<c:url value='/03/index/shop/index.ctrl' />">藝文商店</a>
 					</p>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- End banner Area -->
+	
 	<div class="container">
 		<br> <br>
 		<div class="content">
 			<div class="mb-10" align="center">
-				<h1>合作藝文商店</h1>
+				<h2>藝文商店</h2>
 			</div>
 		</div>
 		<br>
@@ -151,15 +152,15 @@
 
 	$(document).ready(function() {
 		$("#hotButton").click(function() {
-			$("#newShops").show();
-			$("#popularityShops").hide();
+			$("#popularityShops").show();
+			$("#newShops").hide();
 		});
 	});
 
 	$(document).ready(function() {
 		$("#newButton").click(function() {
-			$("#newShops").hide();
-			$("#popularityShops").show();
+			$("#newShops").show();
+			$("#popularityShops").hide();
 		});
 	});
 </script>

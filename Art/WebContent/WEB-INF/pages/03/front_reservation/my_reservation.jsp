@@ -30,7 +30,7 @@ td {
 						<a href="index.html">首頁 </a> <span class="lnr lnr-arrow-right"></span>
 						<a
 							href="<c:url value='/03/front/reservation/myReservation.ctrl' />">
-							食堂訂位</a>
+							得藝食堂訂位紀錄</a>
 					</p>
 				</div>
 			</div>
@@ -103,7 +103,20 @@ td {
 											</form>
 										</td>
 										<td>
-											<div align="center">未付款</div>
+											<div align="center">
+												<c:if test="${reservationList.payment == 0}">
+													<form method="post"
+														action="<c:url value="/03/front/reservation/pay.ctrl"/>">
+														<button name="payButton" type="submit"
+															value="${reservationList.reservationNo}">付款</button>
+														<Input type="hidden" name="reservationNo"
+															value="${reservationList.reservationNo}">
+													</form>
+												</c:if>
+												<c:if test="${reservationList.payment == 1}">
+													<span>已付款</span>
+												</c:if>
+											</div>
 										</td>
 									</tr>
 								</c:forEach>
@@ -117,6 +130,54 @@ td {
 				</div>
 			</div>
 		</div>
+
+		<!-- 圖片輪播區塊 -->
+		<br> <br> <br>
+		<div class=title>
+			<h2 align="center" style="margin-top: 20px;">嚴選食材、特製甜點</h2>
+		</div>
+		<br>
+		<!-- Start exibition Area -->
+		<div align="center">
+			<section class="exibition-area section-gap"
+				style="background-color: #FFFFFF; padding-top: 30px; padding-bottom: 30px;"
+				id="exhibitions">
+				<div class="container">
+					<div class="row">
+						<div class="active-exibition-carusel">
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/shabu01.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/shabu02.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/fruit01.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/fruit02.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/juice01.jpg'/>" alt="">
+							</div>
+							<div class="single-exibition item">
+								<img class="wrapper-restaurant"
+									src="<c:url value='/images/03/dessert01.jpg'/>" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- End exibition Area -->
+		<!-- 輪播結束 -->
+
+
 	</div>
 </body>
 <!-- ====================================================== -->
@@ -125,3 +186,4 @@ td {
 		$('#03').DataTable({});
 	});
 </script>
+</html>
