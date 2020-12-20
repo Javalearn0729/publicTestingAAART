@@ -97,6 +97,16 @@ public class APTableReset {
 		
 		stmt.executeUpdate(OracleSQL.getCreateMessageboardrecord());
 		System.out.println("AlertsCenter Table Creat <3");
+		
+		try {
+			stmt.executeUpdate(OracleSQL.getDropEntryclickrate());
+			System.out.println("Drop Entryclickrate Table!");
+		}catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		stmt.executeUpdate(OracleSQL.getCreateEntryclickrate());
+		System.out.println("Entryclickrate Table Creat <3");
 
 		
 		//注意檔案路徑可能須修改
@@ -171,15 +181,12 @@ public class APTableReset {
 			
 			System.out.println("APPRODUCT TABLE CREAT!");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	} catch (SQLException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	
 	}

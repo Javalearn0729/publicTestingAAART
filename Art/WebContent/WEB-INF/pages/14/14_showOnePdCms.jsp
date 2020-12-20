@@ -30,6 +30,11 @@
 							<fmt:formatNumber value="${ap.productNum}" type="number" />
 
 						</p>
+						
+						<p class="card-text">
+							商品分類:
+							${ap.productType}
+						</p>
 
 						<hr>
 						<p class="card-text" style="font-size: x-large">
@@ -38,6 +43,12 @@
 
 					</form>
 				</div>
+				
 			</div>
-
 		</div>
+		</div>
+		</div>
+			<div class="container" style="text-align: center">
+				<button type="button" class="btn btn-info btn-sm" value="" onclick="location.href='<c:url value='/14/CRUD.ctrl' />'">返回列表</button>
+			</div>
+		<br>

@@ -7,7 +7,7 @@
 <title>NEW Street Artist</title>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 </head>
-<div>
+<div align="center">
 	<span> 
 		<a href="GoCreate.ctrl">新增</a>&nbsp;&nbsp; 
 		<a href="GoDel.ctrl">刪除</a>&nbsp;&nbsp;
@@ -16,28 +16,61 @@
 	</span>
 </div>
 <form action="createSA.ctrl" method="post">
-<table>
-	<thead>
-		<tr>
-			<th>新增藝人</th>
-		</tr>
-	</thead>
-	
+<table align="center">
 	<tbody>
 		<tr>
-			<td>姓名：<input type="text" name="NAME_SA" >${errors.name }<br/></td>
+			<td colspan="2" align="center" style="font-size: 20px;color: red;">新增藝人</td>
 		</tr>
 		<tr>
-			<td>來自：<input type="text" name="COUNTRY_SA" >${errors.country }<br/></td>
+			<td>姓名：</td>
+			<td><input type="text" name="NAME_SA" placeholder="範例：王小明">${errors.name }<br/></td>
 		</tr>
 		<tr>
-			<td>主題：<input type="text" name="THEME_SA" >${srrors.theme }<br/></td>
+			<td>表演地區：</td>
+			<td>
+				<select name="COUNTRY_SA" >
+					<option value="臺北市">臺北市</option>
+					<option value="新北市">新北市</option>
+					<option value="桃園市">桃園市</option>
+					<option value="臺中市">臺中市</option>
+					<option value="臺南市">臺南市</option>
+					<option value="高雄市">高雄市</option>
+					<option value="新竹縣">新竹縣</option>
+					<option value="苗栗縣">苗栗縣</option>
+					<option value="彰化縣">彰化縣</option>
+					<option value="南投縣">南投縣</option>
+					<option value="雲林縣">雲林縣</option>
+					<option value="嘉義縣">嘉義縣</option>
+					<option value="屏東縣">屏東縣</option>
+					<option value="宜蘭縣">宜蘭縣</option>
+					<option value="花蓮縣">花蓮縣</option>
+					<option value="臺東縣">臺東縣</option>
+					<option value="澎湖縣">澎湖縣</option>
+					<option value="金門縣">金門縣</option>
+					<option value="連江縣">連江縣</option>
+				</select>${errors.country }<br/>
+			</td>
 		</tr>
 		<tr>
-			<td>分類：<input type="text" name="CLASSIFICATION_SA" >${errors.classification }<br/></td>
+			<td>表演項目：</td>
+			<td>
+				<input type="text" name="THEME_SA" placeholder="範例：吉他演奏" value="魔術表演">${errors.theme }<br/>
+			</td>
 		</tr>
 		<tr>
-			<td align="center"><input type="submit" name="submit" value="送出">
+			<td>
+				分類：
+			</td>
+			<td>
+				<select name="CLASSIFICATION_SA" >
+					<option value="表演藝術">表演藝術</option>
+					<option value="創意工藝">創意工藝</option>
+					<option value="視覺藝術">視覺藝術</option>
+				</select>${errors.classification }<br/>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" name="submit" value="送出">
 		</tr>
 	</tbody>
 </table>

@@ -211,8 +211,8 @@ public class ComfirmProductController {
 			session.setAttribute("shopAlert", shopAlert);
 			session.setAttribute("shopDetile", olb);
 			session.removeAttribute("carList");
-//			session.setAttribute("form", genAioCheckOutALL);
-			session.setAttribute("form", "我把綠界的東西註解掉了，因為很麻煩，請到 212 行打開");
+			session.setAttribute("form", genAioCheckOutALL);
+//			session.setAttribute("form", "我把綠界的東西註解掉了，因為很麻煩，請到 212 行打開");
 			return "14/14_Thank";
 			
 		} catch(Exception ex){
@@ -227,6 +227,15 @@ public class ComfirmProductController {
 	@Hibernate
 	@RequestMapping(path = "/14/OrderDetial.ctrl")
 	public String orderListProcesses(Model m, @RequestParam(name = "orderNo")int orderNo) {
+		OrderListBeamAP order = oDaoService.getOrder(orderNo);
+		m.addAttribute("OrderBean", order);
+		return "14/14_OrderDetail";
+		
+	}
+	
+	//綠界導回的路徑頁面跳轉處
+	@RequestMapping(path = "/14/ecpayBack")
+	public String ecpayBack(Model m, @RequestParam(name = "orderNo")int orderNo) {
 		OrderListBeamAP order = oDaoService.getOrder(orderNo);
 		m.addAttribute("OrderBean", order);
 		return "14/14_OrderDetail";

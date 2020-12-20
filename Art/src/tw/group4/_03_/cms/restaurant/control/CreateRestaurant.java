@@ -426,14 +426,14 @@ public class CreateRestaurant {
 
 				rs.insert(restaurant);
 			}
-			String restaurantCreateMsg = year + "年 " + newMonth + "月營業時間表建立成功";
+			String restaurantCreateMsg = year + "年 " + newMonth + "月營業時間表";
 			m.addAttribute("restaurantCreateMsg", restaurantCreateMsg);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 
-			String restaurantCreateMsg = year + "年 " + newMonth + "月營業時間表建立失敗，請重試";
-			m.addAttribute("restaurantCreateMsg", restaurantCreateMsg); // 回傳錯誤訊息
+			String restaurantErrorMsg = year + "年 " + newMonth + "月營業時間表建立失敗，請重試";
+			m.addAttribute("restaurantErrorMsg", restaurantErrorMsg); // 回傳錯誤訊息
 		}
 		return "03/cms_restaurant/create_return";
 	}

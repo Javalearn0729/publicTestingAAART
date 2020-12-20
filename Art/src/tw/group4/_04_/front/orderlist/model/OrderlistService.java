@@ -48,6 +48,12 @@ public class OrderlistService {
 		
 		return orderlistDAO.deleteOrderid(orderid);
 	}
+	
+	// 修改退票
+			public Orderlist  updateStatus(int orderPK) {
+
+				return orderlistDAO.updateStatus(orderPK);
+			}
 
 
 

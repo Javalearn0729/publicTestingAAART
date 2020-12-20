@@ -26,6 +26,7 @@ public class ECPayment {
 		obj.setTradeDesc("test Description");
 		obj.setItemName("藝術品"); //要列舉出所有商品名稱與價錢，需使用 # 字號分隔每項商品，目前懶惰還沒使用
 		obj.setReturnURL("http://211.23.128.214:5000"); //設定付款成功之參數要在這邊新增接收參數之外網
+		obj.setClientBackURL("http://localhost:8080/Art/14/shopListController.ctrl");
 		obj.setNeedExtraPaidInfo("N");
 		invoice.setRelateNumber(uid.toString().replaceAll("-", "").substring(0, 20)); //商店名稱設定欄位，太常用同一個名稱會壞掉
 		invoice.setCustomerID("123456");

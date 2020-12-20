@@ -11,7 +11,8 @@
 ////目前這個設定移動到SpringMVCConfig
 //@Configuration
 //@EnableAspectJAutoProxy
-//@ComponentScan
+//沒設定這個Spring找不到你用註釋註冊好的方法啊，已在SrpinMVCConfig設定
+//@ComponentScan(basePackages = "tw.group4" )
 //public class AOPConfig {
 //	
 ////	設定定義AOP方法的class

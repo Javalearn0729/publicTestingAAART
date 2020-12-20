@@ -38,7 +38,7 @@ public class OrderListController {
 		List<OrderListBeamAP> customerOrder = serv.getCustomerOrder(memberID);
 		System.out.println("customerOrder"+customerOrder);
 		m.addAttribute("customerOrder", customerOrder);
-		return "14/14_OrderList";
+		return "14/14_OrderList_DT";
 		
 	}
 	

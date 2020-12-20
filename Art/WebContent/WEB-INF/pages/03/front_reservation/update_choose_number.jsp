@@ -36,17 +36,17 @@
 	<div class="container">
 		<br>
 		<div class=title>
-			<h2 align="center" style="margin-top: 20px;">得藝食堂線上訂位</h2>
+			<h1 align="center" style="margin-top: 20px;">得藝食堂線上訂位</h1>
 		</div>
-		<p>加上輪播圖片</p>
+		<br>
 		<div class=title>
-			<h3 align="center" style="margin-top: 20px;">修改用餐人數</h3>
+			<h2 align="center" style="margin-top: 20px;">修改用餐人數</h2>
 		</div>
 		<br>
 		<div class=title>
 			<h3 align="center" style="margin-top: 15px;">
-				您所預定的用餐時段&nbsp;<span style="color: #CB4042">${restaurant.year}年&nbsp;${restaurant.month}月&nbsp;${restaurant.day}日
-					&nbsp;${moment}&nbsp;</span>目前還剩下&nbsp;<span style="color: #CB4042">${remainingNum}個座位</span>
+				您所預定的用餐時段&nbsp;<span style="color: #005CAF">${restaurant.year}年&nbsp;${restaurant.month}月&nbsp;${restaurant.day}日
+					&nbsp;${moment}&nbsp;</span>目前還剩下&nbsp;<span style="color: #CB4042">${remainingNum}</span>個座位
 			</h3>
 		</div>
 		<br>
@@ -56,15 +56,14 @@
 				<table id="03" class="display table table-hover table-blue">
 					<thead>
 						<tr class="head">
-							<th scope="col" colspan="4"
-								style="font-size: larger; color: #0B1013; background-color: #FFF8D7"><div
-									align="center">您預定的用餐人數:&nbsp;
-									${reservation.adultsNum}位大人&nbsp;${reservation.childrenNum}位小孩</div></th>
+							<th scope="col" colspan="4" class="table-info"
+								style="font-size: 22px; color: #0B1013;"><div
+									align="center">您預定的用餐人數:&nbsp;<span style="color: #CB4042;">
+									${reservation.adultsNum}</span>&nbsp;位大人&nbsp;<span style="color: #CB4042;">${reservation.childrenNum}</span>&nbsp;位小孩</div></th>
 						</tr>
 						<tr class="head">
-							<th scope="col" colspan="4"
-								style="font-size: larger; color: #0B1013; background-color: #FAD689">新的用餐人數
-							</th>
+							<th scope="col" colspan="4" class="table-danger"
+								style="font-size: 22px; color: #0B1013;">新的用餐人數</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -118,7 +117,7 @@
 				<br>
 			</form>
 		</div>
-		
+
 		<!-- 圖片輪播區塊 -->
 		<br> <br> <br>
 		<div class=title>
@@ -172,3 +171,4 @@
 <script>
 	
 </script>
+</html>

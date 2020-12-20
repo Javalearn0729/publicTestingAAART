@@ -12,7 +12,7 @@
 		<form action="<c:url value='/03/cms/shop/index.ctrl'/> " method="get">
 			<div class="submitButton">
 				<input type="submit" class='btn btn-outline-info' name="submit"
-					value="返回 藝文商店管理首頁">
+					value="返回 藝文商店管理">
 			</div>
 		</form>
 	</div>
@@ -45,117 +45,132 @@
 								varStatus="vs">
 								<!-- ====================================================== -->
 								<tr style="display: none;">
-									<td>商店編號*</td>
+									<td>商店編號<span
+										style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
 									<td><input type="hidden" name="shopId"
 										class="form-control" value="${acShopsList.shopId}">${acShopsList.shopId}</td>
 								</tr>
 								<!-- ====================================================== -->
-								<tr>
-									<td style="padding-bottom: 10px;">商店名稱*</td>
+								<tr style="color: black;">
+									<td>商店名稱<span
+										style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
 									<td><input type="text" placeholder="請輸入商店名稱 "
-										class="form-control" name="shopName"
-										value="${acShopsList.shopName}"></td>
+										style="color: black;" class="form-control" name="shopName"
+										style="color: black;" value="${acShopsList.shopName}"></td>
 								</tr>
 								<tr>
 									<td colspan="2">&nbsp;</td>
 								</tr>
-								<tr>
-									<td >代表圖示*</td>
+								<tr style="color: black;">
+									<td>代表圖示<span
+										style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
 									<td><input type="text" placeholder="請輸入圖片網址" name="image"
-										class="form-control" value="${acShopsList.image}"></td>
+										style="color: black;" class="form-control"
+										value="${acShopsList.image}"></td>
 								</tr>
 								<tr>
 									<td colspan="2">&nbsp;</td>
 								</tr>
-								<tr>
-									<td>商店簡介*</td>
+								<tr style="color: black;">
+									<td>商店簡介<span
+										style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
 									<td><textarea placeholder="請輸入簡介內容" name="intro"
-										rows="5"	class="form-control">${acShopsList.intro}</textarea></td>
+											style="color: black;" rows="5" class="form-control">${acShopsList.intro}</textarea></td>
 								</tr>
 								<tr>
 									<td colspan="2">&nbsp;</td>
 								</tr>
-								<tr>
-									<td>商店地址*</td>
+								<tr style="color: black;">
+									<td>商店地址<span
+										style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
 									<td><input type="text" placeholder="請輸入地址" name="address"
-										value="${acShopsList.address}" class="form-control"></td>
-								</tr>
-								<tr>
-									<td colspan="2">&nbsp;</td>
-								</tr>
-								<tr>
-									<td>營業時間*</td>
-									<td><textarea placeholder="請輸入營業時間" name="openTime"
-										rows="3" class="form-control">${acShopsList.openTime}</textarea></td>
-								</tr>
-								<tr>
-									<td colspan="2">&nbsp;</td>
-								</tr>
-								<!-- ====================================================== -->
-								<tr>
-									<td>連絡電話*</td>
-									<td><input type="text" placeholder="請輸入連絡電話" name="phone"
-										value="${acShopsList.phone}" class="form-control"></td>
-								</tr>
-								<tr>
-									<td colspan="2">&nbsp;</td>
-								</tr>
-								<tr>
-									<td>電子郵件*</td>
-									<td><input type="text" placeholder="請輸入電子郵件" name="email"
-										value="${acShopsList.email}" class="form-control"></td>
-								</tr>
-								<tr>
-									<td colspan="2">&nbsp;</td>
-								</tr>
-								<tr>
-									<td>傳真號碼</td>
-									<td><input type="text" placeholder="請輸入傳真號碼" name="fax"
-										value="${acShopsList.fax}" class="form-control"></td>
-								</tr>
-								<tr>
-									<td colspan="2">&nbsp;</td>
-								</tr>
-								<tr>
-									<td>Facebook連結</td>
-									<td><input type="text" placeholder="請輸入facebook 網址"
-										name="facebook" value="${acShopsList.facebook}"
+										style="color: black;" value="${acShopsList.address}"
 										class="form-control"></td>
 								</tr>
 								<tr>
 									<td colspan="2">&nbsp;</td>
 								</tr>
-								<tr>
-									<td>商店網站連結</td>
-									<td><input type="text" placeholder="請輸入網址" name="website"
-										value="${acShopsList.website}" class="form-control"></td>
+								<tr style="color: black;">
+									<td>營業時間<span
+										style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
+									<td><textarea placeholder="請輸入營業時間" name="openTime"
+											style="color: black;" rows="3" class="form-control">${acShopsList.openTime}</textarea></td>
 								</tr>
 								<tr>
 									<td colspan="2">&nbsp;</td>
 								</tr>
 								<!-- ====================================================== -->
+								<tr style="color: black;">
+									<td>連絡電話<span
+										style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
+									<td><input type="text" placeholder="請輸入連絡電話" name="phone"
+										style="color: black;" value="${acShopsList.phone}"
+										class="form-control"></td>
+								</tr>
 								<tr>
+									<td colspan="2">&nbsp;</td>
+								</tr>
+								<tr style="color: black;">
+									<td>電子郵件<span
+										style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
+									<td><input type="text" placeholder="請輸入電子郵件" name="email"
+										style="color: black;" value="${acShopsList.email}"
+										class="form-control"></td>
+								</tr>
+								<tr>
+									<td colspan="2">&nbsp;</td>
+								</tr>
+								<tr style="color: black;">
+									<td>傳真號碼</td>
+									<td><input type="text" placeholder="請輸入傳真號碼" name="fax"
+										style="color: black;" value="${acShopsList.fax}"
+										class="form-control"></td>
+								</tr>
+								<tr style="color: black;">
+									<td colspan="2">&nbsp;</td>
+								</tr>
+								<tr style="color: black;">
+									<td>Facebook連結</td>
+									<td><input type="text" placeholder="請輸入facebook 網址"
+										style="color: black;" name="facebook"
+										value="${acShopsList.facebook}" class="form-control"></td>
+								</tr>
+								<tr>
+									<td colspan="2">&nbsp;</td>
+								</tr>
+								<tr style="color: black;">
+									<td>商店網站連結</td>
+									<td><input type="text" placeholder="請輸入網址" name="website"
+										style="color: black;" value="${acShopsList.website}"
+										class="form-control"></td>
+								</tr>
+								<tr>
+									<td colspan="2">&nbsp;</td>
+								</tr>
+								<!-- ====================================================== -->
+								<tr style="color: black;">
 									<td>熱門度</td>
 									<td><input type="text" placeholder="請輸入點擊次數" name="clicks"
-										value="${acShopsList.clicks}" class="form-control"></td>
+										style="color: black;" value="${acShopsList.clicks}"
+										class="form-control"></td>
 								</tr>
 
 								<!-- 不使用 ====================================================== -->
 								<tr style="display: none;">
 									<td>會員帳號</td>
 									<td><input type="hidden" name="memberId" value="1"
-										class="form-control"></td>
+										style="color: black;" class="form-control"></td>
 								</tr>
 								<tr style="display: none;">
 									<td>商店縣市名*</td>
 									<td><input type="text" placeholder="請輸入縣市名"
 										name="cityName" value="${acShopsList.cityName}"
-										class="form-control"></td>
+										style="color: black;" class="form-control"></td>
 								</tr>
 								<tr style="display: none;">
 									<td>reservation已廢棄</td>
 									<td><input type="hidden" name="reservation" value="1"
-										class="form-control"></td>
+										style="color: black;" class="form-control"></td>
 								</tr>
 							</c:forEach>
 						</c:if>
@@ -178,6 +193,7 @@
 		</form>
 	</div>
 </div>
+
 <!-- ====================================================== -->
 <script>
 	$(document).ready(function() {

@@ -10,6 +10,10 @@
 form {
 	display: inline;
 }
+body {
+	color: black;
+	font-size:18px;
+}
 
 </style>
 </head>
@@ -93,12 +97,16 @@ form {
 		</table>	
 <!-- 		修改訂單將建立一筆通知存入DB 通知管理員修改 -->
 		<form name="order" action="<c:url value='/04/UpdateOrderlist.ctrl'/> " method="get"> 						
-			 <button type="submit" id="change" name="orderid"  value="${requestScope.orderlist.ORDERID}" class="genric-btn success-border radius" >修改訂單</button>
+			 <button type="submit" id="change" name="orderid"  value="${requestScope.orderlist.ORDERID}" class="genric-btn success radius" >修改訂單</button>
 		</form> 
-		<form name="order" action="<c:url value='/04/DeleteOrderlist.ctrl'/> " method="get"> 						
-			 <button type="button" id="cancel" name="orderid"  value="${requestScope.orderlist.ORDERID}" class="genric-btn success-border radius" onclick="return del()">取消訂單</button>
-		</form> 
-</div>
+<%-- 		<form name="order" action="<c:url value='/04/DeleteOrderlist.ctrl'/> " method="get"> 						 --%>
+<%-- 			 <button type="button" id="cancel" name="orderid"  value="${requestScope.orderlist.ORDERID}" class="genric-btn success-border radius" onclick="return del()">取消訂單</button> --%>
+<!-- 		</form>  -->
+		<form name="order" action="<c:url value='/04/WriteIssueForm'/> "method="get" id="submitform">
+		<input type="hidden" name="issueId" value="${requestScope.orderlist.ORDERID}" >
+		</form>
+			<button type="button" id="submit" class="genric-btn success radius" >申請退票</button>
+	</div>
 
 
 	<script src="https://code.jquery.com/jquery-3.5.1.js"
@@ -131,39 +139,33 @@ $(document).ready(
 // 	}
     
 
-    function del() {
-		var msg = "是否取消訂單";
-		if (confirm(msg) == true) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+//     function del() {
+// 		var msg = "確定申請退票?";
+// 		if (confirm(msg) == true) {
+// 			return true;
+// 		} else {
+// 			return false;
+// 		}
+// 	}
     
-//     document.querySelector('#cancel').onclick = function(){
-//     	swal({
-//     		  title: "是否取消訂單?",
-//     		  text: "訂單即將取消!",
-//     		  icon: "warning",
-//     		  buttons: true,
-//     		  dangerMode: true,
-//     		})
-//     		.then((cancelOK) => {
-//     			    $.ajax({
-//     			           type: 'GET',
-//     			           url: "<c:url value='/04/DeleteOrderlist.ctrl'/>",
-//     			           data:  {
-//     			        	   orderid: document.getElementById('cancel').value,   			             
-//     			           },
-//     			  if (cancelOK) {
-//     			    swal("訂單已取消!", 
-//     			    	{icon: "success",});
-// //     		    	setTimeout(function(){window.location="<c:url value='/04/DeleteOrderlist.ctrl'/>" ; },2000);
-//     			  } else {
-//     			    swal("動作已取消!");
-//     			  }
-//     			});
-//     };
+    $("#submit").click(function() {
+
+		swal({
+				  title: "是否申請退票票券?",
+				  text: "將填寫申請單!",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((orderOK) => {
+					  if (orderOK) {
+						  $("#submitform").submit();					
+					  } else {
+					    swal("申請已取消!");
+					  }
+					});
+
+ 		});
 	
     
     

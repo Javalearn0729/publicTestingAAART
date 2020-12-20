@@ -120,6 +120,11 @@ public class CmsOrderlistCtrl {
 		System.out.println(orderid);
 		orderlistService.deleteOrderid(orderid);
 		
+		//位置數量加回去
+		SeatBean seatBean = seatBeanService.selectBean(orderlist.getACT_ID());
+        Integer seatnum=seatBean.getSEATNUM();      
+		seatBeanService.updateSeatnum(orderlist.getACT_ID(),seatBean.getSEATNUM()+ticketnum);
+		
 		System.out.println(ticketnum);
 		switch (ticketnum) {
 		case 1:
@@ -138,6 +143,48 @@ public class CmsOrderlistCtrl {
 		return "redirect:/04/Cms/SearchOrder.ctrl?";
 
 	}
+	
+	//申請退票
+		@Hibernate
+		@RequestMapping(path = "/04/Cms/OrderlistStatus.ctrl", method = RequestMethod.GET)
+		public String processUpdateOrderlistStatus(String orderpk,String orderid,Model model,HttpSession session,HttpServletRequest request) {
+			//直接由orderid取得orderlists
+			List<Orderlist> orderlists = orderlistService.searchOrderid(orderid);
+			orderlist = orderlists.get(0);		
+			String seatString = orderlist.getSeatstring();
+			System.out.println(seatString);
+			String[] seatsArray = seatString.replaceAll("\\[", "").replaceAll("\\]", "").split(",");		
+			int ticketnum =orderlist.getTICKET_NUM();
+			String actno =Integer.toString(orderlist.getACT_ID());
+			//取得memberID
+			WebsiteMember member = (WebsiteMember) session.getAttribute("member");
+			String memberID = Integer.toString(member.getId());
+
+			orderlistService.updateStatus(Integer.parseInt(orderpk));
+			
+			//位置數量加回去
+			SeatBean seatBean = seatBeanService.selectBean(orderlist.getACT_ID());
+	        Integer seatnum=seatBean.getSEATNUM();      
+			seatBeanService.updateSeatnum(orderlist.getACT_ID(),seatBean.getSEATNUM()+ticketnum);
+			
+			System.out.println(ticketnum);
+			switch (ticketnum) {
+			case 1:
+				seatBeanService.delete1Seat(seatsArray,actno);
+				break;
+			case 2:
+				seatBeanService.delete2Seat(seatsArray,actno);
+				break;
+			case 3:
+				seatBeanService.delete3Seat(seatsArray,actno);
+				break;
+			default:
+				seatBeanService.delete4Seat(seatsArray,actno);
+				break;
+			}
+			return "redirect:/04/Cms/SearchOrder.ctrl?";
+
+		}
 	
 	@Hibernate
 	@RequestMapping(path = "/04/Cms/UpdateOrderlist.ctrl", method = RequestMethod.GET)

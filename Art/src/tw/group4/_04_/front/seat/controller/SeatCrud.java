@@ -19,9 +19,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.google.gson.Gson;
+
 import oracle.net.aso.m;
 import tw.group4._04_.back.cmsAct.model.ShowBean;
+import tw.group4._04_.back.cmsAct.model.ShowBean2;
 import tw.group4._04_.front.seat.model.SeatBean;
+import tw.group4._04_.front.seat.model.SeatBean2;
+import tw.group4._04_.front.seat.model.SeatBean3;
 import tw.group4._04_.front.seat.model.SeatBeanDAO;
 import tw.group4._04_.front.seat.model.SeatBeanService;
 import tw.group4._04_.front.shopcart.model.Shoppingcart;
@@ -32,6 +37,10 @@ public class SeatCrud {
 
 	@Autowired
 	private SeatBean seatBean;
+	@Autowired
+	private SeatBean2 seatBean2;
+	@Autowired
+	private SeatBean3 seatBean3;
 	@Autowired
 	private SeatBeanService seatBeanService;
 	@Autowired
@@ -75,7 +84,8 @@ public class SeatCrud {
 
 		// shoppingcart存入session
 
-		List seatlistList = new ArrayList();
+		List<String> seatlistList = new ArrayList();
+
 		for (int j = 0; j < ticketnum; j++) {
 
 			// 亂數A~E
@@ -87,39 +97,64 @@ public class SeatCrud {
 				num += random.nextInt(10) + 1;
 			}
 
-			String rString = Alphabet + num;
-			System.out.println(rString);
-			Integer seattpye = seatBeanService.search1seat(rString, actid);
+			String radomString = Alphabet + num;
+			System.out.println(radomString);
+			Integer seattpye = seatBeanService.search1seat(radomString, actid);
 			System.out.println("seattpye" + seattpye);
 
 			String seats[] = {};
-			if (seattpye == null) {
-				seatlistList.add(rString);
-			} else {
+			if (seattpye != null) {
+				ticketnum = ticketnum + 1;
 				System.out.println("座位已劃位");
-				//重新選座位
-				ticketnum=ticketnum+1;
-			}
-		}
 
-//		System.out.println("seatlistList"+seatlistList);
+			} else if (seatlistList.contains(radomString)) {
+				ticketnum = ticketnum + 1;
+				System.out.println("座位已重複");
+			} else {
+				// 重新選座位
+				seatlistList.add(radomString);
+				System.out.println(seatlistList.size());
+			}
+//			if (seattpye == null) {
+//
+//				seatlistList.add(radomString);
+//			} else {
+//				System.out.println("座位已劃位");
+//				// 重新選座位
+//				ticketnum = ticketnum + 1;
+//			}
+
+		}
 
 		/* ArrayList to Array Conversion */
 		String seats[] = new String[seatlistList.size()];
 		for (int j = 0; j < seatlistList.size(); j++) {
 			seats[j] = (String) seatlistList.get(j);
 		}
-		/* Displaying Array elements */
-//		for(String k: seats)
-//		{
-//			System.out.println(k);
-//		}
 
 		shoppingcart.setSeats(seats);
 		session.setAttribute("shoppingcart", shoppingcart);
 
 		return "04/front_saleTicket/Booking2";
 
+	}
+
+	// 查詢座位數量
+	@Hibernate
+	@RequestMapping(path = "/04/seatnumSearch.ctrl", method = RequestMethod.GET)
+	@ResponseBody
+	public String seatnumSearch(Integer actno,Model model, HttpSession session, String ticketcategry) {
+//		Integer actno = 1;
+		HashMap<String, Integer> seatnumMap = new HashMap<String, Integer>();
+		Integer seatnum=seatBeanService.selectBean(actno).getSEATNUM();
+		Integer seatnum2=seatBeanService.selectBean2(actno).getSEAT2NUM();
+		Integer seatnum3=seatBeanService.selectBean3(actno).getSEAT3NUM();
+		seatnumMap.put("seatnum", seatnum);
+		seatnumMap.put("seatnum2", seatnum2);
+		seatnumMap.put("seatnum3", seatnum3);
+		Gson gson = new Gson();
+		String json = gson.toJson(seatnumMap);
+		return json;
 	}
 
 }

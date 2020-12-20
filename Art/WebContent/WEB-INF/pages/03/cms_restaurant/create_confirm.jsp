@@ -12,7 +12,7 @@
 			action="<c:url value='/03/cms/restaurant/restaurantManagement'/> "
 			method="get">
 			<div class="submitButton" >
-				<input type="submit" class='btn btn-outline-info' name="submit" value="返回 營業時間管理首頁">
+				<input type="submit" class='btn btn-outline-info' name="submit" value="返回 營業時間管理">
 			</div>
 		</form>
 	</div>

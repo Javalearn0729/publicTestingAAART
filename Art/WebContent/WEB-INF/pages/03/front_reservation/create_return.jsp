@@ -12,10 +12,10 @@
 
 /* } */
 .rs-symbol-color::after {
-	content: "*";
+	content: "※";
 	margin-left: 3px;
-	font-weight: 700;
-	color: rgb(203, 27, 69);
+	font-weight: 800;
+	color: rgb(203, 64, 66);
 }
 </style>
 
@@ -43,23 +43,29 @@
 		<br>
 		<div class=title>
 			<h2 align="center" style="margin-top: 20px;">得藝食堂線上訂位</h2>
-			<h2 align="center" style="margin-top: 20px;">輪播廣告</h2>
 		</div>
 		<br>
 		<c:if test="${reservationCreateMsg != null}">
 			<div class=title>
-				<h2 align="center" style="margin-top: 20px; margin-bottom: 30px">訂位完成</h2>
+				<h2 align="center"
+					style="margin-top: 20px; margin-bottom: 30px; color: rgb(203, 64, 66)">訂位已完成</h2>
+				<br>
+				<div align="center">
+					<h4>
+						<span class="rs-symbol-color"></span>將於10秒後自動前往 食堂訂位紀錄
+					</h4>
+				</div>
+				<br>
+				<div class="submitButton" align="center" style="font-size: larger">
+					<form method="get"
+						action="<c:url value = "/03/front/reservation/myReservation.ctrl"/>">
+						<input class="genric-btn primary radius" type="submit"
+							name="submit" value="查看食堂訂位紀錄">
+					</form>
+				</div>
+				<br>
 				<h3 align="center" style="margin-top: 20px;">
 					如您想預先付款、修改或刪除訂位，可從會員專區的食堂訂位紀錄進行操作</h3>
-			</div>
-			<br>
-			<br>
-			<div class="submitButton" align="center" style="font-size: larger">
-				<form method="get"
-					action="<c:url value = "/03/front/reservation/myReservation.ctrl"/>">
-					<input class="genric-btn primary radius" type="submit"
-						name="submit" value="查看食堂訂位紀錄">
-				</form>
 			</div>
 		</c:if>
 		<c:if test="${reservationErrorMsg != null}">
@@ -117,3 +123,13 @@
 	</div>
 </body>
 <!-- ====================================================== -->
+<script>
+	//計時器
+	timer = setTimeout('redirect()', 5 * 1000);
+
+	function redirect() {
+		//指定跳轉頁面
+		window.location.href = "<c:url value = '/03/front/reservation/myReservation.ctrl'/>";
+	}
+</script>
+</html>

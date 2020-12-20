@@ -5,6 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<!-- Vue.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 <title>首頁</title>
 <style>
 h1, h2 {
@@ -226,134 +229,34 @@ h1, h2 {
 				</div>	
 			</section>
 			<!-- End quote Area -->
-
+<!-- Vue 綁定起點的 div-->
+<div id="app">
 			<!-- Start exibition Area -->
-			<section class="exibition-area section-gap" id="exhibitions">
+			<section class="exibition-area section-gap" id="exhibitions" style="margin-left: 10px">
 				<div class="container">
 					<div class="row d-flex justify-content-center">
 						<div class="menu-content pb-60 col-lg-10">
 							<div class="title text-center">
-								<h1 class="mb-10">得藝洋行精選藝術品</h1>
-								<p>得藝的一天，從下單開始</p>
+								<h1 class="mb-10">Ongoing Exhibitions from the scratch</h1>
+								<p>Who are in extremely love with eco friendly system.</p>
 							</div>
 						</div>
 					</div>						
 					<div class="row">
-						<div class="active-exibition-carusel">
+						<div class="active-exibition-carusel" v-for="item in items">
 							<div class="single-exibition item">
-								<img src="<c:url value='/frontstyle/img/g10.jpg'/>" alt="" style='width:330px;height:330px;'>
+								<img :src="'${pageContext.servletContext.contextPath}/14/getBlobImage/' + item.productId +'.ctrl'"  alt="">
 								<ul class="tags">
-									<li><a href="#">瀏覽</a></li>
-									<li><a href="#">加入購物車</a></li>
+									<li><a href="#">Travel</a></li>
+									<li><a href="#">Life style</a></li>
 								</ul>
-								<a href="#"><h4>AAART #1</h4></a>
+								<a href="#"><h4>{{item.productTitle}}</h4></a>
 								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
+									售價：{{item.productPrice | money}}
 								</p>
 								<h6 class="date">31st January, 2018</h6>
 							</div>
 
-							<div class="single-exibition item">
-								<img src="<c:url value='/frontstyle/img/index_1.jpg'/>" alt="" style='width:330px;height:330px;'>
-								<ul class="tags">
-									<li><a href="#">瀏覽</a></li>
-									<li><a href="#">加入購物車</a></li>
-								</ul>
-								<a href="#"><h4>AAART #2</h4></a>
-								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>
-
-							<div class="single-exibition item">
-								<img src="<c:url value='/frontstyle/img/index_2.jpg'/>" alt="" style='width:330px;height:330px;'>
-								<ul class="tags">
-									<li><a href="#">瀏覽</a></li>
-									<li><a href="#">加入購物車</a></li>
-								</ul>
-								<a href="#"><h4>AAART #3</h4></a>
-								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>							
-							<div class="single-exibition item">
-								<img src="<c:url value='/frontstyle/img/index_3.jpg'/>" alt="" style='width:330px;height:330px;'>
-								<ul class="tags">
-									<li><a href="#">瀏覽</a></li>
-									<li><a href="#">加入購物車</a></li>
-								</ul>
-								<a href="#"><h4>AAART #4</h4></a>
-								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>
-
-							<div class="single-exibition item">
-								<img src="<c:url value='/frontstyle/img/index_4.jpg'/>" alt="" style='width:330px;height:330px;'>
-								<ul class="tags">
-									<li><a href="#">瀏覽</a></li>
-									<li><a href="#">加入購物車</a></li>
-								</ul>
-								<a href="#"><h4>AAART #5</h4></a>
-								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>
-
-							<div class="single-exibition item">
-								<img src="<c:url value='/frontstyle/img/e3.jpg'/>" alt="" style='width:330px;height:330px;'>
-								<ul class="tags">
-									<li><a href="#">瀏覽</a></li>
-									<li><a href="#">加入購物車</a></li>
-								</ul>
-								<a href="#"><h4>AAART #6</h4></a>
-								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>							
-							<div class="single-exibition item">
-								<img src="<c:url value='/frontstyle/img/e1.jpg'/>" alt="" style='width:330px;height:330px;'>
-								<ul class="tags">
-									<li><a href="#">瀏覽</a></li>
-									<li><a href="#">加入購物車</a></li>
-								</ul>
-								<a href="#"><h4>AAART #7</h4></a>
-								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>
-
-							<div class="single-exibition item">
-								<img src="<c:url value='/frontstyle/img/index_5.jpg'/>" alt="" style='width:330px;height:330px;'>
-								<ul class="tags">
-									<li><a href="#">瀏覽</a></li>
-									<li><a href="#">加入購物車</a></li>
-								</ul>
-								<a href="#"><h4>AAART #8</h4></a>
-								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>
-
-							<div class="single-exibition item">
-								<img src="<c:url value='/frontstyle/img/index_6.jpg'/>" alt="" style='width:330px;height:330px;'>
-								<ul class="tags">
-									<li><a href="#">瀏覽</a></li>
-									<li><a href="#">加入購物車</a></li>
-								</ul>
-								<a href="#"><h4>AAART #9</h4></a>
-								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>
 						</div>													
 					</div>
 				</div>	
@@ -490,7 +393,8 @@ h1, h2 {
 				</div>	
 			</section>
 			<!-- End blog Area -->
-
+</div>
+<!-- Vue 綁定結尾的 div-->
 			<!-- Start gallery Area -->
 			<section class="gallery-area section-gap" id="gallery">
 				<div class="container">
@@ -521,5 +425,79 @@ h1, h2 {
 				</div>	
 			</section>
 			<!-- End gallery Area -->
+
+			<!-- JS 起點 -->
+
+			
+			<script>
+
+			
+				Vue.filter('money',function(num){
+	 			const parts = num.toString().split('.');
+	  			parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	  			return '$' + parts.join('.');
+				});
+
+			var vm = new Vue({
+	 				el: "#app",
+	 				data() {
+	 					return {
+	 						items: null,
+	 						pages: null,
+	 						demo: 0
+	 					}
+	 				},
+	 		
+	 				mounted: function(){
+		          
+	 					this.initPageList();
+	 					this.initProductList();
+		          
+		     		 },
+
+		      methods:{
+		    	  initProductList: function() {
+		    		  var self = this;
+			          $.ajax({
+			              type:"get",
+			              url:"${pageContext.servletContext.contextPath}/14/indexShopHot",    
+			              contentType: "application/json",
+			              dataType: "json",
+			              success:function(value){
+// 			            	  alert('good2')
+			              	self.items = value;
+			              	var demo = value[1].productPrice*value[0].productPrice;
+			              	self.demo = demo;
+			              },
+			              error:function(){
+			                  alert("failure at initProductList()");
+			              }
+			          });
+		    	  },
+
+		      	initPageList: function() {
+		      		var self = this;
+		      		 $.ajax({
+			              type:"get",
+			              url:"/Art/14/initPages",    
+			              contentType: "application/json",
+			              dataType: "json",
+			              success:function(value){
+			            	  
+			              	self.pages = value;
+			              },
+			              error:function(){
+			                  alert("failure at initPageList()");
+			              }
+			          });
+			      	}
+		      }
+	       })
+
+</script>
+
+
+
+
 </body>
 </html>

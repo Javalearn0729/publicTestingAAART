@@ -56,7 +56,7 @@
 		</div>
 	</section>
 	<!-- End banner Area -->
-	
+
 	<div style="margin-left: 100px; margin-right: 100px;">
 		<br>
 		<div class=title>
@@ -171,6 +171,5 @@
 </body>
 <!-- ====================================================== -->
 <script>
-	
 </script>
 </html>

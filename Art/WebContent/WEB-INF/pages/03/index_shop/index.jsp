@@ -49,7 +49,7 @@
 		</div>
 	</section>
 	<!-- End banner Area -->
-	
+
 	<div class="container">
 		<br> <br>
 		<div class="content">
@@ -94,16 +94,18 @@
 						<a
 							href="<c:url value='/03/index/shop/shopDetails.ctrl?shopId=${shopListbyId.shopId}'/> ">
 							<div class="col-lg-3 col-md-6 single-blog">
-							<div class="border-color-change">
-								<div class="thumb">
-									<img class="img-fluid" src="${shopListbyId.image}" alt="">
+								<div class="border-color-change">
+									<div class="thumb">
+										<img class="img-fluid" src="${shopListbyId.image}" alt="">
+									</div>
+									<br> <a
+										href="<c:url value='/03/index/shop/shopDetails.ctrl?shopId=${shopListbyId.shopId}'/> "><h4>${shopListbyId.shopName}</h4></a>
+									<p class="ellipsis">${shopListbyId.intro}</p>
+									<span class="lnr lnr-heart"></span> ${shopListbyId.clicks}
+									Likes
 								</div>
-								<br> <a
-									href="<c:url value='/03/index/shop/shopDetails.ctrl?shopId=${shopListbyId.shopId}'/> "><h4>${shopListbyId.shopName}</h4></a>
-								<p class="ellipsis">${shopListbyId.intro}</p>
-								<span class="lnr lnr-heart"></span> ${shopListbyId.clicks} Likes
-							</div> 
-							</div><br>
+							</div>
+							<br>
 						</a>
 					</c:forEach>
 				</div>
@@ -115,17 +117,17 @@
 						<a
 							href="<c:url value='/03/index/shop/shopDetails.ctrl?shopId=${shopListbyPopularity.shopId}'/> ">
 							<div class="col-lg-3 col-md-6 single-blog">
-							<div class="border-color-change">
-								<div class="thumb">
-									<img class="img-fluid" src="${shopListbyPopularity.image} "
-										alt="">
+								<div class="border-color-change">
+									<div class="thumb">
+										<img class="img-fluid" src="${shopListbyPopularity.image} "
+											alt="">
+									</div>
+									<br> <a
+										href="<c:url value='/03/index/shop/shopDetails.ctrl?shopId=${shopListbyPopularity.shopId}'/> "><h4>${shopListbyPopularity.shopName}</h4></a>
+									<p class="ellipsis">${shopListbyPopularity.intro}</p>
+									<span class="lnr lnr-heart"></span>
+									${shopListbyPopularity.clicks} Likes
 								</div>
-								<br> <a
-									href="<c:url value='/03/index/shop/shopDetails.ctrl?shopId=${shopListbyPopularity.shopId}'/> "><h4>${shopListbyPopularity.shopName}</h4></a>
-								<p class="ellipsis">${shopListbyPopularity.intro}</p>
-								<span class="lnr lnr-heart"></span>
-								${shopListbyPopularity.clicks} Likes
-							</div>
 							</div>
 						</a>
 					</c:forEach>
@@ -164,3 +166,4 @@
 		});
 	});
 </script>
+</html>

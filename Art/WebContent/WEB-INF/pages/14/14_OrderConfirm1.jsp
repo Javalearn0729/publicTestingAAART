@@ -108,19 +108,17 @@ swal({
 
 
 </script>
-
 <style>
-table {
-	margin: auto;
-	margin-top: 50px;
-	text-align: center;
+.genric-btn.danger {
+color:#fff;
+background:#D05A6E;  
+
+}
+.genric-btn.danger :hover{
+color:#D05A6E; 
+border-color: #D05A6E;
 }
 
-table, th, td {
-	border: 1px solid black;
-	border-collapse: collapse;
-	padding: 10px;
-}
 </style>
 </head>
 <body>
@@ -132,10 +130,10 @@ table, th, td {
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								AAART Shop
+								得藝洋行
 							</h1>	
-							<p class="text-white link-nav"><a href="index.html">Home </a>
-							<span class="lnr lnr-arrow-right"></span>  <a href="<c:url value='/14/shopListController.ctrl' />"> Shop</a>
+							<p class="text-white link-nav"><a href="index.html">首頁 </a>
+							<span class="lnr lnr-arrow-right"></span>  <a href="<c:url value='/14/shopListController.ctrl' />"> 洋行</a>
 							<span class="lnr lnr-arrow-right"></span> <span>結帳頁面</span> </p>
 						</div>											
 					</div>
@@ -143,77 +141,184 @@ table, th, td {
 			</section>
 	<!-- End banner Area -->	
 <br><br>
-<h3 class="mb-30" style="text-align: center;">請確認您的商品</h3>
 
-	<table>
-		<tr>
-			<th>#</th>
-			<th>圖示</th>
-			<th>名稱</th>
-			<th>數量</th>
-			<th>價格</th>
-			<th>小計</th>
-			<th>編輯</th>
-		</tr>
+<!--Section: Block Content-->
+<section>
+
+  <!--Grid row-->
+  <div class="container">
+  <div class="row">
+
+    <!--Grid column-->
+    <div class="col-lg-8">
+
+      <!-- Card -->
+      <div class="mb-3">
+        <div class="pt-4 wish-list">
+
+          <h5 class="mb-4">購物車 (<span>2</span> 樣物品)</h5>
+<!-- 一樣商品起點 -->
 		<c:forEach varStatus="vs" var="anEntry" items="${carList.cartAP}">
+          <div class="row mb-4">
+            <div class="col-md-5 col-lg-3 col-xl-3">
+              <div class="">
+                <img class="img-fluid"
+                  src="${pageContext.servletContext.contextPath}/14/getBlobImage/${anEntry.value.productId}.ctrl" alt="Sample">
+                <a href="#">
 
-			<tr>
-				<td>${vs.count}</td>
-				<td><img
-					src="${pageContext.servletContext.contextPath}/14/getBlobImage/${anEntry.value.productId}.ctrl"
-					width="100" height="100" title="圖片提示文字" alt="..."></td>
-				<td>${anEntry.value.productTitle}</td>
-				<td><input id="newQty${vs.index}" name="newQty" type="number"
-					value="${anEntry.value.productNum}" min="1" name="qty"
-					style="width: 30px; text-align: center;" onchange="modify(${anEntry.key}, ${anEntry.value.productNum}, ${vs.index})">><br> </td>
-				<td><fmt:formatNumber value="${anEntry.value.productPrice}"
-						type="number" /> 元</td>
-				<td><fmt:formatNumber
-						value="${anEntry.value.productPrice * anEntry.value.productNum}"
-						type="number" /> 元</td>
-				<td><input type="button" value="刪除此項商品"
-					onclick="confirmDelete(${anEntry.value.productId})"></td>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-7 col-lg-9 col-xl-9">
+              <div>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <h5>${anEntry.value.productTitle}</h5>
+                    <p class="mb-3 text-muted text-uppercase small">Shirt - blue</p>
+                    <p class="mb-2 text-muted text-uppercase small">Color: blue</p>
+                    <p class="mb-3 text-muted text-uppercase small">Size: M</p>
+                  </div>
+                  <div>
+                    <div class="def-number-input number-input safari_only mb-0 w-100">
+                      <button onclick="this.parentNode.querySelector('input[type=number]').stepDown().modify(${anEntry.key},${anEntry.value.productNum}, ${vs.index})"
+                        class="minus decrease" style="border: none"><i class="fas fa-caret-down"></i></button>
+                      <input class="quantity" min="1" name="quantity" value="${anEntry.value.productNum}" type="number">
+                      <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                        class="plus increase" style="border: none"><i class="fas fa-caret-up"></i></button>
+                    </div>
+                    <small id="passwordHelpBlock" class="form-text text-muted text-center">
+                      單價：${anEntry.value.productPrice}
+                    </small>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i
+                        class="fas fa-trash-alt mr-1"></i> 從購物車移除 </a>
+                    <a href="#!" type="button" class="card-link-secondary small text-uppercase"><i
+                        class="fas fa-heart mr-1"></i> 移至收藏清單 </a>
+                  </div>
+                  <p class="mb-0"><span><strong id="summary">小計：<fmt:formatNumber value="${anEntry.value.productPrice * anEntry.value.productNum}"
+						type="number" />元</strong></span></p class="mb-0">
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="mb-4">
+          </c:forEach>
+ <!-- 一樣商品結尾 -->      
+    
 
-			</tr>
-		</c:forEach>
-		<tr>
-			<td colspan="4"></td>
-			<td colspan="3">總計：<fmt:formatNumber value="${carList.subtotal}"
-					type="number" />元
-			</td>
-		</tr>
-		<tr style="text-align: center;">
-			<td colspan="2"><a
-				href="<c:url value='/14/shopListController.ctrl' />">繼續購物</a></td>
-			<%-- 			<td colspan="2"><a href="<c:url value='/14/AbortCart.ctrl' />" --%>
-			<!-- 				onClick="return Abort();"> 清空購物車</a></td> -->
-			<td colspan="2"><input type="button" value="清空購物車" onClick="Abort()"></td>
-			<td colspan="3"><a
-				href="<c:url value='/14/SubmitAPCart.ctrl' />"
-				onClick="return Checkout(${carList.subtotal});">送出訂單</a></td>
+          <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> 將商品加入購物車不等於購買，心動不如馬上結帳。</p>
 
-		</tr>
+        </div>
+      </div>
+      <!-- Card -->
 
-	</table>
+      <!-- Card -->
+      <div class="mb-3">
+        <div class="pt-4">
 
-	<div class="container">
-		<c:if test='${not empty OrderErrorMessage}'>
-			<font color='red'>${OrderErrorMessage}</font>
-			<c:remove var="OrderErrorMessage" />
-		</c:if>
-	</div>
+          <h5 class="mb-4">Expected shipping delivery</h5>
 
-	<form>
-		<input type="hidden" name="a" />
-	</form>
-	<%--	<%= order.getProdutTitle() %>
-<%= order.getProductNum() %>
-<%= order.getProductPrice()%>
-<%= pNum*pPrice %>
-<jsp:getProperty name="orderItem" property="produtTitle" />
-<jsp:getProperty name="orderItem" property="productNum" />
-<jsp:getProperty name="orderItem" property="productPrice" />
+          <p class="mb-0"> Thu., 12.03. - Mon., 16.03.</p>
+        </div>
+      </div>
+      <!-- Card -->
 
-			--%>
+      <!-- Card -->
+      <div class="mb-3">
+        <div class="pt-4">
+
+          <h5 class="mb-4">We accept</h5>
+
+          <img class="mr-2" width="45px"
+            src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+            alt="Visa">
+          <img class="mr-2" width="45px"
+            src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+            alt="American Express">
+          <img class="mr-2" width="45px"
+            src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+            alt="Mastercard">
+          <img class="mr-2" width="45px"
+            src="https://mdbootstrap.com/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.png"
+            alt="PayPal acceptance mark">
+        </div>
+      </div>
+      <!-- Card -->
+
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-lg-4">
+
+      <!-- Card -->
+      <div class="mb-3">
+        <div class="pt-4">
+
+          <h5 class="mb-3">購物明細</h5>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+              Temporary amount
+              <span>$25.98</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+              Shipping
+              <span>Gratis</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+              <div>
+                <strong>總金額</strong>
+                <strong>
+                  <p class="mb-0">(含稅)</p>
+                </strong>
+              </div>
+              <span><strong><fmt:formatNumber value="${carList.subtotal}"
+					type="number" /></strong></span>
+            </li>
+          </ul>
+
+          <button type="button" class="genric-btn danger">前往結帳</button>
+          <a href="<c:url value='/14/SubmitAPCart.ctrl' />"
+				onClick="return Checkout(${carList.subtotal});">送出訂單</a>
+
+        </div>
+      </div>
+      <!-- Card -->
+
+      <!-- Card -->
+      <div class="mb-3">
+        <div class="pt-4">
+
+          <a class="dark-grey-text d-flex justify-content-between" data-toggle="collapse" href="#collapseExample"
+            aria-expanded="false" aria-controls="collapseExample">
+            輸入優惠代碼 (非必填)
+            <span><i class="fas fa-chevron-down pt-1"></i></span>
+          </a>
+
+          <div class="collapse" id="collapseExample">
+            <div class="mt-3">
+              <div class="md-form md-outline mb-0">
+                <input type="text" id="discount-code" class="font-weight-light"
+                  placeholder="請輸入六碼優惠碼">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card -->
+
+    </div>
+    <!--Grid column-->
+
+  </div>
+  </div>
+  <!-- Grid row -->
+
+</section>
+<!--Section: Block Content-->
 </body>
 </html>

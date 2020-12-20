@@ -24,9 +24,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
+
+import com.google.gson.Gson;
 
 import tw.group4._04_.back.cmsAct.model.ShowBean;
 import tw.group4._04_.back.cmsAct.model.ShowBean2;
@@ -85,9 +88,9 @@ public class Search_CRUDCtrl {
 		}
 		else {
 			
+			return "/index/index";
 		}
 
-		return "04/front_saleTicket/04_select";
 	}
 	
 	
@@ -714,6 +717,48 @@ public class Search_CRUDCtrl {
 			session.setAttribute("seatBean",seatBean);
 
 			return "04/front_saleTicket/showDetail";
+		}
+		
+		//查詢相似
+		@Hibernate
+		@ResponseBody
+		@RequestMapping(path = "/04/Searchlike", method = RequestMethod.GET)
+		public String processSearchlike(String page, Model model) {
+
+			String searchString="音樂";
+			List<ShowBean> showList = showBeanService.findlike(searchString);
+
+			for (ShowBean showBean : showList) {
+
+				byte[] photo =showBean.getACT_PHOTO();
+//				圖片byteArray透過Base64轉字串，輸出到html
+		        String Photoencode = Base64.encodeBase64String(photo);
+		        showBean.setPHOTOBASE64(Photoencode);
+			}
+			Gson gson = new Gson();
+			String json = gson.toJson(showList);
+			return json;
+		}
+		
+		//模糊查詢ajax
+		@Hibernate
+		@ResponseBody
+		@RequestMapping(path = "/04/Searchajax", method = RequestMethod.GET)
+		public String processSearchajax(String searchString, Model model) {
+
+//			String searchString="音樂";
+			List<ShowBean> showList = showBeanService.findTEST(searchString);
+
+			for (ShowBean showBean : showList) {
+
+				byte[] photo =showBean.getACT_PHOTO();
+//				圖片byteArray透過Base64轉字串，輸出到html
+		        String Photoencode = Base64.encodeBase64String(photo);
+		        showBean.setPHOTOBASE64(Photoencode);
+			}
+			Gson gson = new Gson();
+			String json = gson.toJson(showList);
+			return json;
 		}
 		
 		

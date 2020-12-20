@@ -48,10 +48,32 @@ public class CmsSeatCrud {
 		model.addAttribute("category", category);
 		return "04/cms_Seat/Seat";
 	}
-	//存入訂單座位
+	//查詢座位圖2
+	@Hibernate
+	@RequestMapping(path = "/04/CMS/seat2Search.ctrl", method = RequestMethod.GET)
+	public String CMSseat2Search(int actno,Integer category,Model model ,HttpSession session) {	
+		
+		Map<String, Integer>seatMap=seatBeanService.select2(actno);
+		System.out.println(seatMap);
+		model.addAttribute("seat", seatMap);
+		model.addAttribute("category", category);
+		return "04/cms_Seat/Seat2";
+	}
+	//查詢座位圖3
+	@Hibernate
+	@RequestMapping(path = "/04/CMS/seat3Search.ctrl", method = RequestMethod.GET)
+	public String CMSseat3Search(int actno,Integer category,Model model ,HttpSession session) {	
+		
+		Map<String, Integer>seatMap=seatBeanService.select3(actno);
+		System.out.println(seatMap);
+		model.addAttribute("seat", seatMap);
+		model.addAttribute("category", category);
+		return "04/cms_Seat/Seat3";
+	}
+	//存入座位
 	@Hibernate
 	@RequestMapping(path = "/04/Cms/seatUpdate.ctrl", method = RequestMethod.POST)
-	public String seatIInsert(			
+	public String seatInsert(			
 			 Integer actno,
 			 Integer seatnum,
 			 Integer A1,
@@ -108,8 +130,6 @@ public class CmsSeatCrud {
 			 Model model ,HttpSession session,HttpServletRequest request) {
 		System.out.println("actno"+actno);
 		System.out.println(seatnum);
-	
-
 		
 		seatBeanService.update(
 				actno,seatnum,
@@ -121,6 +141,78 @@ public class CmsSeatCrud {
 				);
 
 		return "redirect:/04/CMS/Category.ctrl?category=" + category;
-//		return IdentityFilter.loginID+"04/cms_Act/categorySearch";
+	}
+	
+	//存入座位
+	@Hibernate
+	@RequestMapping(path = "/04/Cms/seat2Update.ctrl", method = RequestMethod.POST)
+	public String seat2Insert(			
+			 Integer actno,
+			 Integer seatnum,
+			 Integer F1,
+			 Integer F2,
+			 Integer F3,
+			 Integer F4,
+			 Integer F5,
+			 Integer F6,
+			 Integer F7,
+			 Integer F8,
+			 Integer F9,
+			 Integer F10,
+			 Integer G1,
+			 Integer G2,
+			 Integer G3,
+			 Integer G4,
+			 Integer G5,
+			 Integer G6,
+			 Integer G7,
+			 Integer G8,
+			 Integer G9,
+			 Integer G10,
+			 Integer H1,
+			 Integer H2,
+			 Integer H3,
+			 Integer H4,
+			 Integer H5,
+			 Integer H6,
+			 Integer H7,
+			 Integer H8,
+			 Integer H9,
+			 Integer H10,
+			 Integer I1,
+			 Integer I2,
+			 Integer I3,
+			 Integer I4,
+			 Integer I5,
+			 Integer I6,
+			 Integer I7,
+			 Integer I8,
+			 Integer I9,
+			 Integer I10,
+			 Integer J1,
+			 Integer J2,
+			 Integer J3,
+			 Integer J4,
+			 Integer J5,
+			 Integer J6,
+			 Integer J7,
+			 Integer J8,
+			 Integer J9,
+			 Integer J10,
+			 Integer category,
+			 Model model ,HttpSession session,HttpServletRequest request) {
+		System.out.println("actno"+actno);
+		System.out.println(seatnum);
+		
+		seatBeanService.update2(
+				actno,seatnum,
+				F1,	F2,	F3,	F4,	F5,	F6,	F7,	F8,	F9,	F10,
+				G1,	G2,	G3,	G4,	G5,	G6,	G7,	G8,	G9,	G10,
+				H1,	H2,	H3,	H4,	H5,	H6,	H7,	H8,	H9,	H10,
+				I1,	I2,	I3,	I4,	I5,	I6,	I7,	I8,	I9,	I10,
+				J1,	J2,	J3,	J4,	J5,	J6,	J7,	J8,	J9,	J10
+				);
+
+		return "redirect:/04/CMS/Category.ctrl?category=" + category;
 	}
 }

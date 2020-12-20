@@ -25,11 +25,17 @@ public class MessageBoardAP {
 	@Column(name = "MEMBERID")
 	private String memberId;
 	
+	@Column(name = "FAKENAME")
+	private String fakename;
+
 	@Column(name = "TIME")
 	private Date time;
 	
 	@Column(name = "SUBJECTAP")
 	private String subjectAP;
+	
+	@Column(name = "TITLE")
+	private String title;
 	
 	@Column(name = "SCORE")
 	private int score;
@@ -46,18 +52,23 @@ public class MessageBoardAP {
 	}
 	
 
-	public MessageBoardAP(Integer messageNoAP, Integer apId, String memberId, Date time, String subjectAP, int score,
-			String scoreString, String content) {
+
+
+	public MessageBoardAP(Integer messageNoAP, Integer apId, String memberId, String fakename, Date time,
+			String subjectAP, String title, int score, String scoreString, String content) {
 		super();
 		this.messageNoAP = messageNoAP;
 		this.apId = apId;
 		this.memberId = memberId;
+		this.fakename = fakename;
 		this.time = time;
 		this.subjectAP = subjectAP;
+		this.title = title;
 		this.score = score;
 		this.scoreString = scoreString;
 		this.content = content;
 	}
+
 
 
 
@@ -127,6 +138,26 @@ public class MessageBoardAP {
 
 	public void setScoreString(String scoreString) {
 		this.scoreString = scoreString;
+	}
+
+
+	public String getFakename() {
+		return fakename;
+	}
+
+
+	public void setFakename(String fakename) {
+		this.fakename = fakename;
+	}
+
+
+	public String getTitle() {
+		return title;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	

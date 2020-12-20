@@ -14,7 +14,6 @@ public class CreateTable {
 
 		jdbcdao.dropTableMT(); //刪Maintable表格
 		jdbcdao.dropTableOL(); //刪TICKETORDERLIST表格
-//		jdbcdao.dropTableOL();//刪除orderlist表格
 		jdbcdao.createTableMT();//創Maintable表格
 		jdbcdao.createTableOL();//創orderlist表格
 //		MainTable表格插入資料
@@ -23,6 +22,8 @@ public class CreateTable {
 		jdbcdao.InsertBLOB();//插入BLOB圖片
 		jdbcdao.dropTableseat();//刪Seat表格
 		jdbcdao.createTableSeat();//創SEAT表格
+		jdbcdao.createTableSeat2();//創SEAT表格
+		jdbcdao.createTableSeat3();//創SEAT表格
 		jdbcdao.InsertTableseat();//插入ACTNO ACTTITLE 表格	
 		
 		System.out.println("全部表格已建立");

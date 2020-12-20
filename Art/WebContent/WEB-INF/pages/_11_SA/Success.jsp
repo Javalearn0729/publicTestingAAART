@@ -11,11 +11,11 @@
 </style>
 </head>
 <body>
-<h1 align="center" style="color:aqua;">Success to ${name} !!</h1>
+<h1 align="center" style="color:red;">Success to ${name} !!</h1>
 <div align="center">
 	<span>
-		<input type="button" onclick="location.href='<c:url value="/myStreetArtistPage.ctrl"/>'" value="回總覽">
-	</span>
-</div>
+ 		<input type="button" onclick="location.href='<c:url value="/myStreetArtistPage.ctrl"/>'" value="回總覽">
+ 	</span>
+ </div>
 </body>
 </html>

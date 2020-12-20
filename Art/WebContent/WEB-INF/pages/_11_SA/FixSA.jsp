@@ -31,7 +31,7 @@ $(document).ready( function () {
 			<tr class="title">
 				<th class="column1">編號</th>
 				<th class="column2">藝名</th>
-				<th class="column3">來自</th>
+				<th class="column3">表演地區</th>
 				<th class="column4">表演項目</th>
 				<th class="column5">分類</th>
 			</tr>
@@ -57,7 +57,7 @@ $(document).ready( function () {
 			<tr>
 				<th>編號</th>
 				<th>藝名</th>
-				<th>來自</th>
+				<th>表演地區</th>
 				<th>表演項目</th>
 				<th>分類</th>
 			</tr>
@@ -68,10 +68,40 @@ $(document).ready( function () {
 						<input type="hidden" value="${reFixSA.id_SA }" name="ID_SA">
 					</td>
 				</c:forEach>
-					<td><input type="text" name="NAME_SA" ></td>
-					<td><input type="text" name="COUNTRY_SA" ></td>
-					<td><input type="text" name="THEME_SA" ></td>
-					<td><input type="text" name="CLASSIFICATION_SA" ></td>
+					<td><input type="text" name="NAME_SA" placeholder="範例：王大明" value="范閑"></td>
+					<td>
+						<select name="COUNTRY_SA" >
+							<option value="臺北市">臺北市</option>
+							<option value="新北市">新北市</option>
+							<option value="桃園市">桃園市</option>
+							<option value="臺中市">臺中市</option>
+							<option value="臺南市">臺南市</option>
+							<option value="高雄市">高雄市</option>
+							<option value="新竹縣">新竹縣</option>
+							<option value="苗栗縣">苗栗縣</option>
+							<option value="彰化縣">彰化縣</option>
+							<option value="南投縣">南投縣</option>
+							<option value="雲林縣">雲林縣</option>
+							<option value="嘉義縣">嘉義縣</option>
+							<option value="屏東縣">屏東縣</option>
+							<option value="宜蘭縣">宜蘭縣</option>
+							<option value="花蓮縣">花蓮縣</option>
+							<option value="臺東縣">臺東縣</option>
+							<option value="澎湖縣">澎湖縣</option>
+							<option value="金門縣">金門縣</option>
+							<option value="連江縣">連江縣</option>
+						</select>
+					</td>
+					<td>
+						<input type="text" name="THEME_SA" placeholder="範例：吉他演奏" value="雜耍特技">
+					</td>
+					<td>
+						<select name="CLASSIFICATION_SA" >
+							<option value="表演藝術">表演藝術</option>
+							<option value="創意工藝">創意工藝</option>
+							<option value="視覺藝術">視覺藝術</option>
+						</select>
+					</td>
 			</tr>
 			<tr>
 				<td colspan="5" align="center"><input type="submit" name="submit" value="確認修改">

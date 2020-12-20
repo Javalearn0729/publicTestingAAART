@@ -110,7 +110,7 @@ public class GlobalService {
 	/**
 	 * 依MD5演算法將檔案file轉換為128位元(16個位元組)的資料。
 	 * 
-	 * @param message
+	 * @param Message
 	 *            : 要加密的字串
 	 * @return : 128位元資料的16進位表示法所構成的字串
 	 */

@@ -158,6 +158,7 @@
 			</div>
 		</div></li>
 
+
 	<!-- 吟遊詩人 -->
 	<li class="nav-item"><a class="nav-link collapsed" href="#"
 		data-toggle="collapse" data-target="#collapsePages4"
@@ -211,13 +212,14 @@
 			</div>
 		</div></li>
 
-	<!-- Nav Item - Tables -->
-	<li class="nav-item"><a class="nav-link" href="#"> <i
+	<li class="nav-item"><a class="nav-link"
+		href="<c:url value='/14/showAltartCenterCRUD' />"> <i
 			class="fas fa-fw fa-table"></i> <span>訊息通知中心</span></a></li>
 
 	<!-- Nav Item - Charts -->
-	<li class="nav-item"><a class="nav-link" href="#"> <i
-			class="fas fa-fw fa-chart-area"></i> <span>待開發</span></a></li>
+	<li class="nav-item"><a class="nav-link"
+		href="<c:url value='/35/chatRoomEntry' />"> <i
+			class="fas fa-fw fa-chart-area"></i> <span>客服中心</span></a></li>
 
 
 	<!-- Divider -->

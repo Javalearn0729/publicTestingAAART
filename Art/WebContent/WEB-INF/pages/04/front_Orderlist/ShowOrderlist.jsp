@@ -13,6 +13,10 @@
 .do {
 	width: 200px;
 }
+body {
+	color: black;
+	font-size:18px;
+}}
 </style>
 </head>
 <body>
@@ -59,7 +63,7 @@
 						action="<c:url value='/04/OrderlistDetail.ctrl'/> " method="get">
 						<!-- 					傳送訂單資訊 -->
 						<td><input type=SUBMIT value="訂單詳細"
-							class="genric-btn success-border radius"></td> <Input
+							class="genric-btn success radius"></td> <Input
 							type='hidden' name='orderid' value='${orderlist.ORDERID}'>
 					</form>
 
@@ -68,13 +72,19 @@
 					<td>${orderlist.TICKETCATEGORY}</td>
 					<td>${orderlist.TICKET_NUM}</td>
 					<td>${orderlist.TOTALPRICE}</td>
-					<td>已付款</td>
+					<td>${orderlist.STATUS}</td>
+<!-- 					<td> -->
+<!-- 						<form name="order" -->
+<%-- 							action="<c:url value='/04/DeleteOrderlist.ctrl'/> " method="get"> --%>
+<%-- 							<button type="submit" name="orderid" value="${orderlist.ORDERID}" --%>
+<!-- 								class="genric-btn success-border radius" onclick="return del()">取消訂單</button> -->
+<!-- 						</form> -->
+<!-- 					</td> -->
 					<td>
-						<form name="order"
-							action="<c:url value='/04/DeleteOrderlist.ctrl'/> " method="get">
-							<button type="submit" name="orderid" value="${orderlist.ORDERID}"
-								class="genric-btn success-border radius" onclick="return del()">取消訂單</button>
+						<form id="submitform" name="order" action="<c:url value='/04/WriteIssueForm'/>" method="get">
+							<input type="hidden" name="issueId" value="${orderlist.ORDERID}" >
 						</form>
+						<button type="button" id="submit" class="genric-btn success radius" onclick="applyfor(${orderlist.ORDERID})">申請退票</button>
 					</td>
 
 
@@ -87,22 +97,11 @@
 		</table>
 		</form>
 	</div>
-	<!-- 	 <input type="submit" value="修改訂單" name="submit" class="btn btn-outline-info" id="update"  > -->
-
-	<!-- 	  <input type="submit" value="刪除訂單" name="submit" class="btn btn-outline-info" id="delete"  > -->
-	<%-- 	 <form name="order" action="<c:url value='/_04_Orderlist/OrIdDeleteServlet'/> " method="get"> --%>
-	<!-- 	  </form> -->
-	<script src="https://code.jquery.com/jquery-3.5.1.js"
-		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-		crossorigin="anonymous"></script>
-	</script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 
 	<script>
 		function del() {
-			var msg = "是否取消?";
+			var msg = "確定申請退票?";
 			if (confirm(msg) == true) {
 				return true;
 			} else {
@@ -110,24 +109,27 @@
 			}
 		}
 		
-// 		 document.querySelector('#cancel').onclick = function(){
-// 		    	swal({
-// 		    		  title: "是否取消訂單?",
-// 		    		  text: "訂單即將取消!",
-// 		    		  icon: "warning",
-// 		    		  buttons: true,
-// 		    		  dangerMode: true,
-// 		    		})
-// 		    		.then((cancelOK) => {
-// 		    			  if (cancelOK) {
-// 		    			    swal("訂單已取消!", 
-// 		    			    	{icon: "success",});
-// 		    		    	setTimeout(function(){window.location="<c:url value='/04/DeleteOrderlist.ctrl'/>" ; },2000);
-// 		    			  } else {
-// 		    			    swal("動作已取消!");
-// 		    			  }
-// 		    			});
-// 		    };
+// 		$("#submit").click(function() {
+			function applyfor(issueId) {
+			swal({
+					  title: "是否申請退票票券?",
+					  text: "將填寫申請單!",
+					  icon: "warning",
+					  buttons: true,
+					  dangerMode: true,
+					})
+					.then((orderOK) => {
+						  if (orderOK) {
+								window.location="<c:url value='/04/WriteIssueForm?issueId="+issueId+"' />"; 
+
+// 							  $("#submitform").submit();					
+						  } else {
+						    swal("申請已取消!");
+						  }
+						});
+
+	 		};
+
 	</script>
 
 

@@ -11,18 +11,33 @@
 		<form action="<c:url value='/03/cms/shop/index.ctrl'/> " method="get">
 			<div class="submitButton">
 				<input type="submit" class='btn btn-outline-info' name="submit"
-					value="返回 藝文商店管理首頁">
+					value="返回 藝文商店管理=">
 			</div>
 		</form>
 	</div>
 	<br>
-	<c:if test="${acShopsUpdateMsg != null}">
-		<div class=content>
+	<div class=content>
+		<c:if test="${acShopsUpdateMsg != null}">
 			<div align="center">
-				<h4>藝文商店資料已更新</h4>
+				<h3 style="font-weight: bold;">
+					藝文商店資料<span style="color: #E83015;">已更新 </span>
+				</h3>
 			</div>
+			<br>
+		</c:if>
+		<div align="center">
+			<h4>將於5秒後自動返回 藝文商店管理</h4>
 		</div>
-	</c:if>
-	<br>
-	<br>
+	</div>
+	<br> <br>
 </div>
+<!-- ====================================================== -->
+<script>
+	//計時器
+	timer = setTimeout('redirect()', 5 * 1000);
+
+	function redirect() {
+		//指定跳轉頁面
+		window.location.href = "<c:url value='/03/cms/shop/index.ctrl'/>";
+	}
+</script>

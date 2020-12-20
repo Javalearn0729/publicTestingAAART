@@ -29,7 +29,7 @@
 }
 
 .do {
-	width: 100px;
+	width: 50px;
 }
 
 #search {
@@ -89,12 +89,12 @@
 			<button name="category" type="submit" value="7" class="btn btn-info">講座</button>
 			<button name="category" type="submit" value="8" class="btn btn-info">電影</button>
 			<button name="category" type="submit" value="11" class="btn btn-info">綜藝</button>
-			<button name="category" type="submit" value="13" class="btn btn-info">競賽</button>
-			<button name="category" type="submit" value="14" class="btn btn-info">徵選</button>
+<!-- 			<button name="category" type="submit" value="13" class="btn btn-info">競賽</button> -->
+<!-- 			<button name="category" type="submit" value="14" class="btn btn-info">徵選</button> -->
 			<button name="category" type="submit" value="15" class="btn btn-info">其他</button>
-			<button name="category" type="submit" value="16" class="btn btn-info">科教</button>
+<!-- 			<button name="category" type="submit" value="16" class="btn btn-info">科教</button> -->
 			<button name="category" type="submit" value="17" class="btn btn-info">演唱會</button>
-			<button name="category" type="submit" value="19" class="btn btn-info">研習課程</button>
+<!-- 			<button name="category" type="submit" value="19" class="btn btn-info">研習課程</button> -->
 		</form><br><br>
 
 
@@ -104,11 +104,12 @@
 			cellspacing="0">
 			<thead>
 				<tr class="head">
-					<th class="do">座位</th>
+					<th class="do">詳細</th>
 					<th class="no">編號</th>
 					<th class="title">節目名稱</th>
 					<th class="site">場地</th>
-					<th class="do">操作</th>
+					<th class="do" >操作</th>
+					<th class="do"></th>
 					<th class="do"></th>
 				</tr>
 			</thead>
@@ -120,6 +121,9 @@
 					<th class="site">場地</th>
 					<th class="do">操作</th>
 					<th class="do"></th>
+					<th class="do"></th>
+
+
 				</tr>
 			</tfoot>
 
@@ -131,10 +135,10 @@
 
 						<td>
 							<form name="order"
-								action="<c:url value='/04/CMS/seatSearch.ctrl'/>" method="get">
+								action="<c:url value='/04/CMS/ShowActDetail.ctrl'/>" method="get">
 								<button name="actno" type="submit" value=${show.no
 									}
-									class="btn btn-outline-info">座位</button>
+									class="btn btn-outline-info">詳細</button>
 								<!-- 這些隱藏欄位都會送到後端 -->
 <%-- 								<Input type='hidden' name='page' value='${page}'> --%>
 								 <Input type='hidden' name='category' value='${category}'>
@@ -158,13 +162,24 @@
 
 						<td>
 							<form name="order" action="<c:url value='/04/CMS/Delete.ctrl'/>"
-								method="get">
-								<button name="actno" type="submit" value=${show.no
-									}
-									class="btn btn-outline-info" onclick="return del()">刪除</button>
+								method="get" >
 								<!-- 這些隱藏欄位都會送到後端 -->
 <%-- 								<Input type='hidden' name='page' value='${page}'>  --%>
+								<Input type='hidden' name='actno' value='${show.no}'>
 								<Input type='hidden' name='category' value='${category}'>
+							</form>
+				
+								<button name="actno" type="button" class="btn btn-outline-info" onclick="del(${show.no},${category})">刪除</button>
+						</td>
+						<td>
+							<form name="order"
+								action="<c:url value='/04/CMS/seatSearch.ctrl'/>" method="get">
+								<button name="actno" type="submit" value=${show.no
+									}
+									class="btn btn-outline-info">座位</button>
+								<!-- 這些隱藏欄位都會送到後端 -->
+<%-- 								<Input type='hidden' name='page' value='${page}'> --%>
+								 <Input type='hidden' name='category' value='${category}'>
 							</form>
 						</td>
 
@@ -183,8 +198,29 @@
 
 
 	<script type="text/javascript">
-	function del() { var msg = "是否刪除?"; if (confirm(msg) == true) { return
-	true; } else { return false; } }
+// 	function del() { var msg = "是否刪除?"; if (confirm(msg) == true) { return
+// 	true; } else { return false; } }
+	
+	function del(actid,category) {
+				swal({
+						  title: "是否刪除活動?",
+						  text: "刪除為不可逆，請謹慎操作!",
+						  icon: "warning",
+						  buttons: true,
+						  dangerMode: true,
+						})
+						.then((orderOK) => {
+							  if (orderOK) {
+								  swal("活動已刪除!", 
+									    	{icon: "success",});  
+								  setTimeout(function(){window.location="<c:url value='/04/CMS/Delete.ctrl?actno="+actid+"&category="+category+"' />"; },2000);
+								 			
+							  } else {
+							    swal("操作已取消!");
+							  }
+							});
+		 		
+		 		}
 
 	</script>
 	<script>

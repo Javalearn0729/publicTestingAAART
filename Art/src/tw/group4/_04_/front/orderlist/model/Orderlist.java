@@ -32,6 +32,7 @@ public class Orderlist implements Serializable {
 	private String TICKETCATEGORY;
 	private int TICKET_NUM;
 	private int TOTALPRICE;
+	private String STATUS;
 	
 	@Transient
 	private String seats[];
@@ -152,6 +153,14 @@ public class Orderlist implements Serializable {
 
 	public void setSeatstring(String seatstring) {
 		this.seatstring = seatstring;
+	}
+
+	public String getSTATUS() {
+		return STATUS;
+	}
+
+	public void setSTATUS(String sTATUS) {
+		STATUS = sTATUS;
 	}
 	
 	

@@ -31,6 +31,11 @@ public class Search_JspDirect {
 
 		return "04/front_saleTicket/showDetail";
 	}
+	@RequestMapping(path = "/04/showSearch", method = RequestMethod.GET)
+	public String processselectImage( ) {
+		
+		return "04/front_saleTicket/04_selectImage2";
+	}
 	
 	@RequestMapping(path = "/04/booking", method = RequestMethod.GET)
 	public String processbookingnum( ) {

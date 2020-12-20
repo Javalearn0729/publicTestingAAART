@@ -187,7 +187,19 @@ public class ProductBeanDAOImp {
 		return list;
 	}
 	
-
+	public List<ARTProduct> selectNoImg() {
+		Session session = sessionFactory.getCurrentSession();
+//		String countQ = "Select * From ARTProduct";
+//		Query<ARTProduct> query = session.createSQLQuery(countQ).addEntity(ARTProduct.class);
+//		countQuery.setProperties(pd);
+		
+		Query<ARTProduct> query = session.createQuery("From ARTProduct ap ORDER BY ap.productId", ARTProduct.class);
+		
+		query.setFirstResult(1);
+		query.setMaxResults(9);
+		List<ARTProduct> list = query.list();
+		return list;
+	}
 	
 
 }

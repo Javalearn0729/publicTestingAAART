@@ -13,7 +13,7 @@
 			method="get">
 			<div class="submitButton">
 				<input type="submit" class='btn btn-outline-info' name="submit"
-					value="返回 營業時間管理首頁">
+					value="返回 營業時間管理">
 			</div>
 		</form>
 	</div>

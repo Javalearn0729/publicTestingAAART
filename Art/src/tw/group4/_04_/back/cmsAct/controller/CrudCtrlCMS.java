@@ -37,6 +37,8 @@ import tw.group4._04_.back.cmsAct.model.ShowBean;
 import tw.group4._04_.back.cmsAct.model.ShowBean2;
 import tw.group4._04_.back.cmsAct.model.ShowBeanService;
 import tw.group4._04_.front.seat.model.SeatBean;
+import tw.group4._04_.front.seat.model.SeatBean2;
+import tw.group4._04_.front.seat.model.SeatBean3;
 import tw.group4._04_.front.seat.model.SeatBeanService;
 import tw.group4.util.Hibernate;
 
@@ -55,6 +57,10 @@ public class CrudCtrlCMS {
 	
 	@Autowired
 	private SeatBean seatbean;
+	@Autowired
+	private SeatBean2 seatbean2;
+	@Autowired
+	private SeatBean3 seatbean3;
 	@Autowired
 	private SeatBeanService seatBeanService;
 
@@ -219,6 +225,48 @@ public class CrudCtrlCMS {
 //		return "04/categorySearch";
 
 	}
+	
+	@Hibernate
+	@RequestMapping(path = "/04/CMS/ShowActDetail.ctrl", method = RequestMethod.GET)
+	public String processShowActDetail(int actno, String page, String category, String searchString, Model model) {
+		ShowBean showBean = showBeanService.select(actno);
+
+		String title = showBean.getACT_TITLE();
+		System.out.println(title);
+		int category2 = showBean.getACT_CATEGORY();
+		System.out.println(category);
+		String location = showBean.getACT_LOCATION();
+		String locationName = showBean.getACT_LOCATION_NAME();
+		String mainunit = showBean.getACT_MAINUNIT();
+		String showunit = showBean.getACT_SHOWUNIT();
+		String description = showBean.getACT_DESCRIPTION();
+		String startdate = showBean.getACT_STARTDATE();
+		String enddate = showBean.getACT_ENDDATE();
+		// 將DB 日期字串由yyyy/mm/dd改為yyyy-mm-dd
+		String startdate2 = startdate.replace("/", "-");
+		String enddate2 = enddate.replace("/", "-");
+		byte[] photo = showBean.getACT_PHOTO();
+//		圖片byteArray透過Base64轉字串，輸出到html
+		String Photoencode = Base64.encodeBase64String(photo);
+
+		model.addAttribute("actno", actno);
+		model.addAttribute("title", title);
+		model.addAttribute("category", category2);
+		model.addAttribute("location", location);
+		model.addAttribute("locationName", locationName);
+		model.addAttribute("mainunit", mainunit);
+		model.addAttribute("showunit", showunit);
+		model.addAttribute("description", description);
+		model.addAttribute("startdate", startdate2);
+		model.addAttribute("enddate", enddate2);
+		model.addAttribute("page", page);
+		model.addAttribute("searchString", searchString);
+		model.addAttribute("photo", Photoencode);
+
+		return "04/cms_Act/ActDetail";
+	}
+
+	
 	@Hibernate
 	@RequestMapping(path = "/04/CMS/Update1.ctrl", method = RequestMethod.GET)
 	public String processUpdate(int actno, String page, String category, String searchString, Model model) {
@@ -267,18 +315,38 @@ public class CrudCtrlCMS {
 	@Hibernate
 	@RequestMapping(path = "/04/CMS/Update2.ctrl", method = RequestMethod.POST)
 	public String processUpdate2(int actno, String title, int category, String location, String locationName,
-			String mainunit, String showunit, String description, String startdate, String enddate, String page,MultipartFile file) throws FileNotFoundException {
+			String mainunit, String showunit, String description, String startdate, String enddate, String page,
+			MultipartFile file) throws FileNotFoundException {
 
 		String startdate2 = startdate.replace("-", "/");
 		String enddate2 = enddate.replace("-", "/");
-		System.out.println(file);
-		
-		showBeanService.update(actno, title, category, location, locationName, mainunit, showunit, description,
-				startdate2, enddate2,file);
+		try {
+			byte[] photo = file.getBytes();
+//			System.out.println("photo" + photo);
+//			System.out.println("photo.length "+photo.length);
+			// 判斷是否有file 沒有則存入舊img
+			if (photo.length == 0) {
+				ShowBean showBean = showBeanService.select(actno);
+				byte[] oldphoto = showBean.getACT_PHOTO();
+				showBeanService.update(actno, title, category, location, locationName, mainunit, showunit, description,
+						startdate2, enddate2, oldphoto);
+				System.out.println("存入舊圖");
+			} else {
+
+				showBeanService.update(actno, title, category, location, locationName, mainunit, showunit, description,
+						startdate2, enddate2, photo);
+				System.out.println("存入新圖");
+
+			}
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		return "redirect:/04/CMS/Category.ctrl?category=" + category;
-//		return "redirect:/04/CMS/Category.ctrl?page=" + page + "&category=" + category;
+
 	}
+	
 	@RequestMapping(path = "/04/CMS/insert", method = RequestMethod.GET)
 	public String processUpdate2() {
 
@@ -311,10 +379,19 @@ public class CrudCtrlCMS {
 		
 		int actid=showBeanService.insert(showBean);
 		System.out.println(actid);
-		//新增圖片
+		//新增座位表資訊
 		seatbean.setaCT_NO(actid);
 		seatbean.setACT_TITLE(title);
+		seatbean.setSEATNUM(50);
+		seatbean2.setACT_NO(actid);
+		seatbean2.setACT_TITLE(title);
+		seatbean2.setSEATNUM(50);
+		seatbean3.setACT_NO(actid);
+		seatbean3.setACT_TITLE(title);
+		seatbean3.setSEATNUM(66);
 		seatBeanService.insert(seatbean);
+		seatBeanService.insert2(seatbean2);
+		seatBeanService.insert3(seatbean3);
 		System.out.println("已成功新增一筆");
 		
 		

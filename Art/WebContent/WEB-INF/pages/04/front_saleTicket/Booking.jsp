@@ -41,13 +41,16 @@ td {
 width: 100px;
 }
 .num{
-width: 230px;
+width: 260px;
 }
 .price{
 width: 100px;
 }
 
-
+body {
+	color: black;
+	font-size:18px;
+}
 
 </style>
 
@@ -211,7 +214,7 @@ width: 100px;
 								count++;
 							} else if (count = 4) {
 								count = 4;
-								alert("最多訂購4張");
+								swal("最大購買數量","最多訂購4張","warning");
 							}
 							$("#ticketnum").val(count);
 						})
@@ -231,10 +234,11 @@ width: 100px;
 	  			var totalnum =  parseInt($("#totalnum").text());
 	  			console.log("selectnum: "+selectnum)
 				if (selectnum == 0) {
-					alert("請選擇購買數量");
+
+					swal("數量錯誤","請選擇購買數量","warning");
         			return false;
     		 	}else if (totalnum < selectnum) {
-    		 		alert("剩餘票券不足，請重新選擇數量");
+    		 		swal("剩餘票券不足，請重新選擇數量","warning");
         			return false;
 				}
 			}); 
@@ -247,6 +251,9 @@ width: 100px;
 				});
 
 		})
+		
+		
+		
 		
 	</script>
 

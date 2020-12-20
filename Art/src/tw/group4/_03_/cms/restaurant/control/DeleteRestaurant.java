@@ -31,13 +31,13 @@ public class DeleteRestaurant {
 				rs.delete(intNo);
 			}
 			
-			String restaurantDeleteMsg = year + "年 " + newMonth + "月營業時間表刪除成功";
+			String restaurantDeleteMsg = year + "年 " + newMonth + "月營業時間表";
 			m.addAttribute("restaurantDeleteMsg", restaurantDeleteMsg);
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			String restaurantDeleteMsg = year + "年 " + newMonth + "月營業時間表刪除失敗，請重試";
-			m.addAttribute("restaurantDeleteMsg", restaurantDeleteMsg); // 回傳錯誤訊息
+			String restaurantErrorMsg = year + "年 " + newMonth + "月營業時間表刪除失敗，請重試";
+			m.addAttribute("restaurantErrorMsg", restaurantErrorMsg); // 回傳錯誤訊息
 		}
 		return "03/cms_restaurant/delete_return";
 	}

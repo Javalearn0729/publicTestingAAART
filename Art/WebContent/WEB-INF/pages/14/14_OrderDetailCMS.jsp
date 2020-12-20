@@ -76,7 +76,7 @@
 	<p />
 
 	<div style="text-align: center">
-		<a href="<c:url value='/14/ProcessOrder.ctrl' />">回上一頁</a>&nbsp;&nbsp;
-		<a href="<c:url value='/14/shopListController.ctrl' />">回首頁</a>
+		<a href="<c:url value='/14/ShowAllOrderList.ctrl' />">回上一頁</a>&nbsp;&nbsp;
+		
 	</div>
 </html>

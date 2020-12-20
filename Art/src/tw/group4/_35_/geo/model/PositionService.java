@@ -160,6 +160,48 @@ public class PositionService implements InterfacePositionService {
 
 		return recommendList;
 	}
+	
+	@Override
+	public List<Position> recommendNearActsList(String userLocation, String userDistance) {
+		// 數附近幾公里活動總數
+		List<Position> list = selectNearActsByDistance(userLocation, userDistance);
+		int count = 0;
+		for (Position itemCount : list) {
+			count++;
+		}
+		
+		// 取亂數後的隨機三個
+		int[] arr = produceRandomArray(count);
+		List<Position> noNullList = selectNearActsByDistance(userLocation, userDistance);
+		List<Position> recommendList = new ArrayList<Position>();
+		for (int i = 0; i < 3; i++) {
+			int timesCount = 0;
+			for (Position item : noNullList) {
+				timesCount++;
+				if (timesCount == arr[i]) {
+					Position pt = new Position();
+					pt.setNo(item.getNo());
+					pt.setCity(item.getCity());
+					pt.setDistrict(item.getDistrict());
+					pt.setVillage(item.getVillage());
+					pt.setAddress(item.getAddress());
+					pt.setTitle(item.getTitle());
+					pt.setCategory(item.getCategory());
+					pt.setLocationName(item.getLocationName());
+					pt.setPrice(item.getPrice());
+					pt.setTime(item.getTime());
+					pt.setMainUnit(item.getMainUnit());
+					pt.setShowUnit(item.getShowUnit());
+					recommendList.add(pt);
+					break;
+				} else {
+					continue;
+				}
+			}
+		}
+		
+		return recommendList;
+	}
 
 	@Override
 	public int[] produceRandomArray(int count) {

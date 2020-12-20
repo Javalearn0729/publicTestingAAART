@@ -10,52 +10,68 @@
 	<br>
 	<div class="container">
 		<div class=content>
-			<form method="post"
-				action="<c:url value = "/03/cms/restaurant/searchByYearMonth.ctrl"/>">
-				<table id="03A" class="display table table-hover table-blue">
-					<thead>
-						<tr class="head">
-							<th scope="col" colspan="5" class="table-warning"><div
-									align="center"
-									style="font-size: x-large; font-weight: bold; color: #808080;">營業時間管理</div></th>
-						</tr>
-					</thead>
-					<tfoot></tfoot>
-					<tbody>
-						<tr class='table-info'>
-							<td style="font-size: larger; line-height: 60px;"><div
-									style="vertical-align: middle; color: #0B1013;">&nbsp;請選擇年份</div></td>
-							<td style="line-height: 60px; color: #0B1013;"><select
-								id="year" name="year" class="custom-select"
-								style="color: #0B1013;" required="required">
-									<option selected value="2020">2020年</option>
-									<option value="2021">2021年</option>
-							</select></td>
-							<td style="font-size: larger; line-height: 60px;"><div
-									style="vertical-align: middle; color: #0B1013;">&nbsp;請選擇月份</div></td>
-							<td style="line-height: 60px;"><select id="month"
-								name="month" class="custom-select" style="color: #0B1013;"
-								required="required">
-									<option value="01">1月</option>
-									<option value="02">2月</option>
-									<option value="03">3月</option>
-									<option value="04">4月</option>
-									<option value="05">5月</option>
-									<option value="06">6月</option>
-									<option value="07">7月</option>
-									<option value="08">8月</option>
-									<option value="09">9月</option>
-									<option value="10">10月</option>
-									<option value="11">11月</option>
-									<option selected value="12">12月</option>
-							</select></td>
-							<td style="line-height: 60px; vertical-align: middle;">&nbsp;&nbsp;&nbsp;<input
-								id="btn" class='btn btn-info' type="button" value="查詢"></td>
-						</tr>
-					</tbody>
-				</table>
-			</form>
+			<table id="03A" class="display table table-hover table-blue">
+				<thead>
+					<tr class="head">
+						<th scope="col" colspan="5" class="table-warning"><div
+								align="center"
+								style="font-size: x-large; font-weight: bold; color: #808080;">營業時間管理</div></th>
+					</tr>
+				</thead>
+				<tfoot></tfoot>
+				<tbody>
+					<tr class='table-info'>
+						<td style="font-size: larger; line-height: 60px;" width="180px"><div
+								style="vertical-align: middle; color: #0B1013;">&nbsp;月份查詢</div></td>
+						<td style="font-size: larger; line-height: 60px;" width="200px"><div
+								style="vertical-align: middle; color: #0B1013;">&nbsp;請選擇年、月</div></td>
+						<td style="line-height: 60px; color: #0B1013;" width="225px"><select
+							id="year" name="year" class="custom-select"
+							style="color: #0B1013; width: 180px" required="required">
+								<option selected value="2020">2020年</option>
+								<option value="2021">2021年</option>
+						</select></td>
+						<td style="line-height: 60px;"><select id="month"
+							name="month" class="custom-select"
+							style="color: #0B1013; width: 180px" required="required">
+								<option value="01">1月</option>
+								<option value="02">2月</option>
+								<option value="03">3月</option>
+								<option value="04">4月</option>
+								<option value="05">5月</option>
+								<option value="06">6月</option>
+								<option value="07">7月</option>
+								<option value="08">8月</option>
+								<option value="09">9月</option>
+								<option value="10">10月</option>
+								<option value="11">11月</option>
+								<option selected value="12">12月</option>
+						</select></td>
+						<td style="line-height: 60px; vertical-align: middle;">&nbsp;&nbsp;&nbsp;<input
+							id="btn" class='btn btn-info' type="button" value="查詢"></td>
+					</tr>
+					<tr class='table-danger'>
+						<td style="font-size: larger; line-height: 60px;">
+							<div style="vertical-align: middle; color: #0B1013;">&nbsp;單日查詢</div>
+						</td>
+						<td style="font-size: larger; line-height: 60px;"><div
+								style="vertical-align: middle; color: #0B1013;">&nbsp;請選擇日期&nbsp;</div></td>
+						<td style="line-height: 60px; color: #0B1013;"><input
+							form="form1" type="date" style="color: #0B1013;" name="dateTime"
+							id="dateTime" value="2020-12-25" class="custom-select"
+							min="2020-12-25" max="2021-01-24" required="required"></td>
+						<td style="font-size: larger; line-height: 60px;"><div
+								style="vertical-align: middle; color: #0B1013;">&nbsp;</div></td>
+						<td style="line-height: 60px; vertical-align: middle;">&nbsp;&nbsp;&nbsp;<input
+							form="form1" class='btn btn-info' type="submit"
+							value="查詢"></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
+		<form id="form1" action="<c:url value='/03/cms/restaurant/searchByDateTime.ctrl'/> " method="post">
+			<div></div>
+		</form>
 	</div>
 	<br>
 	<div class=content id="result"></div>
@@ -297,7 +313,7 @@
 
 						}
 						content += "</td></tr></tbody></table><br>";
-						
+
 						var result = document.getElementById("result");
 						result.innerHTML = content;
 					} else {
@@ -324,7 +340,4 @@
 		}
 	}
 
-	// 	$("#result").change(function() {
-	// 		$('#03B').DataTable({});
-	// 	});
 </script>

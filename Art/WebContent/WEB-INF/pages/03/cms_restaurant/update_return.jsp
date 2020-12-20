@@ -9,33 +9,38 @@
 	</div>
 	<div class="back" align="right">
 		<form
-			action="<c:url value='/03/cms/restaurant/restaurantManagement'/> "
+			action="<c:url value='/03/cms/restaurant/restaurantManagement'/>"
 			method="get">
 			<div class="submitButton">
 				<input type="submit" class='btn btn-outline-info' name="submit"
-					value="返回 營業時間管理首頁">
+					value="返回 營業時間管理">
 			</div>
 		</form>
 	</div>
 	<br>
 	<div class=content>
-		<table id="03"
-			class="display table table-bordered table-hover table-blue">
-			<thead></thead>
-			<tbody>
-				<tr>
-					<td>
-						<div align="center" style="font-size: larger">${restaurantUpdateMsg}</div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<c:if test="${restaurantUpdateMsg != null}">
+			<div align="center">
+				<h3 style="font-weight: bold;">${restaurantUpdateMsg}<span style="color: #E83015;">修改成功
+				</span>
+				</h3>
+			</div>
+			<br>
+		</c:if>
+		<div align="center">
+			<h4>將於5秒後自動返回 營業時間管理</h4>
+		</div>
 	</div>
+	<br>
+	<br>
 </div>
-</body>
 <!-- ====================================================== -->
 <script>
-	$(document).ready(function() {
-		$('#03').DataTable({});
-	});
+	//計時器
+	timer = setTimeout('redirect()', 5 * 1000);
+
+	function redirect() {
+		//指定跳轉頁面
+		window.location.href = "<c:url value='/03/cms/restaurant/restaurantManagement'/>";
+	}
 </script>

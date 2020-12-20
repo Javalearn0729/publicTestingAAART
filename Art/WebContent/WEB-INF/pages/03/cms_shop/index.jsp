@@ -11,7 +11,7 @@
 		<form action="<c:url value='/03/cms/shop/index.ctrl'/> " method="get">
 			<div class="submitButton">
 				<input type="submit" class='btn btn-outline-info' name="submit"
-					value="返回 藝文商店管理首頁">
+					value="返回 藝文商店管理">
 			</div>
 		</form>
 	</div>

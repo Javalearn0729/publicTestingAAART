@@ -223,7 +223,7 @@ public class ShowBeanDAO {
 
 	// 修改
 	public ShowBean update(int actno, String title, int category, String location, String locationName, String mainunit,
-			String showunit, String description, String startdate, String enddate,MultipartFile file){
+			String showunit, String description, String startdate, String enddate,byte[]photo){
 
 		Session session = sessionFacory.getCurrentSession();
 		ShowBean showBean = session.get(ShowBean.class, actno);
@@ -238,12 +238,8 @@ public class ShowBeanDAO {
 			showBean.setACT_DESCRIPTION(description);
 			showBean.setACT_STARTDATE(startdate);
 			showBean.setACT_ENDDATE(enddate);
-			try {
-				showBean.setACT_PHOTO(file.getBytes());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			showBean.setACT_PHOTO(photo);
+
 		}
 
 		return showBean;
@@ -287,6 +283,16 @@ public class ShowBeanDAO {
 		return query.list();
 
 	}
+	public List<ShowBean> findlike(String searchString) {
+		
+		Session session = sessionFacory.getCurrentSession();
+		String queryString = "from ShowBean where ACT_TITLE like'%" + searchString + "%'";
+		Query query = session.createQuery(queryString);
+		query.setFirstResult(1);
+		query.setMaxResults(4);
+		return query.list();
+		
+	}
 	//file2byte[]方法
 	private static byte[] readFileToByteArray(File file){
 	    FileInputStream fis = null;
@@ -302,5 +308,17 @@ public class ShowBeanDAO {
 	    }
 	    return bArray;
 	  }
+	
+	// 查詢熱門
+		public List<ShowBean> select_popularity() {
+			// "From ShowBean"為createQuery
+			//
+			Session session = sessionFacory.getCurrentSession();
+			Query<ShowBean> query = session.createQuery("From ShowBean SB WHERE SB.ACT_POPULARITY >10 ORDER BY SB.ACT_POPULARITY", ShowBean.class);
+			query.setFirstResult(1);
+			query.setMaxResults(4);
+			List<ShowBean> list = query.list();
+			return list;
+		}
 
 }

@@ -29,6 +29,7 @@ public class OracleSQL {
 	
 	private static final String DROP_MessageBoardRecord  = "DROP TABLE MBRECORD";
 	
+	private static final String DROP_EntryClickRate  = "DROP TABLE ENTRYCLICKRATE";
 
 	private static final String CREATE_APMember = " CREATE TABLE APMEMBER " 
 			
@@ -88,8 +89,10 @@ public class OracleSQL {
 			+ "(MESSAGENOAP number generated as identity constraint MESSAGENOAP_PK primary key, "
 			+ " APID 			   integer ,"
 			+ " MEMBERID           varchar2(172), "
+			+ " FAKENAME           varchar2(172), "
 			+ " TIME               Date, "
 			+ " SUBJECTAP          varchar2(172), "
+			+ " TITLE              varchar2(100), "
 			+ " SCORE              number, "
 			+ " SCORESTRING        varchar2(172), "
 			+ " CONTENTAP          CLOB "
@@ -98,11 +101,17 @@ public class OracleSQL {
 	
 	private static final String CREATE_AlertsCenter = "Create TABLE ALERTSCENTER "
 			+ "(ALERTNO number generated as identity constraint ALERTNO_PK primary key, "
-			+ " LINK 			   varchar2(172) ,"
-			+ " ICON           	   varchar2(172), "
-			+ " TIME               Date, "
+			+ " MEMBERID 		   number ,"
+			+ " MEMBERNAME 		   varchar2(150) ,"
+			+ " LINK 			   varchar2(150) ,"
+			+ " ICON           	   varchar2(150), "
 			+ " TYPE               varchar2(100), "
-			+ " CONTENTAC          varchar2(172) "
+			+ " TIME               varchar2(100), "
+			+ " ISSUE              varchar2(100), "
+			+ " ISSUEID            number, "
+			+ " CONTENTAC          varchar2(172), "
+			+ " DESCRIPTION        varchar2(200), "
+			+ " STATUS             number "
 			+ " ) ";
 
 	
@@ -111,6 +120,18 @@ public class OracleSQL {
 			+ " MEMBERID 		   number ,"
 			+ " APID           	   number, "
 			+ " STATUS             number "
+			+ " ) ";
+	
+
+	private static final String CREATE_EntryClickRate = "Create TABLE ENTRYCLICKRATE "
+			+ "(ECRNO number generated as identity constraint ECRNO primary key, "
+			+ " TICKET 		   number ,"
+			+ " SHOP           number, "
+			+ " RESTAURANT     number, "
+			+ " MAP            number, "
+			+ " NEARBY         number, "
+			+ " COURSE         number, "
+			+ " ARTIST         number "
 			+ " ) ";
 	
 	
@@ -200,6 +221,14 @@ public class OracleSQL {
 
 	public static String getCreateMessageboardrecord() {
 		return CREATE_MessageBoardRecord;
+	}
+
+	public static String getDropEntryclickrate() {
+		return DROP_EntryClickRate;
+	}
+
+	public static String getCreateEntryclickrate() {
+		return CREATE_EntryClickRate;
 	}
 	
 	

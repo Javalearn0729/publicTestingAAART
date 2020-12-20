@@ -38,83 +38,99 @@ td {
 	</section>
 	<!-- End banner Area -->
 
-	<div class="container">
+	<div style="padding-left: 35px; padding-right: 35px;">
 		<br>
 		<div class=title>
-			<h3 align="center" style="margin-top: 20px;">得藝食堂訂位紀錄</h3>
+			<h1 align="center" style="margin-top: 20px; margin-bottom: 20px;">得藝食堂訂位紀錄</h1>
 		</div>
-		<div class=content>
+		<div class=content style="font-size: 18px;">
 			<div class="card-body">
 				<div class="table-responsive">
 					<table id="03"
-						class="display table table-bordered table-hover table-info">
+						class="display table table-hover table-info">
 						<thead>
-							<tr class="head" align="center">
-								<th scope="col">訂位人姓名</th>
-								<th scope="col">連絡電話</th>
-								<th scope="col">訂位日期</th>
-								<th scope="col">用餐時間</th>
-								<th scope="col">用餐人數</th>
+							<tr class="head" align="center" style="font-size: 22px; font-weight: bold;">
+								<th scope="col" class='table-warning' style="line-height: 30px;">訂位人</th>
+								<th scope="col" class='table-success' style="line-height: 30px;">連絡電話</th>
+								<th scope="col" class='table-danger' style="line-height: 30px;">訂位日期</th>
+								<th scope="col" class='table-info' style="line-height: 30px;">用餐時間</th>
+								<th scope="col" class='table-warning' style="line-height: 30px;">用餐人數</th>
 								<!-- ===================== -->
-								<th scope="col" colspan="2"><div align="center">修改訂位</div></th>
-								<th scope="col"><div align="center">刪除訂位</div></th>
-								<th scope="col"><div align="center">付款</div></th>
+								<th scope="col" colspan="2" class='table-success' style="line-height: 30px;"><div align="center">修改訂位</div></th>
+								<th scope="col" class='table-danger' style="line-height: 30px;"><div align="center">刪除訂位</div></th>
+								<th scope="col" colspan="2" class='table-info' style="line-height: 30px;"><div align="center">付費狀態</div></th>
 							</tr>
 						</thead>
 						<tfoot>
 						</tfoot>
-						<tbody>
+						<tbody style="color: black;">
 							<c:if test="${reservationList != null}">
 								<c:forEach items="${reservationList}" var="reservationList"
 									varStatus="vs">
 									<tr align="center">
-										<td>${reservationList.customerName}</td>
-										<td>${reservationList.customerPhone}</td>
-										<td>${reservationList.dateTime}</td>
-										<td>${reservationList.time}</td>
-										<td>${reservationList.amount}&nbsp;位</td>
+										<td style="font-size: larger; line-height: 30px;">${reservationList.customerName}</td>
+										<td style="font-size: larger; line-height: 30px;">${reservationList.customerPhone}</td>
+										<td style="font-size: larger; line-height: 30px;">${reservationList.dateTime}</td>
+										<td style="font-size: larger; line-height: 30px;">${reservationList.time}</td>
+										<td style="font-size: larger; line-height: 30px;">${reservationList.amount}&nbsp;位</td>
 										<!-- ======================= -->
-										<td>
+										<td style="font-size: larger; line-height: 30px;">
 											<form method="post"
 												action="<c:url value="/03/front/reservation/updateReservationInfo.ctrl"/>">
 												<button name="updateInfoButton" type="submit"
-													value="${reservationList.reservationNo}">修改聯絡資訊</button>
+													value="${reservationList.reservationNo}">聯絡資訊</button>
 												<Input type="hidden" name="reservationNo"
 													value="${reservationList.reservationNo}">
 											</form>
 										</td>
-										<td>
+										<td style="font-size: larger; line-height: 30px;">
 
 											<form method="post"
 												action="<c:url value="/03/front/reservation/updateReservationAmount.ctrl"/>">
 												<button name="updateAmountButton" type="submit"
-													value="${reservationList.reservationNo}">修改用餐人數</button>
+													value="${reservationList.reservationNo}">用餐人數</button>
 												<Input type="hidden" name="reservationNo"
 													value="${reservationList.reservationNo}">
 											</form>
 										</td>
-										<td>
+										<td style="font-size: larger; line-height: 30px;">
 											<form method="post"
 												action="<c:url value="/03/front/reservation/deleteReservation.ctrl"/>">
 												<button name="deleteButton" type="submit"
-													value="${reservationList.reservationNo}">刪除食堂訂位</button>
+													value="${reservationList.reservationNo}">刪除訂位</button>
 												<Input type="hidden" name="reservationNo"
 													value="${reservationList.reservationNo}">
 											</form>
 										</td>
-										<td>
+										<td style="font-size: larger; line-height: 30px; font-weight: bold;">
+											<div align="center">
+												<c:if test="${reservationList.payment == 0}">
+													<span>尚未付費</span>
+												</c:if>
+												<c:if test="${reservationList.payment == 1}">
+													<span>付費完成</span>
+												</c:if>
+											</div>
+										</td>
+										<td style="font-size: larger; line-height: 30px;">
 											<div align="center">
 												<c:if test="${reservationList.payment == 0}">
 													<form method="post"
 														action="<c:url value="/03/front/reservation/pay.ctrl"/>">
 														<button name="payButton" type="submit"
-															value="${reservationList.reservationNo}">付款</button>
+															value="${reservationList.reservationNo}">立即付費</button>
 														<Input type="hidden" name="reservationNo"
 															value="${reservationList.reservationNo}">
 													</form>
 												</c:if>
 												<c:if test="${reservationList.payment == 1}">
-													<span>已付款</span>
+													<form method="post"
+														action="<c:url value="/03/front/reservation/cancelPayment.ctrl"/>">
+														<button name="cancelButton" type="submit"
+															value="${reservationList.reservationNo}">取消付費</button>
+														<Input type="hidden" name="reservationNo"
+															value="${reservationList.reservationNo}">
+													</form>
 												</c:if>
 											</div>
 										</td>

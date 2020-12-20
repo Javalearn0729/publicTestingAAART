@@ -1,26 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%
 	response.setHeader("Cache-Control", "no-cache"); //Forces caches to obtain a new copy of the page from the origin server 
 response.setHeader("Cache-Control", "no-store"); //Directs caches not to store the page under any circumstance 
 response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale" 
 response.setHeader("Pragma", "no-cache"); //HTTP 1.0 backward compatibility
 %>
-
+<jsp:useBean id="today" class="java.util.Date" scope="session" />
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CheckOrderPage</title>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
+
 function confirmDelete(n) {
 	if (confirm("確定刪除此項商品 ? ") ) {
 		document.forms[0].action="<c:url value='/14/productListDelet.ctrl?productIdAP=" + n +"' />" ;
@@ -100,9 +105,26 @@ swal({
 	});
 }
 
+
+
 </script>
+
+<style>
+table {
+	margin: auto;
+	margin-top: 50px;
+	text-align: center;
+}
+
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 10px;
+}
+</style>
 </head>
 <body>
+
 	<!-- start banner Area -->
 	<section class="banner-area relative" id="home">
 		<div class="overlay overlay-bg"></div>
@@ -120,53 +142,82 @@ swal({
 		</div>
 	</section>
 	<!-- End banner Area -->
-	<div class="container">
-		<div class="section-top-border" style="text-align: center;">
-			<h3 class="mb-30">Table</h3>
-			<div class="">
-				<div class="progress-table" style="text-align: center;">
-					<div class="table-head">
-						<div class="serial">#</div>
-						<div class="country">圖示</div>
-						<div class="visit">名稱</div>
-						<div class="visit">數量</div>
-						<div class="visit">價格</div>
-						<div class="visit">小計</div>
-						<div class="visit">編輯</div>
-					</div>
-					<c:forEach varStatus="vs" var="anEntry" items="${carList.cartAP}">
-						<div class="table-row" style="text-align: center;">
-							<div class="serial" style="text-align: center;">${vs.count}</div>
-							<div class="" style="text-align: center;">
-								<img
-									src="${pageContext.servletContext.contextPath}/14/getBlobImage/${anEntry.value.productId}.ctrl"
-									width="100" height="100" title="圖片提示文字" alt="...">
-							</div>
-							<div class="visit">${anEntry.value.productTitle}</div>
-							<div class="" style="text-align: center;">
-								<input id="newQty${vs.index}" name="newQty" type="number"
-									value="${anEntry.value.productNum}" min="1" name="qty"
-									style="width: 54px; text-align: center;" onchange="modify(${anEntry.key}, ${anEntry.value.productNum}, ${vs.index})">
-							</div>
-							<div class="visit">
-								<fmt:formatNumber value="${anEntry.value.productPrice}"
-									type="number" />元
-							</div>
-							<div class="visit">
-								<fmt:formatNumber
-									value="${anEntry.value.productPrice * anEntry.value.productNum}"
-									type="number" />元
-							</div>
-							<div class="visit">
-								<input type="button" value="刪除此項商品" class="genric-btn success small"
-									onclick="confirmDelete(${anEntry.value.productId})">
-							</div>
-						</div>
-					</c:forEach>
+	<br>
+	<br>
+	<h3 class="mb-30" style="text-align: center;">請確認您的商品</h3>
 
-				</div>
-			</div>
-		</div>
+	<table>
+		<tr>
+			<th>#</th>
+			<th>圖示</th>
+			<th>名稱</th>
+			<th>數量</th>
+			<th>價格</th>
+			<th>小計</th>
+			<th>編輯</th>
+		</tr>
+		<c:forEach varStatus="vs" var="anEntry" items="${carList.cartAP}">
+
+			<tr>
+				<td>${vs.count}</td>
+				<td><img
+					src="${pageContext.servletContext.contextPath}/14/getBlobImage/${anEntry.value.productId}.ctrl"
+					width="100" height="100" title="圖片提示文字" alt="..."></td>
+				<td>${anEntry.value.productTitle}</td>
+				<td><input id="newQty${vs.index}" name="newQty" type="number"
+					value="${anEntry.value.productNum}" min="1" name="qty"
+					style="width: 30px; text-align: center;"
+					onchange="modify(${anEntry.key}, ${anEntry.value.productNum}, ${vs.index})">><br>
+				</td>
+				<td><fmt:formatNumber value="${anEntry.value.productPrice}"
+						type="number" /> 元</td>
+				<td><fmt:formatNumber
+						value="${anEntry.value.productPrice * anEntry.value.productNum}"
+						type="number" /> 元</td>
+				<td><input type="button" value="刪除此項商品"
+					onclick="confirmDelete(${anEntry.value.productId})"></td>
+
+			</tr>
+		</c:forEach>
+		<tr>
+			<td colspan="4"></td>
+			<td colspan="3">總計：<fmt:formatNumber value="${carList.subtotal}"
+					type="number" />元
+			</td>
+		</tr>
+		<tr style="text-align: center;">
+			<td colspan="2"><a
+				href="<c:url value='/14/shopListController.ctrl' />">繼續購物</a></td>
+			<%-- 			<td colspan="2"><a href="<c:url value='/14/AbortCart.ctrl' />" --%>
+			<!-- 				onClick="return Abort();"> 清空購物車</a></td> -->
+			<td colspan="2"><input type="button" value="清空購物車"
+				onClick="Abort()"></td>
+			<td colspan="3"><a
+				href="<c:url value='/14/SubmitAPCart.ctrl' />"
+				onClick="return Checkout(${carList.subtotal});">送出訂單</a></td>
+
+		</tr>
+
+	</table>
+
+	<div class="container">
+		<c:if test='${not empty OrderErrorMessage}'>
+			<font color='red'>${OrderErrorMessage}</font>
+			<c:remove var="OrderErrorMessage" />
+		</c:if>
 	</div>
+
+	<form>
+		<input type="hidden" name="a" />
+	</form>
+	<%--	<%= order.getProdutTitle() %>
+<%= order.getProductNum() %>
+<%= order.getProductPrice()%>
+<%= pNum*pPrice %>
+<jsp:getProperty name="orderItem" property="produtTitle" />
+<jsp:getProperty name="orderItem" property="productNum" />
+<jsp:getProperty name="orderItem" property="productPrice" />
+
+			--%>
 </body>
 </html>

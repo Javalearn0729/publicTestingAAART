@@ -25,6 +25,10 @@ public class MessageBoardAPService {
 		return mDaoAp.insert(mb);
 	}
 	
+	public MessageBoardAP updateMessage(MessageBoardAP mb) {
+		return mDaoAp.updateMessage(mb);
+	}
+	
 	public List<MessageBoardAP> selectPdBoardAPs(Integer apId) {
 		return mDaoAp.selectPdBoardAPs(apId);
 	}

@@ -47,6 +47,6 @@ public interface ICreativeShopService {
 	
 	public List<CreativeShopBean> select16OrderByPopularity();
 	
-	public List<CreativeShopBean> select4OrderByPopularity();
+	public List<CreativeShopBean> select9OrderByPopularity();
 	
 }

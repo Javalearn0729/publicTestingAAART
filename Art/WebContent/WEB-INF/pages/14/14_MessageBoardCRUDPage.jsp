@@ -14,11 +14,6 @@
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
 
-<style>
-.head, tfoot {
-	text-align: center;
-}
-</style>
 
 <!-- 此處 JS 為 sweet alert 使用範例 -->
 <script type="text/javascript">
@@ -68,11 +63,7 @@ function reconfirmOrder(pid){
 		<!-- Begin Page Content -->
 		<div class="container-fluid">
 
-			<h1 class="h3 mb-2 text-gray-800">留言管理頁面</h1>
-			<p class="mb-4">
-				想學習如何使用，請訪問 <a target="_blank" href="https://datatables.net">official
-					DataTables documentation</a>.
-			</p>
+			<h1 class="h3 mb-2 text-gray-800" >留言管理頁面</h1>
 
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
@@ -113,7 +104,7 @@ function reconfirmOrder(pid){
 										<td class="align-middle" id="${mList.messageNoAP}">${mList.apId}</td>
 										<td class="align-middle" style="text-align: center; cursor: pointer;" id="${mList.messageNoAP}">${mList.memberId}</td>
 										<td class="align-middle" style="text-align: center; cursor: pointer;" id="${mList.messageNoAP}">${mList.time}</td>
-										<td class="align-middle" style="text-align: center; cursor: pointer;" id="${mList.messageNoAP}">${mList.subjectAP}</td>
+										<td class="align-middle" style="text-align: center; cursor: pointer;" id="${mList.messageNoAP}">${mList.title}</td>
 										<td class="align-middle">
 											<Input class="btn btn-info btn-sm" type="button"
 											name="delete" value="刪除"

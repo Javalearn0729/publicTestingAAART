@@ -62,10 +62,6 @@ function reconfirmOrder(pid){
 		<div class="container-fluid">
 
 			<h1 class="h3 mb-2 text-gray-800">會員訂單管理頁面</h1>
-			<p class="mb-4">
-				想學習如何使用，請訪問 <a target="_blank" href="https://datatables.net">official
-					DataTables documentation</a>.
-			</p>
 
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
@@ -108,12 +104,13 @@ function reconfirmOrder(pid){
 										<td class="align-middle" style="text-align: center;">${searchList.date}</td>
 										<td class="align-middle" style="text-align: center;">${searchList.addAP}</td>
 										<td class="align-middle" style="text-align: center;">${searchList.totalAmountAP}</td>
-										<td class="align-middle"><button type="button"
-												class="btn btn-info btn-sm" value="全部商品"
-												onclick="location.href='<c:url value='/14/MbOrderListDelet.ctrl?orderListID=${searchList.orderNoAP}' />'">沒用的按鈕</button>
+										<td class="align-middle">
+<!-- 										<button type="button" -->
+<!-- 												class="btn btn-info btn-sm" value="全部商品" -->
+<%-- 												onclick="location.href='<c:url value='/14/MbOrderListDelet.ctrl?orderListID=${searchList.orderNoAP}' />'">沒用的按鈕</button> --%>
 											<Input class="btn btn-info btn-sm" type="button"
 											name="delete" value="刪除"
-											onclick="reconfirmOrder(${searchAP.orderNoAP})">
+											onclick="reconfirmOrder(${searchList.orderNoAP})">
 											<button type="button" class="btn btn-info btn-sm" value="詳情"
 												onclick="location.href='<c:url value='/14/MbOrderListSelect.ctrl?orderListID=${searchList.orderNoAP}' />'">詳情</button>
 										</td>

@@ -1,5 +1,7 @@
 package tw.group4._18_._18_io;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -14,6 +16,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.imageio.ImageIO;
 import javax.sql.rowset.serial.SerialBlob;
@@ -101,8 +106,30 @@ public class CourseDataInputCSV {
 						String coNum = (token[5]);
 						String coPrice = (token[6]);
 						String coAct_Date = (token[7]);
+						SimpleDateFormat simpleDateFormatA = new SimpleDateFormat("yyyy/MM/dd");
+						String coAct_Date2 = null;
+						try {
+							Date date = simpleDateFormatA.parse(coAct_Date);
+							SimpleDateFormat simpleDateFormatA2 = new SimpleDateFormat("yyyy-MM-dd");
+							coAct_Date2 = simpleDateFormatA2.format(date);
+							System.err.println(coAct_Date2);
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						String coAct_Time = (token[8]);
 						String coEnd_Date = (token[9]);
+						SimpleDateFormat simpleDateFormatB = new SimpleDateFormat("yyyy/MM/dd");
+						String coEnd_Date2 = null;
+						try {
+							Date date = simpleDateFormatB.parse(coEnd_Date);
+							SimpleDateFormat simpleDateFormatB2 = new SimpleDateFormat("yyyy-MM-dd");
+							coEnd_Date2 = simpleDateFormatB2.format(date);
+							System.err.println(coEnd_Date2);
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						String coEnd_Time = (token[10]);
 						String coAct_Description = (token[11]);
 						String coHot = (token[12]);
@@ -117,9 +144,9 @@ public class CourseDataInputCSV {
 						pstmt.setString(4, coLocation_Name);
 						pstmt.setInt(5, Integer.parseInt(coNum));
 						pstmt.setInt(6, Integer.parseInt(coPrice));
-						pstmt.setString(7, coAct_Date);
+						pstmt.setString(7, coAct_Date2);
 						pstmt.setString(8, coAct_Time);
-						pstmt.setString(9, coEnd_Date);
+						pstmt.setString(9, coEnd_Date2);
 						pstmt.setString(10, coEnd_Time);
 						pstmt.setString(11, coAct_Description);
 						pstmt.setInt(12, Integer.parseInt(coHot));
@@ -134,9 +161,9 @@ public class CourseDataInputCSV {
 						pstmt.clearBatch();
 						
 
-						System.out.println(coId + " " + coTitle + " " + coAct_Type + " " + coAct_Location + " " + coLocation_Name + " "
-								+ coNum + " " + coPrice + " " + coAct_Date + " " + coAct_Time + " " + coEnd_Date + " " + coEnd_Time + " " + coHot + " " + coAct_Description + " " + coNum + " ");
-						System.out.println("-----");
+//						System.out.println(coId + " " + coTitle + " " + coAct_Type + " " + coAct_Location + " " + coLocation_Name + " "
+//								+ coPrice + " " + coNum + " " + coAct_Date + " " + coAct_Time + " " + coEnd_Date + " " + coEnd_Time + " " + coHot + " " + coAct_Description + " " + coNum + " ");
+//						System.out.println("-----");
 					}
 
 					System.out.println("--------------------------------");

@@ -11,6 +11,9 @@ p{
 /*  自動換行  */
 white-space:pre-wrap;
 }
+#demo{
+width: 400px;
+}
 </style>
 </head>
 
@@ -18,15 +21,14 @@ white-space:pre-wrap;
 <%-- 	<jsp:include page="/fragment/top.jsp" /> --%>
 		<br>
 		<br>
-	<form method=POST action="<c:url value='Update2.ctrl'/>" enctype="multipart/form-data">
 <div class="form-group">
 		<div class="container">
 	<h1>活動修改</h1>
 			
+	<form method=POST action="<c:url value='Update2.ctrl'/>" enctype="multipart/form-data" id="updateform">
 			<table class="table table-bordered">
 
 					<input type="hidden" name="actno" value="${requestScope.actno}">
-					<input type="hidden" name="page" value="${requestScope.page}">
 					<input type="hidden" name="searchString" value="${requestScope.searchString}">
 				<tr>
 				
@@ -116,42 +118,72 @@ white-space:pre-wrap;
 					</td>
 				</tr>
 				<tr>
-					<td>圖片</td>
-					<td><img style='display:block;width:400px;' src="data:image/jpg;base64,${photo}" >
+					<td>圖片預覽</td>
+					<td><img id="demo" style='display:block;width:400px;' src="data:image/jpg;base64,${photo}" >
 					
 					</td>
 				</tr>
 				<tr>
 					<td>圖片上傳</td>
-					<td><Input Type="File" Name="file" >
-					
-					</td>
+					<td><Input Type="File" Name="file" id="file" ></td>
 				</tr>
+<!-- 				<tr> -->
+<!-- 					<td>圖片預覽</td> -->
+<!-- 					<td><img id="demo" /></td> -->
+<!-- 				</tr> -->
 				
 			</table>
 
-			<input type="submit" value="送出修改" name=""
-				class="btn btn-outline-info" id="" onclick="return update()">
-	</div>
-	</div>
 	</form>
+			<input type="button" value="送出修改" name=""
+				class="btn btn-outline-info" id="" onclick="update()">
+	</div>
+	</div>
 	
 	
 		<script>
 
-		function update() {
-			var msg = "確認是否更新?";
-			if (confirm(msg) == true) {
-				return true;
-			} else {
-				return false;
-			}
-		}
+// 		function update() {
+// 			var msg = "確認是否更新?";
+// 			if (confirm(msg) == true) {
+// 				return true;
+// 			} else {
+// 				return false;
+// 			}
+// 		}
 
 		document.getElementById("startdate").onchange = function () {
 		    var input = document.getElementById("enddate");
 		    input.setAttribute("min", this.value);
 		}
+		
+		//圖片預覽
+		$('#file').change(function() {
+			  var file = $('#file')[0].files[0];
+			  var reader = new FileReader;
+			  reader.onload = function(e) {
+			    $('#demo').attr('src', e.target.result);
+			  };
+			  reader.readAsDataURL(file);
+			});
+		function update() {
+			swal({
+				  title: "是否更新活動?",
+				  text: "資料將被修改!",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((orderOK) => {
+					  if (orderOK) {
+					    swal("更新成功!", 
+					    	{icon: "success",});
+				    	setTimeout(function(){ $("#updateform").submit(); },2000);
+					  } else {
+					    swal("操作已取消!");
+					  }
+					});
+		};
 	</script>
 </body>
 </html>

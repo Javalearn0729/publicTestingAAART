@@ -17,7 +17,7 @@ display:inline;
 <body>
 
 
-
+<div class="container">
  <br><br><H1>訂購人資訊</H1>
     <table class= "table table-bordered">
         <tr>
@@ -80,9 +80,11 @@ display:inline;
 		<form name="order" action="<c:url value='/04/Cms/UpdateOrderlist.ctrl'/> " method="get"> 						
 			 <button type="submit" name="orderid"  value="${requestScope.orderlist.ORDERID}" class="btn btn-info" >修改訂單</button>
 		</form> 
-		<form name="order" action="<c:url value='/04/DeleteOrderlist.ctrl'/> " method="get"> 						
-			 <button type="submit" name="orderid"  value="${requestScope.orderlist.ORDERID}" class="btn btn-info" onclick="return del()">取消訂單</button>
-		</form> 
+		</div>
+<%-- 		<form name="order" action="<c:url value='/04/Cms/OrderlistStatus.ctrl'/> " method="get"> 						 --%>
+<%-- 			<input type="hidden" name="orderpk" value="${orderlist.ORDERPK}">					 --%>
+<%-- 			<button type="submit" name="orderid"  value="${orderlist.ORDERID}" class="btn btn-info" onclick="return del()">辦理退票</button> --%>
+<!-- 		</form>  -->
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"

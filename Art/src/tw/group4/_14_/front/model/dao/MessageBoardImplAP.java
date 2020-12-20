@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import tw.group4._14_.back.ARTProduct;
 import tw.group4._14_.front.model.MessageBoardAP;
 import tw.group4._14_.front.model.OrderListBeamAP;
 
@@ -29,6 +30,13 @@ public class MessageBoardImplAP {
 		session.save(mb);
 		return mb;
 	}
+	
+	public MessageBoardAP updateMessage(MessageBoardAP mb) {
+		Session session = sessionFactory.getCurrentSession();
+		session.update(mb);
+		return mb;
+	}
+	
 	
 	public List<MessageBoardAP> selectPdBoardAPs(Integer apId) {
 		Session session = sessionFactory.getCurrentSession();

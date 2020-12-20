@@ -16,36 +16,36 @@ display:inline;
 </head>
 <body>
 
-
-<form name="order" action="<c:url value='/04/Cms/UpdateOrderlist2.ctrl'/> " method="get">
+<div class="container">
+<form name="order" action="<c:url value='/04/Cms/UpdateOrderlist2.ctrl'/> " method="get" id="updateform">
  <br><br><H1>訂購人資訊</H1>
     <table class= "table table-bordered">
         <tr>
             <td>訂購人姓名
             </td>
             <td>
-			<input type="text" value="${requestScope.orderlist.NAME}" name="name"/>
+			<input type="text" value="${requestScope.orderlist.NAME}" name="name"  class="form-control"/>
            </td>
         </tr>
         <tr>
             <td>電子郵件
             </td>
             <td>
-            <input type="text" value="${requestScope.orderlist.EMAIL}" name="email"/>             
+            <input type="text" value="${requestScope.orderlist.EMAIL}" name="email"  class="form-control"/>             
             </td>
         </tr>
         <tr>
             <td>電話
             </td>
             <td>
-            <input type="text" value="${requestScope.orderlist.TEL}" name="tel"/>                          
+            <input type="text" value="${requestScope.orderlist.TEL}" name="tel"  class="form-control"/>                          
             </td>
         </tr>
         <tr>
             <td>地址
             </td>
             <td>
-             <input type="text" value="${requestScope.orderlist.ADDRESS}" name="address"/>            
+             <input type="text" value="${requestScope.orderlist.ADDRESS}" name="address"  class="form-control"/>            
              <input type="hidden" value="${requestScope.orderlist.ORDERPK}" name="orderPK"/>            
           
             </td>
@@ -81,10 +81,10 @@ display:inline;
 			
 		</table>		
 		 						
-			 <button type="submit" name="orderid"  value="${requestScope.orderlist.ORDERID}" class="btn btn-info" onclick="return del()">送出修改</button>
 		</form> 
+			 <button type="button" name="orderid"  value="${requestScope.orderlist.ORDERID}" class="btn btn-info" onclick="update()">送出修改</button>
 
-
+</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"
     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous">
@@ -108,14 +108,33 @@ $(document).ready(
     })
     
 
-    function del() {
-		var msg = "是否修改訂單";
-		if (confirm(msg) == true) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+//     function del() {
+// 		var msg = "是否修改訂單";
+// 		if (confirm(msg) == true) {
+// 			return true;
+// 		} else {
+// 			return false;
+// 		}
+// 	}
+    
+    function update() {
+		swal({
+			  title: "是否更新活動?",
+			  text: "資料將被修改!",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((orderOK) => {
+				  if (orderOK) {
+				    swal("更新成功!", 
+				    	{icon: "success",});
+			    	setTimeout(function(){ $("#updateform").submit(); },2000);
+				  } else {
+				    swal("操作已取消!");
+				  }
+				});
+	};
 	
     
     

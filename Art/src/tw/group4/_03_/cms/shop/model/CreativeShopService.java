@@ -102,8 +102,8 @@ public class CreativeShopService implements ICreativeShopService {
 	}
 	
 	@Override
-	public List<CreativeShopBean> select4OrderByPopularity(){
-		return creativeShopDAO.select4OrderByPopularity();
+	public List<CreativeShopBean> select9OrderByPopularity(){
+		return creativeShopDAO.select9OrderByPopularity();
 	}
 	
 	

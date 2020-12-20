@@ -134,6 +134,9 @@ public class SpringMVCConfig implements WebMvcConfigurer {
     			.addResourceLocations("/WEB-INF/pages/frontstyle/");
     	registry.addResourceHandler("/js14/**")
 				.addResourceLocations("/WEB-INF/pages/14/js14/");
+//    	We will refer to the WebJars via the /webjars/ path. The resourceChain() method must be called for version-agnostic WebJars.
+    	registry.addResourceHandler("/webjars/**")
+    			.addResourceLocations("/webjars/").resourceChain(false);
   }
     
 //  設定multipartResolver(傳輸多媒體檔案用)預設編碼UTF-8
@@ -143,7 +146,7 @@ public class SpringMVCConfig implements WebMvcConfigurer {
 //      把記憶體暫存的上傳檔案大小設定在最高10MB
 //      超過10MB的上傳檔案在讀取一次後就會被刪除，但變數名稱和記憶體位址還會在
 //      導致此錯誤出現: java.lang.IllegalStateException: File has been moved - cannot be read again
-        resolver.setMaxInMemorySize(10 * 1024 * 1024);
+        resolver.setMaxInMemorySize(100 * 1024 * 1024);
         resolver.setDefaultEncoding("UTF-8");
         return resolver;
     }

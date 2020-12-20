@@ -30,6 +30,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.zxing.WriterException;
 
+import tw.group4._14_.dashboard.dao.DashboardService;
+import tw.group4._14_.dashboard.model.EntryClickRate;
 import tw.group4._35_.geo.model.InterfacePositionService;
 import tw.group4._35_.geo.model.Position;
 import tw.group4._35_.util.QRCodeGenerator;
@@ -43,14 +45,20 @@ public class RandomRecom{
 	private InterfacePositionService ptService;
 	
 	@Autowired
+	private DashboardService dbService;
+	
+	@Autowired
 	private ServletContext ctx;
 	
 //	最近活動列表查詢
 	@Hibernate
-	@NeedLogin
 	@RequestMapping(path = "/35/randomRecom.ctrl", method = RequestMethod.GET)
     public String randomRecom(Model m) {
 
+		EntryClickRate ecr = new EntryClickRate();
+		ecr.setNearby(1);
+		dbService.insert(ecr);
+		
 		List<Position> list = ptService.recommendList();
 		m.addAttribute("recommend", list);
 		
@@ -77,17 +85,6 @@ public class RandomRecom{
 		}else {
 			return "35/login/loginSuccess";
 		}
-	}
-	
-//	註冊成功隨機推薦
-	@Hibernate
-	@GetMapping("/35/registerOkLogin")
-	public String randomRecomRegisterSuccess(Model m, @ModelAttribute("welcome") String welcome) {
-		
-		List<Position> list = ptService.recommendList();
-		m.addAttribute("recommend", list);
-		
-		return "35/login/registerSuccess";
 	}
 	
 //	登出隨機推薦

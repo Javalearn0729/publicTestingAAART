@@ -199,8 +199,7 @@
 								<!-- # ================== -->
 						</table>
 						<!-- ====================================================== -->
-						<br>
-						<div class="submitButton" align="center" style="font-size: larger">
+						<div class="submitButton" align="center" style="font-size: larger; padding-left: 180px; ">
 							<input type="submit" name="submit" value="完成訂位">
 						</div>
 						<div style="display: none;">

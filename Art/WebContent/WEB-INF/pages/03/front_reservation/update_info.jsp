@@ -58,10 +58,12 @@
 		<div class=title>
 			<h2 align="center" style="margin-top: 20px;">得藝食堂線上訂位</h2>
 		</div>
-		<p>加上輪播圖片</p>
+		<br>
 		<div class=title>
 			<h3 align="center" style="margin-top: 20px;">修改聯絡資訊</h3>
 		</div>
+		<br>
+		<br>
 		<div class="row">
 			<div class="col-lg-3 col-md-4 mt-sm-30">
 				<div align="center">
@@ -293,8 +295,7 @@
 							</tbody>
 						</table>
 						<!-- ====================================================== -->
-						<br>
-						<div class="submitButton" align="center" style="font-size: larger">
+						<div class="submitButton" align="left" style="font-size: larger; padding-left: 180px;">
 							<input type="submit" name="submit" value="修改聯絡資訊">
 						</div>
 						<div style="display: none">

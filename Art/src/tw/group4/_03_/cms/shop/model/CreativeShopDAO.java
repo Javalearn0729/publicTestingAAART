@@ -183,11 +183,11 @@ public class CreativeShopDAO {
 		return list;
 	}
 	
-	public List<CreativeShopBean> select4OrderByPopularity() {
+	public List<CreativeShopBean> select9OrderByPopularity() {
 		Session session = sessionFacory.getCurrentSession();
 		Query<CreativeShopBean> query = session.createQuery("From CreativeShopBean order by shopId DESC",
 				CreativeShopBean.class);
-		List<CreativeShopBean> list = query.setMaxResults(4).list();
+		List<CreativeShopBean> list = query.setMaxResults(9).list();
 		return list;
 	}
 	

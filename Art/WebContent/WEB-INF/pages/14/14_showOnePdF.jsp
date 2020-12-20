@@ -39,9 +39,16 @@
 
 </head>
 <script src="https://cdn.ckeditor.com/4.15.1/basic/ckeditor.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <!-- import Vue before Element -->
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+<!-- 引入样式 -->
+<!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"> -->
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- import JavaScript -->
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
@@ -169,7 +176,7 @@
 								name="orderDes" value="${oneProsuct.productDes}" />
 							<div>
 								<button type="submit" name="orderTitle"
-									value="${oneProsuct.productTitle}" class="genric-btn info">加入購物車</button>
+									value="${oneProsuct.productTitle}" class="genric-btn info" onclick="tip()">加入購物車</button>
 							</div>
 						</form>
 					</div>
@@ -202,11 +209,12 @@
 											</div>
 											<div class="desc">
 												<h5>
-													<a href="#">${mList.memberId}</a>
+													<a href="#">會員暱稱：${mList.fakename}</a>
 												</h5>
-												<p class="date">${mList.time}</p>
+												<h5>主旨：${mList.title}</h5>
+												<p class="date" style="margin: 0px">${mList.time}</p>
 												<div class="thumb justify-content-center">
-													<img class="img-fluid"
+													<img class=""
 														src="${pageContext.servletContext.contextPath}/14/getStarImageMB/${mList.score}.ctrl"
 														alt="" width="80" height="20">
 												</div>
@@ -214,10 +222,10 @@
 											</div>
 										</div>
 										<div class="reply-btn">
-											<button class="genric-btn danger">檢舉這則評論</button> <br>
+											<button class="genric-btn danger" onclick="report(${mList.messageNoAP})">檢舉這則評論</button> <br>
 
 											<c:if test="${mList.memberId == sessionScope.member.id}">
-												<button class="genric-btn info" onclick="edit()">修改我的評論</button>
+												<button class="genric-btn info" onclick="edit(${mList.messageNoAP})">修改我的評論</button>
 											</c:if>
 										</div>
 									</div>
@@ -248,14 +256,10 @@
 												</div>
 												<div class="desc">
 													<h5>
-														<a href="#">{{item.memberId}}</a>
+														<a href="#">會員暱稱：{{item.fakename}}</a>
 													</h5>
-													<p class="date">{{item.time}}</p>
-													<template slot-scope="item">
-														<el-rate v-model="item.score" disabled show-score
-															text-color="#ff9900" score-template="{value}">
-														</el-rate>
-													</template>
+													<h5>主旨：{{item.title}}</h5>
+													<p class="date" style="margin: 0px">{{item.time}}</p>
 													<div class="thumb justify-content-center">
 														<img class="img-fluid" :src="item.scoreString" alt=""
 															width="100" height="20">
@@ -265,9 +269,12 @@
 												</div>
 											</div>
 											<div class="reply-btn">
-												<button class="genric-btn danger">檢舉這則評論</button> <br>
+												<button class="genric-btn danger" @click="reportV(item.messageNoAP)">檢舉這則評論</button> <br>
 
-												<button v-if="item.memberId === memberId" class="genric-btn info" onclick="edit()">修改我的評論</button>
+												<button v-if="item.memberId === memberId" class="genric-btn info" @click="editV(item.messageNoAP)">修改我的評論</button>
+<!-- 												<template v-if="item.memberId === memberId"> -->
+<!--   												<el-button type="button" class="genric-btn info" @click="open(item.messageNoAP)">修改評論</el-button> -->
+<!-- 												</template> -->
 											</div>
 										</div>
 									</div>
@@ -304,15 +311,15 @@
 								<div class="col-lg-4 col-md-6">
 									<input name="name" placeholder="請輸入您的姓名"
 										onfocus="this.placeholder = ''"
-										onblur="this.placeholder = '請輸入您的姓名'"
+										onblur="this.placeholder = '請輸入您的姓名'" id="fakeName"
 										class="common-input mb-20 form-control" required=""
-										type="text"> <input name="email"
+										type="text"> <input name="email" id="mail"
 										placeholder="請輸入您的  E-mail" onfocus="this.placeholder = ''"
 										onblur="this.placeholder = '請輸入您的  E-mail'"
 										class="common-input mb-20 form-control" required=""
 										type="email"> <input name="subject"
 										placeholder="請輸入主旨" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = '請輸入主旨'"
+										onblur="this.placeholder = '請輸入主旨'" id="inn"
 										class="common-input mb-20 form-control" required=""
 										type="text">
 
@@ -321,8 +328,8 @@
 									<textarea class="form-control mb-10" name="" id="textAre"
 										placeholder="請給這項商品一點建議吧？" onfocus="this.placeholder = ''"
 										onblur="this.placeholder = '請給這項商品一點建議吧？'" required=""></textarea>
-									<button class="genric-btn primary-border small mt-10"
-										onclick="push()">發表回應</button>
+									<button class="genric-btn primary-border small mt-10" onclick="push()">發表回應</button>
+									<button class="genric-btn primary-border small mt-10" id="btn">DEMO</button>
 								</div>
 							</div>
 						</div>
@@ -375,22 +382,52 @@
 	                  alert("failure");
 	              }
 	          });
-	      }
-         })
+	      },
 
+	      methods: {
+
+	    	   editV: function(mbid) {
+	    		   edit(mbid);
+	        	},
+
+	      reportV: function(mbid) {
+   		   report(mbid);
+       	}
+
+// 	    	  open: function(mbid) {
+// 	              this.$prompt('請輸入欲修改的內文', '提示', {
+// 	                  confirmButtonText: '確定',
+// 	                  cancelButtonText: '取消',
+// 	                }).then(({ value }) => {
+// 	                  this.$message({
+// 	                    type: 'success',
+// 	                    message: '更改的內文為: ' + value
+// 	                  });
+// 	                    aa(mbid, value);
+// 	                }).catch(() => {
+// 	                  this.$message({
+// 	                    type: 'info',
+// 	                    message: '取消输入'
+// 	                  });       
+// 	                });
+// 	              }
+
+
+        	 }
+         })
          
          function push() {
 				var self = vm;
 				var apid = $("#productID").val();
 				var name = $('input[name=name]');
-// 				var subject = $('input[name=subject]');
+				var title = $('input[name=subject]');
 				var rate = $(".clicked").length;
 // 				var editor = CKEDITOR.instances.editor1.getData();
 // 				var editor = $('input[name=text]');
 				var editor = $('#textAre').val();
 
 // 				var data = 'name=' + name.val() +  '&subjectAP=' + subject.val() + '&editor=' + editor + '&rate=' + rate;
- 				var data = 'name=' + name.val() +  '&editor=' + editor + '&rate=' + rate;
+ 				var data = 'name=' + name.val() +  '&editor=' + editor + '&rate=' + rate + '&title='+ title.val() ;
 //  				alert(editor);
 				$.ajax({
 				type: "get",
@@ -417,6 +454,33 @@
 				});
 			}
 
+         function aa(mbid, value) {
+        	 var self = vm;
+        	 var apid = $("#productID").val();
+             var data= 'mbid='+mbid+'&content='+value+'&apid='+apid
+        	 $.ajax({
+ 				type: "get",
+ 				url: "/Art/14/editMessage",
+ 				contentType: "application/json",
+ 				dataType: "json",
+ 				data: data,
+ 				cache: false,
+ 				success: function(json) {
+ 					var arr = Object.keys(json);
+ 					var len = arr.length;
+ 					self.items = json;
+ 					self.len = len;
+ 					$('#fade').fadeOut('slow');
+ 					$('#messageBoard').fadeOut('slow');
+ 					getStar();
+ 					
+ 				},
+ 				error:  function() {
+ 					alert("failure");
+ 				}
+ 				});
+             }
+         
          function memberCheck() {
         	 var self = vm;
         	 $.ajax({
@@ -433,9 +497,28 @@
 	          });
          }
 
-         function edit() {
+         function edit(mbid) {
+        	 swal({
+        		 title: "修改留言內文",
+        		  text: "請輸入您要修改的文字：",
+        		  content: "input",
+        		  showCancelButton: true,
+        		  closeOnConfirm: false,
+        		  animation: "slide-from-top",
+        		  inputPlaceholder: "說點什麼嗎？"
+        		}).then(
+        		function(inputValue){
+        		  if (inputValue == false) return false;
 
-         }
+        		  if (inputValue == "") {
+        		    swal("不能空白喔!");
+        		    return false
+        		  }
+
+        		  swal("感謝您的留言!", "您的留言為: " + inputValue, "success");
+        		  aa(mbid, inputValue);
+        		});
+             }
          
       </script>
 
@@ -485,7 +568,86 @@ function getStar(){
     });
 }
 
+function report(mid){
+	var midd= mid
+	swal("提示","確認檢舉？", "warning",{
+	    buttons: {
+	      danger: {
+	          text: "是"
+// 	          ,visible: true
+	        },
+	      "不是": true,
+//	      "是": true
+	      
+	    },
+	  })
+	  .then((value) => {
+	    switch (value) {
+	      case "danger":
+	    	swal("提示","您已檢舉此留言，留言將交由我們管理人員審查", "success")
+	    	setTimeout(function(){bb(mid)},2000);
+	        break;
+	      case "不是":
+	        swal("提示","什麼事情也沒發生", "info");
+	        break;
+	      default:
+	    	  swal("提示","什麼事情也沒發生", "info");
+	        break;
+	    }
+	  });
+	
+}
+
+
+function bb(mbid) {
+	 $.ajax({
+		type: "get",
+		url: "/Art/14/reportMessage/"+mbid,
+		cache: false,
+		dataType:"text",
+		success: function(json) {
+// 			alert(json);
+			
+		},
+		error:  function() {
+			alert("failure");
+		}
+		});
+    }
+
 </script>
+
+
+<script>
+
+
+$(function(){
+	  var Name1 = "買到賺到欸";
+	  var Name2 = '好東西。'
+	  var Name3 = '花枝'
+	  var Name4 = 'whatSquid@abcd.com'
+   
+$("#btn").click(function() {
+	  document.getElementById("textAre").innerHTML= Name1;
+	  document.getElementById("inn").value= Name2;
+	  document.getElementById("fakeName").value= Name3;
+	  document.getElementById("mail").value= Name4;
+  });
+});
+
+function tip(){
+	swal("已加入購物車");
+
+	
+}
+
+
+
+</script>
+
+
+
+
 
 
 

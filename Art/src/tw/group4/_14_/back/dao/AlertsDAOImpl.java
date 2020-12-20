@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import tw.group4._14_.back.ARTProduct;
 import tw.group4._14_.back.Alerts;
 import tw.group4._14_.front.model.OrderListBeamAP;
 
@@ -30,15 +31,15 @@ public class AlertsDAOImpl {
 	
 	public List<Alerts> selectPartAlerts() {
 		Session session = sessionFactory.getCurrentSession();
-		Query<Alerts> query = session.createQuery("From Alerts ac ORDER BY ac.time", Alerts.class);
-		query.setMaxResults(3);
+		Query<Alerts> query = session.createQuery("From Alerts ac ORDER BY ac.time DESC", Alerts.class);
+		query.setMaxResults(5);
 		List<Alerts> list = query.list();
 		return list;
 	}
 	
 	public List<Alerts> selectAllAlerts() {
 		Session session = sessionFactory.getCurrentSession();
-		Query<Alerts> query = session.createQuery("From Alerts ac ORDER BY ac.time", Alerts.class);
+		Query<Alerts> query = session.createQuery("From Alerts ac ORDER BY ac.time DESC", Alerts.class);
 		List<Alerts> list = query.list();
 		return list;
 	}
@@ -61,6 +62,13 @@ public class AlertsDAOImpl {
 		return false;
 	}
 	
+	public Alerts update(Alerts al) {
+		Session session = sessionFactory.getCurrentSession();
+		session.update(al);
+		return al;
+	}
+	
+	
 	public Long sumTotal() {
 		Session session = sessionFactory.getCurrentSession();
 		String sql = "SELECT SUM(ap.totalAmountAP) From OrderListBeamAP ap";
@@ -72,6 +80,14 @@ public class AlertsDAOImpl {
 	public Long sumMessageAP() {
 		Session session = sessionFactory.getCurrentSession();
 		String sql = "SELECT COUNT(*) FROM MessageBoardAP";
+		Query createQuery = session.createQuery(sql);
+		Long count = (Long)createQuery.uniqueResult();
+		return count;
+	}
+	
+	public Long sumAlertsUnRead() {
+		Session session = sessionFactory.getCurrentSession();
+		String sql = "SELECT SUM(al.status) FROM Alerts al";
 		Query createQuery = session.createQuery(sql);
 		Long count = (Long)createQuery.uniqueResult();
 		return count;

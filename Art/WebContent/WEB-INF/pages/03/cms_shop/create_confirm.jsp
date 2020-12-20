@@ -2,17 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
 <div class="container">
 	<br>
 	<div class=title>
 		<h1 align="center" style="margin-top: 20px;">藝文商店 管理系統</h1>
 	</div>
 	<div class="back" align="right">
-		<form action="<c:url value='/03/cms/shop/index.ctrl'/> " method="get">
+		<form action="<c:url value='/03/cms/shop/createConfirm.ctrl'/> " method="get">
 			<div class="submitButton">
 				<input type="submit" class='btn btn-outline-info' name="submit"
-					value="返回 藝文商店管理首頁">
+					value="返回 上架藝文商店">
 			</div>
 		</form>
 	</div>
@@ -41,8 +40,8 @@
 					<tfoot></tfoot>
 					<tbody>
 						<tr style="color: black;">
-							<td>商店名稱*</td>
-							<td><input type="text" placeholder="請輸入商店名稱 "
+							<td>商店名稱<span style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
+							<td><input type="text" placeholder="請輸入商店名稱 " style="color: black;"
 								name="shopName" class="form-control"></td>
 						</tr>
 
@@ -50,9 +49,9 @@
 							<td colspan="2">&nbsp;</td>
 						</tr>
 
-						<tr style="padding-bottom: 10px;">
-							<td>代表圖示*</td>
-							<td><input type="text" placeholder="請輸入圖片網址" name="image"
+						<tr style="color: black;">
+							<td>代表圖示<span style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
+							<td><input type="text" placeholder="請輸入圖片網址" name="image" style="color: black;"
 								class="form-control"></td>
 						</tr>
 
@@ -60,9 +59,9 @@
 							<td colspan="2">&nbsp;</td>
 						</tr>
 
-						<tr style="padding-bottom: 10px;">
-							<td>商店簡介*</td>
-							<td><textarea placeholder="請輸入簡介內容" name="intro" rows="5"
+						<tr style="color: black;">
+							<td>商店簡介<span style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
+							<td><textarea placeholder="請輸入簡介內容" name="intro" rows="5" style="color: black;"
 									class="form-control"></textarea></td>
 						</tr>
 
@@ -70,9 +69,9 @@
 							<td colspan="2">&nbsp;</td>
 						</tr>
 
-						<tr style="padding-bottom: 10px;">
-							<td>商店地址*</td>
-							<td><input type="text" placeholder="請輸入地址" name="address"
+						<tr style="color: black;">
+							<td>商店地址<span style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
+							<td><input type="text" placeholder="請輸入地址" name="address" style="color: black;"
 								class="form-control"></td>
 						</tr>
 
@@ -80,18 +79,18 @@
 							<td colspan="2">&nbsp;</td>
 						</tr>
 
-						<tr style="padding-bottom: 10px;">
-							<td>營業時間*</td>
-							<td><textarea placeholder="請輸入營業時間" name="openTime" rows="3"
+						<tr style="color: black;">
+							<td>營業時間<span style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
+							<td><textarea placeholder="請輸入營業時間" name="openTime" rows="3" style="color: black;"
 									class="form-control"></textarea></td>
 						</tr>
 						<tr>
 							<td colspan="2">&nbsp;</td>
 						</tr>
 						<!-- ====================================================== -->
-						<tr style="padding-bottom: 10px;">
-							<td>連絡電話*</td>
-							<td><input type="text" placeholder="請輸入連絡電話" name="phone"
+						<tr style="color: black;">
+							<td>連絡電話<span style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
+							<td><input type="text" placeholder="請輸入連絡電話" name="phone" style="color: black;"
 								class="form-control"></td>
 						</tr>
 
@@ -99,9 +98,9 @@
 							<td colspan="2">&nbsp;</td>
 						</tr>
 
-						<tr style="padding-bottom: 10px;">
+						<tr style="color: black;">
 							<td>電子郵件</td>
-							<td><input type="text" placeholder="請輸入電子郵件" name="email"
+							<td><input type="text" placeholder="請輸入電子郵件" name="email" style="color: black;"
 								class="form-control"></td>
 						</tr>
 
@@ -109,9 +108,9 @@
 							<td colspan="2">&nbsp;</td>
 						</tr>
 
-						<tr style="padding-bottom: 10px;">
+						<tr style="color: black;">
 							<td>傳真號碼</td>
-							<td><input type="text" placeholder="請輸入傳真號碼" name="fax"
+							<td><input type="text" placeholder="請輸入傳真號碼" name="fax" style="color: black;"
 								class="form-control"></td>
 						</tr>
 
@@ -119,9 +118,9 @@
 							<td colspan="2">&nbsp;</td>
 						</tr>
 
-						<tr style="padding-bottom: 10px;">
+						<tr style="color: black;">
 							<td>Facebook網址</td>
-							<td><input type="text" placeholder="請輸入facebook 網址"
+							<td><input type="text" placeholder="請輸入facebook 網址" style="color: black;"
 								class="form-control" name="facebook"></td>
 						</tr>
 
@@ -129,9 +128,9 @@
 							<td colspan="2">&nbsp;</td>
 						</tr>
 
-						<tr style="padding-bottom: 10px;">
+						<tr style="color: black;">
 							<td>商店網站網址</td>
-							<td><input type="text" placeholder="請輸入網址" name="website"
+							<td><input type="text" placeholder="請輸入網址" name="website" style="color: black;"
 								class="form-control"></td>
 						</tr>
 
@@ -139,11 +138,13 @@
 							<td colspan="2">&nbsp;</td>
 						</tr>
 						<!-- ====================================================== -->
-						<tr style="padding-bottom: 10px;">
+						
+						<tr style="color: black;">
 							<td>熱門度</td>
-							<td><input type="text" name="clicks" value="0"
+							<td><input type="text" name="clicks" value="0" style="color: black;"
 								class="form-control"></td>
 						</tr>
+						
 						<!-- 不使用 ====================================================== -->
 						<tr style="display: none">
 							<td>會員帳號</td>
@@ -151,12 +152,12 @@
 						</tr>
 						<tr style="display: none;">
 							<td>縣市名*</td>
-							<td><input type="text" placeholder="請輸入縣市名" name="cityName"
+							<td><input type="text" placeholder="請輸入縣市名" name="cityName" style="color: black;"
 								value="台北市" class="form-control"></td>
 						</tr>
 						<tr style="display: none;">
 							<td>reservation不使用</td>
-							<td><input type="text" value="0" name="reservation"
+							<td><input type="text" value="0" name="reservation" style="color: black;"
 								class="form-control"></td>
 						</tr>
 					</tbody>

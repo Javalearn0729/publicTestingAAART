@@ -19,9 +19,9 @@ public interface InterfacePositionService {
 	
 	List<Position> selectNearActsByDistance(String userLocation, String userDistance);
 
-//	List<Activity> selectDistinctToAct();
-
 	List<Position> recommendList();
+	
+	List<Position> recommendNearActsList(String userLocation, String userDistance);
 
 	int[] produceRandomArray(int count);
 	

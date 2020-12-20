@@ -219,13 +219,14 @@ public class CRUDControllerAP {
 		pd.setProductTitle(apTitle);
 		pd.setProductPrice(apPrice);
 		pd.setProductNum(apNum);
-		pd.setProductType(apType);
+		pd.setProductType("cook"); //TODO : 要記得改回來喔
 		pd.setProductDes(apDes);
+		pd.setProductScore(1);
+		pd.setProductRater(1);
 //		pd.setProductImgBlob(blob);
 		try {
 			pd.setProductImgBlob(mFile.getBytes());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

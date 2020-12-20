@@ -45,6 +45,10 @@ public class AlertsService {
 		return aImpl.deleteAlerts(alertsNo);
 	}
 	
+	public Alerts update(Alerts al) {
+		return aImpl.update(al);
+	}
+	
 	public Long sumTotal() {
 		return aImpl.sumTotal();
 		
@@ -53,4 +57,9 @@ public class AlertsService {
 	public Long sumMessageAP() {
 		return aImpl.sumMessageAP();
 	}
+
+	public Long sumAlertsUnRead() {
+		return aImpl.sumAlertsUnRead();
+	}
+
 }

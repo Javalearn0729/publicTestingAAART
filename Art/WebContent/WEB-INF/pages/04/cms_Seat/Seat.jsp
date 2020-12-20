@@ -33,6 +33,36 @@
 	width: 100px;
 }
 
+.area {
+    background:	#CC0000;
+    display:block;
+    height:95px;
+    opacity:0;
+    position:absolute;
+    width:187px;
+}
+#area1 {
+    left:65px;
+    Top:58px;
+}
+#area2 {
+    left:65px;
+    Top:152px;
+}
+#area3 {
+	background:	#CC0000;
+    display:block;
+    height:313px;
+    opacity:0;
+    position:absolute;
+    width:300px;
+	clip-path: polygon(6% 16%, 19% 16%, 19% 79%, 80% 80%, 81% 16%, 93% 16%, 93% 97%, 7% 97%);
+}
+#area1:hover, #area2:hover ,#area3:hover{
+    opacity:0.4;
+}
+
+
 
 </style>
 </head>
@@ -45,10 +75,11 @@
 <div class="container">
 
 <!-- <div class="row justify-content-center"> -->
-
+<div class="row">
+ <div class="col-8">
 
 <c:set var="seat" value="${requestScope.seat}" />
-<form name="order" action="<c:url value='/04/Cms/seatUpdate.ctrl'/>" method="POST">	
+<form name="order" action="<c:url value='/04/Cms/seatUpdate.ctrl'/>" method="POST" id="updateform">	
 	<p id="ticketnum" style="display:none">${sessionScope.shoppingcart.TICKET_NUM}</p>
 	<h1>座位表</h1>
 
@@ -66,6 +97,8 @@
 	</tr>
 
 	</table>
+
+
 
  <div id="seat">
  <input type="hidden" id="hideA1" name="A1" value="${seat.A1}"  />
@@ -125,7 +158,8 @@
  <input type="hidden" id="hideE10" name="E10" value="${seat.E10}"  />
 </div>
 
-
+ <Input type='hidden' name='category' value='${category}'>
+	</form>
 
 
 <!-- <div class="row justify-content-center"> -->
@@ -209,17 +243,24 @@
 		</tr>
 	</table>
 	
-	<br><br><input type="submit" id="submit" class="btn btn-outline-info" value="修改座位" onclick="return update()">
-	 <Input type='hidden' name='category' value='${category}'>
-	</form>
+	
+	<br><br><input type="button" id="submit" class="btn btn-outline-info" value="修改座位" onclick="update()">
+</div>
+
+	<div class="col-4">
+
+					<a id="area1" class="area" href="<c:url value='/04/CMS/seatSearch.ctrl?actno=${seat.actno}&category=${category}'/>"></a>
+       				<a id="area2" class="area" href="<c:url value='/04/CMS/seat2Search.ctrl?actno=${seat.actno}&category=${category}'/>"></a>
+       				<a id="area3" class="area" href="#"></a>
+					<img src="<c:url value='/images/04/CMSseatmap.jpg' />" border="0" usemap="#Map" alt="座位表" id="seatmap" class="map"   /> 
+	</div>
+
+</div>
 </div>
 
 
 	
-<script src="https://code.jquery.com/jquery-3.5.1.js"
-		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-		crossorigin="anonymous"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
  	<script>
 
  	//將已劃位的位置改為sofa.png
@@ -259,14 +300,35 @@
  		});    	
 
 
- 	   function update() {
-			var msg = "確認是否更新?";
-			if (confirm(msg) == true) {
-				return true;
-			} else {
-				return false;
-			}
-		}
+//  	   function update() {
+// 			var msg = "確認是否更新?";
+// 			if (confirm(msg) == true) {
+// 				return true;
+// 			} else {
+// 				return false;
+// 			}
+// 		}
+ 	   
+ 		function update() {
+			swal({
+					  title: "是否更新座位?",
+					  text: "座位將被更新!",
+					  icon: "warning",
+					  buttons: true,
+					  dangerMode: true,
+					})
+					.then((orderOK) => {
+						  if (orderOK) {
+							  swal("座位數量已更新!", 
+								    	{icon: "success",});  
+							  setTimeout(function(){$("#updateform").submit(); },2000);
+							 			
+						  } else {
+						    swal("操作已取消!");
+						  }
+						});
+	 		
+	 		}
 
 		</script> 
 

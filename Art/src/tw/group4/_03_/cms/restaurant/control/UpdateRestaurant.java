@@ -186,14 +186,14 @@ public class UpdateRestaurant {
 				System.out.println(restaurant.getMonth()+"月"+ restaurant.getDay()+"日");
 			}
 			
-			String restaurantUpdateMsg = year + "年 " + newMonth + "月營業時間表修改成功";
+			String restaurantUpdateMsg = year + "年 " + newMonth + "月營業時間表";
 			m.addAttribute("restaurantUpdateMsg", restaurantUpdateMsg);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			
-			String restaurantUpdateMsg = newMonth + "月營業時間表修改失敗";
-			m.addAttribute("restaurantUpdateMsg", restaurantUpdateMsg); // 回傳錯誤訊息
+			String restaurantErrorMsg = newMonth + "月營業時間表修改失敗";
+			m.addAttribute("restaurantErrorMsg", restaurantErrorMsg); // 回傳錯誤訊息
 		}
 		return "03/cms_restaurant/update_return";
 	}

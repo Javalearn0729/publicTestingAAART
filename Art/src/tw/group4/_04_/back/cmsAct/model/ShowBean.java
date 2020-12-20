@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
@@ -84,44 +85,15 @@ public class ShowBean implements Serializable{
 	@Column(name = "ACT_ENDDATE")
 	private String ACT_ENDDATE;
 	
+	@Column(name = "ACT_POPULARITY")
+	private Integer ACT_POPULARITY;
+	
 	@Column(name = "ACT_PHOTO")
 	@Lob 
 //	@Basic(fetch = FetchType.LAZY)
 	private byte[] ACT_PHOTO;
-
-
-
-//	public ShowBean(int aCT_NO, String aCT_TITLE, int aCT_CATEGORY, String aCT_LOCATION, String aCT_LOCATION_NAME,
-//			String aCT_ON_SALES, String aCT_PRICE, String aCT_TIME, String aCT_ENDTIME, String aCT_MAINUNIT,
-//			String aCT_SHOWUNIT, String aCT_COMMENT, String aCT_DESCRIPTION, String aCT_IMAGE, String aCT_STARTDATE,
-//			String aCT_ENDDATE ) {
-//		
-//		 this.ACT_NO = aCT_NO;
-//		 this.ACT_TITLE = aCT_TITLE;
-//		 this.ACT_CATEGORY = aCT_CATEGORY;
-//		 this.ACT_LOCATION = aCT_LOCATION;
-//		 this.ACT_LOCATION_NAME = aCT_LOCATION_NAME;
-//		 this.ACT_ON_SALES = aCT_ON_SALES;
-//		 this.ACT_PRICE = aCT_PRICE;
-//		 this.ACT_TIME = aCT_TIME;
-//		 this.ACT_ENDTIME = aCT_ENDTIME;
-//		 this.ACT_MAINUNIT = aCT_MAINUNIT;
-//		 this.ACT_SHOWUNIT = aCT_SHOWUNIT;
-//		 this.ACT_COMMENT = aCT_COMMENT;
-//		 this.ACT_DESCRIPTION = aCT_DESCRIPTION;
-//		 this.ACT_IMAGE = aCT_IMAGE;
-//		 this.ACT_STARTDATE = aCT_STARTDATE;
-//		 this.ACT_ENDDATE = aCT_ENDDATE;
-//		
-//	}
-
-	public byte[] getACT_PHOTO() {
-		return ACT_PHOTO;
-	}
-
-	public void setACT_PHOTO(byte[] aCT_PHOTO) {
-		ACT_PHOTO = aCT_PHOTO;
-	}
+	@Transient
+	private String PHOTOBASE64;
 
 	public int getACT_NO() {
 		return ACT_NO;
@@ -251,7 +223,29 @@ public class ShowBean implements Serializable{
 		ACT_ENDDATE = aCT_ENDDATE;
 	}
 
-	
-	
+	public Integer getACT_POPULARITY() {
+		return ACT_POPULARITY;
+	}
 
+	public void setACT_POPULARITY(Integer aCT_POPULARITY) {
+		ACT_POPULARITY = aCT_POPULARITY;
+	}
+
+	public byte[] getACT_PHOTO() {
+		return ACT_PHOTO;
+	}
+
+	public void setACT_PHOTO(byte[] aCT_PHOTO) {
+		ACT_PHOTO = aCT_PHOTO;
+	}
+
+	public String getPHOTOBASE64() {
+		return PHOTOBASE64;
+	}
+
+	public void setPHOTOBASE64(String pHOTOBASE64) {
+		PHOTOBASE64 = pHOTOBASE64;
+	}
+	
+	
 }

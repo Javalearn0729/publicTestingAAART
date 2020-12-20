@@ -66,8 +66,14 @@ public class AOPCheckSessionAndIdentity {
 		
 	}
 	
-//	在@Contoller之下，有映射用註釋的所有方法；但排除@ResponseBody註釋的方法	
-	@Around("controllerClassAnnotation() && !responseBodyAnnotation()")
+//	有@ResponseBody註釋的所有方法
+	@Pointcut("@annotation(org.springframework.messaging.handler.annotation.MessageMapping)")
+	public void messageMappingAnnotation() {
+		
+	}
+	
+//	在@Contoller之下，有映射用註釋的所有方法；但排除@ResponseBody和@MessageMapping註釋的方法	
+	@Around("controllerClassAnnotation() && !responseBodyAnnotation() && !messageMappingAnnotation()")
 	public Object returnUrlValueAroundAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 		
 		System.out.println("<<<------------@Around Advice 前面開始分隔線------------>>>");

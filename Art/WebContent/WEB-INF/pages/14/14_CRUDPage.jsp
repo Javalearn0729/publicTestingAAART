@@ -89,14 +89,10 @@ function reconfirmOrder(pid,page){
 		<!-- Begin Page Content -->
 		<div class="container-fluid">
 
-			
-			<h1 class="h3 mb-2 text-gray-800">商品編輯頁面</h1>
-			<p class="mb-4">
-				想學習如何使用，請訪問 <a target="_blank" href="https://datatables.net">official
-					DataTables documentation</a>.
-			</p>
 
-			
+			<h1 class="h3 mb-2 text-gray-800">商品編輯頁面</h1>
+
+
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
 					<h6 class="m-0 font-weight-bold text-primary">得意洋行商品一覽</h6>
@@ -185,7 +181,7 @@ function reconfirmOrder(pid,page){
 					<!-- 					</div> -->
 
 
-<script>
+					<script>
 $(document).ready( function () {
     $('#dataTable').DataTable({
     	language: {

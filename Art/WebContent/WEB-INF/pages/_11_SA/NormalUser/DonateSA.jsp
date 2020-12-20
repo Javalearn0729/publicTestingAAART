@@ -24,14 +24,6 @@
 	</div>
 </section>
 <!-- 黑底終點 -->
-<div>
-<form action="searchSA2.ctrl">
-	<span style="text-align: center;display: block;">
-		<input type="text" name="name">
-		<input type="submit" value="搜尋（樂器或分類）">
-	</span>
-</form>
-</div>
 <h1 style="filter: glow(color=#3366FF,strength=3); height:10px; color:blue; padding:1px;font-style:oblique;text-align: center;">
 	地方街頭藝人<u> ${userView.name_SA } </u>需要您的支持與鼓勵
 </h1>
@@ -45,7 +37,7 @@
 			<td>斗內：</td>
 			<td>
 				<input type="hidden" value="${userView.id_SA }" name="id_SA">
-				<input type="text" name="sal" placeholder="請輸入金額">
+				<input type="text" name="sal" placeholder="請輸入金額">元（新台幣）
 			</td>
 		</tr>
 		<tr>

@@ -55,13 +55,13 @@ public class CourseCartCo {
 
 	// 3.將購物項目刪除
 	public int deleteCart(String coId) {
-		System.out.println("前往刪除");
+		System.out.println("前往刪除課程");
 		if (cart.get(coId) != null) {
-			System.out.println("找到");
+			System.out.println("找到目標課程");
 			cart.remove(coId);
 			return 1;
 		} else {
-			System.out.println("沒找到");
+			System.out.println("未找到目標課程");
 			return 0;
 		}
 	}
@@ -80,17 +80,7 @@ public class CourseCartCo {
 	}
 
 	
-//	// 5.清空購物車
-//	private double total;
-//
-//	public double getTotal() {
-//		return total;
-//	}
-//
-//	public void clearCart() {
-//		cart.clear();
-//		total = 0;
-//	}
+
 	
 	
 	

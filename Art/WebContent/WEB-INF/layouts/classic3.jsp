@@ -35,6 +35,9 @@
 <!-- jQuery CDN minifid-->
 <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> -->
 
+<!-- sweetAlert CDN -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <!-- 特殊字體、Icon Kit-->
 <script src="https://kit.fontawesome.com/23f780069c.js"
 	crossorigin="anonymous"></script>
@@ -95,5 +98,8 @@ html {
 	<!-- table -->
 	<script type="text/javascript" charset="utf8"
 		src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+
+
 </body>
 </html>

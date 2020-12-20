@@ -2,7 +2,11 @@ package tw.group4._11_.model;
 
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,6 +14,8 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
+
+import tw.group4._35_.login.model.WebsiteMember;
 
 
 @Repository("UserSADao")
@@ -134,6 +140,18 @@ public class UserSADao {
 		return result;
 	}
 	
+	public DonateRecordBean insert(DonateRecordBean uBean) {
+		Session session = sessionFactory.getCurrentSession();
+		session.save(uBean);
+		return uBean;
+	}
+	
+	public UserSABean selectById(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		UserSABean uBean = session.get(UserSABean.class, id);
+		return uBean;
+	}
+	
 	public List<UserSABean> search(String word){
 		String sss = "%"+word+"%";
 		
@@ -143,6 +161,79 @@ public class UserSADao {
 		query.setParameter(1, sss);
 		List<UserSABean> list = query.list();
 		return list;
+	}
+	
+	public List<UserSABean> search3(String country, String classification, String theme){
+		
+		Session session = sessionFactory.getCurrentSession();
+		String nullString = null;
+		
+		if (country.equals("*")) {
+			if (classification.equals("*")) {
+				if (theme.equals(nullString)) {
+					Query<UserSABean> query = session.createQuery("FROM UserSABean Order by ID_SA",UserSABean.class);
+					List<UserSABean> list = query.list();
+					return list;
+				} else {
+					String c = "%" + theme + "%";
+					Query<UserSABean> query = session.createQuery("FROM UserSABean WHERE theme_SA like ?0 Order by ID_SA",UserSABean.class);
+					query.setParameter(0, c);
+					List<UserSABean> list = query.list();
+					return list;
+				}
+			} else {
+				String b = "%" + classification + "%";
+				if (theme.equals(nullString)) {
+					Query<UserSABean> query = session.createQuery("FROM UserSABean WHERE classification_SA like ?0 Order by ID_SA",UserSABean.class);
+					query.setParameter(0, b);
+					List<UserSABean> list = query.list();
+					return list;
+				} else {
+					String c = "%" + theme + "%";
+					Query<UserSABean> query = session.createQuery("FROM UserSABean WHERE theme_SA like ?0 And classification_SA like ?1 Order by ID_SA",UserSABean.class);
+					query.setParameter(0, c);
+					query.setParameter(1, b);
+					List<UserSABean> list = query.list();
+					return list;
+				}
+			}
+		}else {
+			String a = "%" + country + "%";	
+			if (classification.equals("*")) {
+				if (theme.equals(nullString)) {
+					Query<UserSABean> query = session.createQuery("FROM UserSABean WHERE country_SA like ?0 Order by ID_SA",UserSABean.class);
+					query.setParameter(0, a);
+					System.out.println(a);
+					List<UserSABean> list = query.list();
+					return list;
+				} else {
+					String c = "%" + theme + "%";
+					System.out.println(a+c);
+					Query<UserSABean> query = session.createQuery("FROM UserSABean WHERE theme_SA like ?0 And country_SA like ?1 Order by ID_SA",UserSABean.class);
+					query.setParameter(0, c);
+					query.setParameter(1, a);
+					List<UserSABean> list = query.list();
+					return list;
+				}
+			} else {
+				String b = "%" + classification + "%";
+				if (theme.equals(nullString)) {
+					Query<UserSABean> query = session.createQuery("FROM UserSABean WHERE classification_SA like ?0 And country_SA like ?1 Order by ID_SA",UserSABean.class);
+					query.setParameter(0, b);
+					query.setParameter(1, a);
+					List<UserSABean> list = query.list();
+					return list;
+				} else {
+					String c = "%" + theme + "%";
+					Query<UserSABean> query = session.createQuery("FROM UserSABean WHERE theme_SA like ?0 And classification_SA like ?1 And country_SA like ?2 Order by ID_SA",UserSABean.class);
+					query.setParameter(0, c);
+					query.setParameter(1, b);
+					query.setParameter(2, a);
+					List<UserSABean> list = query.list();
+					return list;
+				}
+			}
+		}
 	}
 	
 	public List<UserSABean> searchID(int id){
@@ -163,5 +254,21 @@ public class UserSADao {
 			result.setSal_SA(a);
 		} 
 		return result;
+	}
+
+	public List<DonateRecordBean> showList(String name) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<DonateRecordBean> query = session.createQuery("From DonateRecordBean Where name_user =?0 ",DonateRecordBean.class);
+		query.setParameter(0, name);
+		List<DonateRecordBean> list = query.list();
+		return list;
+	}
+	
+	public List<DonateRecordBean> showAllDonateRecord(){
+		Session session = sessionFactory.getCurrentSession();
+		Query<DonateRecordBean> query = session.createQuery("From DonateRecordBean", DonateRecordBean.class);
+		
+		List<DonateRecordBean> list = query.list();
+		return list;
 	}
 }

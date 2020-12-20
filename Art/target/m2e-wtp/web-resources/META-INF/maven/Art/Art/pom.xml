@@ -313,6 +313,50 @@
 			<artifactId>guava</artifactId>
 			<version>30.0-android</version>
 		</dependency>
+		<!-- websocket -->
+		<!-- <dependency> -->
+		<!-- <groupId>javax.websocket</groupId> -->
+		<!-- <artifactId>javax.websocket-api</artifactId> -->
+		<!-- <version>1.1</version> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>5.2.9.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-messaging</artifactId>
+			<version>5.2.9.RELEASE</version>
+		</dependency>
+		<!-- websocket前端畫面 -->
+		<!-- 首先是讓spring自動尋找webjar資料夾的dependency -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>webjars-locator</artifactId>
+			<version>0.40</version>
+		</dependency>
+		<!-- 再來是前端畫面依賴的dependency -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>sockjs-client</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>stomp-websocket</artifactId>
+			<version>2.3.3-1</version>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.webjars</groupId> -->
+<!-- 			<artifactId>bootstrap</artifactId> -->
+<!-- 			<version>4.5.3</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.webjars.bower</groupId> -->
+<!-- 			<artifactId>jquery</artifactId> -->
+<!-- 			<version>3.5.1</version> -->
+<!-- 		</dependency> -->
 	</dependencies>
 
 	<build>

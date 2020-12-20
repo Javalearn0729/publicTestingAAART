@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
@@ -27,6 +28,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 
 import tw.group4._14_.back.ARTProduct;
+import tw.group4._14_.back.Alerts;
+import tw.group4._14_.back.dao.AlertsService;
 import tw.group4._14_.back.dao.ProductBeanDAOService;
 import tw.group4._14_.front.model.MBRecordBean;
 import tw.group4._14_.front.model.MessageBoardAP;
@@ -53,6 +56,9 @@ public class MessageBoardController {
 	private MBRecordDAOService mbrService;
 
 	@Autowired
+	public AlertsService altService;
+	
+	@Autowired
 	private MBRecordUtil util;
 
 	@Autowired
@@ -69,11 +75,28 @@ public class MessageBoardController {
 		return list;
 
 	}
+	
+	@Hibernate
+	@RequestMapping(path = "/14/editMessage")
+	@ResponseBody
+	public List<MessageBoardAP> editMessage(@RequestParam(name = "apid") int apid, @RequestParam(name = "mbid") int mbid, @RequestParam(name = "content") String content ) {
+
+		MessageBoardAP selectMessage = mbService.selectMessage(mbid);
+		selectMessage.setContent(content);
+		mbService.updateMessage(selectMessage);
+		
+		List<MessageBoardAP> list = mbService.selectPdBoardAPs(apid);
+		
+		return list;
+
+	}
+	
+	
 	@Hibernate
 	@RequestMapping(path = "/14/saveMessage/{apid}.ctrl")
 	@ResponseBody
 	public String saveMessage(@PathVariable(name = "apid") int apid, HttpSession session,
-			@RequestParam(name = "name") String name,
+			@RequestParam(name = "name") String name, @RequestParam(name = "title") String title,
 			@RequestParam(name = "subjectAP", required = false) String subjectAP,
 			@RequestParam(name = "editor") String content, @RequestParam(name = "rate", required = false) int rate) {
 
@@ -82,7 +105,6 @@ public class MessageBoardController {
 		Date today = new Date();
 		MessageBoardAP mbAP = new MessageBoardAP();
 
-		System.out.println("aaaaaaaaaaaaaa=" + content);
 //		WebsiteMember member = wmService.selectById(memberID);
 //		Blob memberPic = member.getMemberPic();
 //		byte[] memberPicByte = null;
@@ -96,10 +118,12 @@ public class MessageBoardController {
 		mbAP.setApId(apid);
 		mbAP.setContent(content);
 		mbAP.setMemberId(Integer.toString(memberID));
-		mbAP.setSubjectAP("/Art/14/getBlobImageMessage/" + memberID + "/.ctrl");
+		mbAP.setSubjectAP(ctx.getContextPath()+"/14/getBlobImageMessage/" + memberID + "/.ctrl");
 		mbAP.setScore(rate); // 忘記為什麼反正要減1，不要減1
-		mbAP.setScoreString("/Art/14/getStarImageMB/" + rate + ".ctrl");
+		mbAP.setScoreString(ctx.getContextPath()+"/14/getStarImageMB/" + rate + ".ctrl");
 		mbAP.setTime(today);
+		mbAP.setTitle(title);
+		mbAP.setFakename(name);
 
 		mbService.insert(mbAP);
 
@@ -250,6 +274,39 @@ public class MessageBoardController {
 			return mid;
 
 		}
+
+	}
+	
+	@Hibernate
+	@RequestMapping(path = "/14/reportMessage/{issueId}")
+	@ResponseBody
+	public String reportMessage(HttpSession session, @PathVariable(name = "issueId") int issueId) {
+		WebsiteMember mb = (WebsiteMember) session.getAttribute("member");
+		if (mb == null) {
+			return "redirect:/35/loginEntry";
+			// TODO 記得設定登入完後跳轉回來
+		}
+
+//			String link = "/Art/14/MbOrderListSelect.ctrl?orderListID="+issueId;
+		String link = "";
+		String icon = "far fa-comment-dots text-white"; // 設定 alters 的 icon 樣式
+		String type = "icon-circle bg-danger"; // 設定 icon 樣式背景色
+		String contentAC = "會員" + mb.getRealName() + "檢舉了一則留言"; // 設定在 alerts 顯示的一行字訊息
+		int id = issueId;
+
+		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); // 設定 alerts 訊息時間
+		Date today = new Date();
+		String time = sdFormat.format(today);
+
+		Alerts al = new Alerts(mb.getId(), mb.getRealName(), link, icon, time, type, "留言檢舉", id, contentAC, "請審查這則留言",
+				1);
+
+		altService.insert(al);
+		link = ctx.getContextPath() + "/14/ShowCustomerIssue?alertNo=" + al.getAleartNo(); // 設定 alerts 導向之通知中心路徑
+		al.setLink(link);
+		altService.update(al);
+
+		return "success";
 
 	}
 }

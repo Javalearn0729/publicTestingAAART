@@ -66,6 +66,7 @@ public class OrderlistCtrl {
 				map.put("TICKETCATEGORY", orderlistBean.getTICKETCATEGORY());
 				map.put("TICKET_NUM", orderlistBean.getTICKET_NUM());
 				map.put("TOTALPRICE", orderlistBean.getTOTALPRICE());
+				map.put("STATUS", orderlistBean.getSTATUS());
 				
 				//將SeatString轉回STring[]
 				String seatString = orderlistBean.getSeatstring();
