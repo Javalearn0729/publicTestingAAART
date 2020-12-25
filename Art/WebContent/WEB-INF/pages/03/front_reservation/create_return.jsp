@@ -17,6 +17,13 @@
 	font-weight: 800;
 	color: rgb(203, 64, 66);
 }
+
+.wrapper-restaurant {
+	width: 330px;
+	height: 200px;
+	overflow: hidden;
+	margin: 0 auto;
+}
 </style>
 
 </head>
@@ -42,26 +49,28 @@
 	<div class="container">
 		<br>
 		<div class=title>
-			<h2 align="center" style="margin-top: 20px;">得藝食堂線上訂位</h2>
+			<h1 align="center" style="margin-top: 20px;">得藝食堂線上訂位</h1>
 		</div>
 		<br>
 		<c:if test="${reservationCreateMsg != null}">
 			<div class=title>
-				<h2 align="center"
-					style="margin-top: 20px; margin-bottom: 30px; color: rgb(203, 64, 66)">訂位已完成</h2>
-				<br>
-				<div align="center">
-					<h4>
-						<span class="rs-symbol-color"></span>將於10秒後自動前往 食堂訂位紀錄
-					</h4>
-				</div>
+				<h1 align="center"
+					style="margin-top: 20px; margin-bottom: 30px; color: rgb(203, 64, 66)">訂位已完成</h1>
 				<br>
 				<div class="submitButton" align="center" style="font-size: larger">
 					<form method="get"
 						action="<c:url value = "/03/front/reservation/myReservation.ctrl"/>">
-						<input class="genric-btn primary radius" type="submit"
-							name="submit" value="查看食堂訂位紀錄">
+						<input type="submit" style="font-size: 24px; font-weight: bold;"
+							class="genric-btn primary-border radius" name="submit"
+							value="查看食堂訂位紀錄">
 					</form>
+				</div>
+				<br>
+				<div align="center" style="margin-top: 35px;">
+					<h3>
+						<span class="rs-symbol-color"></span>將於&nbsp;10秒後自動前往 <span
+							style="color: rgb(203, 64, 66);">食堂訂位紀錄</span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					</h3>
 				</div>
 				<br>
 				<h3 align="center" style="margin-top: 20px;">
@@ -124,12 +133,12 @@
 </body>
 <!-- ====================================================== -->
 <script>
-	//計時器
-	timer = setTimeout('redirect()', 5 * 1000);
+		//計時器
+		timer = setTimeout('redirect()', 5 * 1000);
 
-	function redirect() {
-		//指定跳轉頁面
-		window.location.href = "<c:url value = '/03/front/reservation/myReservation.ctrl'/>";
-	}
+		function redirect() {
+			//指定跳轉頁面
+			window.location.href = "<c:url value = '/03/front/reservation/myReservation.ctrl'/>";
+		}
 </script>
 </html>

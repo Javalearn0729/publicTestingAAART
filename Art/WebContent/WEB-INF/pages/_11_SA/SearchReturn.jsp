@@ -27,8 +27,8 @@ $(document).ready( function () {
 } );
 </script>
 </head>
-<div>
-	<span> 
+<div align="center">
+	<span style="border: outset; background-color: rgb(239, 243, 11);margin: 1px;" > 
 		<a href="GoCreate.ctrl">新增</a>&nbsp;&nbsp; 
 		<a href="GoDel.ctrl">刪除</a>&nbsp;&nbsp;
 		<a href="GoSearch.ctrl">查詢</a>&nbsp;&nbsp; 
@@ -56,16 +56,39 @@ $(document).ready( function () {
 				<td>${reSearchSA.theme_SA }</td>
 				<td>${reSearchSA.classification_SA }</td>
 				<td>
-					<form action="delSearch.ctrl" method="POST">
+					<form action="delSearch.ctrl" method="POST" id="dataSA">
 						<input type="hidden" value="${reSearchSA.id_SA}"  name="id_SA"/>
-						<input type="submit" value="刪除" id="button-1"/>
 					</form>
+					<input type="button" id="submit" class="btn btn-outline-info" value="刪除" onclick="return deleteSA()">
+					
 					<form action="fixSA.ctrl" method="POST">
 						<input type="hidden" value="${reSearchSA.id_SA}"  name="id_SA"/>
-						<input type="submit" value="修改" id="button-2"/>
+						<input type="submit" class="btn btn-outline-info" value="修改" id="button-2"/>
 					</form>
 				</td>
 			</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	<script>
+	function deleteSA() {
+		swal({
+				  title: "是否確認刪除?",
+				  text: "刪除前最後確認!",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((orderOK) => {
+					  if (orderOK) {
+						  swal("刪除藝人成功!", 
+							    	{icon: "success",});  
+						  setTimeout(function(){$("#dataSA").submit(); });
+						 			
+					  } else {
+					    swal("操作已取消!");
+					  }
+					});
+			
+			}
+	</script>

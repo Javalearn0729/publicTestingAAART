@@ -25,7 +25,15 @@ public class IndexDaoImpl {
 	public List<ARTProduct> selectShopHot() {
 		Session session = sessionFactory.getCurrentSession();
 		Query<ARTProduct> query = session.createQuery("From ARTProduct ap ORDER BY ap.productScore DESC", ARTProduct.class);
-		query.setMaxResults(4);
+		query.setMaxResults(3);
+		List<ARTProduct> list = query.list();
+		return list;
+	}
+	
+	public List<ARTProduct> selectShopHomeHot() {
+		Session session = sessionFactory.getCurrentSession();
+		Query<ARTProduct> query = session.createQuery("From ARTProduct ap ORDER BY ap.productScore DESC where ap.productType='cook' ", ARTProduct.class);
+		query.setMaxResults(3);
 		List<ARTProduct> list = query.list();
 		return list;
 	}

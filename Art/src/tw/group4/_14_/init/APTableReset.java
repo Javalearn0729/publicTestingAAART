@@ -117,8 +117,8 @@ public class APTableReset {
 				BufferedReader br = new BufferedReader(isr);) {
 				con.setAutoCommit(false);
 				String jdbc_insert_sql = "INSERT INTO Artproduct " + 
-				" (aptitle,  aptype, apprice, apimg, apdes, apnum, apimgblob, apscore, aprater) "
-						+ " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				" (aptitle,  aptype, apprice, apimg, apdes, apnum, apimgblob, apscore, aprater, apmessage) "
+						+ " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 				try (PreparedStatement pstmt = con.prepareStatement(jdbc_insert_sql);) {
 
@@ -165,6 +165,7 @@ public class APTableReset {
 							
 						pstmt.setInt(8, 1);
 						pstmt.setInt(9, 1);
+						pstmt.setInt(10, 0);
 						
 						pstmt.addBatch();
 						pstmt.executeBatch();

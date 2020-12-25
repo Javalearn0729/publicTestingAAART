@@ -29,6 +29,9 @@ public class ARTProduct implements Serializable{
 	@Column(name = "APTYPE")
 	private String productType;
 	
+	@Column(name = "APSUBTYPE")
+	private String productSubType;
+	
 	@Column(name = "APPRICE")
 	private String productPrice;
 	
@@ -50,6 +53,9 @@ public class ARTProduct implements Serializable{
 	@Column(name = "APRATER")
 	private Integer productRater;
 	
+	@Column(name = "APMESSAGE")
+	private int productMessage;
+	
 	public ARTProduct() {
 
 	}
@@ -70,6 +76,30 @@ public class ARTProduct implements Serializable{
 	}
 
 
+
+
+
+	public int getProductMessage() {
+		return productMessage;
+	}
+
+
+
+	public void setProductMessage(int productMessage) {
+		this.productMessage = productMessage;
+	}
+
+
+
+	public String getProductSubType() {
+		return productSubType;
+	}
+
+
+
+	public void setProductSubType(String productSubType) {
+		this.productSubType = productSubType;
+	}
 
 
 

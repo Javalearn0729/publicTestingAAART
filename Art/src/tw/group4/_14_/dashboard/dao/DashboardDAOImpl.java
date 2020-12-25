@@ -126,5 +126,38 @@ public class DashboardDAOImpl {
 		Long totaLong = (Long) createQuery.uniqueResult();
 		return totaLong;
 	}
+	
+	//查詢餐廳預約總筆數
+	public Long sumRestaurantOrder() {
+		Session session = sessionFactory.getCurrentSession();
+		String sql = "SELECT COUNT(1) FROM ShopReservationBean";
+		Query createQuery = session.createQuery(sql);
+		Long count = (Long) createQuery.uniqueResult();
+		return count;
+	}
+
+	
+	
+	// 查詢餐廳大人總金額
+		public Long sumRestaurantAdTotal() {
+			Session session = sessionFactory.getCurrentSession();
+			String sql = "SELECT SUM(cr.adultsNum) From ShopReservationBean cr";
+			Query createQuery = session.createQuery(sql);
+			Long adultLong = (Long) createQuery.uniqueResult();
+
+//			Long totaLong = adultLong * 650;
+			return adultLong;
+		}
+
+		// 查詢餐廳小孩總金額
+		public Long sumRestaurantChTotal() {
+			Session session = sessionFactory.getCurrentSession();
+			String sql = "SELECT SUM(cr.childrenNum) From ShopReservationBean cr";
+			Query createQuery = session.createQuery(sql);
+			Long childrenLong = (Long) createQuery.uniqueResult();
+
+//			Long totaLong = childrenLong * 350;
+			return childrenLong;
+		}
 
 }

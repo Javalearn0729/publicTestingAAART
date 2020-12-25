@@ -24,4 +24,7 @@ public class IndexDaoService {
 		return indexDao.selectShopHot();
 		
 	}
+	public List<ARTProduct> selectShopHomeHot() {
+		return indexDao.selectShopHomeHot();
+	}
 }

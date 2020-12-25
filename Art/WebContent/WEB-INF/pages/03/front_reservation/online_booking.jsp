@@ -60,7 +60,7 @@
 	<div style="margin-left: 100px; margin-right: 100px;">
 		<br>
 		<div class=title>
-			<h2 align="center" style="margin-top: 20px; margin-bottom: 40px;">得藝食堂</h2>
+			<h1 align="center" style="margin-top: 20px; margin-bottom: 40px;">得藝食堂</h1>
 		</div>
 		<div
 			style="line-height: 30px; margin-left: 225px; margin-bottom: 35px;">
@@ -98,7 +98,7 @@
 						<a
 							href="<c:url value="/03/front/reservation/chooseNumberAndDate"/>"
 							class="genric-btn primary-border circle arrow"><span
-							style="font-size: large; font-weight: bold;">立即預約</span> <span
+							style="font-size: large; font-weight: bold;">立即訂位</span> <span
 							class="lnr lnr-arrow-right"></span></a>
 					</div>
 					<br>
@@ -109,7 +109,7 @@
 								<th scope="col">
 									<div class="custom-button" align="left"
 										style="font-size: 21px; font-weight: bold; padding-bottom: 20px;">
-										<h2 style="color: #1B9AAA;">&emsp;&emsp;收費標準&nbsp;</h2>
+										<h2 style="color: #1B9AAA;">&emsp;&emsp;用餐價格&nbsp;</h2>
 									</div>
 									<div style="padding-bottom: 30px;">
 										<h3>
@@ -152,7 +152,7 @@
 								<th scope="col">
 									<div class="custom-button" align="left"
 										style="font-size: 21px; font-weight: bold; padding-bottom: 20px;">
-										<h2 style="color: #1B9AAA;">&emsp;&emsp;計價方式&nbsp;</h2>
+										<h2 style="color: #1B9AAA;">&emsp;&emsp;收費標準&nbsp;</h2>
 									</div>
 									<h3>130公分以上&nbsp;&nbsp;以大人價格計算</h3> <br>
 									<h3>100公分以上&nbsp;&nbsp;以小孩價格計算</h3> <br>

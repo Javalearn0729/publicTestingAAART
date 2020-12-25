@@ -30,14 +30,14 @@
 <table id="cTableF" class="table table-bordered table-hover" width="100%"
 	cellspacing="0"  style="border:8px">
 <thead style="background-color:MediumSlateBlue; color:white">
-	<tr>
-		<th style="font-size: 24px" rowspan="2">課程圖片</th>
-		<th style="font-size: 24px" rowspan="2">編號</th>
-		<th style="font-size: 24px" rowspan="2">課程名稱</th>
-		<th style="font-size: 24px">人數</th>
-		<th style="font-size: 24px">售價</th>
-		<th style="font-size: 24px" rowspan="2">開課日期</th>
-		<th style="font-size: 24px" rowspan="2">刪除</th>
+	<tr style="font-size: 20px">
+		<th rowspan="2">課程圖片</th>
+		<th rowspan="2">編號</th>
+		<th rowspan="2">課程名稱</th>
+		<th>人數</th>
+		<th>售價</th>
+		<th rowspan="2">開課時間</th>
+		<th rowspan="2">刪除課程</th>
 	</tr>
 	<tr>	
         <th style="font-size: 24px" colspan="2">小計</th>       
@@ -59,26 +59,26 @@ items:Object型別、多元素的集合，數據來源-->
 			<td rowspan="2"><img style='display: block; width: 192px; height: 108px;'
 				src="data:image/jpg;base64, ${orderCo.value.coAct_ImageStr}"></td>
 			<td rowspan="2">${orderCo.value.coId}</td>
-			<td rowspan="2">${orderCo.value.coTitle}</td>
+			<td rowspan="2" style="font-size: 24px;font-weight:bold"><a href="<c:url value='/18/cCourseDetail.ctrl?coId=${orderCo.value.coId}' />"style="color:#1B813E">${orderCo.value.coTitle}</a></td>
 			<td>${orderCo.value.coNum}</td>
 			<td><fmt:formatNumber value="${orderCo.value.coPrice}" type="number" />元</td>
 			<!-- fmt:formatNumber日期、 數字、貨幣格式化
 				type:參數有三種，分別是number(數字)，currency(貨幣)及percent(百分比) -->
-			<td rowspan="2">${orderCo.value.coAct_Date}</td>	
+			<td rowspan="2" >${orderCo.value.coAct_Date}</td>	
 			<td rowspan="2">
 <%-- 			<input type="button" value="刪除本課程" onclick="confirmDelete(${orderCo.value.coId})"> --%>
 <!-- 			↑原本的彈出視窗  ；  SweetAlert↓ -->
-			<button class="genric-btn danger-border circle" onclick="delSAF(${orderCo.value.coId})">刪除課程</button>
+			<button class="genric-btn danger-border circle" onclick="delSAF(${orderCo.value.coId})">刪除</button>
 <%-- 			要有裡面的(${orderCo.value.coId})才能準確抓到coId --%>
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2"><fmt:formatNumber value="${orderCo.value.coNum * orderCo.value.coPrice}"
+			<td colspan="2" style="font-weight:bold"><fmt:formatNumber value="${orderCo.value.coNum * orderCo.value.coPrice}"
 					type="number" />元</td>
 		</tr>
 	</c:forEach>
 	
-	<tr>
+	<tr style="font-size:28px;font-weight:bold">
 	    <td>
 <%-- 	    <input type="button" value="清空購物車" class="genric-btn danger radius large" onclick="confirmDeleteALL(${orderCo.value.coId})"> --%>
 <!-- 			↑原本的彈出視窗  ；  SweetAlert↓   -->
@@ -91,7 +91,7 @@ items:Object型別、多元素的集合，數據來源-->
 		<td colspan="3">
 <%-- 	<a href="<c:url value='/18/SubmitCartCo.ctrl' />" onClick="return Checkout(${carList.subtotal});">送出</a></td> --%>
 <!-- 			↑原本的彈出視窗  ；  SweetAlert↓   -->			
-		<button class="genric-btn success radius" onclick="submitSAF();">送出</button>
+		<button class="genric-btn success radius" onclick="submitSAF();" style="font-size: 20px; color:black; font-weight:bold">送出</button>
 		</td>
     </tr>
 	
@@ -167,7 +167,7 @@ function submitSAF(){
 		.then((value3) => {
 		switch (value3) {
 		case "danger":
-	    	swal("成功送出","", "success")
+	    	swal("成功送出","請前往填寫詳細資訊", "success")
 	    	setTimeout(function(){window.location="<c:url value='/18/SubmitCartCo.ctrl'/>" ; },2000);
 	        break;
 	      case "不是":

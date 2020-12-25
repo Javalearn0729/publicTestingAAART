@@ -212,7 +212,7 @@ public class Register {
 		String passwordEncoded = GlobalService.getMD5Endocing(GlobalService.encryptString(member.getPassword()));
 
 		WebsiteMember memberRegisterInfo = new WebsiteMember(member.getName(), passwordEncoded, member.getRealName(),
-				member.getAddress(), member.getEmail(), member.getTel(), "user", blob, "", now, 10000.0, "valid");
+				member.getAddress(), member.getEmail(), member.getTel(), "user", blob, "none", now, 10000.0, 0, 0, 0, "valid");
 		wmService.insert(memberRegisterInfo);
 
 //		如果執行到此，代表註冊成功

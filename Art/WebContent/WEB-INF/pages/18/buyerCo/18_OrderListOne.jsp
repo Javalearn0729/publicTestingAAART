@@ -11,27 +11,23 @@
 			<div class="about-content col-lg-12">
 				<h1 class="text-white">訂單</h1>
 				<p class="text-white link-nav">
-					<a href="index.html">首頁</a>
-				    <span class="lnr lnr-arrow-right"></span>
-					<a href="<c:url value='/18/cSelectAllFront.ctrl' />">課程總覽</a>
+					<a href="index.html">首頁</a> 
 					<span class="lnr lnr-arrow-right"></span>
-					<a href="<c:url value='/18/toCoCart.ctrl' />">購物車</a> 
-						<span class="lnr lnr-arrow-right"></span> <a
-						href="<c:url value='/18/coOrderList.ctrl' />">訂單一覽</a>
+					<a href="<c:url value='/18/coOrderList.ctrl' />">訂單一覽</a>
 					<span class="lnr lnr-arrow-right"></span>
-					<span>單筆訂單</span>
+					<a href="<c:url value='/18/coOrderListOne.ctrl?orderNoCo=${cooo.orderNoCo}' />">單筆訂單</a>
 				</p>
 			</div>
 		</div>
 	</div>
 </section>
 <!-- End banner Area -->
+<div class="container" style="font-size:20px">
+<div style="text-align:center;font-size:48px;font-weight:bold;color:#51A8DD;margin:30px">單筆訂單</div>
 
-
-<table class="table table-bordered">
-<tr><th colspan="6" align="center">單筆訂單</th></tr>
+<table class="table table-bordered" style="border:2px solid">
 <tr>
-<td colspan="6">
+<td colspan="7">
 <table>
 <tr>
   <td>訂單編號：${cooo.orderNoCo}</td>
@@ -41,37 +37,37 @@
 </table>
 </td>
 </tr>
-<tr>
-            <th id='borderA' width="50px" align="center"></th>
-			<th id='borderA' width="100px" align="center">課程名稱</th>
-			<th id='borderA' width="100px" align="center">開課日期</th>
-			<th id='borderA' width="100px" align="center">開課時間</th>
-			<th id='borderA' width="70px" align="center">單價</th>
-			<th id='borderA' width="50px" align="center">數量</th>
-			<th id='borderA' width="100px" align="center">總價</th>
+<tr style="text-align: center">
+            <th id='borderA' width="50px" ></th>
+			<th id='borderA' width="100px">課程名稱</th>
+			<th id='borderA' width="100px">開課日期</th>
+			<th id='borderA' width="100px">開課時間</th>
+			<th id='borderA' width="70px">單價</th>
+			<th id='borderA' width="50px">數量</th>
+			<th id='borderA' width="100px">總價</th>
 </tr>
 		<c:set var="subtotal" value="0" />
 		<c:forEach var="olone" varStatus="stat" items="${cooo.courseOrderItems}"> 
 		<!-- 因為有兩層所以要選到courseOrderItems層
 		cooo.courseOrderItems 在CourseOrderController #130 + CourseOrders #46 -->
-			<tr id='borderA' bgColor="FFFFFF" height='30'>
-				<td id='borderA' align="center">${stat.count}</td>
-				<td id='borderA' align="center">${olone.courseTitle}</td>
-<%-- 				<a href='<c:url value='/18/coOrderListOne.ctrl?coId=${olone.coId}' />'>${orderListCo.courseTitle}</a></td> --%>
-				<td id='borderA' align="center">${olone.courseAct_Date}</td>
-				<td id='borderA' align="center">${olone.courseAct_Time}</td>
-				<td id='borderA' align="center">${olone.coursePrice}</td>
-				<td id='borderA' align="center">${olone.courseNum}</td>
-				<td id='borderA' align="center">${olone.coursePrice * olone.courseNum}</td>
+			<tr id='borderA' bgColor="FFFFFF" height='30' style="text-align: center">
+				<td id='borderA'>${stat.count}</td>
+				<td id='borderA'><a href="<c:url value='/18/cCourseDetail.ctrl?coId=${olone.orderIdCo}' />"style="color:#1B813E;font-weight:bold">${olone.courseTitle}</a></td>
+				<td id='borderA'>${olone.courseAct_Date}</td>
+				<td id='borderA'>${olone.courseAct_Time}</td>
+				<td id='borderA'>${olone.coursePrice}</td>
+				<td id='borderA'>${olone.courseNum}</td>
+				<td id='borderA'>${olone.coursePrice * olone.courseNum}</td>
 				
 				<c:set var="total"
 					value="${ total + olone.coursePrice * olone.courseNum }" />
 			</tr>
 		</c:forEach>
-		<tr height='30'>
-			<TD id='borderA' align="center">&nbsp;</TD>
-			<TD id='borderA' width="60px" align="center" colspan="2"><b>合 計</b></TD>
-			<TD id='borderA' width="100px" align="right" colspan="2">
+		<tr height='30' style="text-align: center;font-weight:bold">
+			<TD id='borderA' colspan="4">&nbsp;</TD>
+			<TD id='borderA' width="60px" colspan="2"><b>合 計</b></TD>
+			<TD id='borderA' width="100px">
 			   <fmt:formatNumber value="${total}" pattern="#,###,###" />元</TD>
 		
 	</TABLE>
+</div>

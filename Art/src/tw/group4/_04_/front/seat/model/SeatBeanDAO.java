@@ -28,6 +28,8 @@ public class SeatBeanDAO {
 	private SeatBean seatBean;
 	@Autowired
 	private SeatBean2 seatBean2;
+	@Autowired
+	private SeatBean3 seatBean3;
 
 //	public SeatBeanDAO() {
 //	
@@ -322,7 +324,7 @@ public class SeatBeanDAO {
 			return SeatMap;
 		}
 		
-		// 查詢  //先將查詢結果放入MAP
+		// 查詢seat3  //先將查詢結果放入MAP
 		public Map<String, Integer> select3(int actno) {
 			Session session = sessionFacory.getCurrentSession();
 			SeatBean3 seatBean =session.get(SeatBean3.class, actno);
@@ -359,6 +361,8 @@ public class SeatBeanDAO {
 			SeatMap.put("M7",seatBean.getM7());
 			SeatMap.put("M8",seatBean.getM8());
 			SeatMap.put("M9",seatBean.getM9());
+			SeatMap.put("M10",seatBean.getM10());
+			SeatMap.put("M11",seatBean.getM11());
 			SeatMap.put("N1",seatBean.getN1());
 			SeatMap.put("N2",seatBean.getN2());
 			SeatMap.put("N3",seatBean.getN3());
@@ -368,8 +372,6 @@ public class SeatBeanDAO {
 			SeatMap.put("N7",seatBean.getN7());
 			SeatMap.put("N8",seatBean.getN8());
 			SeatMap.put("N9",seatBean.getN9());
-			SeatMap.put("N10",seatBean.getN10());
-			SeatMap.put("N11",seatBean.getN11());
 			SeatMap.put("O1",seatBean.getO1());
 			SeatMap.put("O2",seatBean.getO2());
 			SeatMap.put("O3",seatBean.getO3());
@@ -579,7 +581,7 @@ public class SeatBeanDAO {
 
 		Session session = sessionFacory.getCurrentSession();
 		seatBean2= session.get(SeatBean2.class, actno);
-		seatBean2.setSEATNUM(seatnum);
+		seatBean2.setSEAT2NUM(seatnum);
 		seatBean2.setF1(F1);
 		seatBean2.setF2(F2);
 		seatBean2.setF3(F3);
@@ -639,6 +641,165 @@ public class SeatBeanDAO {
 		session.update(seatBean2);
 
 		return seatBean2;
+	}
+	
+	// 修改座位圖3
+	public SeatBean3 update3(
+			 Integer actno,
+			 Integer seatnum,
+			 Integer K1,
+			 Integer K2,
+			 Integer K3,
+			 Integer K4,
+			 Integer K5,
+			 Integer K6,
+			 Integer K7,
+			 Integer K8,
+			 Integer K9,
+			 Integer K10,
+			 Integer K11,
+			 Integer L1,
+			 Integer L2,
+			 Integer L3,
+			 Integer L4,
+			 Integer L5,
+			 Integer L6,
+			 Integer L7,
+			 Integer L8,
+			 Integer L9,
+			 Integer M1,
+			 Integer M2,
+			 Integer M3,
+			 Integer M4,
+			 Integer M5,
+			 Integer M6,
+			 Integer M7,
+			 Integer M8,
+			 Integer M9,
+			 Integer M10,
+			 Integer M11,
+			 Integer N1,
+			 Integer N2,
+			 Integer N3,
+			 Integer N4,
+			 Integer N5,
+			 Integer N6,
+			 Integer N7,
+			 Integer N8,
+			 Integer N9,
+			 Integer O1,
+			 Integer O2,
+			 Integer O3,
+			 Integer O4,
+			 Integer O5,
+			 Integer O6,
+			 Integer O7,
+			 Integer O8,
+			 Integer O9,
+			 Integer O10,
+			 Integer P1,
+			 Integer P2,
+			 Integer P3,
+			 Integer P4,
+			 Integer P5,
+			 Integer P6,
+			 Integer P7,
+			 Integer P8,
+			 Integer P9,
+			 Integer P10,
+			 Integer Q1,
+			 Integer Q2,
+			 Integer Q3,
+			 Integer Q4,
+			 Integer Q5,
+			 Integer Q6
+			 ) {
+
+		Session session = sessionFacory.getCurrentSession();
+		seatBean3= session.get(SeatBean3.class, actno);
+		seatBean3.setSEAT3NUM(seatnum);
+		seatBean3.setK1(K1);
+		seatBean3.setK2(K2);
+		seatBean3.setK3(K3);
+		seatBean3.setK4(K4);
+		seatBean3.setK5(K5);
+		seatBean3.setK6(K6);
+		seatBean3.setK7(K7);
+		seatBean3.setK8(K8);
+		seatBean3.setK9(K9);
+
+		
+		seatBean3.setL1(L1);
+		seatBean3.setL2(L2);
+		seatBean3.setL3(L3);
+		seatBean3.setL4(L4);
+		seatBean3.setL5(L5);
+		seatBean3.setL6(L6);
+		seatBean3.setL7(L7);
+		seatBean3.setL8(L8);
+		seatBean3.setL9(L9);
+		seatBean3.setL9(L9);
+		seatBean3.setL9(L9);
+
+
+		seatBean3.setM1(M1);
+		seatBean3.setM2(M2);
+		seatBean3.setM3(M3);
+		seatBean3.setM4(M4);
+		seatBean3.setM5(M5);
+		seatBean3.setM6(M6);
+		seatBean3.setM7(M7);
+		seatBean3.setM8(M8);
+		seatBean3.setM9(M9);
+		seatBean3.setM10(M10);
+		seatBean3.setM10(M10);
+		seatBean3.setM10(M10);
+
+		seatBean3.setN1(N1);
+		seatBean3.setN2(N2);
+		seatBean3.setN3(N3);
+		seatBean3.setN4(N4);
+		seatBean3.setN5(N5);
+		seatBean3.setN6(N6);
+		seatBean3.setN7(N7);
+		seatBean3.setN8(N8);
+		seatBean3.setN9(N9);
+
+
+		seatBean3.setO1(O1);
+		seatBean3.setO2(O2);
+		seatBean3.setO3(O3);
+		seatBean3.setO4(O4);
+		seatBean3.setO5(O5);
+		seatBean3.setO6(O6);
+		seatBean3.setO7(O7);
+		seatBean3.setO8(O8);
+		seatBean3.setO9(O9);
+		seatBean3.setO10(O10);
+		
+		seatBean3.setP1(P1);
+		seatBean3.setP2(P2);
+		seatBean3.setP3(P3);
+		seatBean3.setP4(P4);
+		seatBean3.setP5(P5);
+		seatBean3.setP6(P6);
+		seatBean3.setP7(P7);
+		seatBean3.setP8(P8);
+		seatBean3.setP9(P9);
+		seatBean3.setP10(P10);
+		
+		seatBean3.setQ1(Q1);
+		seatBean3.setQ2(Q2);
+		seatBean3.setQ3(Q3);
+		seatBean3.setQ4(Q4);
+		seatBean3.setQ5(Q5);
+		seatBean3.setQ6(Q6);
+		
+		
+		
+		session.update(seatBean3);
+
+		return seatBean3;
 	}
 	
 	public SeatBean updateSeatnum(

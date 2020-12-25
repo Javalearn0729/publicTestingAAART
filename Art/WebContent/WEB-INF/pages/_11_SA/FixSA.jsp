@@ -12,15 +12,15 @@ $(document).ready( function () {
 } );
 </script>
 </head>
-<div>
-	<span> 
+<div align="center">
+	<span style="border: outset; background-color: rgb(239, 243, 11);margin: 1px;" > 
 		<a href="GoCreate.ctrl">新增</a>&nbsp;&nbsp; 
 		<a href="GoDel.ctrl">刪除</a>&nbsp;&nbsp;
 		<a href="GoSearch.ctrl">查詢</a>&nbsp;&nbsp; 
 		<a href="myStreetArtistPage.ctrl">總覽</a>
 	</span>
 </div>
-	<table id="table_11" class="display">
+	<table id="table_11" class="display" style="background-color: rgb(73, 229, 240);border-radius: 25px;margin-top: 10px;">
 		<thead>
 			<tr>
 				<th>欲修改欄位</th>
@@ -61,7 +61,7 @@ $(document).ready( function () {
 				<th>表演項目</th>
 				<th>分類</th>
 			</tr>
-		<form action="fixingSA.ctrl" method="post">
+			<form action="fixingSA.ctrl" method="post" id="fixData">
 			<tr>
 				<c:forEach var="reFixSA" varStatus="stat" items="${WantToFix}">
 					<td>${reFixSA.id_SA }
@@ -103,10 +103,32 @@ $(document).ready( function () {
 						</select>
 					</td>
 			</tr>
+			</form>
 			<tr>
-				<td colspan="5" align="center"><input type="submit" name="submit" value="確認修改">
+				<button class="btn btn-outline-info" onclick="return fix()" id="submit">確認修改</button>
 			</tr>
-		</form>
 		</tbody>
 	</table>
+<script>
+function fix() {
+	swal({
+			  title: "是否確認修改?",
+			  text: "修改前最後確認!",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((orderOK) => {
+				  if (orderOK) {
+					  swal("成功修改藝人資訊!", 
+						    	{icon: "success",});  
+					  setTimeout(function(){$("#fixData").submit(); });
+					 			
+				  } else {
+				    swal("操作已取消!");
+				  }
+				});
+		
+		}
+</script>
 </html>

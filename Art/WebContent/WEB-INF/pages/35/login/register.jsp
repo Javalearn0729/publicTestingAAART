@@ -144,7 +144,7 @@ fieldset {
 		oneKey.addEventListener("click", () => {
 			document.getElementById("pwd").value="Do!ng123";
 			document.getElementById("pwdSecond").value="Do!ng123";
-			document.getElementById("realName").value="權艾力克斯";
+			document.getElementById("realName").value="克里斯多福諾蘭";
 			document.getElementById("address").value="新北市汐止區新台五路一號2樓";
 			document.getElementById("tel").value="0981554887";
 		});

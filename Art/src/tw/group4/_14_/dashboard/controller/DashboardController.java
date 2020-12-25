@@ -51,6 +51,19 @@ public class DashboardController {
 
 			return value;
 		}
+		
+	// 獲取餐廳預約總筆數
+		@Hibernate
+		@RequestMapping(path = "/14/showResturantOrder", produces = "application/text; charset=utf-8")
+		@ResponseBody
+		public String showResturantOrder() {
+
+			Long sum = dbService.sumRestaurantOrder();
+
+			String value = String.valueOf(sum);
+
+			return value;
+		}
 	
 
 	// 計算各入口點擊次數
@@ -130,10 +143,24 @@ public class DashboardController {
 //		String course = "130";
 //		String artist = "280";
 
+		String adTotal = String.valueOf(dbService.sumRestaurantAdTotal());
+		if ("null".equals(adTotal)) {
+			adTotal = "0";
+		}
+		
+		String chTotal = String.valueOf(dbService.sumRestaurantChTotal());
+		if ("null".equals(chTotal)) {
+			chTotal = "0";
+		}
+		
+		int adult = Integer.parseInt(String.valueOf(adTotal));
+		int child = Integer.parseInt(String.valueOf(chTotal));
+		
 		arrayList.add(String.valueOf(dbService.sumTicketTotal()));
 		arrayList.add(shop);
 		arrayList.add(String.valueOf(dbService.sumCourseTotal()));
 		arrayList.add(String.valueOf(dbService.sumArtistTotal()));
+		arrayList.add(Integer.toString((adult*650+child*350)));
 
 		Gson gson = new Gson();
 		String json = gson.toJson(arrayList);

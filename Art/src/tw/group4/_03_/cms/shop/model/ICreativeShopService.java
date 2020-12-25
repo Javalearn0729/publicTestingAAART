@@ -6,7 +6,7 @@ public interface ICreativeShopService {
 	
 	public boolean checkShopId(int shopId);
 
-	public boolean checkReservation(int shopId);
+//	public boolean checkReservation(int shopId);
 	
 	public CreativeShopBean insert(CreativeShopBean bean);
 
@@ -37,7 +37,7 @@ public interface ICreativeShopService {
 	public CreativeShopBean update( 
 			int shopId, String shopName, int memberId, String image, String intro, 
 			String cityName, String address, String openTime, String phone, String fax, 
-			String email, String facebook, String website, int clicks, int reservation);
+			String email, String facebook, String website, int clicks, byte[] reservation);
 	
 	public boolean delete(int shopId);
 	

@@ -21,7 +21,7 @@
 	</div>
 
 	<div class=content>
-		<form method="post"
+		<form method="post" enctype="multipart/form-data"
 			action="<c:url value = "/03/cms/shop/updateShop.ctrl"/>">
 			<div class="back" align="right">
 				<div class="submitButton">
@@ -64,9 +64,7 @@
 								<tr style="color: black;">
 									<td>代表圖示<span
 										style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
-									<td><input type="text" placeholder="請輸入圖片網址" name="image"
-										style="color: black;" class="form-control"
-										value="${acShopsList.image}"></td>
+									<td><input type="file" class="form-control" name="imageFile"></td>
 								</tr>
 								<tr>
 									<td colspan="2">&nbsp;</td>
@@ -168,9 +166,11 @@
 										style="color: black;" class="form-control"></td>
 								</tr>
 								<tr style="display: none;">
-									<td>reservation已廢棄</td>
-									<td><input type="hidden" name="reservation" value="1"
-										style="color: black;" class="form-control"></td>
+									<td>image<span
+										style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
+									<td><input type="text" placeholder="請輸入圖片網址" name="image"
+										style="color: black;" class="form-control"
+										value="${acShopsList.image}"></td>
 								</tr>
 							</c:forEach>
 						</c:if>

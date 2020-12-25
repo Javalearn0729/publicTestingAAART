@@ -33,8 +33,11 @@
 						
 						<p class="card-text">
 							商品分類:
-							${ap.productType}
+							${ap.productType} &nbsp&nbsp
+							子分類:
+							${ap.productSubType}
 						</p>
+
 
 						<hr>
 						<p class="card-text" style="font-size: x-large">

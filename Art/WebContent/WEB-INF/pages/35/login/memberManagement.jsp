@@ -12,6 +12,7 @@ body {
 	font-size: 20px;
 	color: black;
 }
+
 .post {
 	display: none;
 }
@@ -29,7 +30,15 @@ body {
 }
 
 div.container {
-        width: 50%;
+	width: 50%;
+}
+
+.pdf, .xlsx, .add {
+	display: inline;
+}
+
+.option {
+	text-align: right;
 }
 </style>
 </head>
@@ -38,58 +47,62 @@ div.container {
 	<div class="title">
 		<h1 align="center">會員資料列表</h1>
 	</div>
-	<div align="right">
-		<br> <input id="analysis" class="btn btn-info" type="button"
-			value="輸出會員報表 (.pdf)" onclick="outputPDF()">
-	</div>
-	<div align="right">
-		<input id="analysis" class="btn btn-info" type="button"
-			value="輸出會員報表 (.xlsx)" onclick="outputXLSX()">
-	</div>
-	<div class="add" align="right">
-		<input class="btn btn-info comfirmAdd" type="button" value="新增會員資料"
-			onclick="add()">
-		<div class="post">
-			<table class="display table">
-				<thead>
-					<tr>
-						<th class="table-secondary">帳號</th>
-						<th class="table-success">真實姓名</th>
-						<th class="table-warning">地址</th>
-						<th class="table-light">E-mail</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class=""><input type="text" id="add.name"></td>
-						<td class=""><input type="text" id="add.realName"></td>
-						<td class=""><input type="text" id="add.address"></td>
-						<td class=""><input type="text" id="add.email"></td>
-					</tr>
-				</tbody>
-			</table>
-			<table class="display table">
-				<thead>
-					<tr>
-						<th class="table-secondary">電話</th>
-						<th class="table-success">會員類型</th>
-						<th class="table-warning">偏好</th>
-						<th class="table-light">購買上限</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class=""><input type="text" id="add.tel"></td>
-						<td class=""><input type="text" id="add.memberType"></td>
-						<td class=""><input type="text" id="add.preference"></td>
-						<td class=""><input type="text" id="add.purchaseLimit"></td>
-					</tr>
-					<tr class="comfirmPost">
-						<td colspan="4"><input class="btn btn-info" type="button"
-							value="確認新增" onclick="post()"></td>
-					</tr>
-				</tbody>
-			</table>
+	<div class="option">
+		<div class="pdf">
+			<br> <input id="analysis" class="btn btn-info" type="button"
+				value="輸出會員報表 (.pdf)" onclick="outputPDF()">
+		</div>
+		<div class="xlsx">
+			<input id="analysis" class="btn btn-info" type="button"
+				value="輸出會員報表 (.xlsx)" onclick="outputXLSX()">
+		</div>
+		<div class="add" align="right">
+			<input class="btn btn-info comfirmAdd" type="button" value="新增會員資料"
+				onclick="add()">
+			<div class="post">
+				<table class="display table">
+					<thead>
+						<tr>
+							<th class="table-secondary">帳號</th>
+							<th class="table-secondary">真實姓名</th>
+							<th class="table-warning">地址</th>
+							<th class="table-warning">E-mail</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class=""><input type="text" id="add.name"></td>
+							<td class=""><input type="text" id="add.realName"></td>
+							<td class=""><input type="text" id="add.address"></td>
+							<td class=""><input type="text" id="add.email"></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="infoTable">
+					<table class="display table">
+						<thead>
+							<tr>
+								<th class="table-warning">電話</th>
+								<th class="table-warning">會員類型</th>
+								<th class="table-secondary">偏好</th>
+								<th class="table-secondary">購買上限</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class=""><input type="text" id="add.tel"></td>
+								<td class=""><input type="text" id="add.memberType"></td>
+								<td class=""><input type="text" id="add.preference"></td>
+								<td class=""><input type="text" id="add.purchaseLimit"></td>
+							</tr>
+							<tr class="comfirmPost">
+								<td colspan="4"><input class="btn btn-info" type="button"
+									value="確認新增" onclick="post()"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div align="center">
@@ -102,19 +115,19 @@ div.container {
 			class="display table table-bordered table-hover table-blue">
 			<thead>
 				<tr class="">
-					<th class="table-secondary">帳號</th>
-					<th class="table-success">真實姓名</th>
-					<th class="table-warning">地址</th>
-					<th class="table-light">E-mail</th>
+					<th class="table-info">帳號</th>
+					<th class="table-info">真實姓名</th>
+					<th class="table-info">地址</th>
+					<th class="table-info">E-mail</th>
 					<th class="table-secondary">電話</th>
-					<th class="table-success">會員類型</th>
-					<th class="table-warning">個人照片 (點擊照片更新)</th>
-					<th class="table-light">偏好</th>
+					<th class="table-secondary">會員類型</th>
+					<th class="table-secondary">個人照片</th>
+					<th class="table-secondary">偏好</th>
 					<th class="table-info">註冊日期</th>
-					<th class="table-danger">購買上限</th>
-					<th class="table-secondary">會員狀態</th>
-					<th class="table-info">修改會員資訊</th>
-					<th class="table-success">停權此會員</th>
+					<th class="table-info">購買上限</th>
+					<th class="table-info">會員狀態</th>
+					<th class="table-secondary">修改會員資訊</th>
+					<th class="table-secondary">停權此會員</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -128,7 +141,7 @@ div.container {
 						<td class="" id="${list.name}.memberType">${list.memberType}</td>
 						<td class="" id="${list.name}.memberPic"><a class=""
 							href="<c:url value=''/>"><img
-								style='display: block; width: 80px; height: 60px;'
+								style='display: block; width: 100px; height: 75px;'
 								src="data:image/jpg;base64, ${list.memberPicBase64Str}"></a></td>
 						<td class="" id="${list.name}.preference">${list.preference}</td>
 						<td class="" id="${list.name}.registerTime">${list.registerTime}</td>

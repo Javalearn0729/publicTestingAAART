@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import tw.group4._03_.cms.reservation.model.ShopReservationBean;
 import tw.group4._03_.cms.reservation.model.ShopReservationService;
+import tw.group4._14_.dashboard.dao.DashboardService;
+import tw.group4._14_.dashboard.model.EntryClickRate;
 import tw.group4._35_.login.model.WebsiteMember;
 import tw.group4.util.Hibernate;
 
@@ -21,10 +23,19 @@ public class RedirectReservationControllerFront {
 
 	@Autowired
 	public ShopReservationService srs;
+	
+	@Autowired
+	private DashboardService dbService;
 
 	@Hibernate
 	@RequestMapping(path = "/03/front/reservation/onlineBooking.ctrl", method = RequestMethod.GET)
 	public String onlineBooking(HttpSession session, Model m) {
+		//
+		
+		EntryClickRate ecr = new EntryClickRate();
+		ecr.setRestaurant(1);
+		dbService.insert(ecr);
+		//
 		return "03/front_reservation/online_booking";
 	}
 

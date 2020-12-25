@@ -33,6 +33,8 @@ import tw.group4._11_.model.SentMailService;
 import tw.group4._11_.model.UserSABean;
 import tw.group4._11_.model.UserSADao;
 import tw.group4._11_.model.UserSAService;
+import tw.group4._14_.dashboard.dao.DashboardService;
+import tw.group4._14_.dashboard.model.EntryClickRate;
 import tw.group4._14_.utils.ECPayment;
 import tw.group4._35_.login.model.WebsiteMember;
 import tw.group4._35_.login.model.WebsiteMemberService;
@@ -50,12 +52,23 @@ public class ExtraController {
 	@Autowired
 	private SentMailService smService;
 	
+	@Autowired
+	private DashboardService dbService;
+
+	
 	@Hibernate
 	@RequestMapping(path = "/userStreetArtistPage.ctrl" ,method = RequestMethod.GET)
 	public String showingSA(
 			@RequestParam(name = "page" , required = false) Integer page,
 			@RequestParam(name = "query" ,required = false) String query,
 			Model m) {
+		
+		//
+		EntryClickRate ecr = new EntryClickRate();
+		ecr.setArtist(1);
+		dbService.insert(ecr);
+		//
+		
 		
 		
 		if (query != "" && query != null) {

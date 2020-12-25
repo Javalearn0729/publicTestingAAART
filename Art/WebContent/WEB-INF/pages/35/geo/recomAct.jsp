@@ -106,6 +106,7 @@ border-box
 	bottom: 10px;
 	right: 10px;
 	z-index: 9999;
+	font-size: 22px;
 }
 
 .chat-popup {

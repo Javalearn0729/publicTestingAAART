@@ -27,13 +27,13 @@
 <form action="<c:url value="/18/searchByWord.ctrl"/>">
 						<p style="text-align: center; display: block; font-size: 24px; color:black">
 							課程名稱關鍵字查詢： <input type="text" name="searchWord" id=searchw> 
-							<input type="submit" name="" value="送出" class="genric-btn primary radius">
+							<input type="submit" name="" value="送出" class="genric-btn primary radius" style="background-color:#005CAF;font-weight:bold">
 						</p>
 					</form>
 </div>
 
 <button id="flower" class="genric-btn primary-border radius">一鍵輸入欲查詢之關鍵字</button>
-<div style="padding-bottom:10px; float:right"><a href="<c:url value='/18/cSelectAllFront.ctrl' />"><button class='btn btn-info'>回課程總覽</button></a></div>
+<div style="padding-bottom:10px; float:right"><a href="<c:url value='/18/cSelectAllFront.ctrl' />"><button class='btn btn-info' style="background-color:#B28FCE;font-weight:bold">回課程總覽</button></a></div>
 <div style="margin: 20px">
 <form action="<c:url value="/18/searchByType.ctrl"/>">
 
@@ -55,7 +55,7 @@
 <div style="text-align: center;">
 				<form action="toCoCart.ctrl">
                 <input type="hidden" name="method" value="order"/>
-                <input type="submit" style="margin-left: 10px; font-size: 25px;"
+                <input type="submit" style="margin-left: 10px; font-size: 25px;font-weight:bold; background-color:#81C7D4; color:black"
 							class="genric-btn success radius large" name="check" value="前往結帳">
                 </form>
 			</div>

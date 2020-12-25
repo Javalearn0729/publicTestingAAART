@@ -5,6 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>訂單成立</title>
+<style type="text/css">
+body {
+	color: black;
+	font-size:18px;
+}
+</style>
 </head>
 <body>
 

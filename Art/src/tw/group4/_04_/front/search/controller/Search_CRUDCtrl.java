@@ -36,6 +36,8 @@ import tw.group4._04_.back.cmsAct.model.ShowBean2;
 import tw.group4._04_.back.cmsAct.model.ShowBeanService;
 import tw.group4._04_.front.seat.model.SeatBean;
 import tw.group4._04_.front.seat.model.SeatBeanService;
+import tw.group4._14_.dashboard.dao.DashboardService;
+import tw.group4._14_.dashboard.model.EntryClickRate;
 import tw.group4.util.Hibernate;
 
 @Controller
@@ -51,6 +53,10 @@ public class Search_CRUDCtrl {
 	private ShowBeanService showBeanService;
 	@Autowired
 	private SeatBeanService seatBeanService;
+	
+	@Autowired
+	private DashboardService dbService;
+
 
 	int pageNo = 0;
 	// @ModelAttribute設定傳入參數
@@ -61,6 +67,12 @@ public class Search_CRUDCtrl {
 	@RequestMapping(path = "/04/SearchTo.ctrl", method = RequestMethod.GET)
 	public String processSearchAll(String searchString, String page,String searchsite,String category,String startdate,String enddate ,Model model) throws ParseException {
 
+		//
+		EntryClickRate ecr = new EntryClickRate();
+		ecr.setTicket(1);
+		dbService.insert(ecr);
+		//
+		
 		
 		//使用.equals("")來判定字串是否相同 ==判定的是物件位址 
 
@@ -696,6 +708,7 @@ public class Search_CRUDCtrl {
 
 			String title = showBean.getACT_TITLE();
 			String locationName = showBean.getACT_LOCATION_NAME();
+			String mainunit = showBean.getACT_MAINUNIT();
 			String description = showBean.getACT_DESCRIPTION();
 			String startdate = showBean.getACT_STARTDATE();
 			String enddate = showBean.getACT_ENDDATE();
@@ -709,6 +722,7 @@ public class Search_CRUDCtrl {
 			model.addAttribute("actid", actid);
 			model.addAttribute("title", title);
 			model.addAttribute("site", locationName);
+			model.addAttribute("mainunit", mainunit);
 			model.addAttribute("startdate", startdate);
 			model.addAttribute("enddate", enddate);
 			model.addAttribute("description", description);

@@ -28,7 +28,7 @@ $(document).ready( function () {
 </script>
 </head>
 <div align="center">
-	<span> 
+	<span style="border: outset; background-color: rgb(239, 243, 11);margin: 1px;" > 
 		<a href="GoCreate.ctrl">新增</a>&nbsp;&nbsp; 
 		<a href="GoDel.ctrl">刪除</a>&nbsp;&nbsp;
 		<a href="GoSearch.ctrl">查詢</a>&nbsp;&nbsp; 
@@ -37,13 +37,13 @@ $(document).ready( function () {
 </div>
 <div>
 	<table id="table11" class="display">
-		<thead>
+		<thead class="table-hover">
 			<tr>
 				<th>編號</th>
-				<th>藝名</th>
-				<th>來自</th>
-				<th>表演項目</th>
-				<th>分類</th>
+				<th class="table-warning">藝名</th>
+				<th class="table-success">來自</th>
+				<th class="table-danger">表演項目</th>
+				<th class="table-info">分類</th>
 				<th>操作</th>
 			</tr>
 		</thead>
@@ -57,13 +57,14 @@ $(document).ready( function () {
 					<td>${searchSA.theme_SA }</td>
 					<td>${searchSA.classification_SA }</td>
 					<td>
-						<form action="delSearch.ctrl" method="POST">
+						<form action="delSearch.ctrl" method="POST" id="dataSA">
 							<input type="hidden" value="${searchSA.id_SA}"  name="id_SA"/>
-							<input type="submit" value="刪除" id="button-1"/>
 						</form>
+						<button class="btn btn-outline-info" onclick="return deleteSA()" id="submit">刪除</button>
+
 						<form action="fixSA.ctrl" method="POST">
 							<input type="hidden" value="${searchSA.id_SA}"  name="id_SA"/>
-							<input type="submit" value="修改" id="button-2"/>
+							<input type="submit" class="btn btn-outline-info" value="修改" id="button-2"/>
 						</form>
 					</td>
 				</tr>
@@ -71,3 +72,25 @@ $(document).ready( function () {
 		</tbody>
 	</table>
 </div>
+<script>
+	function deleteSA() {
+		swal({
+				  title: "是否確認刪除?",
+				  text: "刪除前最後確認!",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((orderOK) => {
+					  if (orderOK) {
+						  swal("刪除藝人成功!", 
+							    	{icon: "success",});  
+						  setTimeout(function(){$("#dataSA").submit(); });
+						 			
+					  } else {
+					    swal("操作已取消!");
+					  }
+					});
+			
+			}
+	</script>

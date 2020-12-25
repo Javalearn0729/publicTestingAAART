@@ -51,6 +51,8 @@ public class SeatBean3 implements Serializable {
 	private Integer M7;
 	private Integer M8;
 	private Integer M9;
+	private Integer M10;
+	private Integer M11;
 	private Integer N1;
 	private Integer N2;
 	private Integer N3;
@@ -60,8 +62,6 @@ public class SeatBean3 implements Serializable {
 	private Integer N7;
 	private Integer N8;
 	private Integer N9;
-	private Integer N10;
-	private Integer N11;
 	private Integer O1;
 	private Integer O2;
 	private Integer O3;
@@ -103,13 +103,13 @@ public class SeatBean3 implements Serializable {
 	public Integer getSEAT3NUM() {
 		return SEAT3NUM;
 	}
-	public void setSEATNUM(Integer sEAT3NUM) {
+	public void setSEAT3NUM(Integer sEAT3NUM) {
 		SEAT3NUM = sEAT3NUM;
 	}
 	public Integer getK1() {
 		return K1;
 	}
-	public void setA1(Integer k1) {
+	public void setK1(Integer k1) {
 		K1 = k1;
 	}
 	public Integer getK2() {
@@ -280,6 +280,18 @@ public class SeatBean3 implements Serializable {
 	public void setM9(Integer m9) {
 		M9 = m9;
 	}
+	public Integer getM10() {
+		return M10;
+	}
+	public void setM10(Integer m10) {
+		M10 = m10;
+	}
+	public Integer getM11() {
+		return M11;
+	}
+	public void setM11(Integer m11) {
+		M11 = m11;
+	}
 	public Integer getN1() {
 		return N1;
 	}
@@ -333,18 +345,6 @@ public class SeatBean3 implements Serializable {
 	}
 	public void setN9(Integer n9) {
 		N9 = n9;
-	}
-	public Integer getN10() {
-		return N10;
-	}
-	public void setN10(Integer n10) {
-		N10 = n10;
-	}
-	public Integer getN11() {
-		return N11;
-	}
-	public void setN11(Integer n11) {
-		N11 = n11;
 	}
 	public Integer getO1() {
 		return O1;
@@ -502,7 +502,8 @@ public class SeatBean3 implements Serializable {
 	public void setQ6(Integer q6) {
 		Q6 = q6;
 	}
-
+	
+	
 	
 	
 

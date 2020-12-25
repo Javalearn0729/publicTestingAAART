@@ -54,7 +54,7 @@
 		<br> <br>
 		<div class="content">
 			<div class="mb-10" align="center">
-				<h2>藝文商店</h2>
+				<h1>藝文商店</h1>
 			</div>
 		</div>
 		<br>
@@ -73,7 +73,7 @@
 									placeholder="請輸入藝文商店名稱" style="width: 300px"></td>
 								<td>&nbsp;</td>
 								<td><input class="genric-btn primary radius" type="submit"
-									style="font-size: 18px;" name="submit" value="搜尋"></td>
+									style="font-size: 20px; font-weight: bold;" name="submit" value="搜尋"></td>
 							</tr>
 						</table>
 					</div>
@@ -89,11 +89,12 @@
 							<div class="col-lg-3 col-md-6 single-blog">
 								<div class="border-color-change">
 									<div class="thumb">
-										<img class="img-fluid" src="${shop.image}">
+<%-- 										<img class="img-fluid" src="${shop.image}"> --%>
+										<img class="img-fluid" src="data:image/jpg;base64,${shop.base64Image}">
 									</div>
 									<br> <a
 										href="<c:url value='/03/index/shop/shopDetails.ctrl?shopId=${shop.shopId}'/> "><h4>${shop.shopName}</h4></a>
-									<p class="ellipsis">${shop.intro}</p>
+									<p class="ellipsis" style="color: black; font-weight: bold;">${shop.intro}</p>
 									<span class="lnr lnr-heart"></span> ${shop.clicks} Likes
 								</div>
 							</div>

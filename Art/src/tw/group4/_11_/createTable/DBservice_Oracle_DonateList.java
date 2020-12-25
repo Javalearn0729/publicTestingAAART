@@ -17,7 +17,7 @@ public class DBservice_Oracle_DonateList {
 
 	private static final String CREATE_DONATION_SA_Oracle = "Create TABLE DONATION_SA "
 			+ "(ID_DONATION number generated as identity constraint DONATION_SA_PK primary key, "
-			+ " NAME_SA					varchar2(50), "
+			+ " NAME_SA					varchar2(100), "
 			+ " NAME_USER				varchar2(50), "
 			+ " DONATE_SA				number,"
 			+ " TIME					varchar2(50)"

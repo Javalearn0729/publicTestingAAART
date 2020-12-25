@@ -52,8 +52,8 @@
 									${restaurantList.maximum}位</div></td>
 							<td><c:choose>
 									<c:when test="${restaurantList.h09 != '-1'}">
-										<label>09:00</label>&nbsp;<span
-											style="color: #005CAF; font-weight: bold;">剩餘${restaurantList.h09}位</span>
+										<label>09:00</label>&nbsp;剩餘&nbsp;<span
+											style="color: #005CAF; font-weight: bold;">${restaurantList.h09}</span>位
 									</c:when>
 									<c:otherwise>
 										<label>09:00</label>&nbsp;<span
@@ -61,8 +61,8 @@
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h10 != '-1'}">
-										<label>10:00</label>&nbsp;<span
-											style="color: #005CAF; font-weight: bold;">剩餘${restaurantList.h10}位</span>
+										<label>10:00</label>&nbsp;剩餘&nbsp;<span
+											style="color: #005CAF; font-weight: bold;">${restaurantList.h10}</span>位
 									</c:when>
 									<c:otherwise>
 										<label>10:00</label>&nbsp;<span
@@ -70,8 +70,8 @@
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h11 != -1}">
-										<label>11:00</label>&nbsp;<span
-											style="color: #005CAF; font-weight: bold;">剩餘${restaurantList.h11}位</span>
+										<label>11:00</label>&nbsp;剩餘&nbsp;<span
+											style="color: #005CAF; font-weight: bold;">${restaurantList.h11}</span>位
 										<br>
 									</c:when>
 									<c:otherwise>
@@ -81,8 +81,8 @@
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h12 != -1}">
-										<label>12:00</label>&nbsp;<span
-											style="color: #005CAF; font-weight: bold;">剩餘${restaurantList.h12}位</span>
+										<label>12:00</label>&nbsp;剩餘&nbsp;<span
+											style="color: #005CAF; font-weight: bold;">${restaurantList.h12}</span>位
 									</c:when>
 									<c:otherwise>
 										<label>12:00</label>&nbsp;<span
@@ -90,8 +90,8 @@
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h13 != -1}">
-										<label>13:00</label>&nbsp;<span
-											style="color: #005CAF; font-weight: bold;">剩餘${restaurantList.h13}位</span>
+										<label>13:00</label>&nbsp;剩餘&nbsp;<span
+											style="color: #005CAF; font-weight: bold;">${restaurantList.h13}</span>位
 									</c:when>
 									<c:otherwise>
 										<label>13:00</label>&nbsp;<span
@@ -99,8 +99,8 @@
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h14 != -1}">
-										<label>14:00</label>&nbsp;<span
-											style="color: #005CAF; font-weight: bold;">剩餘${restaurantList.h14}位</span>
+										<label>14:00</label>&nbsp;剩餘&nbsp;<span
+											style="color: #005CAF; font-weight: bold;">${restaurantList.h14}</span>位
 										<br>
 									</c:when>
 									<c:otherwise>
@@ -110,8 +110,8 @@
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h15 != -1}">
-										<label>15:00</label>&nbsp;<span
-											style="color: #005CAF; font-weight: bold;">剩餘${restaurantList.h15}位</span>
+										<label>15:00</label>&nbsp;剩餘&nbsp;<span
+											style="color: #005CAF; font-weight: bold;">${restaurantList.h15}</span>位
 									</c:when>
 									<c:otherwise>
 										<label>15:00</label>&nbsp;<span
@@ -119,8 +119,8 @@
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h16 != -1}">
-										<label>16:00</label>&nbsp;<span
-											style="color: #005CAF; font-weight: bold;">剩餘${restaurantList.h16}位</span>
+										<label>16:00</label>&nbsp;剩餘&nbsp;<span
+											style="color: #005CAF; font-weight: bold;">${restaurantList.h16}</span>位
 									</c:when>
 									<c:otherwise>
 										<label>16:00</label>&nbsp;<span
@@ -128,8 +128,8 @@
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h17 != -1}">
-										<label>17:00</label>&nbsp;<span
-											style="color: #005CAF; font-weight: bold;">剩餘${restaurantList.h17}位</span>
+										<label>17:00</label>&nbsp;剩餘&nbsp;<span
+											style="color: #005CAF; font-weight: bold;">${restaurantList.h17}</span>位
 										<br>
 									</c:when>
 									<c:otherwise>
@@ -139,8 +139,8 @@
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h18 != -1}">
-										<label>18:00</label>&nbsp;<span
-											style="color: #005CAF; font-weight: bold;">剩餘${restaurantList.h18}位</span>
+										<label>18:00</label>&nbsp;剩餘&nbsp;<span
+											style="color: #005CAF; font-weight: bold;">${restaurantList.h18}</span>位
 									</c:when>
 									<c:otherwise>
 										<label>18:00</label>&nbsp;<span
@@ -148,8 +148,8 @@
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h19 != -1}">
-										<label>19:00</label>&nbsp;<span
-											style="color: #005CAF; font-weight: bold;">剩餘${restaurantList.h19}位</span>
+										<label>19:00</label>&nbsp;剩餘&nbsp;<span
+											style="color: #005CAF; font-weight: bold;">${restaurantList.h19}</span>位
 									</c:when>
 									<c:otherwise>
 										<label>19:00</label>&nbsp;<span
@@ -157,8 +157,8 @@
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h20 != -1}">
-										<label>20:00</label>&nbsp;<span
-											style="color: #005CAF; font-weight: bold;">剩餘${restaurantList.h20}位</span>
+										<label>20:00</label>&nbsp;剩餘&nbsp;<span
+											style="color: #005CAF; font-weight: bold;">${restaurantList.h20}</span>位
 										<br>
 									</c:when>
 									<c:otherwise>
@@ -168,8 +168,8 @@
 									</c:otherwise>
 								</c:choose> <c:choose>
 									<c:when test="${restaurantList.h21 != -1}">
-										<label>21:00</label>&nbsp;<span
-											style="color: #005CAF; font-weight: bold;">剩餘${restaurantList.h21}位</span>
+										<label>21:00</label>&nbsp;剩餘&nbsp;<span
+											style="color: #005CAF; font-weight: bold;">${restaurantList.h21}</span>位
 									</c:when>
 									<c:otherwise>
 										<label>21:00</label>&nbsp;<span

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 
 import tw.group4._14_.front.model.MessageBoardAP;
+import tw.group4._14_.front.model.dao.MBRecordDAOService;
 import tw.group4._14_.front.model.dao.MessageBoardAPService;
 import tw.group4.util.Hibernate;
 
@@ -22,6 +23,9 @@ public class CRUDControllerMessageBoard {
 
 	@Autowired
 	private MessageBoardAPService mbService;
+	
+	@Autowired
+	private MBRecordDAOService mcService;
 	
 	//AJAX
 	
@@ -101,6 +105,16 @@ public class CRUDControllerMessageBoard {
 		mbService.selectMessage(mNo);
 
 		return "redirect:/14/ShowAllMessageBoardList.ctrl";
+	}
+	
+	@Hibernate
+	@RequestMapping(path = "/14/sumMessage/{apid}")
+	@ResponseBody
+	public int sumMessage(@PathVariable(name = "apid") int apid) {
+
+		int sumMessage = mcService.sumMessage(apid);
+
+		return sumMessage;
 	}
 
 }

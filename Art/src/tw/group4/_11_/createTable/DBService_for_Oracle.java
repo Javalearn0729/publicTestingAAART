@@ -16,7 +16,7 @@ public class DBService_for_Oracle {
 
 	private static final String CREATE_StreetArtist_Oracle = "Create TABLE STREETARTIST "
 			+ "(ID_SA number generated as identity constraint STREETARTIST_PK primary key, "
-			+ " NAME_SA				varchar2(50), "
+			+ " NAME_SA				varchar2(100), "
 			+ " COUNTRY_SA			varchar2(50), "
 			+ " THEME_SA			varchar2(160), "
 			+ " CLASSIFICATION_SA	varchar2(200) "

@@ -8,16 +8,16 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 </head>
 <div align="center">
-	<span> 
+	<span style="border: outset; background-color: rgb(239, 243, 11);margin: 1px;" > 
 		<a href="GoCreate.ctrl">新增</a>&nbsp;&nbsp; 
 		<a href="GoDel.ctrl">刪除</a>&nbsp;&nbsp;
 		<a href="GoSearch.ctrl">查詢</a>&nbsp;&nbsp; 
 		<a href="myStreetArtistPage.ctrl">總覽</a>
 	</span>
 </div>
-<form action="createSA.ctrl" method="post">
-<table align="center">
+<table style="background-color: rgb(73, 229, 240);border-radius: 25px;margin-top: 10px;" align="center">
 	<tbody>
+		<form action="createSA.ctrl" method="post" id="create">
 		<tr>
 			<td colspan="2" align="center" style="font-size: 20px;color: red;">新增藝人</td>
 		</tr>
@@ -69,10 +69,33 @@
 				</select>${errors.classification }<br/>
 			</td>
 		</tr>
+		</form>
 		<tr>
-			<td align="center" colspan="2"><input type="submit" name="submit" value="送出">
+			<td align="center" colspan="2">
+			<button class="btn btn-outline-info" onclick="return create()" id="submit">確認新增</button>
 		</tr>
 	</tbody>
 </table>
-</form>
+<script>
+function create() {
+	swal({
+			  title: "是否確認新增?",
+			  text: "新增最後確認!",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((orderOK) => {
+				  if (orderOK) {
+					  swal("新增藝人成功!", 
+						    	{icon: "success",});  
+					  setTimeout(function(){$("#create").submit(); });
+					 			
+				  } else {
+				    swal("操作已取消!");
+				  }
+				});
+		
+		}
+</script>
 </html>

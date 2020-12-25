@@ -55,16 +55,16 @@
 							<tr>
 								<td colspan="2">&nbsp;</td>
 							</tr>
-							<tr style="color: black;">
-								<td>代表圖示<span
-									style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
-								<td><textarea class="form-control" readonly="readonly"
-										style="background: #FFFFFF; color: black;" rows="1">${acShopsList.image}</textarea>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2">&nbsp;</td>
-							</tr>
+<!-- 							<tr style="color: black;"> -->
+<!-- 								<td>代表圖示<span -->
+<!-- 									style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td> -->
+<!-- 								<td><textarea class="form-control" readonly="readonly" -->
+<%-- 										style="background: #FFFFFF; color: black;" rows="1">${acShopsList.image}</textarea> --%>
+<!-- 								</td> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td colspan="2">&nbsp;</td> -->
+<!-- 							</tr> -->
 							<tr style="color: black;">
 								<td>商店簡介<span
 									style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>

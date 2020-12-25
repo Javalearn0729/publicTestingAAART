@@ -7,14 +7,15 @@
 	<div class=title>
 		<h1 align="center" style="margin-top: 20px;">藝文商店 管理系統</h1>
 	</div>
-	<div class="back" align="right">
-		<form action="<c:url value='/03/cms/shop/index.ctrl'/> " method="get">
-			<div class="submitButton">
-				<input type="submit" class='btn btn-outline-info' name="submit"
-					value="返回 藝文商店管理">
-			</div>
-		</form>
-	</div>
+<!-- 	<div class="back" align="right"> -->
+<%-- 		<form action="<c:url value='/03/cms/shop/index.ctrl'/> " method="get"> --%>
+<!-- 			<div class="submitButton"> -->
+<!-- 				<input type="submit" class='btn btn-outline-info' name="submit" -->
+<!-- 					value="返回 藝文商店管理"> -->
+<!-- 			</div> -->
+<!-- 		</form> -->
+<!-- 	</div> -->
+	<br>
 	<div class=title>
 		<h3 align="center" style="margin-top: 20px;font-weight: bold;">藝文商店管理</h3>
 	</div>

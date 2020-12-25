@@ -65,7 +65,7 @@ function delSA(coId){
 			<p style="text-align: center; display: block; font-size: 20px; color:black">
 				課程名稱關鍵字查詢： <input type="text" name="searchWordB" id=searchw>
 				<input type="submit" name="searchByWordsubmit" value="送出"
-					class="btn btn-info">
+					class="btn btn-info btn-lg">
 			</p>
 		</form>
 	</div>
@@ -78,26 +78,26 @@ function delSA(coId){
 <!-- 			<p style="text-align: center; display: block; color:black">請選擇分類： -->
 			<p style="text-align: center; font-size: 22px; padding-top:5px;">
 				<button type="submit" name="searchTypeB" value="語文"
-					class="btn btn-primary">語文</button>
+					class="btn btn-primary btn-lg">語文</button>
 				<button type="submit" name="searchTypeB" value="園藝"
-					class="btn btn-primary">園藝</button>
+					class="btn btn-primary btn-lg">園藝</button>
 				<button type="submit" name="searchTypeB" value="風俗信仰"
-					class="btn btn-primary">風俗信仰</button>
+					class="btn btn-primary btn-lg">風俗信仰</button>
 				<button type="submit" name="searchTypeB" value="手工製作"
-					class="btn btn-primary">手工製作</button>
+					class="btn btn-primary btn-lg">手工製作</button>
 				<button type="submit" name="searchTypeB" value="國畫書法"
-					class="btn btn-primary">國畫書法</button>
+					class="btn btn-primary btn-lg">國畫書法</button>
 				<button type="submit" name="searchTypeB" value="運動"
-					class="btn btn-primary">運動</button>
+					class="btn btn-primary btn-lg">運動</button>
 				<button type="submit" name="searchTypeB" value="藝術鑑賞"
-					class="btn btn-primary">藝術鑑賞</button>
+					class="btn btn-primary btn-lg">藝術鑑賞</button>
 				<button type="submit" name="searchTypeB" value="美術"
-					class="btn btn-primary">美術</button>
+					class="btn btn-primary btn-lg">美術</button>
 				<button type="submit" name="searchTypeB" value="戲劇"
-					class="btn btn-primary">戲劇</button>
+					class="btn btn-primary btn-lg">戲劇</button>
 			</p>
 		</form>
-		<div style="padding-bottom:10px; float:right"><a href="<c:url value='/18/cSelectAll.ctrl' />"><button class='btn btn-info'>回課程總覽</button></a></div>
+		<div style="padding-bottom:10px; float:right"><a href="<c:url value='/18/cSelectAll.ctrl' />"><button class='btn btn-info btn-lg'>回課程總覽</button></a></div>
 	</div>
 
 	<table id="cTable" class="table table-hover" style="font-size:18px">
@@ -147,11 +147,11 @@ function delSA(coId){
 					<%-- 									<td><img style='display:block; width:64px;height:36px;' src="data:image/jpg;base64, ${cSelectAllList.coAct_ImageStr}" ></td> --%>
 					<td><a
 						href="<c:url value='/18/cCourseDetailB.ctrl?coId=${cSelectAllList.coId}' /> ">
-							<input type="submit" value='詳細' class="btn btn-outline-info" />
+							<input type="submit" value='詳細' class="btn btn-outline-info btn-lg" />
 					</a></td>
 					<td><form action="<c:url value="/18/UpdateData.ctrl"/>">
 						<input type="submit" name="button" value="修改"
-							class="btn btn-outline-warning"> <input type="hidden"
+							class="btn btn-outline-warning btn-lg"> <input type="hidden"
 							name="coId" value="${cSelectAllList.coId}"> <input
 							type="hidden" name="coTitle" value="${cSelectAllList.coTitle}">
 							<input type="hidden" name="coAct_Type"
@@ -178,7 +178,7 @@ function delSA(coId){
 					</form>
 <%-- 					<form action="<c:url value="/18/cDelete.ctrl"/>"> --%>
 					<input type="button" name="delete" value="刪除"
-						class="btn btn-outline-danger" onclick="delSA(${cSelectAllList.coId})">
+						class="btn btn-outline-danger btn-lg" onclick="delSA(${cSelectAllList.coId})">
 
 <%-- 					<input type="hidden" name="coId" value="${cSelectAllList.coId}"> --%>
 <!-- 					<input type="hidden" name="coTitle" -->

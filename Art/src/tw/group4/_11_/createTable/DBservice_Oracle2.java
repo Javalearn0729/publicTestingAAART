@@ -16,7 +16,7 @@ public class DBservice_Oracle2 {
 
 	private static final String CREATE_DETAIL_SA_Oracle = "Create TABLE DETAIL_SA "
 			+ "(ID_SA number generated as identity constraint DETAIL_SA_PK primary key, "
-			+ " NAME_SA				varchar2(50), "
+			+ " NAME_SA				varchar2(100), "
 			+ " COUNTRY_SA			varchar2(50), "
 			+ " THEME_SA			varchar2(160), "
 			+ " CLASSIFICATION_SA	varchar2(200), "

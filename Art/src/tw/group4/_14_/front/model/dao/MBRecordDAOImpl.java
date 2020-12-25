@@ -38,13 +38,10 @@ public class MBRecordDAOImpl {
 	
 	public int searchMessage (int mid, int apid) {
 		Session session = sessionFactory.getCurrentSession();
-		System.out.println("1111111111");
 		String hql = "From MBRecordBean mb where mb.mberId="+mid+" and mb.apid= "+apid;
-		System.out.println("222222222222");
 		Query<MBRecordBean> createQuery = session.createQuery(hql);
 		List<MBRecordBean> list = createQuery.list();
 		int size = list.size();
-		System.out.println("ssssssss"+size);
 		
 		return size;
 	}
@@ -76,4 +73,13 @@ public class MBRecordDAOImpl {
 		return false;
 	}
 
+	public int sumMessage (int apid) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "SELECT COUNT(1) From MessageBoardAP mb where mb.apid= "+apid;
+		Query<MBRecordBean> createQuery = session.createQuery(hql);
+		List<MBRecordBean> list = createQuery.list();
+		int size = list.size();
+		
+		return size;
+	}
 }

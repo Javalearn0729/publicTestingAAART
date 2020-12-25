@@ -55,7 +55,7 @@
 	<div class="container">
 		<br>
 		<div class=title>
-			<h2 align="center" style="margin-top: 20px;">得藝食堂線上訂位</h2>
+			<h1 align="center" style="margin-top: 20px;">得藝食堂線上訂位</h1>
 		</div>
 		<br>
 		<div class=title>
@@ -69,57 +69,63 @@
 					<thead>
 						<tr class="head">
 							<th scope="col" colspan="4"
-								style="font-size: larger; color: #0B1013; background-color: #FAD689">用餐人數</th>
+								style="font-size: 24px; color: #0B1013; background-color: #FAD689">用餐人數</th>
 							<th scope="col" colspan="1"
-								style="font-size: larger; color: #0B1013; background-color: #A5DEE4">用餐日期</th>
+								style="font-size: 24px; color: #0B1013; background-color: #A5DEE4">用餐日期</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td style="font-size: 22px; color: #0B1013;">請選擇大人人數:</td>
-							<td><div class="row d-flex justify-content-center">
-									<div class="default-select">
-										<select id="adultsNum" name="adultsNum" required="required">
-											<option value="1">1位大人</option>
-											<option value="2">2位大人</option>
-											<option value="3">3位大人</option>
-											<option value="4">4位大人</option>
-											<option value="5">5位大人</option>
-										</select>
-									</div>
-								</div></td>
-							<td style="font-size: 22px; color: #0B1013;">請選擇小孩人數:</td>
+							<td style="font-size: 22px; color: #0B1013; font-weight: bold;  vertical-align: middle;">請選擇大人人數:</td>
 							<td>
-								<div class="row d-flex justify-content-center">
-									<div class="default-select">
-										<select id="childrenNum" name="childrenNum"
-											required="required">
-											<option value="0">0位小孩</option>
-											<option value="1">1位小孩</option>
-											<option value="2">2位小孩</option>
-											<option value="3">3位小孩</option>
-											<option value="4">4位小孩</option>
-											<option value="5">5位小孩</option>
-										</select>
-									</div>
+								<div>
+									<select id="adultsNum" name="adultsNum" class="form-control" 
+										style="font-size: 22px; height: 50px; line-height: 50px;"
+										required="required">
+										<option value="1">1位大人</option>
+										<option value="2">2位大人</option>
+										<option value="3">3位大人</option>
+										<option value="4">4位大人</option>
+										<option value="5">5位大人</option>
+									</select>
 								</div>
 							</td>
-							<td style="font-size: larger"><input type="date"
-								name="dateTime" id="dateTime" value="2020-12-25"
-								min="2020-12-25" max="2021-01-24" required="required"></td>
+							<td style="font-size: 22px; color: #0B1013; font-weight: bold;  vertical-align: middle;">請選擇小孩人數:</td>
+							<td>
+								<div>
+									<select id="childrenNum" name="childrenNum"
+										class="form-control"
+										style="font-size: 22px; line-height: 50px; height: 50px"
+										required="required">
+										<option value="0">0位小孩</option>
+										<option value="1">1位小孩</option>
+										<option value="2">2位小孩</option>
+										<option value="3">3位小孩</option>
+										<option value="4">4位小孩</option>
+										<option value="5">5位小孩</option>
+									</select>
+								</div>
+							</td>
+							<td><div><input type="date"
+								style="font-size: 21px; line-height: 30px;  vertical-align: middle;" name="dateTime"
+								id="dateTime" value="2020-12-25" class="form-control"
+								min="2020-12-25" max="2021-01-24" required="required"></div></td>
 						</tr>
 					</tbody>
 				</table>
 				<br>
-				<div class="submitButton" align="center" style="font-size: larger">
-					<input type="submit" name="submit" value="下一步，選擇用餐時段">
+				<div class="submitButton" align="center"
+					style="font-size: 24px; font-weight: bold;  vertical-align: middle;">
+					<input type="submit" name="submit"
+						style="font-size: 24px; font-weight: bold;"
+						class="genric-btn primary-border radius" value="下一步  選擇用餐時段">
 				</div>
 				<br>
 			</form>
 		</div>
-		
+
 		<!-- 圖片輪播區塊 -->
-		<br> <br> <br>
+		<br> <br>
 		<div class=title>
 			<h2 align="center" style="margin-top: 20px;">嚴選食材、特製甜點</h2>
 		</div>
@@ -163,7 +169,7 @@
 		</div>
 		<!-- End exibition Area -->
 		<!-- 輪播結束 -->
-		
+
 	</div>
 </body>
 <!-- ====================================================== -->

@@ -385,10 +385,10 @@ public class CrudCtrlCMS {
 		seatbean.setSEATNUM(50);
 		seatbean2.setACT_NO(actid);
 		seatbean2.setACT_TITLE(title);
-		seatbean2.setSEATNUM(50);
+		seatbean2.setSEAT2NUM(50);
 		seatbean3.setACT_NO(actid);
 		seatbean3.setACT_TITLE(title);
-		seatbean3.setSEATNUM(66);
+		seatbean3.setSEAT3NUM(66);
 		seatBeanService.insert(seatbean);
 		seatBeanService.insert2(seatbean2);
 		seatBeanService.insert3(seatbean3);

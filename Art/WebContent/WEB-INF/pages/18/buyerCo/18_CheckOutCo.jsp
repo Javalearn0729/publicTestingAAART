@@ -20,7 +20,7 @@
 					<span class="lnr lnr-arrow-right"></span>
 					<a href="<c:url value='/18/toCoCart.ctrl' />">購物車</a>
 					<span class="lnr lnr-arrow-right"></span>
-					<a href="<c:url value='/18/SubmitCartCo.ctrl' />">訂單</a>
+					<a href="<c:url value='/18/SubmitCartCo.ctrl' />">填寫訂單詳細資訊</a>
 				</p>
 			</div>
 		</div>
@@ -28,99 +28,119 @@
 </section>
 <!-- End banner Area -->
 
-<div class="container" style="font-size: 18px">
-<h3 style="text-align: center;margin-top: 80px;">訂單詳細</h3>
+
+<style>
+trReverse { display: block; float: left; }
+thReverse, tdReverse { display: block; border: 1px solid black; }
+
+trReverse>*:not(:first-child) { border-top: 0; }
+trReverse:not(:first-child)>* { border-left:0; }
+</style>
+
+
+<div class="container" style="font-size: 20px">
+<div style="text-align: center;margin-top: 50px;font-weight:bold; font-size: 54px; color:#6F3381">訂單詳細</div>
+<br>
+<br>
+<div>
 <FORM >
-    <table>
-        <tr>
+<div>
+    <table style="float:left;margin-top:30px;height: 375px;display:inline-block;vertical-align: top">
+        <tr><td style="text-align:center;font-weight:bold;color:#81C7D4;font-size:36px">收件人資訊</td></tr>
         <!-- name:收到的     id:識別名稱     value:預設填入的值 -->
-            <th><label>購買人姓名：</label>
-                <input type="text" name="Name" id='coName' value="${mb.realName}">
-            </th>
-            <th><label>聯絡電話：</label>
-                <input type="text" name="Phone" id='coPhone' value="${mb.tel}">
-            </th>
-        </tr>
-        <tr><th>下單日期：<fmt:formatDate pattern="yyyy-MM-dd" value="${today}" /></th></tr>
-        <tr>
-            <td colspan='3' >E-mail：<input id='email' name="email" type="text" value="${mb.email}" style="width: 500px;" ></td>
-        </tr>    
-        <tr>
-            <td colspan='3' >地址：<input name="customerAddress" id='coCustomerAddress' type="text" value="${mb.address}" style="width: 500px;" ></td>
-            
-        </tr>
-        <tr>
-            <td colspan='3'>意見(選填)：<input name="coComment" id='coComment' type="text" style="width: 500px; height:100px "></td>
-            
-        </tr>
+        <tr><td style="text-align: right;font-weight:bold;color:#1B813E;line-height: 30px"><label style="display:inline-block">姓名：</label></td>
+            <td style="text-align: left"><input type="text" name="Name" id='coName' value="${mb.realName}"></td></tr>
+        <tr><td style="text-align: right;font-weight:bold;color:#1B813E;line-height: 30px"><label style="display:inline-block">電話：</label></td>
+            <td style="text-align: left"><input type="text" name="Phone" id='coPhone' value="${mb.tel}"></td></tr>
+        <tr><td style="text-align: right;font-weight:bold;color:#1B813E;line-height: 30px">購買日期：</td>
+            <td style="text-align: left;font-weight:bold"><fmt:formatDate pattern="yyyy-MM-dd" value="${today}" /></td></tr>
+        <tr><td style="text-align: right;font-weight:bold;color:#1B813E;line-height: 30px"><label style="display:inline-block">E-mail：</label></td>
+        	<td style="text-align: left"><input id='email' name="email" type="text" value="${mb.email}" style="width: 400px;" ></td></tr>
+        <tr><td style="text-align: right;font-weight:bold;color:#1B813E;line-height: 30px"><label style="display:inline-block">地址：</label></td>
+        	<td style="text-align: left"><input name="customerAddress" id='coCustomerAddress' type="text" value="${mb.address}" style="width: 400px" ></td></tr>
+        <tr><td style="text-align: right;font-weight:bold;color:#1B813E;line-height: 30px">意見(選填)：</td>
+        	<td style="text-align: left"><input name="coComment" id='coComment' type="text" style="width: 400px; height:100px"></td></tr>
         
     </table>
-
-    <table>
-        <tr>
-            <th>課程名稱</th>
-            <th>課程價格</th>
-            <th>數量</th>
-            <th>小計</th>
+</div>
+<div>
+    <table style="float:right;margin-top:30px;height:375px;display:inline-block;vertical-align: top"cellpadding="10" >
+		<tr><th colspan="4" style="text-align:center;font-weight:bold;color:#81C7D4;font-size:36px">購買課程一覽</th></tr>
+        <tr class="trReverse" style="text-align:center;font-weight:bold;font-size:22px">
+            <th class="thReverse">課程名稱</th>
+            <th class="thReverse">價格</th>
+            <th class="thReverse">人數</th>
+            <th class="thReverse">小計</th>
         </tr>
         <c:forEach varStatus="vs" var="orderCo" items="${ccc.cartCo}"> <!-- 兩層 ccc.cartCo 在 CourseControllerF #43 #71 -->
-        <tr>
-            <td>${orderCo.value.coTitle}</td>
-            <td>${orderCo.value.coPrice} 元</td>
-            <td>${orderCo.value.coNum}</td>
-            <td>${orderCo.value.coPrice * orderCo.value.coNum} 元</td>
+        <tr class="trReverse">
+            <td class="tdReverse" style="font-weight:bold;color:#1B813E">
+            <a href="<c:url value='/18/cCourseDetail.ctrl?coId=${orderCo.value.coId}' />"style="color:#1B813E">${orderCo.value.coTitle}</a></td>
+            <td class="tdReverse">${orderCo.value.coPrice} 元</td>
+            <td class="tdReverse">${orderCo.value.coNum} 人</td>
+            <td class="tdReverse" style="font-weight:bold">${orderCo.value.coPrice * orderCo.value.coNum} 元</td>
         </tr>
         </c:forEach>
         <tr>
         
-        <td colspan="4">總計： ${ccc.total} 元</td>
+ 	 	<td colspan="4" style="font-weight:bold;text-align:right">總計： ${ccc.total} 元</td>
     </tr>
     </table>
-   <input type="hidden" name="finalDecision"  value="">   
-   <div class="container" style="text-align: center;margin-top: 30px;">
-   <input type="button" name="OrderBtn"  value="送出本訂單" onclick="reconfirmOrderCo();">
-<!--    <input type="button" name="CancelBtn" value="取消本訂單" onclick="cancelOrderCo();"> -->
-<!-- 			↑原本的彈出視窗  ；  SweetAlert↓   -->   
-   <button class="genric-btn danger circle" onclick="delSAFALL()">取消本訂單</button>
-   </div>
+    </div>
     </FORM>
+    </div>
+    
 	</div>
-   
-   
+	
+   <div class="container" style="text-align: center; font-size: 20px">
+   <input type="hidden" name="finalDecision"  value="">  
+   <input type="button" class="genric-btn success radius large" style="font-weight:bold;font-size:32px; color:black" name="OrderBtn"  value="送出本訂單" onclick="confirmOrderCo();">   
+<!-- 			↑原本的彈出視窗  ；  SweetAlert↓   -->   
+<!--    <input type="button" class="genric-btn success radius" style="font-weight:bold;font-size:32px; color:black" name="OrderBtn"  value="送出本訂單" onclick="submitSAF2();">    -->
+   <br>
+   <br>
+   <br>
+   <input type="button" class="genric-btn info circle" style="font-size:32px; color:black" value="返回課程總覽繼續選購" onclick="location.href='<c:url value='/18/cSelectAllFront.ctrl' />'">
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
    <!-- id需與下方script相同 -->
-   <div><button id="OrderDetailComment" >一鍵輸入買家意見</button></div>
-   <div><button id="OrderDetailMail" >一鍵輸入測試用信箱</button></div>
+   <div>
+   <button id="OrderDetailComment" class="genric-btn primary-border radius">一鍵輸入買家意見</button>
+   <button id="OrderDetailMail" class="genric-btn primary-border radius">一鍵輸入測試用信箱</button></div>
    
+   </div>
 
-<script type="text/javascript">   
-function delSAFALL(){
-	swal("您確定要刪除所有已選擇的課程嗎？","", "warning",{
-	    buttons: {
-	      danger: {
-	          text: "是"
-	        },
-	      "否": true,
-	    },
-	  })
+<script type="text/javascript">  
 
-		.then((value2) => {
-		switch (value2) {
-		case "danger":
-	    	swal("成功取消訂單","", "success")
-	    	setTimeout(function(){window.location="<c:url value='/18/cdeleteCartListAll.ctrl'/>" ; },2000);
-	        break;
-	      case "不是":
-	        swal("放棄修改","", "info");
-	        break;
-	      default:
-	    	  swal("未取消訂單","", "info");
-	        break;
-		}
-		});
-};   
-   
-   
-   
+// function submitSAF2(customerAddress,email){
+// 	swal("您確定要送出訂單嗎？","", "warning",{
+// 	    buttons: {
+// 	      danger: {
+// 	          text: "是"
+// 	        },
+// 	      "否": true,
+// 	    },
+// 	  })
+
+// 		.then((value4) => {
+// 		switch (value4) {
+// 		case "danger":
+// 	    	swal("成功送出訂單","", "success")
+// 	    	setTimeout(function(){window.location="<c:url value='/18/ProcessOrderCo.ctrl?customerAddress="+customerAddress+"&email="+email+"' />" ; },2000);
+// 	        break;
+// 	      case "不是":
+// 	        swal("已取消","", "info");
+// 	        break;
+// 	      default:
+// 	    	  swal("未送出","", "info");
+// 	        break;
+// 		}
+// 		});
+// };
+     
 </script>   
 <script>
 <!-- $("最上方的id:識別名稱") -->
@@ -133,7 +153,7 @@ $("#OrderDetailMail").click(function(){
 })
 
 // <!-- 使用var宣告變數，可用範圍以function為界 -->
-function reconfirmOrderCo(){
+function confirmOrderCo(){
 	if (confirm("您確定要送出 ? ") ) {
 		document.forms[0].action="<c:url value='/18/ProcessOrderCo.ctrl'/>";
 		document.forms[0].method="POST";
@@ -143,17 +163,5 @@ function reconfirmOrderCo(){
 		return;
 	}
 }
-
-// function cancelOrderCo() {
-// 	if (confirm("您確定要取消 ? ") ) {
-// 		// 接收此資料的Servlet會使用 finalDecision 參數的值
-// 		document.forms[0].action="<c:url value='/18/deleteCartList.ctrl' />";
-// 		document.forms[0].method="POST";
-// 		document.forms[0].submit();
-// 		return;
-// 	} else {
-// 		return;
-// 	}
-// }
 
 </script>

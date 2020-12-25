@@ -5,15 +5,11 @@
 <div class="container">
 	<br>
 	<div class=title>
-		<h3 align="center" style="margin-top: 20px;">訂位服務管理</h3>
+		<h1 align="center" style="margin-top: 20px;">顧客訂位 管理系統</h1>
 	</div>
-	<div class="back" align="right">
-		<form action="<c:url value='/03/cms/reservation/reservationIndex.ctrl'/> "
-			method="get">
-			<div class="submitButton">
-				<input type="submit" class="" name="submit" value="返回 訂位服務管理">
-			</div>
-		</form>
+	<br>
+	<div class=title>
+		<h3 align="center" style="margin-top: 20px;font-weight: bold;">食堂訂位管理</h3>
 	</div>
 	<br>
 	<div class=content>
@@ -79,9 +75,28 @@
 		</c:if>
 	</div>
 </div>
+
 <!-- ====================================================== -->
+
 <script>
 	$(document).ready(function() {
-		$('#03').DataTable({});
+		$('#03').DataTable({
+			scrollY : 50,
+			"language" : {
+				"search" : "搜尋訂位紀錄:",
+				"lengthMenu" : "每頁 _MENU_ 筆訂位紀錄",
+				"zeroRecords" : "抱歉，查無訂位紀錄",
+				"info" : "第 _PAGE_ 頁，總計 _PAGES_ 頁",
+				"infoEmpty" : "沒有訂位紀錄",
+				"infoFiltered" : "(filtered from _MAX_ total records)",
+				"paginate" : {
+					"first" : "第一頁",
+					"last" : "最後一頁",
+					"next" : "下一頁",
+					"previous" : "前一頁"
+				}
+			}
+		});
 	});
 </script>
+	

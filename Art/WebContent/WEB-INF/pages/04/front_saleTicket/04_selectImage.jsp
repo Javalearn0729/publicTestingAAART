@@ -35,11 +35,14 @@ body {
 }
 
 .col-sm-3 {
-	background-color: #c8c8b4;
-}
+/* 	background-color: #c8c8b4; */
+	background-color: #E0E0E0;
 
 #search {
 	width: 150px;	
+}
+.single-input {
+	width: 200px;	
 }
 
 </style>
@@ -169,111 +172,24 @@ body {
 						</select>
 					</div>
 				</div>
+				<div class="single-element-widget mt-30">
+					<h3 class="mb-30">依開始日期</h3>
+						<input placeholder="開始日查詢" class="single-input" type="text"
+						onfocus="(this.type='date')" id="startdate" name="startdate">
+				</div>
+				<div class="single-element-widget mt-30">
+					<h3 class="mb-30">依結束日期</h3>
+						<input placeholder="結束日查詢" class="single-input" type="text"
+						onfocus="(this.type='date')" id="enddate" name="enddate">
+				</div>
 				</form>
 				<br>
-					<h3 class="mb-30">條件篩選</h3>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>01. Sample Switch</p>
-						<div class="primary-switch">
-							<input type="checkbox" id="default-switch"> <label
-								for="default-switch"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>02. Primary Color Switch</p>
-						<div class="primary-switch">
-							<input type="checkbox" id="primary-switch" checked> <label
-								for="primary-switch"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>03. Confirm Color Switch</p>
-						<div class="confirm-switch">
-							<input type="checkbox" id="confirm-switch" checked> <label
-								for="confirm-switch"></label>
-						</div>
-					</div>
-				<div class="single-element-widget mt-30">
-					<h3 class="mb-30">Checkboxes</h3>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>01. Sample Checkbox</p>
-						<div class="primary-checkbox">
-							<input type="checkbox" id="default-checkbox"> <label
-								for="default-checkbox"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>02. Primary Color Checkbox</p>
-						<div class="primary-checkbox">
-							<input type="checkbox" id="primary-checkbox" checked> <label
-								for="primary-checkbox"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>03. Confirm Color Checkbox</p>
-						<div class="confirm-checkbox">
-							<input type="checkbox" id="confirm-checkbox"> <label
-								for="confirm-checkbox"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>04. Disabled Checkbox</p>
-						<div class="disabled-checkbox">
-							<input type="checkbox" id="disabled-checkbox" disabled> <label
-								for="disabled-checkbox"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>05. Disabled Checkbox active</p>
-						<div class="disabled-checkbox">
-							<input type="checkbox" id="disabled-checkbox-active" checked
-								disabled> <label for="disabled-checkbox-active"></label>
-						</div>
-					</div>
-				</div>
-				<div class="single-element-widget mt-30">
-					<h3 class="mb-30">Radios</h3>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>01. Sample radio</p>
-						<div class="primary-radio">
-							<input type="checkbox" id="default-radio"> <label
-								for="default-radio"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>02. Primary Color radio</p>
-						<div class="primary-radio">
-							<input type="checkbox" id="primary-radio" checked> <label
-								for="primary-radio"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>03. Confirm Color radio</p>
-						<div class="confirm-radio">
-							<input type="checkbox" id="confirm-radio" checked> <label
-								for="confirm-radio"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>04. Disabled radio</p>
-						<div class="disabled-radio">
-							<input type="checkbox" id="disabled-radio" disabled> <label
-								for="disabled-radio"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>05. Disabled radio active</p>
-						<div class="disabled-radio">
-							<input type="checkbox" id="disabled-radio-active" checked
-								disabled> <label for="disabled-radio-active"></label>
-						</div>
-					</div>
-				</div>
+				
 				<br>
 				<div class="row justify-content-center">
 					<button name="category" type="submit" value=""
-						class="genric-btn primary radius">清除條件</button>
-				</div>
+						class="genric-btn primary radius" id="clear">清除條件</button>
+				</div><br><br>
 			</div>
 
 
@@ -365,7 +281,10 @@ body {
 		</div>
 	</div>
 	<script type="text/javascript">
-		
+		$("#clear").click(
+				function() {
+					$("#search").val("")				
+				});
 	</script>
 
 

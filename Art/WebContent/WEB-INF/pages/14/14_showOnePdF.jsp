@@ -158,25 +158,24 @@
 							</div>
 
 							<span>請輸入數量： <input type="number" min="1"
-								max="${oneProsuct.productNum}" name="orderNum" value="1">
+								max="${oneProsuct.productNum}" name="orderNum" id="orderNum" value="1">
 							</span>
 
 							<hr>
 							<p class="card-text" style="font-size: x-large">
 								<small class="text-muted">${oneProsuct.productDes}</small>
 							</p>
-							<input type="hidden" name="method" value="selectItem" /> <input
-								type="hidden" name="productID" id="productID"
-								value="${oneProsuct.productId}" /> <input type="hidden"
-								name="orderPrice" value="${oneProsuct.productPrice}" /> <input
-								type="hidden" name="orderImg" value="${oneProsuct.productImg}" />
+							<input type="hidden" name="productTitle" id="productTitle" value="${oneProsuct.productTitle}" /> 
+							<input type="hidden" name="productID" id="productID" value="${oneProsuct.productId}" /> 
+							<input type="hidden" name="orderPrice" id="orderPrice" value="${oneProsuct.productPrice}" /> 
+							<input	type="hidden" name="orderStock" id="orderStock" value="${oneProsuct.productNum}" />
 							<%--<input type="hidden" name="orderNum" value="${num}" />--%>
 							<input type="hidden" name="orderDes"
 								value="${oneProsuct.productDes}" /> <input type="hidden"
 								name="orderDes" value="${oneProsuct.productDes}" />
 							<div>
-								<button type="submit" name="orderTitle"
-									value="${oneProsuct.productTitle}" class="genric-btn info" onclick="tip()">加入購物車</button>
+								<button type="button" name="" id="btn-submit" onclick="tip()"
+									value="${oneProsuct.productTitle}" class="genric-btn info" >加入購物車</button>
 							</div>
 						</form>
 					</div>
@@ -636,7 +635,30 @@ $("#btn").click(function() {
 });
 
 function tip(){
-	swal("已加入購物車");
+	var pdId = $("#productID").val();
+	var pdTile = $("#productTitle").val();
+	var pdPrice = $("#orderPrice").val();
+	var pdStock = $("#orderStock").val();
+	var pdNum = $("#orderNum").val();
+	
+	 swal("已將商品加入購物車",{
+         buttons: false,
+         timer: 2000,
+       });
+
+	 $.ajax({
+			type: "get",
+			url: "/Art/14/SubmitProcessAjax?productID="+pdId+"&orderPrice="+pdPrice+"&orderNum="+pdNum+"&orderTitle="+pdTile+"&orderStock="+pdStock,
+			cache: false,
+			dataType:"text",
+			success: function(json) {
+// 	 			alert(json);
+				
+			},
+			error:  function() {
+				alert("failure");
+			}
+			});
 
 	
 }

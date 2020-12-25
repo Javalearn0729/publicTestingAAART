@@ -140,7 +140,8 @@ public class CmsSeatCrud {
 				E1,	E2,	E3,	E4,	E5,	E6,	E7,	E8,	E9,	E10
 				);
 
-		return "redirect:/04/CMS/Category.ctrl?category=" + category;
+		return "redirect:/04/CMS/seatSearch.ctrl?actno="+actno+"&category="+category;
+//		return "redirect:/04/CMS/Category.ctrl?category=" + category;
 	}
 	
 	//存入座位
@@ -212,7 +213,97 @@ public class CmsSeatCrud {
 				I1,	I2,	I3,	I4,	I5,	I6,	I7,	I8,	I9,	I10,
 				J1,	J2,	J3,	J4,	J5,	J6,	J7,	J8,	J9,	J10
 				);
-
-		return "redirect:/04/CMS/Category.ctrl?category=" + category;
+		return "redirect:/04/CMS/seat2Search.ctrl?actno="+actno+"&category="+category;
+//		return "redirect:/04/CMS/Category.ctrl?category=" + category;
+	}
+	//存入座位
+	@Hibernate
+	@RequestMapping(path = "/04/Cms/seat3Update.ctrl", method = RequestMethod.POST)
+	public String seat3Insert(			
+			Integer actno,
+			Integer seatnum,
+			Integer K1,
+			Integer K2,
+			Integer K3,
+			Integer K4,
+			Integer K5,
+			Integer K6,
+			Integer K7,
+			Integer K8,
+			Integer K9,
+			Integer L1,
+			Integer L2,
+			Integer L3,
+			Integer L4,
+			Integer L5,
+			Integer L6,
+			Integer L7,
+			Integer L8,
+			Integer L9,
+			Integer L10,
+			Integer L11,
+			Integer M1,
+			Integer M2,
+			Integer M3,
+			Integer M4,
+			Integer M5,
+			Integer M6,
+			Integer M7,
+			Integer M8,
+			Integer M9,
+			Integer M10,
+			Integer M11,
+			Integer N1,
+			Integer N2,
+			Integer N3,
+			Integer N4,
+			Integer N5,
+			Integer N6,
+			Integer N7,
+			Integer N8,
+			Integer N9,
+			Integer O1,
+			Integer O2,
+			Integer O3,
+			Integer O4,
+			Integer O5,
+			Integer O6,
+			Integer O7,
+			Integer O8,
+			Integer O9,
+			Integer O10,
+			Integer P1,
+			Integer P2,
+			Integer P3,
+			Integer P4,
+			Integer P5,
+			Integer P6,
+			Integer P7,
+			Integer P8,
+			Integer P9,
+			Integer P10,
+			Integer Q1,
+			Integer Q2,
+			Integer Q3,
+			Integer Q4,
+			Integer Q5,
+			Integer Q6,
+			Integer category,
+			Model model ,HttpSession session,HttpServletRequest request) {
+		System.out.println("actno"+actno);
+		System.out.println(seatnum);
+		
+		seatBeanService.update3(
+				actno,seatnum,
+				K1,	K2,	K3,	K4,	K5,	K6,	K7,	K8,	K9,	
+				L1,	L2,	L3,	L4,	L5,	L6,	L7,	L8,	L9,	L10, L11,
+				M1,	M2,	M3,	M4,	M5,	M6,	M7,	M8,	M9,	M10, M11,
+				N1,	N2,	N3,	N4,	N5,	N6,	N7,	N8,	N9,
+				O1,	O2,	O3,	O4,	O5,	O6,	O7,	O8,	O9,	O10,
+				P1,	P2,	P3,	P4,	P5,	P6,	P7,	P8,	P9,	P10,
+				Q1,	Q2,	Q3,	Q4,	Q5,	Q6
+				);
+		return "redirect:/04/CMS/seat3Search.ctrl?actno="+actno+"&category="+category;
+//		return "redirect:/04/CMS/Category.ctrl?category=" + category;
 	}
 }

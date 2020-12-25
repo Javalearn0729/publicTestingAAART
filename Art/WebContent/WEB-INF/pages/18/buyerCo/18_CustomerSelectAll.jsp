@@ -2,6 +2,28 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<style>
+
+.buttonSearch {
+border:0;
+  background-color:#003C9D;
+  color:#fff;
+  border-radius:10px;
+  cursor:pointer;
+ 
+}
+
+.buttonSearch hover{
+  color:#003C9D;
+  background-color:#fff;
+  border:2px #003C9D solid;
+}
+
+.genric-btn success radius large
+
+</style>
+
+
 <!-- start banner Area -->
 <section class="banner-area relative" id="home">
 	<div class="overlay overlay-bg"></div>
@@ -27,14 +49,14 @@
 					<form action="<c:url value="/18/searchByWord.ctrl"/>">
 						<p style="text-align: center; display: block; font-size: 24px; color:black">
 							課程名稱關鍵字查詢： <input type="text" name="searchWord" id=searchw> 
-							<input type="submit" name="" value="送出" class="genric-btn primary radius">
+							<input type="submit" name="" value="送出" class="genric-btn primary radius" style="background-color:#005CAF;font-weight:bold">
 						</p>
 					</form>
 				</div>
 				
 				<button id="flower" class="genric-btn primary-border radius">一鍵輸入欲查詢之關鍵字</button>
 
-				<div style="margin: 20px">
+				<div style="margin: 20px;font-weight:bold">
 					<form action="<c:url value="/18/searchByType.ctrl"/>">
 <!-- 						<p style="text-align: center; display: block">請選擇分類 -->
 							<p style="text-align: center; font-size: 22px;">
@@ -55,7 +77,7 @@
 				<div style="text-align: center;">
 					<form action="toCoCart.ctrl">
 						<input type="hidden" name="method" value="order" /> 
-						<input type="submit" style="margin-left: 10px; font-size: 25px;"
+						<input type="submit" style="margin-left: 10px; font-size: 25px; color:black; font-weight:bold"
 							class="genric-btn success radius large" name="check" value="前往結帳">
 					</form>
 				</div>
@@ -79,7 +101,7 @@
 						<c:forEach var="cSelectAllListF" varStatus="stat" items="${cListF}">
 							<tr><td><img style='display: block; width: 480px; height: 270px;'
 									src="data:image/jpg;base64, ${cSelectAllListF.coAct_ImageStr}"></td>
-								<td class="unordered-list"><div style="padding-top:10px;font-size:30px; font-weight:bold; color:black">${cSelectAllListF.coId}. ${cSelectAllListF.coTitle}</div>
+								<td class="unordered-list"><div style="padding-top:10px;font-size:30px; font-weight:bold; color:#1B813E">${cSelectAllListF.coId}. ${cSelectAllListF.coTitle}</div>
 								<div style="padding-top:20px; font-size:24px; color:black">課程類別：<a href="<c:url value='/18/searchByType.ctrl?searchType=${cSelectAllListF.coAct_Type}' />">${cSelectAllListF.coAct_Type}</a></div>
 								<div style="padding-top:20px; font-size:24px; color:black">剩餘名額：${cSelectAllListF.coNum}人</div>
 								<div style="padding-top:20px; font-size:24px; color:black">售價：${cSelectAllListF.coPrice}元</div>

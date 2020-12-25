@@ -87,7 +87,7 @@ public class SeatBean2 implements Serializable {
 	public Integer getSEAT2NUM() {
 		return SEAT2NUM;
 	}
-	public void setSEATNUM(Integer sEAT2NUM) {
+	public void setSEAT2NUM(Integer sEAT2NUM) {
 		SEAT2NUM = sEAT2NUM;
 	}
 	public Integer getF1() {

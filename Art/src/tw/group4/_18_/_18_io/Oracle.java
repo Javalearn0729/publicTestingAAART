@@ -72,6 +72,7 @@ public class Oracle {
 	private static final String CREATE_CourseOrders = "Create Table COURSEORDERS "
 			+ "(ORDERNOCO  integer GENERATED as IDENTITY constraint COURSEORDERS_PK primary key, "
 			+ " MEMBERID          varchar2(20),  "
+//			+ " MEMBERNAME        varchar2(20),  "
 			+ " EMAIL   		  varchar2(150), "
 			+ " CUSTOMERADDRESS   varchar2(90), " 
 			+ " COCOMMENT         varchar2(300), "

@@ -434,22 +434,26 @@ public class DataForDB {
 				GlobalService.encryptString("oracle"));
 		
 		List<WebsiteMember> list = new ArrayList<WebsiteMember>();
-		WebsiteMember wm1 = new WebsiteMember("admin", password, "管理員", "凱達格蘭大道一號", "admin@gmail.com", "0988588168", "admin", blobList.get(0), "art", now, 100000.0, "valid");
-		WebsiteMember wm2 = new WebsiteMember("member", password, "王曉明", "凱達格蘭大道二號", "member@gmail.com", "0966588168", "user", blobList.get(1), "photo", now, 10000.0, "valid");
-		WebsiteMember wm3 = new WebsiteMember("alien", password, "林外星", "凱達格蘭大道三號", "alien@gmail.com", "0967679881", "user", blobList.get(2), "eating", now, 1000.0, "valid");
-		WebsiteMember wm4 = new WebsiteMember("alex", password, "艾力克斯權", "凱達格蘭大道四號", "alien@gmail.com", "0967867881", "user", blobList.get(3), "shopping", now, 1000.0, "valid");
-		WebsiteMember wm5 = new WebsiteMember("hanjiping", password, "韓志平", "凱達格蘭大道五號", "alien@gmail.com", "0967632881", "user", blobList.get(3), "surfing", now, 1000.0, "valid");
-		WebsiteMember wm6 = new WebsiteMember("nandaosan", password, "南道山", "凱達格蘭大道六號", "alien@gmail.com", "0967947551", "user", blobList.get(3), "running", now, 1000.0, "valid");
-		WebsiteMember wm7 = new WebsiteMember("yungsan", password, "容山", "凱達格蘭大道七號", "alien@gmail.com", "0962463706", "user", blobList.get(3), "music", now, 1000.0, "valid");
-		WebsiteMember wm8 = new WebsiteMember("chesan", password, "哲山", "凱達格蘭大道八號", "alien@gmail.com", "0935819881", "user", blobList.get(3), "sports", now, 1000.0, "valid");
-		WebsiteMember wm9 = new WebsiteMember("dalmi", password, "徐達美", "凱達格蘭大道九號", "alien@gmail.com", "0965367164", "user", blobList.get(3), "fashion", now, 1000.0, "valid");
-		WebsiteMember wm10 = new WebsiteMember("yongtsai", password, "徐仁才", "凱達格蘭大道十號", "alien@gmail.com", "0961359834", "user", blobList.get(3), "history", now, 1000.0, "valid");
-		WebsiteMember wm11 = new WebsiteMember("jingming", password, "菁明", "凱達格蘭大道11號", "alien@gmail.com", "0937089001", "user", blobList.get(3), "geography", now, 1000.0, "valid");
-		WebsiteMember wm12 = new WebsiteMember("sandbox", password, "沙盒", "凱達格蘭大道12號", "alien@gmail.com", "0967889951", "user", blobList.get(3), "climbing", now, 1000.0, "valid");
-		WebsiteMember wm13 = new WebsiteMember("startup", password, "史大啊", "凱達格蘭大道13號", "alien@gmail.com", "0962419881", "user", blobList.get(3), "hiking", now, 1000.0, "valid");
-		WebsiteMember wm14 = new WebsiteMember("running", password, "快跑啊", "凱達格蘭大道14號", "alien@gmail.com", "0906841289", "user", blobList.get(3), "cooking", now, 1000.0, "valid");
-		WebsiteMember wm15 = new WebsiteMember("itaewon", password, "梨泰院", "凱達格蘭大道15號", "alien@gmail.com", "0911538891", "user", blobList.get(3), "fighting", now, 1000.0, "valid");
-		WebsiteMember wm16 = new WebsiteMember("nainai", password, "奶奶", "凱達格蘭大道16號", "alien@gmail.com", "0966358891", "user", blobList.get(3), "reading", now, 1000.0, "valid");
+		WebsiteMember wm1 = new WebsiteMember("admin", password, "管理員", "凱達格蘭大道一號", "admin@gmail.com", "0988588168", "admin", blobList.get(0), "art", now, 100000.0, 0, 0, 0, "valid");
+		WebsiteMember wm2 = new WebsiteMember("member", password, "王曉明", "凱達格蘭大道二號", "aaartgroup4@gmail.com", "0966588168", "user", blobList.get(1), "photo", now, 10000.0, 0, 0, 0, "valid");
+		WebsiteMember wm3 = new WebsiteMember("alien", password, "林外星", "凱達格蘭大道三號", "aaartgroup4@gmail.com", "0967679881", "user", blobList.get(2), "eating", now, 1000.0, 0, 0, 0, "valid");
+		WebsiteMember wm4 = new WebsiteMember("alex", password, "艾力克斯權", "凱達格蘭大道四號", "alien@gmail.com", "0967867881", "user", blobList.get(3), "shopping", now, 1000.0, 0, 0, 0, "valid");
+		WebsiteMember wm5 = new WebsiteMember("hanjiping", password, "韓志平", "凱達格蘭大道五號", "alien@gmail.com", "0967632881", "user", blobList.get(3), "surfing", now, 1000.0, 0, 0, 0, "valid");
+		WebsiteMember wm6 = new WebsiteMember("nandaosan", password, "南道山", "凱達格蘭大道六號", "alien@gmail.com", "0967947551", "user", blobList.get(3), "running", now, 1000.0, 0, 0, 0,"valid");
+		WebsiteMember wm7 = new WebsiteMember("yungsan", password, "容山", "凱達格蘭大道七號", "alien@gmail.com", "0962463706", "user", blobList.get(3), "music", now, 1000.0, 0, 0, 0, "valid");
+		WebsiteMember wm8 = new WebsiteMember("chesan", password, "哲山", "凱達格蘭大道八號", "alien@gmail.com", "0935819881", "user", blobList.get(3), "sports", now, 1000.0, 0, 0, 0, "valid");
+		WebsiteMember wm9 = new WebsiteMember("dalmi", password, "徐達美", "凱達格蘭大道九號", "alien@gmail.com", "0965367164", "user", blobList.get(3), "fashion", now, 1000.0, 0, 0, 0, "valid");
+		WebsiteMember wm10 = new WebsiteMember("yongtsai", password, "徐仁才", "凱達格蘭大道十號", "alien@gmail.com", "0961359834", "user", blobList.get(3), "history", now, 1000.0, 0, 0, 0, "valid");
+		WebsiteMember wm11 = new WebsiteMember("jingming", password, "菁明", "凱達格蘭大道11號", "alien@gmail.com", "0937089001", "user", blobList.get(3), "geography", now, 1000.0, 0, 0, 0, "valid");
+		WebsiteMember wm12 = new WebsiteMember("sandbox", password, "沙盒", "凱達格蘭大道12號", "alien@gmail.com", "0967889951", "user", blobList.get(3), "climbing", now, 1000.0, 0, 0, 0, "valid");
+		WebsiteMember wm13 = new WebsiteMember("startup", password, "史大啊", "凱達格蘭大道13號", "alien@gmail.com", "0962419881", "user", blobList.get(3), "hiking", now, 1000.0, 0, 0, 0, "valid");
+		WebsiteMember wm14 = new WebsiteMember("running", password, "快跑啊", "凱達格蘭大道14號", "alien@gmail.com", "0906841289", "user", blobList.get(3), "cooking", now, 1000.0, 0, 0, 0, "valid");
+		WebsiteMember wm15 = new WebsiteMember("itaewon", password, "梨泰院", "凱達格蘭大道15號", "alien@gmail.com", "0911538891", "user", blobList.get(3), "fighting", now, 1000.0, 0, 0, 0, "valid");
+		WebsiteMember wm16 = new WebsiteMember("nainai", password, "奶奶", "凱達格蘭大道16號", "alien@gmail.com", "0966358891", "user", blobList.get(3), "reading", now, 1000.0, 0, 0, 0,"valid");
+		WebsiteMember wm17 = new WebsiteMember("alisu", password, "有西", "凱達格蘭大道17號", "alien@gmail.com", "0969505891", "user", blobList.get(3), "gaming", now, 1000.0, 0, 0, 0,"valid");
+		WebsiteMember wm18 = new WebsiteMember("suzuki", password, "鈴木", "凱達格蘭大道18號", "alien@gmail.com", "0988916923", "user", blobList.get(3), "driving", now, 1000.0, 0, 0, 0,"valid");
+		WebsiteMember wm19 = new WebsiteMember("aloha", password, "阿羅哈", "凱達格蘭大道19號", "alien@gmail.com", "0918493203", "user", blobList.get(3), "singing", now, 1000.0, 0, 0, 0,"valid");
+		WebsiteMember wm20 = new WebsiteMember("yoyoyo", password, "又幼又", "凱達格蘭大道20號", "alien@gmail.com", "0910479213", "user", blobList.get(3), "rap", now, 1000.0, 0, 0, 0,"valid");
 
 		list.add(wm1);
 		list.add(wm2);
@@ -467,6 +471,10 @@ public class DataForDB {
 		list.add(wm14);
 		list.add(wm15);
 		list.add(wm16);
+		list.add(wm17);
+		list.add(wm18);
+		list.add(wm19);
+		list.add(wm20);
 		
 		SessionFactory factory = HibernateUtilNoWeb.getSessionFactory();
 		Session session = factory.getCurrentSession();
@@ -477,7 +485,7 @@ public class DataForDB {
 		try {
 			for (WebsiteMember item: list) {
 				
-				WebsiteMember bean = new WebsiteMember(item.getName(), item.getPassword(), item.getRealName(), item.getAddress(), item.getEmail(), item.getTel(), item.getMemberType(), item.getMemberPic(), item.getPreference(), item.getRegisterTime(), item.getPurchaseLimit(), item.getStatus());
+				WebsiteMember bean = new WebsiteMember(item.getName(), item.getPassword(), item.getRealName(), item.getAddress(), item.getEmail(), item.getTel(), item.getMemberType(), item.getMemberPic(), item.getPreference(), item.getRegisterTime(), item.getPurchaseLimit(), item.getDeco(), item.getHome(), item.getBook(), item.getStatus());
 				session.save(bean);
 				counter++;
 				

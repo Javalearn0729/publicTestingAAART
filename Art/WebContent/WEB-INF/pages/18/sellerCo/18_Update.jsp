@@ -4,7 +4,7 @@
 
 <div class="container">
 <form action="<c:url value="/18/cUpdate.ctrl"/>" method="POST" enctype="multipart/form-data">
-<table>
+<table style="font-size: 22px">
 <tbody>
 <tr><td style="padding-top:20px; color:black">課程編號：<input type="text" class="form-control"
 				name="coId" value="${co.coId}"></td></tr>

@@ -58,6 +58,15 @@ public class WebsiteMember {
 	@Column(name = "status")
 	private String status;
 	
+	@Column(name = "deco")
+	private int deco;
+
+	@Column(name = "home")
+	private int home;
+	
+	@Column(name = "book")
+	private int book;
+
 	@Transient
 	private String memberPicBase64Str;
 	
@@ -66,7 +75,7 @@ public class WebsiteMember {
 	}
 
 	public WebsiteMember(String name, String password, String realName, String address, String email, String tel, String memberType,
-			Blob memberPic, String preference, LocalDate registerTime, Double purchaseLimit, String status) {
+			Blob memberPic, String preference, LocalDate registerTime, Double purchaseLimit,int deco, int home, int book, String status) {
 		super();
 		this.name = name;
 		this.password = password;
@@ -79,6 +88,9 @@ public class WebsiteMember {
 		this.preference = preference;
 		this.registerTime = registerTime;
 		this.purchaseLimit = purchaseLimit;
+		this.deco = deco;
+		this.home = home;
+		this.book = book;
 		this.status = status;
 	}
 
@@ -192,6 +204,30 @@ public class WebsiteMember {
 
 	public void setMemberPicBase64Str(String memberPicBase64Str) {
 		this.memberPicBase64Str = memberPicBase64Str;
+	}
+
+	public int getDeco() {
+		return deco;
+	}
+
+	public void setDeco(int deco) {
+		this.deco = deco;
+	}
+
+	public int getHome() {
+		return home;
+	}
+
+	public void setHome(int home) {
+		this.home = home;
+	}
+
+	public int getBook() {
+		return book;
+	}
+
+	public void setBook(int book) {
+		this.book = book;
 	}
 	
 	

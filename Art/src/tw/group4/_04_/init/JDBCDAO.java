@@ -348,6 +348,8 @@ private DataSource dataSource;
 					    		"M7 NUMBER,"+ 
 					    		"M8 NUMBER,"+ 
 					    		"M9 NUMBER,"+ 
+					    		"M10 NUMBER,"+ 
+					    		"M11 NUMBER,"+ 
 					    		"N1 NUMBER,"+ 
 					    		"N2 NUMBER,"+ 
 					    		"N3 NUMBER,"+ 
@@ -357,8 +359,6 @@ private DataSource dataSource;
 					    		"N7 NUMBER,"+ 
 					    		"N8 NUMBER,"+ 
 					    		"N9 NUMBER,"+ 
-					    		"N10 NUMBER,"+ 
-					    		"N11 NUMBER,"+ 
 					    		"O1 NUMBER,"+ 
 					    		"O2 NUMBER,"+ 
 					    		"O3 NUMBER,"+ 

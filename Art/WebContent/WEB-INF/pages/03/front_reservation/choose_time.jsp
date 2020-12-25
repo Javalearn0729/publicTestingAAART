@@ -15,6 +15,13 @@ td {
 	font-size: 20px;
 }
 
+.wrapper-restaurant {
+	width: 330px;
+	height: 200px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
 .custom-button {
 	display: inline-block;
 	outline: none;
@@ -25,7 +32,8 @@ td {
 	font-weight: bold;
 	cursor: pointer;
 	border-radius: 5px;
-	font-size: larger;
+	font-size: 22px;
+	color: black;
 }
 </style>
 
@@ -52,9 +60,9 @@ td {
 	<div class="container">
 		<br>
 		<div class=title>
-			<h2 align="center" style="margin-top: 20px;">得藝食堂線上訂位</h2>
+			<h1 align="center" style="margin-top: 20px;">得藝食堂線上訂位</h1>
 		</div>
-		<p>加上輪播圖片</p>
+		<br>
 		<div class=title>
 			<h3 align="center" style="margin-top: 20px;">請選擇用餐時段</h3>
 		</div>
@@ -63,7 +71,7 @@ td {
 			<table id="03A" class="display table table-hover table-blue">
 				<thead>
 					<tr class="head">
-						<th scope="col" width="150px">
+						<th scope="col" width="180px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<div class="custom-button" style="background-color: #FAD689">用餐人數</div>
 						</th>
 						<th scope="col" style="font-size: larger;" width="150px">
@@ -398,8 +406,7 @@ td {
 						</tr>
 					</tbody>
 				</table>
-				<!-- ====================================================== -->
-				<br>
+				<!-- ====================================================== -->			
 				<form method="post"
 					action="<c:url value = "/03/front/reservation/createReservationConfirm.ctrl"/>">
 					<div style="display: none">
@@ -414,10 +421,11 @@ td {
 					<div style="display: none">
 						<input type="hidden" id="gainTime" name="time" value="">
 					</div>
-					<br>
 					<c:if test="${reservationErrorMsg == null}">
 						<div class="submitButton" align="center" style="font-size: larger">
-							<input type="submit" name="submit" value="下一步，填寫聯絡資訊">
+							<input type="submit" name="submit"
+								style="font-size: 24px; font-weight: bold;"
+								class="genric-btn primary-border radius" value="下一步  填寫聯絡資訊">
 						</div>
 					</c:if>
 					<br>
@@ -425,7 +433,7 @@ td {
 			</div>
 		</div>
 		<!-- 圖片輪播區塊 -->
-		<br> <br> <br>
+		<br> <br>
 		<div class=title>
 			<h2 align="center" style="margin-top: 20px;">嚴選食材、特製甜點</h2>
 		</div>

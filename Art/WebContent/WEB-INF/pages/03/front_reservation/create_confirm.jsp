@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>my reservation</title>
 <style>
-
 .rs-symbol-color::after {
 	content: "*";
 	margin-left: 3px;
@@ -27,6 +26,13 @@
 	cursor: pointer;
 	border-radius: 5px;
 	font-size: larger;
+}
+
+.wrapper-restaurant {
+	width: 330px;
+	height: 200px;
+	overflow: hidden;
+	margin: 0 auto;
 }
 </style>
 
@@ -54,11 +60,18 @@
 	<div class="container">
 		<br>
 		<div class=title>
-			<h2 align="center" style="margin-top: 20px;">得藝食堂線上訂位</h2>
-			<h2 align="center" style="margin-top: 20px; margin-bottom: 20px">輪播廣告</h2>
+			<h1 align="center" style="margin-top: 20px; margin-bottom: 30px;">得藝食堂線上訂位</h1>
 		</div>
+		<!-- #Demo -->
+		<div align="right" style="margin-bottom: 30px;">
+			<input type="button" name="demo03" id="demo03"
+				style="font-size: 24px; font-weight: bold;"
+				class="genric-btn primary-border radius" value="示範  填入聯絡資訊">
+		</div>
+
+		<!-- #Demo -->
 		<div class=title>
-			<h3 align="center" style="margin-top: 20px; margin-bottom: 20px">請填寫聯絡資訊</h3>
+			<h3 align="center" style="margin-top: 20px; margin-bottom: 35px">請填寫聯絡資訊</h3>
 		</div>
 		<div class="row">
 			<div class="col-lg-3 col-md-4 mt-sm-30">
@@ -67,14 +80,15 @@
 						<h3 align="center" style="margin-bottom: 15px">用餐人數與時間</h3>
 					</div>
 					<table class="display table table-hover table-blue">
-						<thead>
+						<thead style="color: black;">
 							<tr class="head">
 								<th scope="col">
-									<div class="custom-button" style="background-color: #FAD689">用餐人數</div>
+									<div class="custom-button"
+										style="background-color: #FAD689; font-size: 21px;">用餐人數</div>
 								</th>
 							</tr>
 							<tr>
-								<th scope="col" style="font-size: larger;">
+								<th scope="col" style="font-size: 19px;">
 									<div class="custom-button"
 										style="background-color: #FFFFFF; font-weight: normal;">
 										${amount}&nbsp;位</div>
@@ -83,11 +97,12 @@
 							<tr>
 								<!-- #================= -->
 								<th scope="col">
-									<div class="custom-button" style="background-color: #A5DEE4">用餐日期</div>
+									<div class="custom-button"
+										style="background-color: #A5DEE4; font-size: 21px;">用餐日期</div>
 								</th>
 							</tr>
 							<tr>
-								<th scope="col" style="font-size: larger;">
+								<th scope="col" style="font-size: 19px;">
 									<div class="custom-button"
 										style="background-color: #FFFFFF; font-weight: normal;">
 										${dateTime}</div>
@@ -96,12 +111,13 @@
 							<tr>
 								<!-- #================= -->
 								<th scope="col">
-									<div class="custom-button" style="background-color: #F596AA">用餐時段</div>
+									<div class="custom-button"
+										style="background-color: #F596AA; font-size: 21px;">用餐時段</div>
 								</th>
 								<!-- #================= -->
 							</tr>
 							<tr>
-								<th scope="col" style="font-size: larger;">
+								<th scope="col" style="font-size: 19px;">
 									<div class="custom-button"
 										style="background-color: #FFFFFF; font-weight: normal;">
 										${time}</div>
@@ -115,20 +131,20 @@
 			</div>
 			<div class="col-lg-8 col-md-8">
 				<div class="container" style="width: 700px; font-size: larger;">
-					<form method="post"
+					<form method="post" id="createReservation"
 						action="<c:url value = "/03/front/reservation/createReservation.ctrl"/>">
 						<table id="03A" class="display table table-hover table-blue">
 							<thead>
 							</thead>
 							<tfoot></tfoot>
-							<tbody>
+							<tbody style="font-size: 19px; color: black;">
 								<tr>
 									<td class='table-warning'><div class="rs-symbol-color"
 											style="font-size: larger; font-weight: bold;">訂位人姓名</div></td>
 								</tr>
 								<tr>
 									<td><input type="text" name="customerName"
-										required="required" placeholder="請輸入姓名"></td>
+										id="setCustomerName03" required="required" placeholder="請輸入姓名"></td>
 								</tr>
 								<!-- # ================== -->
 								<tr>
@@ -138,11 +154,11 @@
 									</td>
 								</tr>
 								<tr>
-									<td><div>
+									<td><div style="font-size: 22px;">
 											<input type="radio" name="gender" value="1" checked>
-											<label>先生</label> <input type="radio" name="gender" value="0">
-											<label>小姐</label> <input type="radio" name="gender" value="2">
-											<label>其他</label>
+											<label>先生</label> &emsp;<input type="radio" name="gender"
+												value="0"> <label>小姐</label> &emsp;<input
+												type="radio" name="gender" value="2"> <label>其他</label>
 										</div></td>
 								</tr>
 								<!-- # ================== -->
@@ -154,7 +170,8 @@
 								</tr>
 								<tr>
 									<td><input type="text" name="customerPhone"
-										required="required" placeholder="請輸入手機號碼"></td>
+										id="setCustomerPhone03" required="required"
+										placeholder="請輸入手機號碼"></td>
 								</tr>
 								<!-- # ================== -->
 								<tr>
@@ -164,7 +181,7 @@
 								</tr>
 								<tr>
 									<td><input type="text" name="email" required="required"
-										placeholder="請輸入 Email"></td>
+										id="setEmail03" placeholder="請輸入 Email"></td>
 								</tr>
 								<!-- # ================== -->
 								<tr>
@@ -172,7 +189,7 @@
 										<div style="font-size: larger; font-weight: bold;">用餐目的</div>
 								</tr>
 								<tr>
-									<td><div>
+									<td><div style="font-size: 22px;">
 											<input type="radio" name="purpose" value="1" checked>
 											<label>不填寫&emsp;&nbsp;</label> <input type="radio"
 												name="purpose" value="2"> <label>約會&nbsp;&emsp;&emsp;</label>
@@ -180,7 +197,7 @@
 										</div></td>
 								</tr>
 								<tr>
-									<td><div>
+									<td><div style="font-size: 22px;">
 											<input type="radio" name="purpose" value="4"> <label>家庭聚餐&nbsp;</label>
 											<input type="radio" name="purpose" value="5"> <label>朋友聚餐&nbsp;</label>
 											<input type="radio" name="purpose" value="6"> <label>商務聚餐</label>
@@ -192,16 +209,13 @@
 										<div style="font-size: larger; font-weight: bold;">備註</div>
 								</tr>
 								<tr>
-									<td><textarea name="note"
-											style="width: 620px; height: 65px;"
+									<td><textarea name="note" id="setNote03"
+											style="width: 620px; height: 65px; font-size: 19px;"
 											placeholder="有任何特殊要求嗎? （例如兒童座椅、食物過敏或長者行動不便）這些都可以告訴我們"></textarea></td>
 								</tr>
 								<!-- # ================== -->
 						</table>
 						<!-- ====================================================== -->
-						<div class="submitButton" align="center" style="font-size: larger; padding-left: 180px; ">
-							<input type="submit" name="submit" value="完成訂位">
-						</div>
 						<div style="display: none;">
 							<input type="hidden" name="adultsNum" value="${adultsNum}">
 							<input type="hidden" name="childrenNum" value="${childrenNum}">
@@ -211,12 +225,18 @@
 						</div>
 						<br>
 					</form>
+					<div class="submitButton" align="left"
+						style="font-size: larger; padding-left: 160px;">
+						<button type="button" name="submit" id="sweetAlertSubmit"
+							style="font-size: 24px; font-weight: bold;"
+							class="genric-btn primary-border radius" >完成訂位</button>
+					</div>
 					<div align="center" style="font-size: larger">${reservationCreateMsg}</div>
 				</div>
 			</div>
 		</div>
 		<!-- 圖片輪播區塊 -->
-		<br> <br> <br>
+		<br> <br>
 		<div class=title>
 			<h2 align="center" style="margin-top: 20px;">嚴選食材、特製甜點</h2>
 		</div>
@@ -263,5 +283,35 @@
 
 	</div>
 	<!-- ====================================================== -->
+	<script>
+		$("#demo03").click(function() {
+			$("#setCustomerName03").val("向日葵");
+			$("#setCustomerPhone03").val("09123456789");
+			$("#setEmail03").val("aaartgroup4@gmail.com");
+			$("#setNote03").val("朋友對海鮮過敏，桌上預先給的食材請不要放海鮮，謝謝幫忙。");
+		});
+
+		// sweetAlert
+			document.getElementById("sweetAlertSubmit").addEventListener("click",function(){
+			swal({
+				  title: "為保障您的權益，完成訂位前。  請確認您填入的資訊是否正確",
+				  text: "送出訂位 ",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((booking) => {
+					  if (booking) {
+					    swal("已完成訂位", 
+					    	{icon: "success",});
+				    	setTimeout(function(){ $("#createReservation").submit(); },1500);
+					  } else {
+					    swal("已取消送出");
+					  }
+					});
+			});
+
+		 
+	</script>
 </body>
 </html>

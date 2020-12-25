@@ -51,10 +51,22 @@ body {
 
 }
 .flip{
-background-color: rgb(156, 194, 229);
+background-color: #E0E0E0;
 }
 .table table-bordered{
-background-color: #FFFFFF;
+}
+#detail{
+background-color: #E0E0E0;
+}
+.col-sm-3{
+background-color: #E0E0E0;
+}
+.H3bar{
+background-color: #ADADAD;
+}
+#buy{
+align:center;
+width: 250px;
 }
 </style>
 
@@ -80,7 +92,7 @@ background-color: #FFFFFF;
 	<!-- End banner Area -->
 
 <div class="container">
-  <div class="all">
+
  
 		<form name="order" action="<c:url value='/04/seatmap'/>" method="get">
 <%-- 		<form name="order" action="<c:url value='/04/booking.ctrl'/>" method="get"> --%>
@@ -90,25 +102,35 @@ background-color: #FFFFFF;
 		<c:set var="title" value="${title}" scope="session" />
 		<c:set var="site" value="${site}" scope="session" />
 		<c:set var="description" value="${description}" scope="session" />
-<%-- 		<jsp:useBean id="shoppingCart" class="tw.group4._04_.front.shopcart.model.Shoppingcart" scope="session"/>  --%>
-<%-- 		<jsp:setProperty name="shoppingCart" property="*"/> --%>
-		
-<%-- 		<c:set var="title" value="${param.title}" scope="session" /> --%>
-<%-- 		<c:set var="description" value="${param.description}" /> --%>
+<div class="row">
+			<div class="col-sm-3">
+
+			<br>
+			<h3 >主辦單位</h3><br>
+
+			<p>&nbsp;&nbsp; ${mainunit}</p><br><br>
+			<h3>活動地點</h3><br>
+			<p>&nbsp; ${site}</p><br><br>		
+			<h3>活動日期</h3><br>
+			<p>&nbsp; ${startdate} ~ ${enddate}</p>	
+			
+			<div class="row justify-content-center">
+			<br><br><input type="submit" class="genric-btn primary-border radius" value="立即購票" id="buy">
+				</div><br><br>
+			
+			
+			</div>
+			<div class="col-sm-9">
+			
+		<br><H1>${title}</H1>	
+		<div id="detail" >
 
 
-		<br><H1>節目詳細 </H1>
-		<br><H4>節目名稱: ${title}</H4>	
-		<br><H4>地點: ${site}</H4>		
-<!-- 		<H2>主辦單位:</H2>		 -->
-<%-- 		<H2>${}</H2> --%>
-<!-- 		<H2>演出單位:</H2>		 -->
-<%-- 		<H2>${}</H2> --%>
-		<br><H4>活動日期: ${startdate} ~ ${enddate}</H4>		
+		</div>
 
 		
 		
-		<br><h4>節目簡介:</h4>
+		<br><h3>節目簡介</h3><br>
 		<P>${description}</P><br><br>
 		
 		<div class="text-center">
@@ -117,7 +139,9 @@ background-color: #FFFFFF;
 		
 		<br><br><iframe width="100%" height="250" frameborder="0" src="https://www.google.com/maps?q=${site}&output=embed"></iframe>
 
-		<br><br><H2>票券資訊</H2>
+</div>
+		<p></p><br>
+		<H2>票券資訊</H2>
 		<table class="table table-bordered">
 		<tr> 
 				<td>節目名稱</td>
@@ -145,14 +169,13 @@ background-color: #FFFFFF;
 			</tr>
 		</table>
 		
-				<br><br><input type="submit" class="genric-btn primary-border radius" value="購買">
+				<br><br><input type="submit" class="genric-btn primary-border radius" value="立即購票">
 
 		</form>
-
-			<br><br><p class="flip">進場須知</p>
-			<div class="panel" style="display:none;">
-				<p>★ 均可入場，一人一票</p>
-			</div>
+<!-- 			<br><br><p class="flip">進場須知</p> -->
+<!-- 			<div class="panel" style="display:none;"> -->
+<!-- 				<p>★ 均可入場，一人一票</p> -->
+<!-- 			</div> -->
 </div>
 </div>
 

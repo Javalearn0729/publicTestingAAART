@@ -59,13 +59,17 @@ $(function(){
 						type="number" name="APNUM" id="num" required="required" min="1" value="50">
 				</p>
 				<p>
-					類型<span style="color: crimson; font-size: larger">*</span>：
+					商品類別<span style="color: crimson; font-size: larger">*</span>：
 <!-- 			<input	type="text" name="APTYPE" id="type" required="required" value="cook"> -->
-					<select id="type">
- 						 <option value="cook">家飾</option>
-						 <option value="plate">食器</option>
- 						 <option value="ink">飾品配件</option>
- 						 <option value="pen">文具</option>
+					<select id="APTYPE" name="APTYPE">
+						 <option value="0" disabled selected>請選擇</option>
+ 						 <option value="居家生活">居家生活</option>
+ 						 <option value="配件飾品">配件飾品</option>
+ 						 <option value="文具書籍">文具書籍</option>
+					</select>
+					商品副類別
+					<select id="APTYPE2" name="APTYPE2">
+ 						 <option value="0" disabled selected>請選擇</option>
 					</select>
 				</p>
 			</div>
@@ -115,4 +119,45 @@ $(function(){
 		  };
 		  reader.readAsDataURL(file);
 		});
+
+	//下拉框連動
+	$("#APTYPE").change(function(){
+	  //此處用switch case來作為判斷式
+	  //並以sel各個Option的Value作為判斷條件
+	  //注意這邊有用parseInt將value值轉為整數型態否則會出現錯誤
+	  switch ($(this).val()){
+	  //默認行為，可以不寫
+	  default:
+	  //當value值為0時刪除sel2的Option Item
+	  case 0: 
+	      $("#APTYPE2 option").remove();
+	      break;
+	  //當value值為1時刪除sel2的Option Item 
+	  //並用陣列及each迴圈新增sel2的Option Item選項
+	  case '配件飾品': 
+	      $("#APTYPE2 option").remove();
+	      var array = [ "戒指", "耳環", "項鍊", "眼鏡"];
+	      //利用each遍歷array中的值並將每個值新增到Select中
+	      $.each(array, function(i, val) {
+	        $("#APTYPE2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+	      });      
+	      break;
+	  case '居家生活': 
+	      $("#APTYPE2 option").remove();
+	      var array = [ "家飾布置", "生活用品", "收納雜貨"];
+	      //利用each遍歷array中的值並將每個值新增到Select中
+	      $.each(array, function(i, val) {
+	        $("#APTYPE2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+	      });      
+	      break;
+	  case '文具書籍': 
+	      $("#APTYPE2 option").remove();
+	      var array = [ "文書用品", "書籍周邊"];
+	      //利用each遍歷array中的值並將每個值新增到Select中
+	      $.each(array, function(i, val) {
+	        $("#APTYPE2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+	      });      
+	      break;
+	 }
+	});
   </script>

@@ -38,6 +38,7 @@ import tw.group4._14_.front.model.MessageBoardAP;
 import tw.group4._14_.front.model.ShoppingCartAP;
 import tw.group4._14_.front.model.dao.MBRecordDAOService;
 import tw.group4._14_.front.model.dao.MessageBoardAPService;
+import tw.group4._14_.index.dao.IndexDaoService;
 import tw.group4._35_.login.model.WebsiteMember;
 import tw.group4.util.Hibernate;
 
@@ -59,6 +60,8 @@ public class ControllerAPShop {
 	@Autowired
 	private DashboardService dbService;
 	
+	@Autowired
+	private IndexDaoService iService;
 	
 	//開啟 AJAX 測試的大門 => 先不要 //TODO: Pagination 未完成
 	@RequestMapping(path = "/14/newProduct", method = RequestMethod.GET)
@@ -218,7 +221,7 @@ public class ControllerAPShop {
 			@RequestParam(name = "query", required = false) String query,
 			@RequestParam(name = "pageNo", required = false) Integer pageNo,
 			@RequestParam(name = "productID") String productID, @RequestParam(name = "orderPrice") String orderPrice,
-			@RequestParam(name = "orderImg") String orderImg, @RequestParam(name = "orderNum") int orderNum,
+			@RequestParam(name = "orderImg", required = false) String orderImg, @RequestParam(name = "orderNum") int orderNum,
 			@RequestParam(name = "orderTitle") String orderTitle) {
 
 		ShoppingCartAP carList = (ShoppingCartAP) session.getAttribute("carList");
@@ -278,7 +281,22 @@ public class ControllerAPShop {
 				sum += (pi.getProductNum()*Integer.parseInt(pi.getProductPrice()));
 			}
 			
+			WebsiteMember mb = (WebsiteMember) session.getAttribute("member");
+			
+			
+			if (mb.getHome() != 0) {
+				
+				List<ARTProduct> selectShopHomeHot = iService.selectShopHomeHot();
+				m.addAttribute("query", selectShopHomeHot);
+				
+			}else {
+				
+				List<ARTProduct> selectShopHot = iService.selectShopHot();
+				m.addAttribute("query", selectShopHot);
+			}
+			
 			m.addAttribute("sum", sum);
+
 			
 			return "14/14_OrderConfirm1";
 
@@ -504,4 +522,67 @@ public class ControllerAPShop {
 	}
 	
 
+	@Hibernate
+	@RequestMapping(path = "/14/SubmitProcessAjax", method = RequestMethod.GET)
+	@ResponseBody
+	public String SubmitProcessaAjax(Model m, HttpSession session, HttpServletRequest request,
+			@RequestParam(name = "carSize", required = false) Integer carSize,
+			@RequestParam(name = "query", required = false) String query,
+			@RequestParam(name = "pageNo", required = false) Integer pageNo,
+			@RequestParam(name = "productID") String productID, 
+			@RequestParam(name = "orderPrice") String orderPrice,
+			@RequestParam(name = "orderStock", required = false) String pdStock, 
+			@RequestParam(name = "orderNum") int orderNum,
+			@RequestParam(name = "orderTitle") String orderTitle) {
+
+		ShoppingCartAP carList = (ShoppingCartAP) session.getAttribute("carList");
+
+		if (carList == null) {
+			carList = new ShoppingCartAP();
+			session.setAttribute("carList", carList);
+		}
+
+		ARTProduct product = new ARTProduct();
+
+		product.setProductId(productID);
+		product.setProductTitle(orderTitle);
+		product.setProductNum(orderNum);
+		product.setProductPrice(orderPrice);
+		product.setProductImg(pdStock);
+		synchronized (this) {
+
+			carList.addToCarAP(productID, product);
+
+		}
+
+		Map<String, ARTProduct> cartAP = carList.getCartAP();
+		Set set = cartAP.keySet();
+		for (Iterator iter = set.iterator(); iter.hasNext();) {
+			String key = (String) iter.next();
+			ARTProduct value = (ARTProduct) cartAP.get(key);
+			System.out.println(key + "====" + value);
+		}
+
+		System.out.println("------cartAP.size()------" + cartAP.size());
+//		session.setAttribute("carList", carList);
+		int size = cartAP.size();
+		session.setAttribute("carSize", size);
+		return "sucess";
+	}
+	
+	@Hibernate
+	@RequestMapping(path = "/14/getShopCartSize", method = RequestMethod.GET)
+	@ResponseBody
+	public int getShopCartSize(Model m, HttpSession session, HttpServletRequest request) {
+		ShoppingCartAP carList = (ShoppingCartAP) session.getAttribute("carList");
+
+		if (carList == null) {
+			carList = new ShoppingCartAP();
+			session.setAttribute("carList", carList);
+		}
+		Map<String, ARTProduct> cartAP = carList.getCartAP();
+		int size = cartAP.size();
+		return size;
+	}
+	
 }

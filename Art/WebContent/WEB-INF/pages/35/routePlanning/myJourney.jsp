@@ -50,7 +50,7 @@ html, body {
 
 /* 高度要設定固定高否則無法顯示地圖 */
 #artMap {
-	height: 650px;
+	height: 700px;
 	width: 100%;
 }
 
@@ -69,7 +69,7 @@ html, body {
 }
 
 .selectCategory {
-	width: 90px;
+	width: 100px;
 	margin: 0 auto;
 }
 
@@ -89,24 +89,20 @@ html, body {
 .marker-pin h6 {
 	color: navy;
 	font-family: SimSun;
-	-webkit-text-stroke: 0.3px white;
+/* 	-webkit-text-stroke: 0.3px white; */
 }
 
 .askLocation {
 	display: inline;
 	float: right;
-	width: 40%;
-	margin-top: 90px;
+	width: 45%;
+	margin-top: 50px;
 }
 
 .mapArea {
 	display: inline;
 	float: left;
-	width: 60%;
-}
-
-#editPinButton {
-	margin: 40px 0;
+	width: 55%;
 }
 
 .myJourney {
@@ -114,6 +110,8 @@ html, body {
 }
 
 #myJourneyResult {
+	color: red;
+	font-weight: 900;
 	display: none;
 }
 
@@ -121,16 +119,29 @@ html, body {
 	margin: 40px 0;
 }
 
-.searchBox1, .searchBox2r {
-	padding: 20px 0;
+.searchBox1 {
+	padding-bottom: 20px;
 }
 
 .searchBox1 h1, .searchBox2l h3, .searchBox2r h3 {
 	padding-bottom: 5px;
 }
 
+.searchBox2l{
+	float: left;
+	width: 50%;
+	height: 100px;
+}
+
+.searchBox2r{
+	float: right;
+	width: 50%;
+	height: 100px;
+}
+
 .oneKey {
-	margin-bottom: 20px;
+	clear: both;
+	margin-bottom: 20px
 }
 
 /* 圖資的對比與亮度 */
@@ -141,13 +152,55 @@ html, body {
 
 .tableDiv {
 	overflow: scroll;
-	height: 550px;
+	max-height: 450px;
+	padding: 15px 0;
 }
 
-#myJourneyTable {
+#myJourneyTable, #pinsTbody tr {
 	/*  	table-layout: fixed;  */
 	word-break: keep-all;
+	border: 1px solid #778FA8;
 }
+
+#pinsTbody tr:hover {
+	background: #D3D3D3;
+}
+
+#myJourneyTable thead {
+	background: #778FA8;
+	color: white;
+}
+
+#naviButton {
+	margin-bottom: 15px;
+}
+
+#a1UpperDiv, #a2UpperDiv {
+	border-radius: 5px;
+	background: #D1E9E9;
+	padding: 10px 0;
+	margin: 45px 150px;
+	font-size: 32px;
+	box-shadow:1px 1px 2px 3px;
+}
+
+#a1UpperDiv:hover, #a2UpperDiv:hover {
+	background: #5CADAD;
+}
+
+.newImg {
+	margin-top: 70px;
+}
+.newImg img {
+	border-radius: 5px;
+	width: 85%;
+ 	opacity: 0.6; 
+}
+
+#a1, #a2 {
+	font-weight: 800;
+}
+
 </style>
 
 </head>
@@ -158,10 +211,10 @@ html, body {
 		<div class="container">
 			<div class="row d-flex align-items-center justify-content-center">
 				<div class="about-content col-lg-12">
-					<h1 class="text-white">我的藝文足跡</h1>
+					<h1 class="text-white">我的旅程</h1>
 					<p class="text-white link-nav">
 						<a href="index.html">Home </a> <span class="lnr lnr-arrow-right"></span>
-						<a href="<c:url value='/35/myJourney' />">我的藝文足跡</a>
+						<a href="<c:url value='/35/myJourney' />">我的旅程</a>
 					</p>
 				</div>
 			</div>
@@ -169,25 +222,23 @@ html, body {
 	</section>
 	<!-- End banner Area -->
 	<!-- 詢問使用者位置 -->
-	<br>
-	<br>
 	<div class="askLocation">
 		<div class="askLocationInner">
-			<div>
-				<a id="a1" onClick="div_none(this.id);" class="title">搜尋活動</a>
+			<div id="a1UpperDiv">
+				<a id="a1" onClick="div_none(this.id);" class="title">地圖搜尋藝文活動</a>
 			</div>
 			<div style="display: none;" class="a1">
 				<div class="searchBox1">
-					<h1>輸入任意地點，尋找活動：</h1>
+					<h1>想尋找哪個地方的活動</h1>
 					<input type="text" id="userLocation">
 				</div>
 				<div class="searchBox2">
 					<div class="searchBox2l">
-						<h3>距離該地點幾公里內</h3>
-						<input type="text" id="userDistance">公里<br>
+						<h3>顯示幾公里內的活動</h3>
+						<input type="text" id="userDistance" size="6">
 					</div>
 					<div class="searchBox2r">
-						<h3>選擇偏好的藝文活動種類</h3>
+						<h3>偏好的藝文活動類型</h3>
 						<select id="actCategory" class="selectCategory">
 							<option>請選擇</option>
 							<option>所有</option>
@@ -244,12 +295,12 @@ html, body {
 					</div>
 				</div>
 			</div>
-			<div>
-				<a id="a2" onClick="div_none(this.id);" class="title">顯示我的藝文足跡</a>
+			<div id="a2UpperDiv">
+				<a id="a2" onClick="div_none(this.id);" class="title">顯示我的旅程資訊</a>
 			</div>
 			<div style="display: none;" class="a2">
 				<div>
-					<button class="genric-btn info radius" onclick=navigatMyJourney()>顯示導航路線</button>
+					<button id="naviButton" class="genric-btn info radius" onclick=navigatMyJourney()>顯示導航路線</button>
 				</div>
 				<div class="tableDiv">
 					<table id="myJourneyTable" class="display">
@@ -273,6 +324,7 @@ html, body {
 <!-- 				<a id="a3" onClick="div_none(this.id);" class="title">標題</a> -->
 <!-- 			</div> -->
 <!-- 			<div style="display: none;" class="a3">內容</div> -->
+			<div class="newImg"></div>
 		</div>
 	</div>
 
@@ -314,24 +366,19 @@ html, body {
 	}
 	
 	let oneKey = document.getElementById("oneKey");
-	
+	let counterForKey = 0;
 	oneKey.addEventListener("click", () => {
-// 		if(getRandomInt(5)==0){
-// 			document.getElementById("userLocation").value="台南";
-// 			document.getElementById("userDistance").value="4";
-// 		}else if(getRandomInt(5)==1) {
+		counterForKey++;
+		if (counterForKey % 3 == 1){
 			document.getElementById("userLocation").value="台北車站";
 			document.getElementById("userDistance").value="3";
-// 		}else if(getRandomInt(5)==2){
-// 			document.getElementById("userLocation").value="西門町";
-// 			document.getElementById("userDistance").value="10";
-// 		}else if(getRandomInt(5)==3){
-// 			document.getElementById("userLocation").value="松山車站";
-// 			document.getElementById("userDistance").value="5";
-// 		}else if(getRandomInt(5)==4){
-// 			document.getElementById("userLocation").value="板橋";
-// 			document.getElementById("userDistance").value="8";
-// 		}
+		}else if(counterForKey % 3 == 2){
+			document.getElementById("userLocation").value="台中車站";
+			document.getElementById("userDistance").value="7";
+		}else {
+			document.getElementById("userLocation").value="高雄車站";
+			document.getElementById("userDistance").value="11";	
+		}
 	});
 
 	let oneKey2 = document.getElementById("oneKey2");
@@ -389,22 +436,21 @@ html, body {
         downloadable: true,
         attributionControl: false,
     });
-
-    // OSM圖層
+// 	定義不同類型的圖層
     let osm = L.tileLayer(
             'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             })
-      
-    osm.addTo(leafletMap);
 
-// 	定義不同類型的圖層
+// 	預設顯示圖層
+    osm.addTo(leafletMap);
+    
     let mapbox = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                     maxZoom: 18,
                     id: 'mapbox.streets'
                 });
-    
+
     let googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
         maxZoom: 20,
         subdomains:['mt0','mt1','mt2','mt3']
@@ -699,7 +745,7 @@ html, body {
         	rectangle: false,
         	circle: false
         },
-        position: 'topright',
+        position: 'bottomright',
         collapsed: true,
         edit: {
             featureGroup: drawItem
@@ -900,8 +946,8 @@ html, body {
 					let pinName = cell0.getElementsByTagName('a')[0]
 					pinName.onclick = () => {
 						leafletMap.flyTo([data[i].lat, data[i].lon], 12, {
-				            animate: true,
-				            duration: 2
+// 				            animate: true,
+				            duration: 2.5
 				          });
 					};
 					cell1.innerHTML = "<button id=navi"+data[i].id+">導航</button>";
@@ -983,22 +1029,38 @@ html, body {
 	}
 
 	let pinDelete = (e) => {
-// 		console.log("執行刪除");
-// 		console.log(e.target.id);
-		let id = (e.target.id).substring(6);
-// 		console.log(id);
-    	let url = "<c:url value='/35/myJourney/"+id+"' />";
+		swal({ 
+			title: "確認刪除？", 
+			text: "刪除圖釘後，資訊無法恢復",
+		    buttons: {
+		        confirm : "刪除",
+		        cancel : "取消"
+		    },
+		    dangerMode: true,
+			timer: 100000
+		}).then((result) => {
+			if (result) {
+				// handle Confirm button click
+//		 		console.log("執行刪除");
+//		 		console.log(e.target.id);
+				let id = (e.target.id).substring(6);
+//		 		console.log(id);
+		    	let url = "<c:url value='/35/myJourney/"+id+"' />";
 
-        fetch(url, {
-            method: "delete"
-        })
-            .then(status)
-            .then(json)
-            .then(data => {
-//                 console.log(data);
-				showJourney.click(); 
-				showJourney.click();
-            });
+		        fetch(url, {
+		            method: "delete"
+		        })
+		            .then(status)
+		            .then(json)
+		            .then(data => {
+//		                 console.log(data);
+						showJourney.click(); 
+						showJourney.click();
+		            });
+			} else {
+				// result.dismiss can be 'cancel', 'overlay', 'esc' or 'timer'
+			}
+		});
 	}
 
 // 	先變化欄位成為自由修改
@@ -1059,6 +1121,20 @@ html, body {
 				showJourney.click();
             });
 	}
+
+	// unsplash 上的圖片
+		let url = "<c:url value='/images/myJourney.JPG' />";
+		fetch(url)
+		  .then((response) => {
+		    return response.blob();
+		  })
+		  .then((imageBlob) => {
+			console.log(imageBlob);
+		    let img = document.createElement('IMG')
+		    document.querySelector('.newImg').appendChild(img);
+		    // 將 blog 物件轉為 url
+		    img.src = URL.createObjectURL(imageBlob);
+		  })
 
 //  導航路徑原始參考
 //  let routingControl = (data) => {

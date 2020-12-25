@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name = "STREETARTIST")
+@Table(name = "DETAIL_SA")
 @Component("streetArtist")
 public class StreetArtistBean {
 	

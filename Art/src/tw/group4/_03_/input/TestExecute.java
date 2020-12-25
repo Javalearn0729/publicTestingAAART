@@ -7,11 +7,11 @@ public class TestExecute {
 //		CreateShopsTable B = new CreateShopsTable();
 //		B.dropShopsTable();
 		
-//		ExecuteCreateTable03 A =new ExecuteCreateTable03();
-//		A.execute03();
+		ExecuteCreateTable03 A =new ExecuteCreateTable03();
+		A.execute03();
 		
-		int a = Integer.parseInt("08");
-		System.out.println(a);
+//		int a = Integer.parseInt("08");
+//		System.out.println(a);
 	}
 	
 }

@@ -70,7 +70,7 @@
 		<br> <br>
 		<div class="content">
 			<div class="mb-10" align="center">
-				<h2>藝文商店</h2>
+				<h1>藝文商店</h1>
 			</div>
 		</div>
 		<br> <br>
@@ -82,7 +82,9 @@
 					<h1 style="color: #1B9AAA; padding-left: 20px;">${shop.shopName}</h1>
 					<div class="content-wrap" style="padding: 20px 20px 20px 20px;">
 
-						<img src="${shop.image}" alt="" style="padding-bottom: 30px;">
+<%-- 						<img src="${shop.image}" alt="" style="padding-bottom: 30px;"> --%>
+						<img src="data:image/jpg;base64,${shop.base64Image}"  alt="" style="padding-bottom: 30px;">
+						
 						<p class="p1">${shop.intro}</p>
 
 					</div>
@@ -119,9 +121,9 @@
 					<form class="example" method="post"
 						action="<c:url value = "/03/index/shop/searchShopByName.ctrl"/>"
 						style="margin: auto; max-width: 300px">
-						<input type="text" name="shopName" placeholder="請輸入藝文商店名稱">
+						<input type="text" name="shopName" style="font-size: 19px;" placeholder="請輸入藝文商店名稱">
 						<button type="submit">
-							<i class="fa fa-search"></i>
+							<i class="fa fa-search" style="font-size: 19px;"></i>
 						</button>
 					</form>
 				</div>

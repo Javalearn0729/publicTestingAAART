@@ -23,6 +23,7 @@ public class RedirectRestaurantController {
 
 	@RequestMapping(path = "/03/cms/restaurant/restaurantManagement", method = RequestMethod.GET)
 	public String restaurantManagement(Model m) {
+		
 		return "03/cms_restaurant/restaurant_management";
 	}
 	

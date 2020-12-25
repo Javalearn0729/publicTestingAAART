@@ -33,21 +33,28 @@
 	width: 100px;
 }
 
-.area {
+ .area {
     background:	#CC0000;
     display:block;
     height:95px;
     opacity:0;
     position:absolute;
     width:187px;
-}
+} 
 #area1 {
-    left:65px;
-    Top:58px;
+    height:313px;
+    opacity:0;
+    position:absolute;
+    width:300px;
+    clip-path: inset(17% 19% 52% 19%);
 }
 #area2 {
-    left:65px;
-    Top:152px;
+    height:313px;
+    opacity:0;
+    position:absolute;
+    width:300px;
+    clip-path: inset(49% 19% 20% 19%);
+    
 }
 #area3 {
 	background:	#CC0000;
@@ -81,7 +88,8 @@
 <c:set var="seat" value="${requestScope.seat}" />
 <form name="order" action="<c:url value='/04/Cms/seatUpdate.ctrl'/>" method="POST" id="updateform">	
 	<p id="ticketnum" style="display:none">${sessionScope.shoppingcart.TICKET_NUM}</p>
-	<h1>座位表</h1>
+	<br>
+	<h1>前台區座位表</h1>
 
 	<input type="hidden" value="${seat.actno}" id="actno" name="actno"/>
 
@@ -247,11 +255,11 @@
 	<br><br><input type="button" id="submit" class="btn btn-outline-info" value="修改座位" onclick="update()">
 </div>
 
-	<div class="col-4">
+	<div class="col-4"><br><br><br><br><br><br>
 
 					<a id="area1" class="area" href="<c:url value='/04/CMS/seatSearch.ctrl?actno=${seat.actno}&category=${category}'/>"></a>
        				<a id="area2" class="area" href="<c:url value='/04/CMS/seat2Search.ctrl?actno=${seat.actno}&category=${category}'/>"></a>
-       				<a id="area3" class="area" href="#"></a>
+       				<a id="area3" class="area" href="<c:url value='/04/CMS/seat3Search.ctrl?actno=${seat.actno}&category=${category}'/>"></a>
 					<img src="<c:url value='/images/04/CMSseatmap.jpg' />" border="0" usemap="#Map" alt="座位表" id="seatmap" class="map"   /> 
 	</div>
 

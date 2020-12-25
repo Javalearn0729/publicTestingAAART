@@ -58,6 +58,23 @@
 					href="<c:url value='/35/memberEntry.ctrl' />">修改會員資訊</a>
 			</div>
 		</div></li>
+	<!-- 藝文商店服務 -->
+	<li class="nav-item"><a class="nav-link collapsed" href="#"
+		data-toggle="collapse" data-target="#collapsePages31"
+		aria-expanded="true" aria-controls="collapsePages"> <i
+			class="fas fa-store"></i> <span>藝文商店服務</span>
+	</a>
+		<div id="collapsePages31" class="collapse"
+			aria-labelledby="headingPages" data-parent="#accordionSidebar">
+			<div class="bg-white py-2 collapse-inner rounded">
+				<div class="collapse-divider"></div>
+				<h6 class="collapse-header">商店管理:</h6>
+				<a class="collapse-item"
+					href="<c:url value='/03/cms/shop/createConfirm.ctrl'/>">上架藝文商店</a>
+				<a class="collapse-item"
+					href="<c:url value='/03/cms/shop/index.ctrl'/>">藝文商店管理</a>
+			</div>
+		</div></li>
 
 	<!-- Nav Item - 一般功能 Menu -->
 	<!-- 票務相關 -->
@@ -140,23 +157,6 @@
 			</div>
 		</div></li>
 
-	<!-- 藝文商店服務 -->
-	<li class="nav-item"><a class="nav-link collapsed" href="#"
-		data-toggle="collapse" data-target="#collapsePages31"
-		aria-expanded="true" aria-controls="collapsePages"> <i
-			class="fas fa-store"></i> <span>藝文商店服務</span>
-	</a>
-		<div id="collapsePages31" class="collapse"
-			aria-labelledby="headingPages" data-parent="#accordionSidebar">
-			<div class="bg-white py-2 collapse-inner rounded">
-				<div class="collapse-divider"></div>
-				<h6 class="collapse-header">商店管理:</h6>
-				<a class="collapse-item"
-					href="<c:url value='/03/cms/shop/createConfirm.ctrl'/>">上架藝文商店</a>
-				<a class="collapse-item"
-					href="<c:url value='/03/cms/shop/index.ctrl'/>">藝文商店管理</a>
-			</div>
-		</div></li>
 
 
 	<!-- 吟遊詩人 -->
@@ -218,7 +218,7 @@
 
 	<!-- Nav Item - Charts -->
 	<li class="nav-item"><a class="nav-link"
-		href="<c:url value='/35/chatRoomEntry' />"> <i
+		href="<c:url value='/35/chatCenterEntry' />"> <i
 			class="fas fa-fw fa-chart-area"></i> <span>客服中心</span></a></li>
 
 

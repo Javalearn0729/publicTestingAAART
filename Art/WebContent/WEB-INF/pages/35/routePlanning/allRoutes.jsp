@@ -38,7 +38,7 @@
 <!-- 	crossorigin="anonymous"></script> -->
 <style>
 body {
-	font-size: 26px;
+	font-size: 23px;
 	color: black;
 }
 
@@ -50,8 +50,12 @@ html, body {
 
 /* 高度要設定固定高否則無法顯示地圖 */
 #artMap {
-	height: 650px;
+	height: 700px;
 	width: 100%;
+}
+
+#header {
+	z-index: 9999;
 }
 
 .askLocation {
@@ -65,8 +69,12 @@ html, body {
 }
 
 .selectCategory {
-	width: 70px;
+	width: 100px;
 	margin: 0 auto;
+}
+
+#actRating {
+	width: 40px;
 }
 
 .askLocationInner, .sendRouteInner {
@@ -80,25 +88,21 @@ html, body {
 
 .marker-pin h6 {
 	color: navy;
-	font-family: SimSun; 
-	-webkit-text-stroke: 0.3px white;
+	font-family: SimSun;
+/* 	-webkit-text-stroke: 0.3px white; */
 }
 
 .askLocation {
 	display: inline;
 	float: right;
-	width: 35%;
-	margin-top: 110px;
+	width: 45%;
+	margin-top: 50px;
 }
 
 .mapArea {
 	display: inline;
 	float: left;
-	width: 65%;
-}
-
-#editPinButton {
-	margin-bottom: 30px;
+	width: 55%;
 }
 
 .myJourney {
@@ -106,25 +110,95 @@ html, body {
 }
 
 #myJourneyResult {
+	color: red;
+	font-weight: 900;
 	display: none;
 }
 
 .showPins {
-	margin-top: 20px;
+	margin: 40px 0;
 }
 
-.searchBox1, .searchBox2r {
-	padding: 20px 0;
+.searchBox1 {
+	padding-bottom: 20px;
 }
 
 .searchBox1 h1, .searchBox2l h3, .searchBox2r h3 {
 	padding-bottom: 5px;
 }
 
+.searchBox2l{
+	float: left;
+	width: 50%;
+	height: 100px;
+}
+
+.searchBox2r{
+	float: right;
+	width: 50%;
+	height: 100px;
+}
+
+.oneKey {
+	clear: both;
+	margin-bottom: 20px
+}
+
 /* 圖資的對比與亮度 */
 .leaflet-tile-pane {
-/* 	filter: grayscale(0.1) contrast(1) brightness(1);  */
-	filter: contrast(1) brightness(1); 
+	/* 	filter: grayscale(0.1) contrast(1) brightness(1);  */
+	filter: contrast(1) brightness(1);
+}
+
+.tableDiv {
+	overflow: scroll;
+	max-height: 450px;
+	padding: 15px 0;
+}
+
+#myJourneyTable, #pinsTbody tr {
+	/*  	table-layout: fixed;  */
+	word-break: keep-all;
+	border: 1px solid #778FA8;
+}
+
+#pinsTbody tr:hover {
+	background: #D3D3D3;
+}
+
+#myJourneyTable thead {
+	background: #778FA8;
+	color: white;
+}
+
+#naviButton {
+	margin-bottom: 15px;
+}
+
+#a1UpperDiv, #a2UpperDiv {
+	border-radius: 5px;
+	background: #D1E9E9;
+	padding: 10px 0;
+	margin: 45px 150px;
+	font-size: 32px;
+	box-shadow:1px 1px 2px 3px;
+}
+
+#a1UpperDiv:hover, #a2UpperDiv:hover {
+	background: #5CADAD;
+}
+
+.newImg {
+	margin-top: 70px;
+}
+.newImg img {
+	border-radius: 5px;
+	width: 85%;
+ 	opacity: 0.6; 
+}
+
+#a1, #a2 {
+	font-weight: 800;
 }
 
 </style>
@@ -147,78 +221,110 @@ html, body {
 		</div>
 	</section>
 	<!-- End banner Area -->
-
-	<!-- 詢問使用者位置 -->
-	<br>
-	<br>
+<!-- 詢問使用者位置 -->
 	<div class="askLocation">
 		<div class="askLocationInner">
-			<!-- 			<h1>今晚，我想來點(X)</h1> -->
-			<div class="searchBox1">
-				<h1>輸入任意地點，尋找活動：</h1>
-				<input type="text" id="userLocation">
+			<div id="a1UpperDiv">
+				<a id="a1" onClick="div_none(this.id);" class="title">地圖搜尋藝文活動</a>
 			</div>
-			<div class="searchBox2">
-				<div class="searchBox2l">
-					<h3>可接受距離該地點多遠的活動</h3>
-					<input type="text" id="userDistance">公里<br>
+			<div style="display: none;" class="a1">
+				<div class="searchBox1">
+					<h1>想尋找哪個地方的活動</h1>
+					<input type="text" id="userLocation">
 				</div>
-				<div class="searchBox2r">
-					<h3>選擇偏好的藝文活動種類</h3>
-					<select id="actCategory" class="selectCategory">
-						<option>請選擇</option>
-						<option>所有</option>
-						<option>音樂</option>
-						<option>戲劇</option>
-						<option>舞蹈</option>
-						<option>親子</option>
-						<!-- 					<option>獨立音樂</option> -->
-						<option>展覽</option>
-						<option>講座</option>
-						<option>電影</option>
-						<option>綜藝</option>
-						<option>競賽</option>
-						<option>徵選</option>
-						<option>其他</option>
-						<option>未知分類</option>
-						<!-- 					<option>演唱會</option> -->
-						<option>研習課程</option>
-					</select>
+				<div class="searchBox2">
+					<div class="searchBox2l">
+						<h3>顯示幾公里內的活動</h3>
+						<input type="text" id="userDistance" size="6">
+					</div>
+					<div class="searchBox2r">
+						<h3>偏好的藝文活動類型</h3>
+						<select id="actCategory" class="selectCategory">
+							<option>請選擇</option>
+							<option>所有</option>
+							<option>音樂</option>
+							<option>戲劇</option>
+							<option>舞蹈</option>
+							<option>親子</option>
+							<!-- 					<option>獨立音樂</option> -->
+							<option>展覽</option>
+							<option>講座</option>
+							<option>電影</option>
+							<option>綜藝</option>
+							<option>競賽</option>
+							<option>徵選</option>
+							<option>其他</option>
+							<option>未知分類</option>
+							<!-- 					<option>演唱會</option> -->
+							<option>研習課程</option>
+						</select>
+					</div>
+					<div class="oneKey">
+						<button class="genric-btn info radius" id="oneKey" type="button">一鍵輸入</button>
+					</div>
 				</div>
-				<div class="oneKey">
-					<button class="genric-btn info radius" id="oneKey" type="button">一鍵輸入</button>
+				<div class="editPinArea">
+					<input id="editPinButton" class="genric-btn primary radius"
+						type="button" value="用圖釘標記我想去的地方">
+					<div class="myJourney">
+						<div>
+							<label>活動名稱</label> <input id="actName" type="text">
+						</div>
+						<div>
+							<label>活動時間</label> <input id="actTime" type="text">
+						</div>
+						<div>
+							<label>備註事項</label>
+							<textarea id="actNotes"></textarea>
+						</div>
+						<div>
+							<label>感興趣程度</label> <select id="actRating" style="display: inline;">
+								<option>5</option>
+								<option>4</option>
+								<option>3</option>
+								<option>2</option>
+								<option>1</option>
+							</select>
+						</div>
+						<input id="savePinButton" class="genric-btn primary radius"
+							type="button" value="儲存">
+						<button class="genric-btn info radius" id="oneKey2" type="button">一鍵輸入</button>
+					</div>
+					<div>
+						<p id="myJourneyResult"></p>
+					</div>
 				</div>
 			</div>
-			<br> <br>
-			<div class="editPinArea">
-				<input id="editPinButton" class="genric-btn primary radius"
-					type="button" value="用圖釘標記我想去的地方">
-				<div class="myJourney">
-					<div>
-						<label>活動名稱</label> <input id="actName" type="text">
-					</div>
-					<!-- 					<div> -->
-					<!-- 						<label>活動地點</label> <input type="text"> -->
-					<!-- 					</div> -->
-					<div>
-						<label>活動時間</label> <input id="actTime" type="text">
-					</div>
-					<div>
-						<label>備註事項</label>
-						<textarea id="actNotes"></textarea>
-					</div>
-					<input id="savePinButton" class="genric-btn primary radius"
-						type="button" value="儲存">
-					<button class="genric-btn info radius" id="oneKey2" type="button">一鍵輸入</button>
-				</div>
+			<div id="a2UpperDiv" style="display: none;">
+				<a id="a2" onClick="div_none(this.id);" class="title">顯示我的旅程資訊</a>
+			</div>
+			<div style="display: none;" class="a2">
 				<div>
-					<p id="myJourneyResult"></p>
+					<button id="naviButton" class="genric-btn info radius" onclick=navigatMyJourney()>顯示導航路線</button>
+				</div>
+				<div class="tableDiv">
+					<table id="myJourneyTable" class="display">
+						<thead>
+							<tr>
+								<th>活動名稱</th>
+								<th id="addToNaviTitle">新增到導航</th>
+								<th>活動時間</th>
+								<th>備註事項</th>
+								<th>感興趣程度</th>
+								<th>修改</th>
+								<th>刪除</th>
+							</tr>
+						</thead>
+						<tbody id="pinsTbody">
+						</tbody>
+					</table>
 				</div>
 			</div>
-			<div class="showPins">
-				<input id="showPins" class="genric-btn primary radius" type=button
-					onclick="" value="顯示我已經編輯過的地點">
-			</div>
+<!-- 			<div> -->
+<!-- 				<a id="a3" onClick="div_none(this.id);" class="title">標題</a> -->
+<!-- 			</div> -->
+<!-- 			<div style="display: none;" class="a3">內容</div> -->
+			<div class="newImg"></div>
 		</div>
 	</div>
 
@@ -230,6 +336,35 @@ html, body {
 
 	<script type="text/javascript">
 
+// 	$(document).ready( function () {
+// 	    $('#myJourneyTable').DataTable({
+// 	    	"ordering": false,
+// 	        scrollY:     300,
+// 	        scroller:    true
+// 		});
+// 	} );
+
+	let redirectMyJourney = () => {
+		window.location.href="<c:url value='/35/myJourneyEntry' />";
+	}
+
+// 	點擊顯示隱藏div
+	function div_none(theclass){
+		let allPageTags = new Array();
+		allPageTags = document.getElementsByTagName("div");
+		for (i=0; i<allPageTags.length;i++){
+			if(allPageTags[i].className == theclass){
+				let obj = allPageTags[i];
+				if(obj.style.display == "none"){
+					obj.style.display = "";
+				}else{
+					obj.style.display = "none";
+				}
+			}
+		}
+	}
+
+// 	隨機顯示一鍵輸入內容
 	function getRandomInt(max) {
 		return Math.floor(Math.random() * Math.floor(max));
 	}
@@ -256,16 +391,44 @@ html, body {
 	});
 
 	let oneKey2 = document.getElementById("oneKey2");
-
+	
 	oneKey2.addEventListener("click", () => {
-		if(getRandomInt(3)==0){
+		if(getRandomInt(9)==0){
 			document.getElementById("actName").value="七週年小驚喜";
 			document.getElementById("actTime").value="2020/12/26";
 			document.getElementById("actNotes").value="久違的與女友約會，這個活動種類看起來她會喜歡，到時候要記得搶票";
-		}else if(getRandomInt(3)==1) {
-			document.getElementById("actName").value="這是一個很酷的活動";
-			document.getElementById("actTime").value="2020/12/31";
+		}else if(getRandomInt(9)==1) {
+			document.getElementById("actName").value="新北塞車城";
+			document.getElementById("actTime").value="2020/12/19";
 			document.getElementById("actNotes").value="新北塞車城，有喜歡的歌手會來，必去！";
+		}else if(getRandomInt(9)==2) {
+			document.getElementById("actName").value="慶祝生日活動的好地方";
+			document.getElementById("actTime").value="2021/02/02";
+			document.getElementById("actNotes").value="這邊附近友好餐廳，有喜歡的歌手會駐唱，必去！";
+		}else if(getRandomInt(9)==3) {
+			document.getElementById("actName").value="這是一個很酷的活動";
+			document.getElementById("actTime").value="2020/12/28";
+			document.getElementById("actNotes").value="這邊有好多酷東西，對不起了錢錢，但是我真的需要這個酷東西！";
+		}else if(getRandomInt(9)==4) {
+			document.getElementById("actName").value="超好看的藝術展";
+			document.getElementById("actTime").value="2021/01/15";
+			document.getElementById("actNotes").value="有超稀有的藝術品，和文創市集，帶女友去挖寶！";
+		}else if(getRandomInt(9)==5) {
+			document.getElementById("actName").value="硬地搖滾音樂";
+			document.getElementById("actTime").value="2021/01/31";
+			document.getElementById("actNotes").value="聚集了好多我喜歡的獨立樂團，啊啊啊啊嘶！";
+		}else if(getRandomInt(9)==6) {
+			document.getElementById("actName").value="成功大學校慶";
+			document.getElementById("actTime").value="2021/03/18";
+			document.getElementById("actNotes").value="好久沒回去台南晃晃了，找女友一起去！";
+		}else if(getRandomInt(9)==7) {
+			document.getElementById("actName").value="台北電影節開幕影片";
+			document.getElementById("actTime").value="2021/02/05";
+			document.getElementById("actNotes").value="有很多新進的優質國片，其中不乏令人刮目相看的新銳導演的作品！";
+		}else if(getRandomInt(9)==8) {
+			document.getElementById("actName").value="福隆抓海膽";
+			document.getElementById("actTime").value="2021/07/02";
+			document.getElementById("actNotes").value="夏天到了，該去和朋友消暑一夏！";
 		}else {
 			document.getElementById("actName").value="鐵道部歷史展覽";
 			document.getElementById("actTime").value="2020/12/30";
@@ -273,26 +436,30 @@ html, body {
 		}
 	});
 	
-
 // 	初始化地圖參數，這個動作只要做一遍
     let leafletMap = L.map(document.getElementById('artMap'), {
         center: [23.773, 120.959], // 中心點
         zoom: 8, // 縮放層級
+        zoomSnap: 0.5, //縮放的細膩程度
         crs: L.CRS.EPSG3857, // 座標系統
         downloadable: true,
         attributionControl: false,
     });
-
-    // OSM圖層
+// 	定義不同類型的圖層
     let osm = L.tileLayer(
             'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             })
-      
-    osm.addTo(leafletMap);
 
-// 	定義不同類型的圖層
+// 	預設顯示圖層
+    osm.addTo(leafletMap);
+    
+    let mapbox = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                    maxZoom: 18,
+                    id: 'mapbox.streets'
+                });
+
     let googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
         maxZoom: 20,
         subdomains:['mt0','mt1','mt2','mt3']
@@ -316,6 +483,7 @@ html, body {
 //     定義兩個 dictionary
     let baseLayers = {
     	'OpenStreetMap': osm,
+    	'Mapbox' : mapbox,
     	'Google 街道': googleStreets,
     	'Google 混合': googleHybrid,
     	'Google 衛星': googleSat,
@@ -326,15 +494,16 @@ html, body {
 
     };
 
-//     接著我們把圖層控制的功能（L.control.layers）加入地圖中：   
-	L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(leafletMap);
-
+	//接著把圖層控制的功能（L.control.layers）加入地圖中：   
+	L.control.layers(baseLayers, overlays, {collapsed: true, position: 'topleft'}).addTo(leafletMap);
+	
 	//加入比例尺
     L.control.scale({
         position: 'bottomleft'
     }).addTo(leafletMap);
     
-    //設定圖釘樣式: 紅色圖釘
+    //設定圖釘樣式
+	//紅色圖釘
     let redIcon = new L.Icon(
         {
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
@@ -345,7 +514,7 @@ html, body {
             shadowSize: [41, 41]
         });
     
-    //設定圖釘樣式: 藍色活動圖釘
+    //藍色圖釘
     let blueIcon = new L.Icon(
         {
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
@@ -355,6 +524,56 @@ html, body {
             popupAnchor: [1, -34],
 //             shadowSize: [41, 41]
         });
+
+// 	綠色圖釘
+    let greenIcon = new L.Icon({
+    	  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+    	  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    	  iconSize: [25, 41],
+    	  iconAnchor: [12, 41],
+    	  popupAnchor: [1, -34],
+    	  shadowSize: [41, 41]
+    });
+    
+// 	金色圖釘
+    let goldIcon = new L.Icon({
+    	  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-gold.png',
+    	  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    	  iconSize: [25, 41],
+    	  iconAnchor: [12, 41],
+    	  popupAnchor: [1, -34],
+    	  shadowSize: [41, 41]
+    });
+    
+// 	黃色圖釘
+    let yellowIcon = new L.Icon({
+    	  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png',
+    	  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    	  iconSize: [25, 41],
+    	  iconAnchor: [12, 41],
+    	  popupAnchor: [1, -34],
+    	  shadowSize: [41, 41]
+    });
+    
+// 	橘色圖釘
+    let orangeIcon = new L.Icon({
+    	  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png',
+    	  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    	  iconSize: [25, 41],
+    	  iconAnchor: [12, 41],
+    	  popupAnchor: [1, -34],
+    	  shadowSize: [41, 41]
+    });
+    
+// 	灰色圖釘
+    let greyIcon = new L.Icon({
+    	  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png',
+    	  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    	  iconSize: [25, 41],
+    	  iconAnchor: [12, 41],
+    	  popupAnchor: [1, -34],
+    	  shadowSize: [41, 41]
+    });
 
 	let title = null;
     
@@ -378,8 +597,9 @@ html, body {
 // 	先設定markerGroup/markerRed，為了判斷是否有先前查詢遺留的圖層
 	let markerGroup = null;
 	let markerRed = null;
+	let routing = null;
 	
-// 	定義查詢紐按下後做的ajax處理
+// 	定義觸發查詢後，所執行的ajax處理
 	document.getElementById("actCategory").addEventListener("change", processLocation = () => {
 
 // 		如果有先前查詢產生的圖層就移除
@@ -389,6 +609,14 @@ html, body {
 
 	    if (markerRed !== null) {
 	    	leafletMap.removeLayer(markerRed);
+		}
+
+	    if (drawingLayer !== null) {
+	    	leafletMap.removeLayer(drawingLayer);
+		}
+
+		if (routing !== null) {
+			leafletMap.removeControl(routing);
 		}
 	    
 		let actCategory = document.getElementById("actCategory").value;
@@ -412,7 +640,7 @@ html, body {
             	nearActsArray = data.nearActs;
 
 //				設定地圖中心
-            	leafletMap.setView([userLat, userLon], 15 - Math.round(userDistance/10));
+            	leafletMap.setView([userLat, userLon], 15 - userDistance/10);
 // 				繪製查詢中心點圖釘
 		        markerRed = L.marker([data.userCoords.lat, data.userCoords.lon], {
 		            icon: redIcon
@@ -501,48 +729,9 @@ html, body {
 	loc.addEventListener("change", processLocation);
 	dis.addEventListener("change", processLocation);
 	
-// 	從這之後是編輯圖釘資訊，定義後續取圖標位置的按鈕要用的變數
-
-    //設定drawItem圖層
-    let drawItem = new L.FeatureGroup();
-    leafletMap.addLayer(drawItem);
-
-    //draw的控制選項
-    let option = {
-        position: 'topleft',
-        collapsed: true,
-        edit: {
-            featureGroup: drawItem
-        }
-    };
-
-//  新增drawControl
-    let drawControl = new L.Control.Draw(option);
-    leafletMap.addControl(drawControl);
-
-    let counter = 0;
-    let siteObj = null;
-//     let data = new Map();
-    leafletMap.on('draw:created', onMapDraw);
-   	function onMapDraw(e) {
-        counter++;
-        let layer = e.layer;
-        drawItem.addLayer(layer);
-//         Json
-        let shape = layer.toGeoJSON();
-//         轉字串
-        let shape_for_db = JSON.stringify(shape);
-        // 				console.log("1: "+arguments);
-        // 				console.log("2: "+layer);
-        // 				console.log("3: "+shape);
-        console.log("要用的資料: " + shape_for_db);
-        siteObj = {
-                lat: shape.geometry.coordinates[1],
-                lon: shape.geometry.coordinates[0]
-                }
-//         data.set(counter, JSON.stringify(shape));
-    }
-
+	//從這之後是編輯圖釘資訊，定義後續取圖標位置的按鈕要用的變數
+	
+	//綁定點擊地圖事件後，要執行的動作
 // 	leafletMap.on('click', onMapClick);	
 // 	function onMapClick(e){
 // 		L.popup()
@@ -553,6 +742,54 @@ html, body {
 //         console.log("要用的資料之單純經緯度" + e.latlng.toString());
 // 	}
 
+    //設定drawItem圖層
+    let drawItem = new L.FeatureGroup();
+    leafletMap.addLayer(drawItem);
+
+    //draw的控制選項
+    let option = {
+        draw: {
+            polyline: false,
+        	polygon: false,
+        	rectangle: false,
+        	circle: false
+        },
+        position: 'bottomright',
+        collapsed: true,
+        edit: {
+            featureGroup: drawItem
+        }
+    };
+    
+	//新增drawControl
+    let drawControl = new L.Control.Draw(option);
+    leafletMap.addControl(drawControl);
+
+    let counter = 0;
+    let siteObj = null;
+	//let data = new Map();
+    leafletMap.on('draw:created', onMapDraw);
+    let drawingLayer = null; //之後要裝載手動放上去圖釘的圖層
+   	function onMapDraw(e) {
+        counter++;
+        drawingLayer = e.layer;
+        drawItem.addLayer(drawingLayer);
+		//Json
+        let shape = drawingLayer.toGeoJSON();
+		//轉字串
+        let shape_for_db = JSON.stringify(shape);
+        // 				console.log("1: "+arguments);
+        // 				console.log("2: "+layer);
+        // 				console.log("3: "+shape);
+//         console.log("要用的資料: " + shape_for_db);
+        siteObj = {
+                lat: shape.geometry.coordinates[1],
+                lon: shape.geometry.coordinates[0]
+                }
+//         data.set(counter, JSON.stringify(shape));
+    }
+
+// 	這邊開始是編輯我的圖釘行程
 	let myJourney = document.querySelector(".myJourney");
 	let editResult = document.getElementById("myJourneyResult");
 	let edit = document.getElementById("editPinButton");
@@ -561,6 +798,7 @@ html, body {
 	let name = document.getElementById("actName");
 	let time = document.getElementById("actTime");
 	let notes = document.getElementById("actNotes");
+	let rating = document.getElementById("actRating");
 
 	let editSiteObj = () => {
 		edit.style.display="none";
@@ -569,20 +807,44 @@ html, body {
 		name.value="";
 		time.value="";
 		notes.value="";
+		rating.value="5";
+
 	}
 	
-	edit.addEventListener("click", editSiteObj);
+	edit.addEventListener("click", redirectMyJourney);
 
+// 	定義儲存圖釘資訊後要做的事
 	let previousPin;
 	let saveSiteObj = (e) => {
 		edit.style.display="";
 		myJourney.style.display="none";
+
+// 		清除先前圖層
+	    if (markerGroup !== null) {
+	        leafletMap.removeLayer(markerGroup);
+	    }
+
+	    if (markerRed !== null) {
+	    	leafletMap.removeLayer(markerRed);
+		}
+		
+	    if (drawingLayer !== null) {
+	    	leafletMap.removeLayer(drawingLayer);
+		}
+		
+		if (routing !== null) {
+			leafletMap.removeControl(routing);
+		}
+
+// 		移除drawingLayer的藍色圖釘，變成紅色圖釘
+        drawItem.removeLayer(drawingLayer);
 
         let url = "<c:url value='/35/myJourney' />";
 		previousPin ={
 				"name": name.value,
 				"time": time.value,
 				"notes": notes.value,
+				"rating": actRating.value,
 				"lat": siteObj.lat,
 				"lon": siteObj.lon
 				}
@@ -614,10 +876,11 @@ html, body {
             icon: redIcon
         })
         .bindPopup("<b>"+previousPin.name+"</b>"+
-		"<br>詳細資訊: "+"<a href=\"https://www.google.com/search?q="+previousPin.name+"\" target=\"_blank\">點擊查看</a>"+
-		"<br>文化部查詢相關活動: "+"<a href=\"https://www.moc.gov.tw/searchall_5.html?q="+previousPin.name+"\" target=\"_blank\">點擊查看</a>"+
 		"<br>時間: "+previousPin.time+
-		"<br>備註: "+previousPin.notes)
+        "<br>備註: "+previousPin.notes+
+        "<br>感興趣程度: "+previousPin.rating+
+		"<br>活動詳細資訊: "+"<a href=\"https://www.google.com/search?q="+previousPin.name+"\" target=\"_blank\">點擊查看</a>"+
+		"<br>文化部查詢相關活動: "+"<a href=\"https://www.moc.gov.tw/searchall_5.html?q="+previousPin.name+"\" target=\"_blank\">點擊查看</a>")
         .addTo(leafletMap);
 
 //	    Popup直接顯示出來
@@ -626,22 +889,283 @@ html, body {
 	
 	save.addEventListener("click", saveSiteObj);
 
-	let showPins = document.getElementById("showPins");
+// 	開關編輯旅程區域時的判斷
+	let showJourney = document.getElementById("a2");
+	let clickCounter = 0;
+	showJourney.addEventListener("click", getMyJourneyCheck = () => {
+		clickCounter++;
+		if (clickCounter % 2 == 1 ){
+			getMyJourney();
+		}else {
+			let pinsTbody = document.getElementById("pinsTbody");
+            while(pinsTbody.firstChild) { 
+            	pinsTbody.removeChild(pinsTbody.firstChild); 
+            } 
+// 			或者是document.getElementById("pinsTbody").innerHTML="";
+		}
+	});
 
-	let showMySiteObj = () => {
-		window.location.href="<c:url value='/35/myJourneyEntry' />";
+// 	宣告導航點
+	let routingArray = [];
+// 	定義查詢我的圖釘資訊
+    let getMyJourney = () => {
+// 		如果有先前查詢產生的圖層就移除
+	    if (markerGroup !== null) {
+	        leafletMap.removeLayer(markerGroup);
+	    }
 
+	    if (markerRed !== null) {
+	    	leafletMap.removeLayer(markerRed);
+		}
+
+	    if (drawingLayer !== null) {
+	    	leafletMap.removeLayer(drawingLayer);
+		}
+		
+		if (routing !== null) {
+			leafletMap.removeControl(routing);
+		}
+        
+    	let url = "<c:url value='/35/myJourney' />";
+
+         fetch(url, {
+             method: "get"
+         })
+             .then(status)
+             .then(json)
+             .then(data => {
+ 				
+ 				let markerArray =[];
+ 				for (let i in data) {
+					//處理資料表部分
+					let pinsTbody = document.getElementById("pinsTbody");
+// 					插入一列
+					let row = pinsTbody.insertRow(0);
+					row.id="row"+data[i].id;
+// 					一列插入六個cell(td)
+					let cell0 = row.insertCell(0);
+					let cell1 = row.insertCell(1);
+					let cell2 = row.insertCell(2);
+					let cell3 = row.insertCell(3);
+					let cell4 = row.insertCell(4);
+					let cell5 = row.insertCell(5);
+					let cell6 = row.insertCell(6);
+// 					設定每個cell(td)顯示的內容
+					cell0.innerHTML = "<a>"+data[i].name+"</a>";
+					let pinName = cell0.getElementsByTagName('a')[0]
+					pinName.onclick = () => {
+						leafletMap.flyTo([data[i].lat, data[i].lon], 12, {
+// 				            animate: true,
+				            duration: 2.5
+				          });
+					};
+					cell1.innerHTML = "<button id=navi"+data[i].id+">導航</button>";
+					let pinNavi = cell1.getElementsByTagName('button')[0];
+					pinNavi.className="genric-btn primary radius";
+					pinNavi.onclick = () => {
+						pinNavi.className="genric-btn info radius";
+						pinNavi.textContent="已新增";
+						let naviLocation = {
+								lat: data[i].lat,
+								lon: data[i].lon
+								}
+						routingArray.push(naviLocation);
+					}
+					cell2.innerHTML = data[i].time;
+					cell3.innerHTML = data[i].notes;
+					cell4.innerHTML = data[i].rating;
+					cell5.innerHTML = "<button id=update"+data[i].id+">修改</button>";
+					cell5.getElementsByTagName('button')[0].className="genric-btn primary radius";
+					cell5.getElementsByTagName('button')[0].onclick=pinUpdate;
+					cell6.innerHTML = "<button id=delete"+data[i].id+">刪除</button>";
+					cell6.getElementsByTagName('button')[0].className="genric-btn primary radius";
+					cell6.getElementsByTagName('button')[0].onclick=pinDelete;
+
+					//處理圖釘部分
+					let myJourneyIcon;
+					if (data[i].rating == 5) {
+        	 			myJourneyIcon = greenIcon;
+					}else if (data[i].rating == 4) {
+						myJourneyIcon = goldIcon;
+					}else if (data[i].rating == 3) {
+						myJourneyIcon = yellowIcon;
+					}else if (data[i].rating == 2) {
+						myJourneyIcon = orangeIcon;
+					}else {
+						myJourneyIcon = greyIcon;
+					}
+					
+					let myJourneyMarker = L.marker([data[i].lat, data[i].lon], {
+			            icon: myJourneyIcon
+			        })
+	    			.bindPopup("<b>"+data[i].name
+							+"</b><br>時間: "+data[i].time
+							+"<br>備註: "+data[i].notes
+							+"<br>感興趣程度: "+data[i].rating	        			
+	            			+"<br>活動詳細資訊: "+"<a href=\"https://www.google.com/search?q="+data[i].name+"\" target=\"_blank\">點擊查看</a>"
+	            			+"<br>文化部查詢相關活動: "+"<a href=\"https://www.moc.gov.tw/searchall_5.html?q="+data[i].name+"\" target=\"_blank\">點擊查看</a>");
+
+					myJourneyMarker.openPopup();
+					markerArray.push(myJourneyMarker);
+ 				}
+				//加入圖釘群組
+ 				markerGroup = L.layerGroup(markerArray).addTo(leafletMap);
+				//設定地圖中心
+ 		    	leafletMap.setView([23.773, 120.959], 8);
+				
+             });
+
+    }
+
+//  顯示導航路徑的方法
+	let navigatMyJourney = () => {
+		
+		if (routing !== null) {
+			leafletMap.removeControl(routing);
+		}
+		
+	    //導航路徑加到地圖上
+	    let latLngArray=[];
+	    for (i in routingArray){
+			let obj = L.latLng(routingArray[i].lat, routingArray[i].lon);
+	    	latLngArray.push(obj);   
+		}
+		routing = L.Routing.control({
+			waypoints : latLngArray
+		}).addTo(leafletMap);
+		//設定地圖中心
+	    leafletMap.setView([23.773, 120.959], 8);
 	}
-	
-	showPins.addEventListener("click", showMySiteObj);
-	
+
+	let pinDelete = (e) => {
+		swal({ 
+			title: "確認刪除？", 
+			text: "刪除圖釘後，資訊無法恢復",
+		    buttons: {
+		        confirm : "刪除",
+		        cancel : "取消"
+		    },
+		    dangerMode: true,
+			timer: 100000
+		}).then((result) => {
+			if (result) {
+				// handle Confirm button click
+//		 		console.log("執行刪除");
+//		 		console.log(e.target.id);
+				let id = (e.target.id).substring(6);
+//		 		console.log(id);
+		    	let url = "<c:url value='/35/myJourney/"+id+"' />";
+
+		        fetch(url, {
+		            method: "delete"
+		        })
+		            .then(status)
+		            .then(json)
+		            .then(data => {
+//		                 console.log(data);
+						showJourney.click(); 
+						showJourney.click();
+		            });
+			} else {
+				// result.dismiss can be 'cancel', 'overlay', 'esc' or 'timer'
+			}
+		});
+	}
+
+// 	先變化欄位成為自由修改
+	let pinUpdate = (e) => {
+// 		console.log(e.target.id);
+// 		1.同列資料的id值要抓住
+		let id = (e.target.id).substring(6);
+// 		2.處理其他要更新的欄位，抓出同列tr下所有td的value
+		let updateRow = document.getElementById("row"+id);
+// 		console.log(updateRow.children[0]);
+		updateRow.children[0].innerHTML="<input type='text' value='"+updateRow.children[0].children[0].innerText+"'>";
+		updateRow.children[2].innerHTML="<input type='text' value='"+updateRow.children[2].innerText+"'>";
+		updateRow.children[3].innerHTML="<input type='text' value='"+updateRow.children[3].innerText+"'>";
+		updateRow.children[4].innerHTML="<select><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select>";
+		updateRow.children[5].children[0].innerText="確認更新";
+		updateRow.children[5].children[0].className="genric-btn info radius";
+		updateRow.children[5].children[0].onclick=executeUpdate;
+// 		console.log(id);
+	}
+
+// 	真正fetch執行更新的方法
+	let executeUpdate = (e) => {
+// 		1.同列資料的id值要抓住
+		let id = (e.target.id).substring(6);
+// 		2.處理其他要更新的欄位，抓出同列tr下所有td的value
+		let updateRow = document.getElementById("row"+id);
+// 		console.log(updateRow.children[0].children[0].value);
+// 		console.log(updateRow.children[2].children[0].value);
+// 		console.log(updateRow.children[3].children[0].value);
+// 		console.log(updateRow.children[4].children[0].value);
+		let name = updateRow.children[0].children[0].value;
+		let time = updateRow.children[2].children[0].value;
+		let notes = updateRow.children[3].children[0].value;
+		let rating = updateRow.children[4].children[0].value;
+		
+    	let url = "<c:url value='/35/myJourney/' />";
+
+		let updatedData = {
+				"id" : id,
+				"name" : name,
+				"time" : time,
+				"notes" : notes,
+				"rating" : rating
+				};
+		
+        fetch(url, {
+            method: "put",
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8'
+            },
+            body: JSON.stringify(updatedData)
+        })
+            .then(status)
+            .then(json)
+            .then(data => {
+//                 console.log(data);
+				showJourney.click(); 
+				showJourney.click();
+            });
+	}
+
+	// unsplash 上的圖片
+		let url = "<c:url value='/images/myJourney.JPG' />";
+		fetch(url)
+		  .then((response) => {
+		    return response.blob();
+		  })
+		  .then((imageBlob) => {
+			console.log(imageBlob);
+		    let img = document.createElement('IMG')
+		    document.querySelector('.newImg').appendChild(img);
+		    // 將 blog 物件轉為 url
+		    img.src = URL.createObjectURL(imageBlob);
+		  })
+
+//  導航路徑原始參考
+//  let routingControl = (data) => {
+     
+//		if (routing !== null) {
+//			leafletMap.removeControl(routing);
+//		}
+		
+//	    //導航路徑
+//		routing = L.Routing.control({
+//			waypoints : [ L.latLng(data[0].lat, data[0].lon), L.latLng(data[1].lat, data[1].lon) ]
+//		}).addTo(leafletMap);
+ 	
+//  }
+    
 	//		下方已經棄用
     // 		IIFEs(Immediately Invoked Functions Expressions)
     // 		第一個括號內是expression，JavaScript會以 expression 的方式來讀取這段函式
     // 		在這種情況下，這個 function 會被建立，但是不會被存在任何變數當中
     // 		在這個expression的最後加上括號 ()，代表執行這段expression
-
 //     (function () {
+	
 //         var leafletMap = L.map(document.getElementById('artMap'), {
 //             center: [24, 121], // 中心點
 //             zoom: 10, // 縮放層級
@@ -649,36 +1173,11 @@ html, body {
 //             downloadable: true,
 //             attributionControl: false,
 //         });
-
-//         // 			使用OSM圖層
-//         L
-//             .tileLayer(
-//                 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-//                 {
-//                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-//                 }).addTo(leafletMap);
-
-        // 			google maps
-        // 			L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
-        // 				maxZoom : 20,
-        // 				subdomains : [ 'mt0', 'mt1', 'mt2', 'mt3' ]
-        // 			}).addTo(leafletMap); // 新增底圖    
-        //         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-        //             maxZoom: 18,
-        //             id: 'mapbox.streets'
-        //         }).addTo(leafletMap);  // 新增底圖
 		
         //			標記+按下去顯示說明文字，若有.openPopup()這個屬性，會直接顯示文字，無需點按
 //         let markerBlue = L.marker([23.6, 121]).addTo(leafletMap).bindPopup(
 //             "<b>Title</b><br>Description");
         // 			markerBlue.openPopup();
-
-        //規劃路徑
-        // 			L.Routing.control(
-        // 					{
-        // 						waypoints : [ L.latLng(24.67906857, 121.7561287),
-        // 								L.latLng(23.5, 121.2) ]
-        // 					}).addTo(leafletMap);
 
         // 			leafletMap.on('draw:created', function(e) {
         // 				let layer = e.layer;

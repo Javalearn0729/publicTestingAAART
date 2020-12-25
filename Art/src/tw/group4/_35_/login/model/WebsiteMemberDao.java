@@ -30,6 +30,12 @@ public class WebsiteMemberDao {
 		return wmBean;
 	}
 	
+	public WebsiteMember update(WebsiteMember wmBean) {
+		Session session = sessionFactory.getCurrentSession();
+		session.merge(wmBean);
+		return wmBean;
+	}
+	
 	public int insertWithResult(WebsiteMember wmBean) {
 		Session session = sessionFactory.getCurrentSession();
 		

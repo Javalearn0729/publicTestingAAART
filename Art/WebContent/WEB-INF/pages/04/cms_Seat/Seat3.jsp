@@ -9,7 +9,7 @@
 
 <style type="text/css">
 .sofa{
-	width: 60px;
+	width: 40px;
 	border-width: 3px;
 	border-style: dashed;
 	border-color: #FFFFFF;
@@ -21,7 +21,7 @@
 	border-color: #FFFFFF;
 }
 .sofa1 {
-	width: 60px;
+	width: 40px;
 	border-width: 3px;
 	border-style: dashed;
 	border-color: #FFFFFF;
@@ -31,6 +31,42 @@
 }
 .progressbar{
 	width: 100px;
+}
+
+.area {
+    background:	#CC0000;
+    display:block;
+    height:95px;
+    opacity:0;
+    position:absolute;
+    width:187px;
+}
+#area1 {
+    height:313px;
+    opacity:0;
+    position:absolute;
+    width:300px;
+    clip-path: inset(17% 19% 52% 19%);
+}
+#area2 {
+    height:313px;
+    opacity:0;
+    position:absolute;
+    width:300px;
+    clip-path: inset(49% 19% 20% 19%);
+    
+}
+#area3 {
+	background:	#CC0000;
+    display:block;
+    height:313px;
+    opacity:0;
+    position:absolute;
+    width:300px;
+	clip-path: polygon(6% 16%, 19% 16%, 19% 79%, 80% 80%, 81% 16%, 93% 16%, 93% 97%, 7% 97%);
+}
+#area1:hover, #area2:hover ,#area3:hover{
+    opacity:0.4;
 }
 
 
@@ -47,156 +83,341 @@
 <!-- <div class="row justify-content-center"> -->
 
 
+<div class="row">
+ <div class="col-8">
+
 <c:set var="seat" value="${requestScope.seat}" />
-<form name="order" action="<c:url value='/04/Cms/seatUpdate.ctrl'/>" method="POST" id="update">	
+<form name="order" action="<c:url value='/04/Cms/seat3Update.ctrl'/>" method="POST" id="update">	
 	<p id="ticketnum" style="display:none">${sessionScope.shoppingcart.TICKET_NUM}</p>
-	<h1>座位表</h1>
+	<br>
+	<h1>黃區座位表</h1>
 
 	<input type="hidden" value="${seat.actno}" id="actno" name="actno"/>
 
-	<table>
-	<tr>
-		<td>座位資訊</td>
-		<td id="showseat" ></td>
-	</tr>
-	<tr>
-		<td>開放購買座位數量</td>
-		<td id="selectnum"></td>
-		<input type="hidden" id="seatnum" name="seatnum" value=""  />
-	</tr>
+					<table>
+						<tr>
+							<td>座位資訊</td>
+							<td id="showseat"></td>
+						</tr>
+						<tr>
+							<td>開放購買座位數量</td>
+							<td id="selectnum"></td>
+							<input type="hidden" id="seatnum" name="seatnum" value="" />
+						</tr>
 
-	</table>
+					</table>
 
- <div id="seat">
- <input type="hidden" id="hideA1" name="A1" value="${seat.A1}"  />
- <input type="hidden" id="hideA2" name="A2" value="${seat.A2}"  />
- <input type="hidden" id="hideA3" name="A3" value="${seat.A3}"  />
- <input type="hidden" id="hideA4" name="A4" value="${seat.A4}"  />
- <input type="hidden" id="hideA5" name="A5" value="${seat.A5}"  />
- <input type="hidden" id="hideA6" name="A6" value="${seat.A6}"  />
- <input type="hidden" id="hideA7" name="A7" value="${seat.A7}"  />
- <input type="hidden" id="hideA8" name="A8" value="${seat.A8}"  />
- <input type="hidden" id="hideA9" name="A9" value="${seat.A9}"  />
- <input type="hidden" id="hideA10" name="A10" value="${seat.A10}"  />
-
- <input type="hidden" id="hideB1" name="B1" value="${seat.B1}"  />
- <input type="hidden" id="hideB2" name="B2" value="${seat.B2}"  />
- <input type="hidden" id="hideB3" name="B3" value="${seat.B3}"  />
- <input type="hidden" id="hideB4" name="B4" value="${seat.B4}"  />
- <input type="hidden" id="hideB5" name="B5" value="${seat.B5}"  />
- <input type="hidden" id="hideB6" name="B6" value="${seat.B6}"  />
- <input type="hidden" id="hideB7" name="B7" value="${seat.B7}"  />
- <input type="hidden" id="hideB8" name="B8" value="${seat.B8}"  />
- <input type="hidden" id="hideB9" name="B9" value="${seat.B9}"  />
- <input type="hidden" id="hideB10" name="B10" value="${seat.B10}"  />
+					<div id="seat">
+						<input type="hidden" id="hideK1" name="K1" value="${seat.K1}" />
+						<input type="hidden" id="hideK2" name="K2" value="${seat.K2}" />
+						<input type="hidden" id="hideK3" name="K3" value="${seat.K3}" />
+						<input type="hidden" id="hideK4" name="K4" value="${seat.K4}" />
+						<input type="hidden" id="hideK5" name="K5" value="${seat.K5}" />
+						<input type="hidden" id="hideK6" name="K6" value="${seat.K6}" />
+						<input type="hidden" id="hideK7" name="K7" value="${seat.K7}" />
+						<input type="hidden" id="hideK8" name="K8" value="${seat.K8}" />
+						<input type="hidden" id="hideK9" name="K9" value="${seat.K9}" />
 
 
- <input type="hidden" id="hideC1" name="C1" value="${seat.C1}"  />
- <input type="hidden" id="hideC2" name="C2" value="${seat.C2}"  />
- <input type="hidden" id="hideC3" name="C3" value="${seat.C3}"  />
- <input type="hidden" id="hideC4" name="C4" value="${seat.C4}"  />
- <input type="hidden" id="hideC5" name="C5" value="${seat.C5}"  />
- <input type="hidden" id="hideC6" name="C6" value="${seat.C6}"  />
- <input type="hidden" id="hideC7" name="C7" value="${seat.C7}"  />
- <input type="hidden" id="hideC8" name="C8" value="${seat.C8}"  />
- <input type="hidden" id="hideC9" name="C9" value="${seat.C9}"  />
- <input type="hidden" id="hideC10" name="C10" value="${seat.C10}"  />
-
- <input type="hidden" id="hideD1" name="D1" value="${seat.D1}"  />
- <input type="hidden" id="hideD2" name="D2" value="${seat.D2}"  />
- <input type="hidden" id="hideD3" name="D3" value="${seat.D3}"  />
- <input type="hidden" id="hideD4" name="D4" value="${seat.D4}"  />
- <input type="hidden" id="hideD5" name="D5" value="${seat.D5}"  />
- <input type="hidden" id="hideD6" name="D6" value="${seat.D6}"  />
- <input type="hidden" id="hideD7" name="D7" value="${seat.D7}"  />
- <input type="hidden" id="hideD8" name="D8" value="${seat.D8}"  />
- <input type="hidden" id="hideD9" name="D9" value="${seat.D9}"  />
- <input type="hidden" id="hideD10" name="D10" value="${seat.D10}"  />
-
- <input type="hidden" id="hideE1" name="E1" value="${seat.E1}"  />
- <input type="hidden" id="hideE2" name="E2" value="${seat.E2}"  />
- <input type="hidden" id="hideE3" name="E3" value="${seat.E3}"  />
- <input type="hidden" id="hideE4" name="E4" value="${seat.E4}"  />
- <input type="hidden" id="hideE5" name="E5" value="${seat.E5}"  />
- <input type="hidden" id="hideE6" name="E6" value="${seat.E6}"  />
- <input type="hidden" id="hideE7" name="E7" value="${seat.E7}"  />
- <input type="hidden" id="hideE8" name="E8" value="${seat.E8}"  />
- <input type="hidden" id="hideE9" name="E9" value="${seat.E9}"  />
- <input type="hidden" id="hideE10" name="E10" value="${seat.E10}"  />
-</div>
+						<input type="hidden" id="hideL1" name="L1" value="${seat.L1}" />
+						<input type="hidden" id="hideL2" name="L2" value="${seat.L2}" />
+						<input type="hidden" id="hideL3" name="L3" value="${seat.L3}" />
+						<input type="hidden" id="hideL4" name="L4" value="${seat.L4}" />
+						<input type="hidden" id="hideL5" name="L5" value="${seat.L5}" />
+						<input type="hidden" id="hideL6" name="L6" value="${seat.L6}" />
+						<input type="hidden" id="hideL7" name="L7" value="${seat.L7}" />
+						<input type="hidden" id="hideL8" name="L8" value="${seat.L8}" />
+						<input type="hidden" id="hideL9" name="L9" value="${seat.L9}" />
+						<input type="hidden" id="hideL10" name="L10" value="${seat.L10}" />
+						<input type="hidden" id="hideL10" name="L10" value="${seat.L10}" />
 
 
+						<input type="hidden" id="hideM1" name="M1" value="${seat.M1}" />
+						<input type="hidden" id="hideM2" name="M2" value="${seat.M2}" />
+						<input type="hidden" id="hideM3" name="M3" value="${seat.M3}" />
+						<input type="hidden" id="hideM4" name="M4" value="${seat.M4}" />
+						<input type="hidden" id="hideM5" name="M5" value="${seat.M5}" />
+						<input type="hidden" id="hideM6" name="M6" value="${seat.M6}" />
+						<input type="hidden" id="hideM7" name="M7" value="${seat.M7}" />
+						<input type="hidden" id="hideM8" name="M8" value="${seat.M8}" />
+						<input type="hidden" id="hideM9" name="M9" value="${seat.M9}" />
+						<input type="hidden" id="hideM10" name="M10" value="${seat.M10}" />
+						<input type="hidden" id="hideM10" name="M10" value="${seat.M10}" />
+
+						<input type="hidden" id="hideN1" name="N1" value="${seat.N1}" />
+						<input type="hidden" id="hideN2" name="N2" value="${seat.N2}" />
+						<input type="hidden" id="hideN3" name="N3" value="${seat.N3}" />
+						<input type="hidden" id="hideN4" name="N4" value="${seat.N4}" />
+						<input type="hidden" id="hideN5" name="N5" value="${seat.N5}" />
+						<input type="hidden" id="hideN6" name="N6" value="${seat.N6}" />
+						<input type="hidden" id="hideN7" name="N7" value="${seat.N7}" />
+						<input type="hidden" id="hideN8" name="N8" value="${seat.N8}" />
+						<input type="hidden" id="hideN9" name="N9" value="${seat.N9}" />
 
 
-<!-- <div class="row justify-content-center"> -->
+						<input type="hidden" id="hideO1" name="O1" value="${seat.O1}" />
+						<input type="hidden" id="hideO2" name="O2" value="${seat.O2}" />
+						<input type="hidden" id="hideO3" name="O3" value="${seat.O3}" />
+						<input type="hidden" id="hideO4" name="O4" value="${seat.O4}" />
+						<input type="hidden" id="hideO5" name="O5" value="${seat.O5}" />
+						<input type="hidden" id="hideO6" name="O6" value="${seat.O6}" />
+						<input type="hidden" id="hideO7" name="O7" value="${seat.O7}" />
+						<input type="hidden" id="hideO8" name="O8" value="${seat.O8}" />
+						<input type="hidden" id="hideO9" name="O9" value="${seat.O9}" />
+						<input type="hidden" id="hideO10" name="O10" value="${seat.O10}" />
+
+						<input type="hidden" id="hideP1" name="P1" value="${seat.P1}" />
+						<input type="hidden" id="hideP2" name="P2" value="${seat.P2}" />
+						<input type="hidden" id="hideP3" name="P3" value="${seat.P3}" />
+						<input type="hidden" id="hideP4" name="P4" value="${seat.P4}" />
+						<input type="hidden" id="hideP5" name="P5" value="${seat.P5}" />
+						<input type="hidden" id="hideP6" name="P6" value="${seat.P6}" />
+						<input type="hidden" id="hideP7" name="P7" value="${seat.P7}" />
+						<input type="hidden" id="hideP8" name="P8" value="${seat.P8}" />
+						<input type="hidden" id="hideP9" name="P9" value="${seat.P9}" />
+						<input type="hidden" id="hideP10" name="P10" value="${seat.P10}" />
+
+						<input type="hidden" id="hideQ1" name="Q1" value="${seat.Q1}" />
+						<input type="hidden" id="hideQ2" name="Q2" value="${seat.Q2}" />
+						<input type="hidden" id="hideQ3" name="Q3" value="${seat.Q3}" />
+						<input type="hidden" id="hideQ4" name="Q4" value="${seat.Q4}" />
+						<input type="hidden" id="hideQ5" name="Q5" value="${seat.Q5}" />
+						<input type="hidden" id="hideQ6" name="Q6" value="${seat.Q6}" />
+					</div>
+
+
+
+
+					<!-- <div class="row justify-content-center"> -->
 	<table>
 		
 		<tr>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.A1}" id="A1" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.A2}" id="A2"></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.A3}" id="A3" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.A4}" id="A4" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.A5}" id="A5" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.A6}" id="A6" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.A7}" id="A7" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.A8}" id="A8" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.A9}" id="A9" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.A10}" id="A10" ></td>
-
-		</tr><br><br>
-		<tr>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.B1}" id="B1" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.B2}" id="B2" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.B3}" id="B3" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.B4}" id="B4" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.B5}" id="B5" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.B6}" id="B6" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.B7}" id="B7" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.B8}" id="B8" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.B9}" id="B9" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.B10}" id="B10" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.K1}" id="K1" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.L1}" id="L1"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.M1}" id="M1" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.N1}" id="N1" ></td>
 
 		</tr>
 		<tr>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.C1}" id="C1" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.C2}" id="C2" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.C3}" id="C3" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.C4}" id="C4" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.C5}" id="C5" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.C6}" id="C6" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.C7}" id="C7" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.C8}" id="C8" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.C9}" id="C9" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.C10}" id="C10" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.K2}" id="K2" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.L2}" id="L2"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.M2}" id="M2" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.N2}" id="N2" ></td>
 
 		</tr>
 		<tr>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.D1}" id="D1" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.D2}" id="D2" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.D3}" id="D3" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.D4}" id="D4" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.D5}" id="D5" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.D6}" id="D6" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.D7}" id="D7" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.D8}" id="D8" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.D9}" id="D9" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.D10}" id="D10" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.K3}" id="K3" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.L3}" id="L3"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.M3}" id="M3" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.N3}" id="N3" ></td>
+
+		</tr>
+		<tr>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.K4}" id="K4" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.L4}" id="L4"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.M4}" id="M4" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.N4}" id="N4" ></td>
+
+		</tr>
+		<tr>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.K5}" id="K5" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.L5}" id="L5"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.M5}" id="M5" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.N5}" id="N5" ></td>
+
+		</tr>
+		<tr>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.K6}" id="K6" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.L6}" id="L6"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.M6}" id="M6" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.N6}" id="N6" ></td>
+
+		</tr>
+		<tr>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.K7}" id="K7" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.L7}" id="L7"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.M7}" id="M7" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.N7}" id="N7" ></td>
+
+		</tr>
+		<tr>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.K8}" id="K8" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.L8}" id="L8"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.M8}" id="M8" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.N8}" id="N8" ></td>
+
+		</tr>
+		<tr>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.K9}" id="K9" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.L9}" id="L9"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.M9}" id="M9" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.N9}" id="N9" ></td>
 
 		</tr>
 		
 		<tr>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.E1}" id="E1" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.E2}" id="E2" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.E3}" id="E3" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.E4}" id="E4" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.E5}" id="E5" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.E6}" id="E6" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.E7}" id="E7" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.E8}" id="E8" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.E9}" id="E9" ></td>
-			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.E10}" id="E10" ></td>
+			<td></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.L10}" id="L10" ></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.M10}" id="M10" ></td>
+			<td></td>
 			
 		</tr>
+		
+		<tr>
+			<td></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.L11}" id="L11" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.O1}" id="O1" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.O2}" id="O2" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.O3}" id="O3" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.O4}" id="O4" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.O5}" id="O5" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.O6}" id="O6" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.O7}" id="O7" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.O8}" id="O8" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.O9}" id="O9" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.O10}" id="O10" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.M11}" id="M11" ></td>
+			<td></td>
+			
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.P1}" id="P1" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.P2}" id="P2" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.P3}" id="P3" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.P4}" id="P4" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.P5}" id="P5" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.P6}" id="P6" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.P7}" id="P7" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.P8}" id="P8" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.P9}" id="P9" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.P10}" id="P10" ></td>
+			<td></td>
+			<td></td>
+
+		</tr>
+	
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.Q1}" id="Q1" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.Q2}" id="Q2" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.Q3}" id="Q3" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.Q4}" id="Q4" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.Q5}" id="Q5" ></td>
+			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofa${seat.Q6}" id="Q6" ></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+
+		</tr>
+		
+		
+		
 	</table>
 	
 		
@@ -214,7 +435,16 @@
 	<br><br><input type="button" id="submit" class="btn btn-outline-info" value="修改座位" onclick="return update()">
 </div>
 
+	<div class="col-4"><br><br><br><br><br><br>
 
+					<a id="area1" class="area" href="<c:url value='/04/CMS/seatSearch.ctrl?actno=${seat.actno}&category=${category}'/>"></a>
+       				<a id="area2" class="area" href="<c:url value='/04/CMS/seat2Search.ctrl?actno=${seat.actno}&category=${category}'/>"></a>
+       				<a id="area3" class="area" href="<c:url value='/04/CMS/seat3Search.ctrl?actno=${seat.actno}&category=${category}'/>"></a>
+					<img src="<c:url value='/images/04/CMSseatmap.jpg' />" border="0" usemap="#Map" alt="座位表" id="seatmap" class="map"   /> 
+	</div>
+
+</div>
+</div>
 	
 <script src="https://code.jquery.com/jquery-3.5.1.js"
 		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="

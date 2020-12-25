@@ -230,37 +230,8 @@ h1, h2 {
 			</section>
 			<!-- End quote Area -->
 <!-- Vue 綁定起點的 div-->
-<div id="app">
 			<!-- Start exibition Area -->
-			<section class="exibition-area section-gap" id="exhibitions" style="margin-left: 10px">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-60 col-lg-10">
-							<div class="title text-center">
-								<h1 class="mb-10">Ongoing Exhibitions from the scratch</h1>
-								<p>Who are in extremely love with eco friendly system.</p>
-							</div>
-						</div>
-					</div>						
-					<div class="row">
-						<div class="active-exibition-carusel" v-for="item in items">
-							<div class="single-exibition item">
-								<img :src="'${pageContext.servletContext.contextPath}/14/getBlobImage/' + item.productId +'.ctrl'"  alt="">
-								<ul class="tags">
-									<li><a href="#">Travel</a></li>
-									<li><a href="#">Life style</a></li>
-								</ul>
-								<a href="#"><h4>{{item.productTitle}}</h4></a>
-								<p>
-									售價：{{item.productPrice | money}}
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>
 
-						</div>													
-					</div>
-				</div>	
-			</section>
 			<!-- End exibition Area -->			
 		
 			<!-- Start upcoming-event Area -->
@@ -429,73 +400,6 @@ h1, h2 {
 			<!-- JS 起點 -->
 
 			
-			<script>
-
-			
-				Vue.filter('money',function(num){
-	 			const parts = num.toString().split('.');
-	  			parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-	  			return '$' + parts.join('.');
-				});
-
-			var vm = new Vue({
-	 				el: "#app",
-	 				data() {
-	 					return {
-	 						items: null,
-	 						pages: null,
-	 						demo: 0
-	 					}
-	 				},
-	 		
-	 				mounted: function(){
-		          
-	 					this.initPageList();
-	 					this.initProductList();
-		          
-		     		 },
-
-		      methods:{
-		    	  initProductList: function() {
-		    		  var self = this;
-			          $.ajax({
-			              type:"get",
-			              url:"${pageContext.servletContext.contextPath}/14/indexShopHot",    
-			              contentType: "application/json",
-			              dataType: "json",
-			              success:function(value){
-// 			            	  alert('good2')
-			              	self.items = value;
-			              	var demo = value[1].productPrice*value[0].productPrice;
-			              	self.demo = demo;
-			              },
-			              error:function(){
-			                  alert("failure at initProductList()");
-			              }
-			          });
-		    	  },
-
-		      	initPageList: function() {
-		      		var self = this;
-		      		 $.ajax({
-			              type:"get",
-			              url:"/Art/14/initPages",    
-			              contentType: "application/json",
-			              dataType: "json",
-			              success:function(value){
-			            	  
-			              	self.pages = value;
-			              },
-			              error:function(){
-			                  alert("failure at initPageList()");
-			              }
-			          });
-			      	}
-		      }
-	       })
-
-</script>
-
 
 
 

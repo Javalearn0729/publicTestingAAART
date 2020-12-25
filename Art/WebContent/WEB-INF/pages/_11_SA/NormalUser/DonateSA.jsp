@@ -24,18 +24,18 @@
 	</div>
 </section>
 <!-- 黑底終點 -->
-<h1 style="filter: glow(color=#3366FF,strength=3); height:10px; color:blue; padding:1px;font-style:oblique;text-align: center;">
+<h1 style="filter: glow(color=#3366FF,strength=3); height:10px; color:black; padding:1px;text-align: center;">
 	地方街頭藝人<u> ${userView.name_SA } </u>需要您的支持與鼓勵
 </h1>
 <form action="doDonate.ctrl" method="get">
-<table class="display" align="center" style="background-color: rgb(196, 223, 77);margin-top: 40px">
+<table style="border:3px rgb(85, 83, 218) dashed;margin-top: 40px;background-color: rgb(243,235,124);"cellpadding="10" border='1' class="display" align="center">
 	<tr>
-		<td>姓名：</td>
-		<td>${userView.name_SA }</td>
+		<td style="font-size: 24px;">姓名：</td>
+		<td style="font-size: 24px;">${userView.name_SA }</td>
 	</tr>
 		<tr>
-			<td>斗內：</td>
-			<td>
+			<td style="font-size: 24px;">斗內：</td>
+			<td style="font-size: 24px;">
 				<input type="hidden" value="${userView.id_SA }" name="id_SA">
 				<input type="text" name="sal" placeholder="請輸入金額">元（新台幣）
 			</td>
@@ -46,3 +46,12 @@
 </table>
 </form>
 </c:forEach>
+<script>
+$("#submit").click(function(){
+	var don = parseInt($(".sal").text());
+	if (don <= 0 ) {
+		swal("金額錯誤","不可輸入小於0的數字","error");
+        return false;
+    }
+}); 
+</script>

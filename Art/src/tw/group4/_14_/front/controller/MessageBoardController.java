@@ -132,6 +132,7 @@ public class MessageBoardController {
 		ARTProduct ap = pdService.select(Integer.toString(apid));
 		ap.setProductScore(ap.getProductScore() + rate);
 		ap.setProductRater(ap.getProductRater() + 1);
+		ap.setProductMessage(ap.getProductMessage() +1);
 		pdService.updateProduct(ap);
 
 		Long count = mbService.countMessageNum(apid);

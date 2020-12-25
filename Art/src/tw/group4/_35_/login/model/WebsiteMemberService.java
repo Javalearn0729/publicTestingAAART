@@ -129,4 +129,9 @@ public class WebsiteMemberService {
 		return dao.updateMemberByName(member);
 	}
 	
+	public WebsiteMember update(WebsiteMember wmBean) {
+		return dao.update(wmBean);
+		
+	}
+	
 }

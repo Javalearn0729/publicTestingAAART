@@ -54,7 +54,7 @@
 		<br> <br>
 		<div class="content">
 			<div class="mb-10" align="center">
-				<h2>藝文商店</h2>
+				<h1>藝文商店</h1>
 			</div>
 		</div>
 		<br>
@@ -69,7 +69,7 @@
 								placeholder="請輸入藝文商店名稱" style="width: 300px"></td>
 							<td>&nbsp;</td>
 							<td><input class="genric-btn primary radius" type="submit"
-								style="font-size: 18px;" name="submit" value="搜尋"></td>
+								style="font-size: 20px; font-weight: bold;" name="submit" value="搜尋"></td>
 						</tr>
 					</table>
 				</div>
@@ -79,10 +79,10 @@
 		<div class="back" align="left">
 			<div class="submitButton">
 				<button id="newButton" class="genric-btn primary radius"
-					style="font-size: 18px;">New&#x2606新上架</button>
+					style="font-size: 20px; font-weight: bold;">New&#x2606新上架</button>
 				<span>&nbsp;</span>
 				<button id="hotButton" class="genric-btn primary radius"
-					style="font-size: 18px;">Hot&#x26FE熱排行</button>
+					style="font-size: 20px; font-weight: bold;">Hot&#x26FE熱排行</button>
 			</div>
 		</div>
 		<br> <br>
@@ -91,45 +91,45 @@
 				<div class="row">
 					<c:forEach items="${shopListbyId}" var="shopListbyId"
 						varStatus="vs">
-						<a
-							href="<c:url value='/03/index/shop/shopDetails.ctrl?shopId=${shopListbyId.shopId}'/> ">
-							<div class="col-lg-3 col-md-6 single-blog">
-								<div class="border-color-change">
-									<div class="thumb">
-										<img class="img-fluid" src="${shopListbyId.image}" alt="">
+							<a
+								href="<c:url value='/03/index/shop/shopDetails.ctrl?shopId=${shopListbyId.shopId}'/> ">
+								<div class="col-lg-3 col-md-6 single-blog">
+									<div class="border-color-change">
+										<div class="thumb">
+<%-- 											<img class="img-fluid" src="${shopListbyId.image}" alt=""> --%>
+											<img class="img-fluid" src="data:image/jpg;base64,${shopListbyId.base64Image}" alt="" />
+										</div>
+										<br> <a
+											href="<c:url value='/03/index/shop/shopDetails.ctrl?shopId=${shopListbyId.shopId}'/> "><h4>${shopListbyId.shopName}</h4></a>
+										<p class="ellipsis" style="color: black; font-weight: bold;">${shopListbyId.intro}</p>
+										<span class="lnr lnr-heart"></span> ${shopListbyId.clicks}
+										Likes
 									</div>
-									<br> <a
-										href="<c:url value='/03/index/shop/shopDetails.ctrl?shopId=${shopListbyId.shopId}'/> "><h4>${shopListbyId.shopName}</h4></a>
-									<p class="ellipsis">${shopListbyId.intro}</p>
-									<span class="lnr lnr-heart"></span> ${shopListbyId.clicks}
-									Likes
-								</div>
-							</div>
-							<br>
-						</a>
-					</c:forEach>
+								</div> <br>
+							</a>
+						</c:forEach>
 				</div>
 			</div>
 			<div id="popularityShops" style="display: none;">
 				<div class="row">
 					<c:forEach items="${shopListbyPopularity}"
 						var="shopListbyPopularity" varStatus="vs">
-						<a
-							href="<c:url value='/03/index/shop/shopDetails.ctrl?shopId=${shopListbyPopularity.shopId}'/> ">
-							<div class="col-lg-3 col-md-6 single-blog">
-								<div class="border-color-change">
-									<div class="thumb">
-										<img class="img-fluid" src="${shopListbyPopularity.image} "
-											alt="">
+							<a
+								href="<c:url value='/03/index/shop/shopDetails.ctrl?shopId=${shopListbyPopularity.shopId}'/> ">
+								<div class="col-lg-3 col-md-6 single-blog">
+									<div class="border-color-change">
+										<div class="thumb">
+<%-- 											<img class="img-fluid" src="${shopListbyPopularity.image} "alt="">  --%>
+											<img class="img-fluid" src="data:image/jpg;base64,${shopListbyPopularity.base64Image}">
+										</div>
+										<br> <a
+											href="<c:url value='/03/index/shop/shopDetails.ctrl?shopId=${shopListbysPopularity.shopId}'/> "><h4>${shopListbyPopularity.shopName}</h4></a>
+										<p class="ellipsis" style="color: black; font-weight: bold;">${shopListbyPopularity.intro}</p>
+										<span class="lnr lnr-heart"></span>
+										${shopListbyPopularity.clicks} Likes
 									</div>
-									<br> <a
-										href="<c:url value='/03/index/shop/shopDetails.ctrl?shopId=${shopListbyPopularity.shopId}'/> "><h4>${shopListbyPopularity.shopName}</h4></a>
-									<p class="ellipsis">${shopListbyPopularity.intro}</p>
-									<span class="lnr lnr-heart"></span>
-									${shopListbyPopularity.clicks} Likes
 								</div>
-							</div>
-						</a>
+							</a>
 					</c:forEach>
 				</div>
 			</div>

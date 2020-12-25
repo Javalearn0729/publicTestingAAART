@@ -188,17 +188,17 @@ public class DeleteReservationFront {
 
 			// 刪除訂位
 			srs.delete(no);
-			System.out.println("預約刪除成功");
-//			String reservationDeleteMsg = "預約刪除成功";
-//			m.addAttribute("reservationDeleteMsg", reservationDeleteMsg);
+			System.out.println("訂位刪除成功");
+			String reservationDeleteMsg = "訂位刪除成功";
+			m.addAttribute("reservationDeleteMsg", reservationDeleteMsg);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("預約刪除失敗");
-//			String reservationDeleteMsg = "預約刪除失敗";
-//			m.addAttribute("reservationDeleteMsg", reservationDeleteMsg); // 回傳錯誤訊息
+			String reservationErrorMsg = "預約刪除失敗";
+			m.addAttribute("reservationErrorMsg", reservationErrorMsg); // 回傳錯誤訊息
 		}
-		return "/03/front/reservation/myReservation.ctrl";
+		return "03/front_reservation/delete_return";
 	}
 
 }

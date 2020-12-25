@@ -20,7 +20,7 @@
 	</div>
 
 	<div class=content>
-		<form method="post"
+		<form method="post" enctype="multipart/form-data"
 			action="<c:url value = "/03/cms/shop/createShop.ctrl"/>">
 			<div class="back" align="right">
 				<div class="submitButton">
@@ -51,8 +51,7 @@
 
 						<tr style="color: black;">
 							<td>代表圖示<span style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
-							<td><input type="text" placeholder="請輸入圖片網址" name="image" style="color: black;"
-								class="form-control"></td>
+							<td><input type="file" class="form-control" name="imageFile"></td>
 						</tr>
 
 						<tr>
@@ -155,9 +154,9 @@
 							<td><input type="text" placeholder="請輸入縣市名" name="cityName" style="color: black;"
 								value="台北市" class="form-control"></td>
 						</tr>
-						<tr style="display: none;">
-							<td>reservation不使用</td>
-							<td><input type="text" value="0" name="reservation" style="color: black;"
+						<tr style="color: black;">
+							<td>Image<span style="margin-left: 3px; font-weight: 800; color: rgb(203, 64, 66);">*</span></td>
+							<td><input type="text" placeholder="請輸入圖片網址" name="image" style="color: black;" value="http://cloud.culture.tw/e_upload_ccacloud/ccacloud/image/A0/B0/C0/D2/E309/F143/19ca9b05-7c06-43b7-8bf1-b1558133eeb5.jpg"
 								class="form-control"></td>
 						</tr>
 					</tbody>

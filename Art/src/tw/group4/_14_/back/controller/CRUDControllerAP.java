@@ -181,7 +181,7 @@ public class CRUDControllerAP {
 	@RequestMapping(path = "/14/createProduct.ctrl", method = RequestMethod.POST) // 新增商品
 	public String processCreate(Model m, @RequestParam(name = "pageNo" ,required = false) Integer pageNo,
 			@RequestParam(name = "APNUM") Integer apNum,@RequestParam(name = "APPRICE") String apPrice, 
-			@RequestParam(name = "APTITLE") String apTitle, @RequestParam(name = "APTYPE",required = false) String apType,
+			@RequestParam(name = "APTITLE") String apTitle, @RequestParam(name = "APTYPE",required = false) String apType, @RequestParam(name = "APTYPE2",required = false) String apSubType,
 			@RequestParam(name = "APDES",required = false) String apDes, @RequestParam(name = "myFiles") MultipartFile mFile)  {
 
 //		String fileName = mFile.getOriginalFilename();
@@ -215,14 +215,20 @@ public class CRUDControllerAP {
 	
 		
 //		int num = Integer.parseInt(apNum);
+		
+//		apDes.replaceAll("(\r\n|\n)", "<br />");
+		apDes.replace("\\r\\n | /\n | \r\n/g","<br>");
+		
 		ARTProduct pd = new ARTProduct();
 		pd.setProductTitle(apTitle);
 		pd.setProductPrice(apPrice);
 		pd.setProductNum(apNum);
-		pd.setProductType("cook"); //TODO : 要記得改回來喔
+		pd.setProductType(apType); 
+		pd.setProductSubType(apSubType);
 		pd.setProductDes(apDes);
 		pd.setProductScore(1);
 		pd.setProductRater(1);
+		pd.setProductMessage(0);
 //		pd.setProductImgBlob(blob);
 		try {
 			pd.setProductImgBlob(mFile.getBytes());

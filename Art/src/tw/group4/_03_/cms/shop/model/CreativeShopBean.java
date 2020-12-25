@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
@@ -18,7 +20,8 @@ public class CreativeShopBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id @Column(name = "SHOPID")
+	@Id
+	@Column(name = "SHOPID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int shopId;
 
@@ -27,13 +30,13 @@ public class CreativeShopBean implements Serializable {
 
 	@Column(name = "MEMBERID")
 	private int memberId;
-	
+
 	@Column(name = "IMAGE")
 	private String image;
 
 	@Column(name = "INTRO")
 	private String intro;
-	
+
 	// =====================
 
 	@Column(name = "CITYNAME")
@@ -50,7 +53,7 @@ public class CreativeShopBean implements Serializable {
 
 	@Column(name = "FAX")
 	private String fax;
-	
+
 	// ==================
 
 	@Column(name = "EMAIL")
@@ -64,17 +67,22 @@ public class CreativeShopBean implements Serializable {
 
 	@Column(name = "CLICKS")
 	private int clicks;
-	
+
+// 	blob==================
+
 	@Column(name = "RESERVATION")
-	private int reservation;
-	
+	@Lob
+	private byte[] reservation;
+
+	@Transient
+	private String base64Image;
 	// ==================
-	
+
 	public CreativeShopBean() {
 	}
 
 	// ==================
-	
+
 	public int getShopId() {
 		return shopId;
 	}
@@ -187,14 +195,25 @@ public class CreativeShopBean implements Serializable {
 		this.clicks = clicks;
 	}
 
-	public int getReservation() {
+	// ==================
+
+	public byte[] getReservation() {
 		return reservation;
 	}
 
-	public void setReservation(int reservation) {
+	public void setReservation(byte[] reservation) {
 		this.reservation = reservation;
 	}
 
+	public String getBase64Image() {
+		return base64Image;
+	}
+
+	public void setBase64Image(String base64Image) {
+		this.base64Image = base64Image;
+	}
+
 	// ==================
+
 
 }

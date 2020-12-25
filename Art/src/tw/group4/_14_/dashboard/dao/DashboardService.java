@@ -69,4 +69,16 @@ public class DashboardService {
 	public Long sumArtistClick() {
 		return dDao.sumArtistClick();
 	}
+	
+	public Long sumRestaurantOrder() {
+		return dDao.sumRestaurantOrder();
+	}
+	
+	public Long sumRestaurantAdTotal() {
+		return dDao.sumRestaurantAdTotal();
+	}
+	
+	public Long sumRestaurantChTotal() {
+		return dDao.sumRestaurantChTotal();
+	}
 }

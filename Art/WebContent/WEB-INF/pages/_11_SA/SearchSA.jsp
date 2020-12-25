@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<div>
-	<span> 
+<div align="center">
+	<span style="border: outset; background-color: rgb(239, 243, 11);margin: 1px;" > 
 		<a href="GoCreate.ctrl">新增</a>&nbsp;&nbsp; 
 		<a href="GoDel.ctrl">刪除</a>&nbsp;&nbsp;
 		<a href="GoSearch.ctrl">查詢</a>&nbsp;&nbsp; 

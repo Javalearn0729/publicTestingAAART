@@ -38,5 +38,8 @@ public class MBRecordDAOService {
 	public MBRecordBean changeStatus(MBRecordBean pd) {
 		return mbrDao.changeStatus(pd);
 	}
-	
+
+	public int sumMessage (int apid) {
+		return mbrDao.sumMessage(apid);
+	}
 }

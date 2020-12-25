@@ -95,6 +95,9 @@ public class TableForDB {
 					   + " preference       varchar2(32), "
 					   + " registerTime    	Date, "
 					   + " purchaseLimit    number(12,2),  "
+					   + " deco			    number(12,2),  "
+					   + " book             number(12,2),  "
+					   + " home             number(12,2),  "
 					   + " status           varchar2(32)  "
 					   + " )";
 	    

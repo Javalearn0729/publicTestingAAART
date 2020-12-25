@@ -42,6 +42,7 @@
 tr:hover { 
 background-color:#CC0000;
  opacity:0.4;
+ color:white;
  }
 
 .color{
@@ -156,28 +157,28 @@ body {
 						</tr>
 						<tr class="trA">
 							<td style="background-color: rgb(156, 194, 229)"></td>
-							<td>A</td>
+							<td>前台區</td>
 							<td>全票<br>半票</td>
 							<td>50</td>
-							<td >$1000<br>$2000</td>
+							<td >$2000<br>$1000</td>
 							<td id="seatnum1">0</td>
 
 						</tr>
 						<tr class="trB">
 							<td style="background-color: rgb(48, 84, 150)"></td>
-							<td>B</td>
+							<td>藍區</td>
 							<td>全票<br>半票</td>
 							<td>50</td>
-							<td >$1000<br>$2000</td>
+							<td >$800<br>$400</td>
 							<td id="seatnum2">0</td>
 
 						</tr>
 						<tr class="trC">
 							<td style="background-color: rgb(255, 192, 0)"></td>
-							<td>C</td>
+							<td>黃區</td>
 							<td>全票<br>半票</td>
 							<td>66</td>
-							<td >$1000<br>$2000</td>
+							<td >$400<br>$400</td>
 							<td id="seatnum3">0</td>
 						</tr>
 					</table>
@@ -199,19 +200,19 @@ body {
 <script type="text/javascript">
 //選取變色
 $("#area1").mouseenter(function(){
-	  $(".trA").css({"background-color":"#CC0000","opacity":"0.4"});
+	  $(".trA").css({"background-color":"#CC0000","opacity":"0.4","color":"white"});
 	}).mouseleave(function(){
-	  $(".trA").css({"background-color":"","opacity":""});
+	  $(".trA").css({"background-color":"","opacity":"","color":"black"});
 	});
 $("#area2").mouseenter(function(){
-	  $(".trB").css({"background-color":"#CC0000","opacity":"0.4"});
+	  $(".trB").css({"background-color":"#CC0000","opacity":"0.4","color":"white"});
 	}).mouseleave(function(){
-	  $(".trB").css({"background-color":"","opacity":""});
+	  $(".trB").css({"background-color":"","opacity":"","color":"black"});
 	});
 $("#area3").mouseenter(function(){
-	  $(".trC").css({"background-color":"#CC0000","opacity":"0.4"});
+	  $(".trC").css({"background-color":"#CC0000","opacity":"0.4","color":"white"});
 	}).mouseleave(function(){
-	  $(".trC").css({"background-color":"","opacity":""});
+	  $(".trC").css({"background-color":"","opacity":"","color":"black"});
 	});
 	</script>
 	

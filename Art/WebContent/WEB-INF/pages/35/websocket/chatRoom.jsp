@@ -16,13 +16,19 @@ box-sizing
 
 
 
+
+
 :
+
 
 
  
 
 
+
 border-box
+
+
 
 
 
@@ -105,12 +111,14 @@ border-box
 	bottom: 10px;
 	right: 10px;
 	z-index: 9999;
+	font-size: 22px;
 }
 
 .chat-popup {
 	border: 2px navy solid; linear-gradient (left,#000,#FFF);
 	max-height: 730px;
 	overflow: auto;
+	background: green;
 }
 
 #myForm {
@@ -121,6 +129,10 @@ border-box
 	min-height: 50px;
 	font-size: 16px;
 	color: black;
+}
+
+.contacts {
+	width: 100%;
 }
 </style>
 <script type="text/javascript">
@@ -186,6 +198,9 @@ border-box
 		// 		console.log(messageOutput.text);
 		let response = document.getElementById('response');
 		let p = document.createElement('p');
+		if (messageOutput.from=="管理員") {
+			p.style.color="red";
+		}
 		p.style.wordWrap = 'break-word';
 		p.appendChild(document.createTextNode(messageOutput.from + ": "
 				+ messageOutput.text + " (" + messageOutput.time + ")"));
@@ -226,6 +241,9 @@ border-box
 	</section>
 	<!-- End banner Area -->
 	<div id="memberRealName" style="display: none">${sessionScope.member.realName}</div>
+	<div>
+		<img class="contacts" src="<c:url value='/images/contacts.JPG' />">
+	</div>
 	<button class="start-chat genric-btn info radius" onclick="connect()">與線上客服溝通</button>
 	<div class="chat-popup" id="myForm">
 		<div class="form-container">

@@ -62,4 +62,5 @@ public class AlertsService {
 		return aImpl.sumAlertsUnRead();
 	}
 
+
 }
